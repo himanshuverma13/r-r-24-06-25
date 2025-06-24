@@ -49,7 +49,6 @@
 //   }
 // }, [activeIndex]);
 
-
 //   useEffect(() => {
 //     setTimeout(() => {
 //       AOS.refreshHard();
@@ -312,7 +311,7 @@ function Home() {
         }, 800);
       }
     },
-    [activeIndex, transitioning]
+    [activeIndex, transitioning],
   );
 
   // Add wheel event listener
@@ -323,48 +322,41 @@ function Home() {
 
   return (
     <div className="fixed-section-container">
-      {[
-        Index,
-        Invitefriend,
-        Howitworks,
-        RedeemAndEarn,
-        PlayEarn,
-        Offer,
-      ].map((Component, index) => {
-        const isActive = index === activeIndex;
-        const isOfferSection = index === 5;
+      {[Index, Invitefriend, Howitworks, RedeemAndEarn, PlayEarn, Offer].map(
+        (Component, index) => {
+          const isActive = index === activeIndex;
+          const isOfferSection = index === 5;
 
-        return (
-          <div
-            key={index}
-            className={`section ${isActive ? 'active' : ''}`}
-            ref={isOfferSection ? offerRef : null}
-            style={{
-              overflowY: isOfferSection && isActive ? 'auto' : 'hidden',
-            }}
-          >
-
-            {index === 0 ? (
-              <Component />
-            ) : index === 1 ? (
-              <Invitefriend isActive={isActive} isExiting={exitAnimation} />
-            ) : index === 2 ? (
-              <Howitworks isActive={isActive} isExiting={exitAnimation} />
-            ) : index === 3 ? (
-              <RedeemAndEarn isActive={isActive} />
-            ) : index === 4 ? (
-              <PlayEarn isActive={isActive} />
-            ) : index === 5 ? (
-              <Offer isActive={isActive} />
-            ) : (
-              <div data-aos="fade-up">
+          return (
+            <div
+              key={index}
+              className={`section ${isActive ? 'active' : ''}`}
+              ref={isOfferSection ? offerRef : null}
+              style={{
+                overflowY: isOfferSection && isActive ? 'auto' : 'hidden',
+              }}
+            >
+              {index === 0 ? (
                 <Component />
-              </div>
-            )}
-
-          </div>
-        );
-      })}
+              ) : index === 1 ? (
+                <Invitefriend isActive={isActive} isExiting={exitAnimation} />
+              ) : index === 2 ? (
+                <Howitworks isActive={isActive} isExiting={exitAnimation} />
+              ) : index === 3 ? (
+                <RedeemAndEarn isActive={isActive} />
+              ) : index === 4 ? (
+                <PlayEarn isActive={isActive} />
+              ) : index === 5 ? (
+                <Offer isActive={isActive} />
+              ) : (
+                <div data-aos="fade-up">
+                  <Component />
+                </div>
+              )}
+            </div>
+          );
+        },
+      )}
     </div>
   );
 }
