@@ -1,0 +1,82 @@
+.section-invitefriend {
+  height: 100vh;
+  background-image:url(../src/assets/HeroBanner/filebackground.png);
+  background-position: top;
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+  .content-z-index {
+    z-index: 2;
+  }
+  .copy-input-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    .input-invite-friend {
+      padding: 11px 16px;
+      width: 100%;
+      height: 68px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+    }
+
+    .copy-button {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      padding: 0 10px;
+      cursor: pointer;
+      background: #1a2a6c;
+      color: #ffffff;
+      border: 1px solid #1a2a6c;
+      padding: 10px 24px;
+      border-radius: 8px;
+      outline: none;
+    }
+  }
+  .divider-with-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 60px auto;
+    width: 80%;
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #9d92d2;
+      width: 50%;
+    }
+
+    .divider-border {
+      margin: 0 10px;
+      color: #9d92d2;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+  .btn-share-via-whatsapp {
+    border-radius: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 60px;
+    background: #1a2a6c;
+    outline: none;
+    border: none;
+  }
+  .social-nav {
+    display: flex;
+    gap: 42px;
+    justify-content: center;
+  }
+}
+.z-index-2{
+  // z-index: 2;
+  // opacity: 1;
+}
+
+
+

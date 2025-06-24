@@ -1,0 +1,2012 @@
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+// ============= MAIN ANIMATION CSS =========================
+.section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  // transition: opacity 1s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    &:nth-child(1){
+    // opacity: 1;
+    // z-index: 9;
+  // transition:none;
+  &.active{
+    // animation: none;
+  }
+
+  }
+}
+.section.active {
+  animation: fadeInUp 1s ease forwards;
+  overflow: auto;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+// Allow internal scroll for Offer section
+.section:nth-of-type(8).active {
+  overflow-y: auto;
+}
+
+// ============= MAIN ANIMATION CSS END =====================
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  // overflow: hidden; // hides scroll and disables default scrolling
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  
+  background-image: url('../src/assets/images/home/filebackground.png')!important;
+  background-size: cover;
+  background-position: top;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+:root {
+  --text-blue: rgba(26, 42, 108, 1);
+  --text-dark-blue: rgba(11, 30, 68, 1);
+  --light-white: rgba(250, 250, 250, 1);
+  --light-blue: rgba(64, 123, 255, 1);
+  --border-light: rgba(255, 255, 255, 0.4);
+  --light-white-bg: rgba(255, 255, 255, 0.15);
+  --text-blue-2: rgba(73, 52, 149, 1);
+  --dark-pink: rgba(224, 77, 176, 1);
+  --push-notification: rgba(157, 146, 210, 1);
+  --light-yellow: rgba(255, 217, 57, 1);
+  --text-light-black: rgba(51, 51, 51, 1);
+  --light-white: rgba(239, 243, 247, 0.7);
+  --light-white-2: rgba(239, 243, 247, 1);
+  --light-cream: rgba(255, 242, 178, 1);
+  --slider-arrow-color: rgba(75, 50, 173, 1);
+  --light-pink: rgba(255, 153, 153, 1);
+  --light-yellow: rgba(255, 240, 96, 1);
+  --register-inp: rgba(92, 75, 161, 0.1);
+  --text-light-gray: rgba(161, 161, 161, 1);
+}
+
+/* ================ font colors ============== */
+.text-blue {
+  color: var(--text-blue);
+}
+.text-light-white {
+  color: var(--light-white);
+}
+.text-dark-blue {
+  color: var(--text-dark-blue);
+}
+.text-blue-2 {
+  color: var(--text-blue-2);
+}
+.text-light-yellow {
+  color: var(--light-yellow);
+}
+.text-light-black {
+  color: var(--text-light-black);
+}
+.text-light-yellow {
+  color: var(--light-yellow);
+}
+.text-light-gray {
+  color: var(--text-light-gray);
+}
+/* ============================================= */
+
+/* ================ background colors ================ */
+
+.background-text-blue {
+  background-color: var(--text-blue) !important;
+}
+.background-light-blue {
+  background-color: var(--light-blue);
+}
+.background-dark-pink {
+  background-color: var(--dark-pink);
+}
+.background-push-notification {
+  background-color: var(--push-notification) !important;
+}
+.background-light-white {
+  background-color: var(--light-white);
+}
+.background-light-white-2 {
+  background-color: var(--light-white-2);
+}
+.background-light-cream {
+  background-color: var(--light-cream);
+}
+.background-light-pink {
+  background-color: var(--light-pink);
+}
+.background-light-white {
+  background-color: var(--light-white-bg);
+}
+.background-register-input {
+  background-color: var(--register-inp);
+}
+
+/* ============================================= */
+
+/* ================ font size ================ */
+.font-size-14 {
+  font-size: 14px;
+}
+.font-size-16 {
+  font-size: 16px !important;
+}
+.font-size-18 {
+  font-size: 18px;
+}
+.font-size-24 {
+  font-size: 24px !important;
+}
+.font-size-28 {
+  font-size: 28px;
+}
+.font-size-40 {
+  font-size: 40px;
+}
+.font-size-46 {
+  font-size: 46px;
+}
+/* ============================================ */
+
+// =============== BORDER ================================================
+.border-blue {
+  border: 1px solid var(--text-blue);
+}
+// =======================================================================
+
+// =============== LETTER SPACING ================================================
+
+.ls-4 {
+  letter-spacing: 4px;
+}
+
+// =======================================================================
+
+/* ===================== Navbar Or Header Css ============================ */
+
+.text-underline-offset-6 {
+  text-underline-offset: 6px;
+}
+
+.header-center-img {
+  filter: drop-shadow(0px 4px 4px #fff);
+}
+
+/* Navbar effect Css */
+
+.nav-indicator {
+  bottom: 65px;
+  height: 3px;
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+
+.active-blur-shadow {
+  height: 100%;
+  width: 200px;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  background-image: url('../src/assets/images/home/bg-blur.svg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* ======================================================================= */
+
+/* ======================== Hero Section ================================== */
+.hero-section {
+  height: 100dvh;
+  // background-image: url('../src/assets/images/home/filebackground.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+#banner-sec-heading-desk {
+  display: block;
+}
+#banner-sec-heading-mob {
+  display: none;
+}
+
+/* =========================================================================== */
+
+/* ============== planet animation ==================*/
+
+.solar-sys {
+  bottom: 7%;
+}
+
+.navitag-left {
+  position: absolute;
+  left: -5%;
+  width: 10%;
+  bottom: 12%;
+}
+.navitag-right {
+  position: absolute;
+  right: -5%;
+  width: 10%;
+  bottom: 12%;
+}
+
+.navi-plnt-left {
+  position: absolute;
+  bottom: 20%;
+  left: 7%;
+}
+.navi-plnt-right {
+  position: absolute;
+  bottom: 20%;
+  right: 7%;
+}
+
+.image-container {
+  width: 23%;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  transition: transform 1s ease-in-out;
+}
+.image-container img {
+  transition: opacity 0.1s ease-in-out;
+  /* width: 100%; */
+  height: 100%;
+}
+
+.planet-shadow-purple {
+  filter: drop-shadow(-7px 7px 38px #55024ccc);
+}
+.planet-shadow-yellow {
+  filter: drop-shadow(-7px 7px 38px #fc941acc);
+}
+.planet-shadow-green {
+  filter: drop-shadow(-7px 7px 38px #66968b);
+}
+.planet-shadow-blue {
+  filter: drop-shadow(-7px 7px 38px #4babdf);
+}
+
+/* =========================================================================== */
+.bg-planet-ring {
+  top: 50%;
+}
+
+.heigth-85vh {
+  height: 85vh;
+}
+
+/* ==================== SECOND SCREEN SECTIONS CSS ==================================== */
+.second-screen-section {
+  height: 100dvh;
+  background-image: url("../src/assets/images/home/secondscreenbg.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.till-ship {
+  background: rgba(64, 123, 255, 0.3);
+}
+.till-ship-img {
+  left: -14.7%;
+  bottom: 0%;
+}
+
+.till-ship {
+  background-color: rgba(64, 123, 255, 0.3);
+}
+
+.progress-sect-rocket {
+  top: -82%;
+  left: 2%;
+}
+.progress-sect-astronot {
+  bottom: 0%;
+  width: 20%;
+  left: 2%;
+}
+
+.tilte-shadow {
+  box-shadow: 0px 4px 16px 0px rgba(184, 179, 203, 1);
+}
+
+.progress-sect-name {
+  line-height: 1.2;
+}
+.till-ship-border-color {
+  border-right: 0.5px solid var(--border-light) !important;
+}
+.progress-sect {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 228, 147, 0.2) 47.11%,
+    rgba(255, 200, 39, 0.4) 105.98%
+  );
+}
+.progress-side-sec {
+  width: 20%;
+}
+.progress-side-hr {
+  border: 2px solid rgba(255, 240, 96, 1);
+  height: 35px;
+  margin: 0 auto;
+}
+.progress-side-hr11 {
+  border: 2px dashed rgba(255, 240, 96, 1);
+  height: 30px;
+  margin: 0 auto;
+}
+.progress-side-hr-2 {
+  border: 2px dashed rgba(255, 240, 96, 1);
+  height: 20px;
+  margin: 0 auto;
+}
+.progress-foot-alen {
+  left: -4%;
+  bottom: 0%;
+}
+.push-notification-close {
+  background-color: rgba(157, 146, 210, 0.15) !important;
+}
+
+.second-screen-pathway {
+  width: 79% !important;
+  transform: translate(12.5%, 0%);
+}
+.second-scrn-bottom {
+  margin-top: 8px !important;
+}
+.second-scrn-padding {
+  padding: auto !important;
+}
+
+// TOOLTIP CSS
+
+.tooltiptext {
+  visibility: auto;
+  background-color: rgba(85, 68, 158, 0.3);
+  color: rgba(255, 240, 96, 1);
+  text-align: center;
+  border: 1px solid rgba(255, 240, 96, 1);
+  bottom: -25%;
+  left: 20%;
+}
+
+.tooltiptext::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -6px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent rgba(255, 240, 96, 1) transparent transparent;
+}
+
+/* ==================== SECOND SCREEN SECTIONS CSS END ==================================== */
+/*=====================INVITE A FRIEND SECTION CSS STRAT==================================*/ 
+.section-invitefriend {
+  height: 100vh;
+  // background-image:url('../src/assets/images/home/filebackground.png');
+  background-position: top;
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+  .content-z-index {
+    z-index: 2;
+  }
+  .copy-input-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    .input-invite-friend {
+      padding: 11px 16px;
+      width: 100%;
+      height: 68px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+    }
+
+    .copy-button {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      padding: 0 10px;
+      cursor: pointer;
+      background: #1a2a6c;
+      color: #ffffff;
+      border: 1px solid #1a2a6c;
+      padding: 10px 24px;
+      border-radius: 8px;
+      outline: none;
+    }
+  }
+  .divider-with-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 60px auto;
+    width: 80%;
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #9d92d2;
+      width: 50%;
+    }
+
+    .divider-border {
+      margin: 0 10px;
+      color: #9d92d2;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+  .btn-share-via-whatsapp {
+    border-radius: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 60px;
+    background: #1a2a6c;
+    outline: none;
+    border: none;
+  }
+  .social-nav {
+    display: flex;
+    gap: 42px;
+    justify-content: center;
+  }
+}
+
+/*===================== INVITE A FRIEND SECTION CSS END====================================*/ 
+/*===================== HOW IT WORKS SECTION CSS END====================================*/ 
+.section-howitworks {
+  height: 100vh;
+  position: relative;
+  background-image: url('../src//assets/images/home/HowItWorks/bg-HIW.png');
+  background-position: top;
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+  padding: 80px 0;
+&.zoom-down-out {
+	-webkit-animation: scale-down-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-down-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          opacity: 1;
+}
+@-webkit-keyframes scale-down-right {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+            
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+  }
+}
+@keyframes scale-down-right {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+  }
+  100% {
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
+    -webkit-transform-origin: 100% 70%;
+            transform-origin: 100% 70%;
+  }
+}
+  .howitwork-second {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .rocket-gif {
+    position: absolute;
+    left: 0;
+    top: 35%;
+    width: 15%;
+    z-index: 2;
+    animation: moveRocket 7s linear forwards;
+  }
+
+  @keyframes moveRocket {
+    0% {
+      left: 0%;
+      opacity: 1;
+    }
+    33% {
+      left: 15%;
+    }
+    66% {
+      left: 49%;
+    }
+    100% {
+      left: 84%;
+    }
+  }
+
+  .timeline-border {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 0;
+    border-top: 2px dashed #a259ff;
+    z-index: 0;
+    width: 0;
+    animation: drawTimeline 9s linear forwards;
+  }
+
+  @keyframes drawTimeline {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .inner-row-index {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 50px;
+
+    .timeline-dot {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background-color: #000;
+      opacity: 0;
+      z-index: 2;
+      transition: opacity 0.5s ease-in;
+
+      &.visible {
+        opacity: 1;
+      }
+
+      &:nth-of-type(1) {
+        left: 15%;
+      }
+      &:nth-of-type(2) {
+        left: 49%;
+      }
+      &:nth-of-type(3) {
+        left: 82%;
+      }
+    }
+
+    .planet-width {
+      width: 126px;
+    }
+  }
+
+  .howitworks-step {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.7s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .robort-image {
+    width: 200px;
+    transition: all 1s ease;
+  }
+
+  .robot-exit {
+    animation: robotMoveUp 1s forwards;
+  }
+
+  @keyframes robotMoveUp {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-500px) scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  h2.space-grotesk-bold {
+    z-index: 5;
+    position: relative;
+  }
+}
+
+@keyframes zoomInUpCustom {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.zoom-in-up-custom {
+  animation: zoomInUpCustom 3s ease forwards;
+}
+
+/*===================== HOW IT WORKS SECTION CSS END====================================*/ 
+
+/* ==================== REDEEM AND EARN SECTIONS CSS ==================================== */
+.redeem-circle {
+  width: 300px;
+  height: 300px;
+  background-image: url('../src/assets/images/home/redeemEarn/blueBaseStar.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 100%;
+  overflow: hidden;
+  
+}
+/* Fade Up Animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+
+  &.aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Left Animation */
+.fade-left {
+  opacity: 0;
+  transform: translateX(200px);
+  transition: opacity 1s ease, transform 1s ease;
+
+  &.aos-animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade Right Animation */
+.fade-right {
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: opacity 1s ease, transform 1s ease;
+
+  &.aos-animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.redeem-shadow {
+  filter: drop-shadow(-10px 0px 10px #493495);
+}
+
+.redem-box {
+  top: 10%;
+  right: 31%;
+}
+.gift-circle-sec {
+  margin-left: 0;
+  transition: margin-left 1s ease; /* 1 second transition */
+}
+.gift-circle-sec:hover {
+  margin-left: -7rem;
+}
+.playearn-circle-sec {
+  margin-left: 0;
+  transition: margin-left 1s ease; /* 1 second transition */
+}
+.playearn-circle-sec:hover {
+  margin-left: 7rem;
+}
+
+.launch-rocket {
+  bottom: 18%;
+}
+.redeem-circle-sect {
+  left: 70%;
+  bottom: 60%;
+}
+.earnmore-circle-sect {
+  left: 5%;
+  bottom: -60%;
+}
+.coins-box {
+  top: 10%;
+  right: 23%;
+}
+.earn-shadow {
+  filter: drop-shadow(10px 0px 10px #493495);
+}
+.howitwork-side-modal {
+  bottom: 15%;
+}
+.howitwork-side-modal .side-text {
+  writing-mode: sideways-lr;
+}
+
+/* ==================== REDEEM AND EARN SECTIONS CSS END ==================================== */
+/* ==================== PLAY AND EARN SECTIONS CSS ==================================== */
+.pay-earn-section {
+  background-image: url('../src/assets/images/home/playEarn/PlayAndearn.png');
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+/* Initial hidden state */
+.pay-earn-section,
+.pay-earn-content,
+.playearn-card {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+/* Animate Section (Zoom In from Bottom) */
+.animate-section {
+  animation: zoomInUpFromBottom 1s ease forwards;
+}
+
+@keyframes zoomInUpFromBottom {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(100vh); /* Start from bottom */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0); /* Final position */
+  }
+}
+
+/* Animate Content (Fade Up) with delay */
+.animate-content {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animate Cards (Fade Up) with further delay */
+.animate-card {
+  animation: fadeUpCard 0.3s ease forwards;
+  animation-delay: 2s;
+}
+
+@keyframes fadeUpCard {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pay-earn-content {
+  height: 100vh;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(10, 28, 69, 0.8) 100%
+  );
+}
+.play-earn-img {
+  left: 50%;
+  transform: translate(-50%, -0%);
+  top: 2%;
+}
+.play-img-eft {
+  width: 0%;
+}
+.play-img-eft-act {
+  transition: width 0.5s ease;
+  width: 20%;
+}
+.pay-earn-content .row {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.hover-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.hover-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* ==================== PLAY AND EARN SECTIONS CSS END ==================================== */
+/* ==================== OFFER SECTIONS CSS ==================================== */
+.offer-section {
+  background-image: url('../src/assets/images/home/offer/offerbg.png');
+  width: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500vh;
+  overflow: scroll;
+}
+.offer-section::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.offer-sect-content {
+  position: relative;
+  z-index: 2;
+  height: 310dvh; /* Fill the parent height */
+}
+// animation
+.offer-slider-fade-left{
+  opacity: 0;
+  transform: translateX(250px);
+  transition: opacity 5s ease, transform 5s ease; /* 5000ms */
+}
+
+.offer-slider-fade-left.aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+.offer-bg-img-1 {
+  background-image: url('../src/assets/images/home/offer/card3bg.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.offer-bg-img-2,
+.offer-bg-img-4 {
+  background-image: url('../src/assets/images/home/offer/card2bg.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.offer-bg-img-3 {
+  background-image: url('../src/assets/images/home/offer/card1bg.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.offer-cards {
+  border-radius: 24px;
+  height: 307px;
+}
+.offer-slider .slick-slide {
+  padding: 0px 24px 0px 0px !important;
+  box-sizing: border-box;
+}
+.offer-slider .slick-arrow {
+  display: none !important;
+}
+.offer-exc-card {
+  width: 410px !important;
+}
+.offer-exc-rocket {
+  left: 14%;
+  bottom: 45%;
+}
+.price-trolley {
+  border-radius: 70px 20px 20px 20px;
+  background-image: url('../src/assets/images/home/offer/exclperk1.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 491px;
+}
+.price-watch {
+  border-radius: 20px;
+  background-image: url('../src/assets/images/home/offer/exclperk2.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 233px;
+}
+.price-headphone {
+  border-radius: 20px 20px 70px 20px;
+  background-image: url('../src/assets/images/home/offer/exclperk3.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 233px;
+}
+.purple-border-bottom {
+  border-bottom: 1px solid var(--push-notification);
+}
+
+.offer-footer-section {
+  background-image: url('../src/assets/images/home/offer/Footer.svg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 75dvh;
+  z-index: 9;
+  overflow: hidden;
+}
+.footer-semi-planet {
+  background-image: url('../src/assets/images/home/offer/semiplanet.svg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+  height: 94%;
+  bottom: 0%;
+  z-index: 1;
+  left: 25%;
+}
+
+.price-exclusive {
+  // grid-auto-columns: 1rf 1rf 1rf;
+  grid-template-columns: auto auto auto;
+}
+
+.truncate-text-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.truncate-text-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==================== OFFER SECTIONS CSS END ==================================== */
+
+//===================== FOOTER CSS AND ANIMATION CSS -=============================
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-fade-up {
+  opacity: 0; /* start hidden */
+  animation: fadeUp 1s forwards; /* duration of 1s, keep end state */
+}
+
+.footer-delay-700 {
+  animation-delay: 0.7s;
+}
+//===================== FOOTER CSS AND ANIMATION CSS END -=============================
+
+/* ==================== MYREWARD SECTIONS CSS ==================================== */
+.myreward-card-1 {
+  background-image: url(../src/assets/MyRewards/starsbg.png);
+  background-position: center;
+  background-size: cover;
+}
+.myreward-card-2 {
+  background-image: url(../src/assets/MyRewards/withoutstarsbg.png);
+  background-position: center;
+  background-size: cover;
+}
+.myreward-star {
+  top: -32%;
+  right: -10%;
+}
+.myreward-pocket {
+  top: -7%;
+  right: 3%;
+}
+.myreward-shotingmeteor {
+  right: 8%;
+  bottom: 24%;
+}
+
+.my-reward-cards {
+  grid-template-columns: auto auto;
+}
+.reward-slider .slick-slide {
+  display: flex !important;
+  justify-content: center;
+  // width: auto !important;
+}
+.reward-slider .reward-slides {
+  width: 200px !important;
+}
+
+@keyframes pulseWidth {
+  0%,
+  100% {
+    width: 9%;
+  }
+  50% {
+    width: 7%;
+  }
+}
+
+.reward-moving-rkt {
+  bottom: 4%;
+  left: 2%;
+  width: 9%;
+  animation: pulseWidth 7s ease-in-out 2s infinite; /* 2s duration, 0.5s delay, infinite loop */
+}
+
+.reward-slider .slick-prev {
+  left: 0.4%;
+  z-index: 2;
+  border: 1px solid var(--slider-arrow-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+.reward-slider .slick-prev:hover {
+  left: 0.4%;
+  z-index: 2;
+  border: 1px solid var(--slider-arrow-color);
+  background-color: var(--slider-arrow-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+.reward-slider .slick-prev:before {
+  content: url(../src/assets/MyRewards/rwdsldlftarw.svg);
+  position: relative;
+  top: -1px;
+}
+.reward-slider .slick-prev:hover:before {
+  content: url(../src/assets/MyRewards/rwdsldlfthvrarw.svg);
+  position: relative;
+  top: -1px;
+}
+
+.reward-slider .slick-next {
+  right: 0%;
+  z-index: 2;
+  border: 1px solid var(--slider-arrow-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+.reward-slider .slick-next:hover {
+  right: 0%;
+  z-index: 2;
+  border: 1px solid var(--slider-arrow-color);
+  background-color: var(--slider-arrow-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+.reward-slider .slick-next:before {
+  content: url(../src/assets/MyRewards/rwdsldrgtarw.svg);
+  position: relative;
+  top: -1px;
+}
+.reward-slider .slick-next:hover:before {
+  content: url(../src/assets/MyRewards/rwdsldrgthvrarw.svg);
+  position: relative;
+  top: -1px;
+}
+
+.reward-discount {
+  background-image: url(../src/assets/MyRewards/discountbg.png);
+}
+.discount-border {
+  border-radius: 0px 8px 0px 8px;
+}
+
+// ==================================
+
+.excl-discount-card {
+  width: 360px !important;
+}
+.exclusive-discount-sect .slick-slide {
+  // width: auto !important;
+  display: flex !important;
+  justify-content: start;
+}
+
+.exclusive-discount-sect .slick-list {
+  padding-left: 0px !important;
+}
+.myreward-third-section {
+  // height: 100dvh;
+  background-image: url(../src/assets/MyRewards/reward3bg.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.referred-banner {
+  background-image: url(../src/assets/MyRewards/referralsbg.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+// play and earn card css
+
+// body {
+//   display: flex;
+//   justify-content: center;
+// }
+
+.playearn-card {
+  display: flex;
+  min-width: 500px;
+  height: 346px;
+  width: 100%;
+}
+
+.playearn-content {
+  min-width: 50px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-position: center;
+  margin: 10px;
+  transition: all 0.7s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+  background-size: cover;
+  background-position: center !important;
+  background-repeat: no-repeat;
+  cursor: grab;
+}
+
+.play-earn-card-1 {
+  min-width: 50px;
+}
+.play-earn-card-2 {
+  min-width: 70px;
+}
+.play-earn-card-3 {
+  min-width: 90px;
+}
+.play-earn-card-4 {
+  min-width: 110px;
+}
+// background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+
+.redeem-claim {
+  background: linear-gradient(180deg, #0b1e44 0%, #1a2a6c 50%, #1b4965 100%);
+}
+
+/* ==================== MYREWARD SECTIONS CSS END ==================================== */
+
+/* ==================== REGISTRATION SECTIONS CSS ==================================== */
+.registration-section {
+  height: 100dvh;
+  background-image: url(../src/assets/Registrartion/Registrationbg.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.register-form {
+  background-image: url(../src/assets/Registrartion/formbottom1.svg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+}
+/* ==================== REGISTRATION SECTIONS CSS END ==================================== */
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-down-shrink {
+  animation: fadeDownShrink 0.8s forwards;
+}
+
+@keyframes fadeDownShrink {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px) scale(0.5);
+    opacity: 0.7;
+  }
+}
+
+.visually-hidden {
+  visibility: hidden;
+  position: absolute;
+}
+
+/* =================== MEDIA QUERY ===============================*/
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #banner-sec-heading-desk {
+    display: none !important;
+  }
+  #banner-sec-heading-mob {
+    display: flex;
+  }
+  .login-img img {
+    max-width: 459px;
+    max-height: 272px;
+    width: 100%;
+    height: auto;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1535px) {
+  .image-container {
+    width: 20%;
+  }
+  .bg-planet-ring {
+    top: 50%;
+    width: 70%;
+  }
+  .second-scrn-bottom {
+    margin-top: 0px !important;
+  }
+  .second-scrn-padding {
+    padding: 0 !important;
+  }
+  .second-screen-xl {
+    margin-top: 0.5rem !important;
+  }
+  .till-ship-img {
+    left: -16.7% !important;
+  }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1023px) {
+  .bg-planet-ring {
+    top: 42%;
+    width: 85%;
+  }
+  .image-container {
+    width: 45%;
+    bottom: 17.5%;
+  }
+  .navitag-left {
+    position: absolute;
+    left: -2%;
+    width: 20%;
+    bottom: 45%;
+  }
+  .navitag-right {
+    position: absolute;
+    right: -2%;
+    width: 20%;
+    bottom: 45%;
+  }
+  .navi-plnt-right {
+    position: absolute;
+    bottom: 50%;
+    right: 20%;
+  }
+  .navi-plnt-left {
+    position: absolute;
+    bottom: 50%;
+    left: 20%;
+  }
+}
+@media only screen and (min-width: 1600px) and (max-width: 1920px) {
+  .second-screen-xl {
+    margin-top: 4rem !important;
+  }
+}
+@media only screen and (min-width: 1440px) and (max-width: 1440px) {
+  .planet-section {
+    padding-top: 4%;
+  }
+  .footer-responsive {
+    margin-top: 4%;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+  .reward-slider .reward-slides {
+    width: 170px !important;
+  }
+  .excl-discount-card {
+    width: 298px !important;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .reward-slider .reward-slides {
+    width: 150px !important;
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .planet-section {
+    padding-top: 2%;
+  }
+}
+
+/* =================== MEDIA QUERY END ========================== */
+
+// -===================================
+
+//  testing css
+
+.height-100vh {
+  height: 100vh;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+    display: none !important;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-slide-up {
+  animation: slideUp 1s forwards;
+  display: block;
+}
+.nav-slide-down {
+  display: block;
+  animation: slideDown 1s forwards;
+}
+// ---------- middle sect with second screen css
+.middle-sect {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.visible-second-sect {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.hidden-second-sect {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+// ------------------------------------aa
+
+.plnt-animt {
+  // display: block;
+  animation: plntDown 1s forwards;
+}
+
+/* Animation for appearing */
+@keyframes slideUpFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for disappearing */
+@keyframes slideDownFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+}
+
+.plnt-animt-up {
+  animation: slideUpFadeIn 0.5s forwards;
+}
+
+.plnt-animt-down {
+  animation: slideDownFadeOut 0.5s forwards;
+}
+
+.plnt-animt-ring-up {
+  animation: slideUpFadeIn 0.5s forwards;
+}
+
+.plnt-animt-ring-down {
+  animation: slideDownFadeOut 0.5s forwards;
+}
+
+// =====================================
+// Plant move top bottom animation
+
+.big-plnt-btm {
+  animation: movePlntToBottomCenter 1s forwards;
+}
+.big-plnt-top {
+  animation: movePlntToTopLeft 1s forwards;
+}
+@keyframes movePlntToTopLeft {
+  0% {
+    right: 0;
+    bottom: 5%;
+    width: 23%;
+    left: 0;
+  }
+  100% {
+    width: 7.1%;
+    right: 28%;
+    bottom: 67.7%;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes movePlntToBottomCenter {
+  0% {
+    width: 8%;
+    right: 27.6%;
+    bottom: 66%;
+    left: 0;
+    visibility: hidden;
+  }
+  100% {
+    right: 0;
+    bottom: 5%;
+    width: 23%;
+    left: 0;
+  }
+}
+// --------------/-
+// navbar move animation
+
+@keyframes moveUpFade {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+@keyframes moveDownFade {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -------------------------------------------------------------------------
+//  Invite Friend Css
+
+/* Background image with transition */
+.invite-bg-image {
+  // background-image: url('../src/assets/images/home/filebackground.png')!important;
+  background-size: cover;
+  background-position: top;
+  height: 150vh;
+}
+
+/* Fade down for middle section */
+.form-fade-down {
+  opacity: 0;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+/* Slide down for footer section */
+.astro-slide-down {
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.asto-transition-all {
+  transition: all 1s ease;
+}
+.nav-slide-top {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition:
+    opacity 5s ease,
+    transform 5s ease;
+  visibility: hidden;
+}
+.left-0{
+  left:0px;
+}
+.asto-transition-all {
+  transition: all 1s ease;
+}
+.scrHghRed {
+  animation: scrHghRed 4s forwards;
+}
+.scrHghInc {
+  animation: scrHghInc 4s forwards;
+}
+@keyframes scrHghRed {
+  from {
+    height: 100vh;
+  }
+  to {
+    height: 0vh;
+  }
+}
+@keyframes scrHghInc {
+  from {
+    height: 100vh;
+  }
+  to {
+    height: 100vh;
+  }
+}
+
+.zoom-in-up {
+  animation: zoomInUp 4s ease both;
+}
+ 
+@keyframes zoomInUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+// =============== Login Css Start =======================
+.login-bg-img {
+  background: url(./assets/Registrartion//Registrationbg.png);
+  // background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-img img {
+  height: 272px;
+  width: 459px;
+  display: block;
+}
+
+//   .login-img img {
+//   max-width: 459px;
+//   max-height: 272px;
+//   width: 100%;
+//   height: auto;
+//    display: block;
+// }
+
+.login-form-section {
+  border-radius: 16px;
+  background-color: rgba(239, 243, 247, 1);
+}
+
+.form-control {
+  background-color: rgba(92, 75, 161, 0.1) !important;
+}
+
+// Product Page Css Start
+
+.product-footer {
+  background: linear-gradient(180deg, rgba(255, 228, 147, 0.1) 47.11%, rgba(255, 200, 39, 0.2) 105.98%);
+}
+
+.footer-star {
+  margin-left: -25px;
+  background: url(./assets/Product-img/product-footer-star.svg) no-repeat left;
+}
+
+.footer-star img {
+  height: 46.26px;
+  width: 53.66px;
+}
+
+.product-top-frame {
+  margin-top: -40px;
+  margin-left: 35%;
+}
+
+.slider-container.product-slider {
+  padding: 0 !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+}
+
+// Slider Arrow hide
+.product-slider .slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+.product-card {
+  border-radius: 12px !important;
+  // width: 260px !important;
+  height: 350px !important;
+  box-shadow: 0px 4px 16px 1px rgba(75, 56, 151, 0.2);
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+  position: relative;
+  // overflow: hidden;
+}
+
+.slick-current .product-card {
+  border-radius: 12px !important;
+  width: 350px !important;
+  height: 400px !important;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+/* Discount badge */
+.discount-badge {
+  position: absolute;
+  top: -33px;
+  left: 40%;
+  background: url(./assets/Product-img/product-frame.svg) no-repeat;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(232, 90, 90, 1);
+  min-width: 80px;
+  /* ensure enough space */
+  min-height: 100px;
+}
+
+.slick-track {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.card-bg-purple-color {
+  background: linear-gradient(180deg, rgba(125, 111, 195, 0.4) -70.65%, #EFF3F7 66.01%);
+}
+
+.card-bg-pink-color {
+  background: linear-gradient(180deg, rgba(231, 191, 214, 0.6) -70.65%, #EFF3F7 47.72%);
+}
+
+.card-bg-green-color {
+  background: linear-gradient(180deg, rgba(184, 226, 220, 0.8) -33.16%, #EFF3F7 47.72%);
+}
+
+.text-red {
+  color: rgba(232, 90, 90, 1);
+}
+
+.product-btn {
+  border-radius: 8px;
+}
+
+.product-btn-purple {
+  background-color: rgba(144, 133, 204, 1);
+}
+
+.product-btn-pink {
+  background-color: rgba(219, 159, 193, 1);
+}
+
+.product-btn-green {
+  background-color: rgba(139, 208, 198, 1);
+}
+
+.orange-planet {
+  position: absolute;
+  top: 0px;
+  left: -30px;
+  width: 210.55px;
+  height: 115.12px;
+  // z-index: 1;
+}
+
+.green-planet {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 78px;
+  height: 78px;
+}
+
+.pink-planet {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 95.82px;
+  height: 114.16px;
+}
+
+// Ufo top Fixed Css
+.ufo-fixed {
+  position: fixed;
+  top: 90px;
+  right: 12%;
+}
+
+// =====================================
+// My Referral Css start Here
+// =========================================
+
+.referral-wrapper {
+  position: relative;
+}
+
+.referral-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+  border-radius: 12px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  transform-origin: bottom;
+  width: 400px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.referral-card:hover {
+  background: linear-gradient(180deg, rgba(77, 60, 155, 0) 0%, #4D3C9B 94.59%);
+  box-shadow: 0px 4px 16px 0px rgba(255, 255, 255, 0.25);
+  transform: scale(1.10);
+  height: 443px;
+}
+
+.referral-card:hover .referral-txt {
+  color: var(--text-blue) !important;
+}
+
+.referral-yellow-text {
+  color: #FFE14D;
+}
+
+.card-ufo-img {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+  z-index: 1;
+}
+
+.cloud-img {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  background-image: url('./assets/MyReferral-img/clouds\ \(2\).svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  z-index: 2;
+}
+
+.invite-card {
+  background: linear-gradient(0deg, #F6F9FE 27.34%, #8FD3EA 56.12%, #493495 105.15%);
+  border-radius: 24px;
+  box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 0.15);
+  position: relative;
+  padding: 10px;
+}
+
+.astronauts {
+  bottom: 70px;
+  left: 50px;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+
+.astronauts img {
+  width: 68.86px;
+  height: 158px;
+}
+
+.blue-bottom-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  background: url("../src/assets/images/MyReferral-img/BLUE\ PATTI.svg");
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.copy-input-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  .input-invite-friend {
+    padding: 11px 16px;
+    width: 100%;
+    height: 48px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+  }
+
+  .copy-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+    background: #1a2a6c;
+    color: #ffffff;
+    border: 1px solid #1a2a6c;
+    padding: 7px 24px;
+    border-radius: 4px;
+    outline: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .ufo-fixed {
+    right: 5%;
+  }
+}
+
+/* For mobile devices (screen width ≤ 767px) */
+@media (max-width: 767px) {
+  .ufo-fixed {
+    right: 2%;
+    top: 70px;
+    /* optional: move it up slightly on smaller screens */
+  }
+}
+.cursor-pointer{
+  cursor: pointer;
+}
