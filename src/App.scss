@@ -574,8 +574,8 @@ body::-webkit-scrollbar {
   100% {
     -webkit-transform: scale(0.1);
             transform: scale(0.1);
-    -webkit-transform-origin: 100% 70%;
-            transform-origin: 100% 70%;
+    -webkit-transform-origin: 100% 80%;
+            transform-origin: 100% 80%;
   }
 }
   .howitwork-second {
@@ -592,7 +592,7 @@ body::-webkit-scrollbar {
   .rocket-gif {
     position: absolute;
     left: 0;
-    top: 35%;
+    top: 23%;
     width: 15%;
     z-index: 2;
     animation: moveRocket 7s linear forwards;
@@ -1035,7 +1035,7 @@ body::-webkit-scrollbar {
   overflow: hidden;
 }
 .footer-semi-planet {
-  background-image: url('../src/assets/images/home/offer/semiplanet.svg');
+  background-image: url('../src/assets/icons/home/offer/semiplanet.svg');
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
