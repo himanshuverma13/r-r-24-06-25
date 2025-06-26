@@ -786,7 +786,7 @@ const Offer = () => {
       <div className="offer-sect-content top-0 start-0 bottom-0 end-0">
         <div className="container-fluid px-5 pt-5">
           <div
-            className="row"
+            className="row offer-slider-fade-left ${isActive ? 'aos-animate' : ''}"
             data-aos="fade-left"
             data-aos-offset="500"
             data-aos-delay="200"
