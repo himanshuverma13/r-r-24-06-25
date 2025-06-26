@@ -7,6 +7,7 @@ import LoginOtp from "../../pages/auth/loginOtp";
 import Registration from "../../pages/auth/registration";
 import Product from "../../pages/auth/product";
 import Home from '../../pages/home/home';
+import MyRewardFirstScreen from "../../pages/myReward/myRewardScreen1";
 
 // import ProtectedRoute from "./ProtectedRoute";
 
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route path="/registration" element={<Registration />} />
         <Route path="/subscription" element={<Product />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/reward" element={<MyRewardFirstScreen />} />
         {/* <Route
           path="/dashboard"
           element={
