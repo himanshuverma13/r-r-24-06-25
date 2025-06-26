@@ -265,14 +265,14 @@ function Home() {
           return (
             <div
               key={index}
-              className={`section ${isActive ? 'active' : ''} ${isOfferSection ? ' offer': ''}`}
+              className={`section ${isActive ? 'active' : ''} ${isOfferSection ? ' offer' : ''}`}
               ref={isOfferSection ? offerRef : null}
               style={{
                 overflowY: isOfferSection && isActive ? 'auto' : 'hidden',
               }}
             >
               {index === 0 ? (
-                <Component />
+                <Index isActive={isActive} isExiting={exitAnimation}/>
               ) : index === 1 ? (
                 <Invitefriend isActive={isActive} isExiting={exitAnimation} />
               ) : index === 2 ? (

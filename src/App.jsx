@@ -14,10 +14,8 @@ import Index from './pages/home/index';
 function App() {
   return (
     <>
-      {/* <AppRoutes /> */}
-      <Index/>
-      <Index/>
-    </>
+      <AppRoutes />
+     </>
   );
 }
 
