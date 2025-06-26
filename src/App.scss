@@ -30,14 +30,12 @@
   justify-content: center;
 
   &:nth-child(1) {
-
     // opacity: 1;
     // z-index: 9;
     // transition:none;
     &.active {
       // animation: none;
     }
-
   }
 }
 
@@ -135,6 +133,7 @@ body::-webkit-scrollbar {
   --light-yellow: rgba(255, 217, 57, 1);
   --text-light-black: rgba(51, 51, 51, 1);
   --light-white: rgba(239, 243, 247, 0.7);
+  --light-white-1: rgba(239, 243, 247, 0.7);
   --light-white-2: rgba(239, 243, 247, 1);
   --light-cream: rgba(255, 242, 178, 1);
   --slider-arrow-color: rgba(75, 50, 173, 1);
@@ -219,6 +218,9 @@ body::-webkit-scrollbar {
 
 .background-register-input {
   background-color: var(--register-inp);
+}
+.background-light-white-1 {
+  background-color: var(--light-white-1);
 }
 
 /* ============================================= */
@@ -443,9 +445,11 @@ body::-webkit-scrollbar {
 }
 
 .progress-sect {
-  background: linear-gradient(180deg,
-      rgba(255, 228, 147, 0.2) 47.11%,
-      rgba(255, 200, 39, 0.4) 105.98%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 228, 147, 0.2) 47.11%,
+    rgba(255, 200, 39, 0.4) 105.98%
+  );
 }
 
 .progress-side-sec {
@@ -514,6 +518,34 @@ body::-webkit-scrollbar {
   border-style: solid;
   border-color: transparent rgba(255, 240, 96, 1) transparent transparent;
 }
+
+// SECOND SCREEN BOTTOM ANIMATIONS CSS-----------
+
+/* styles.css */
+
+.left-box {
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.default-position {
+  /* Default position, no movement */
+  left: 0%;
+  opacity: 1;
+}
+
+.move-left {
+  /* Moved to the left and faded out */
+  left: -80%;
+  opacity: 0;
+}
+
+.move-right {
+  /* Moved to the right and faded out */
+  left: 80%;
+  opacity: 0;
+}
+
 
 /* ==================== SECOND SCREEN SECTIONS CSS END ==================================== */
 /*=====================INVITE A FRIEND SECTION CSS STRAT==================================*/
@@ -626,8 +658,6 @@ body::-webkit-scrollbar {
       .robot-exit {
         // animation: robotMoveUp 1s forwards;
         // animation-delay: 0.5s;
-
-
       }
 
       @keyframes robotMoveUp {
@@ -641,19 +671,18 @@ body::-webkit-scrollbar {
           opacity: 0;
         }
       }
-
     }
     .howitwork-second {
-    opacity: 0;
-    animation: fadeIn 1s forwards;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
       animation-delay: 1.5s; // starts after robot animation ends
-  }
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
     }
-  }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
 
     @keyframes robotExit {
       0% {
@@ -666,8 +695,6 @@ body::-webkit-scrollbar {
         transform: translateY(-100px);
       }
     }
-
-    
   }
 
   &.fade-out {
@@ -685,8 +712,9 @@ body::-webkit-scrollbar {
   }
 
   &.zoom-down-out {
-    -webkit-animation: scale-down-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: scale-down-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: scale-down-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+    animation: scale-down-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     opacity: 1;
   }
 
@@ -696,7 +724,6 @@ body::-webkit-scrollbar {
       transform: scale(1);
       -webkit-transform-origin: 100% 50%;
       transform-origin: 100% 50%;
-
     }
 
     100% {
@@ -722,8 +749,6 @@ body::-webkit-scrollbar {
       transform-origin: 100% 70%;
     }
   }
-
-  
 
   .rocket-gif {
     position: absolute;
@@ -859,7 +884,6 @@ body::-webkit-scrollbar {
   background-size: contain;
   border-radius: 100%;
   overflow: hidden;
-
 }
 
 /* Fade Up Animation */
@@ -977,8 +1001,7 @@ body::-webkit-scrollbar {
 
 /* Initial hidden state */
 .pay-earn-section,
-.pay-earn-content,
-.playearn-card {
+.pay-earn-content {
   opacity: 0;
   transform: scale(0.5);
 }
@@ -1024,6 +1047,7 @@ body::-webkit-scrollbar {
 .animate-card {
   animation: fadeUpCard 0.3s ease forwards;
   animation-delay: 2.5s;
+  opacity: 0;
 }
 
 @keyframes fadeUpCard {
@@ -1040,9 +1064,11 @@ body::-webkit-scrollbar {
 
 .pay-earn-content {
   height: 100vh;
-  background: radial-gradient(50% 50% at 50% 50%,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(10, 28, 69, 0.8) 100%);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(10, 28, 69, 0.8) 100%
+  );
 }
 
 .play-earn-img {
@@ -1085,7 +1111,7 @@ body::-webkit-scrollbar {
   background-repeat: no-repeat;
   background-size: cover;
   height: 350vh;
-  // overflow: scroll;
+  // overflow-x: scroll;
 }
 
 .offer-section::-webkit-scrollbar {
@@ -1104,8 +1130,11 @@ body::-webkit-scrollbar {
 .offer-slider-fade-left {
   opacity: 0;
   transform: translateX(150px);
-  transition: opacity 5s ease, transform 5s ease;
+  transition:
+    opacity 5s ease,
+    transform 5s ease;
   /* 5000ms */
+  overflow-x: hidden;
 }
 
 .offer-slider-fade-left.aos-animate {
@@ -1274,54 +1303,115 @@ body::-webkit-scrollbar {
 //===================== FOOTER CSS AND ANIMATION CSS END -=============================
 
 /* ==================== MYREWARD SECTIONS CSS ==================================== */
+.reward-section {
+  // height: 100dvh;
+  background-image: url('../src/assets/images/home/filebackground.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
 .myreward-card-1 {
-  background-image: url(../src/assets/MyRewards/starsbg.png);
+  background-image: url(../src/assets/images/home/MyRewards/starsbg.png);
   background-position: center;
   background-size: cover;
 }
-
 .myreward-card-2 {
-  background-image: url(../src/assets/MyRewards/withoutstarsbg.png);
+  background-image: url(../src/assets/images/home/MyRewards/withoutstarsbg.png);
   background-position: center;
   background-size: cover;
 }
-
 .myreward-star {
-  top: -32%;
+  top: -30%;
   right: -10%;
+  height: 84px;
+  width: 80.98px;
 }
-
 .myreward-pocket {
   top: -7%;
   right: 3%;
 }
-
 .myreward-shotingmeteor {
-  right: 8%;
-  bottom: 24%;
+  right: 0;
+  bottom: 29%;
+  width: 108.17px;
+  height: 93.22px;
+}
+
+.myreward-voucher {
+  top: -25%;
+  right: -10%;
+  width: 164.32px;
+  height: 145.6px;
 }
 
 .my-reward-cards {
   grid-template-columns: auto auto;
 }
-
 .reward-slider .slick-slide {
   display: flex !important;
   justify-content: center;
   // width: auto !important;
 }
-
 .reward-slider .reward-slides {
-  width: 200px !important;
+  width: 235px !important;
+}
+
+.discount-code-section {
+  border-radius: 16px;
+  border: 1px solid rgba(26, 42, 108, 1);
+  background-color: rgba(239, 243, 247, 1);
+  box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 0.25);
+}
+
+.discount-bg-img {
+  background: url(./assets/MyRewards/discount-bg-star.svg);
+}
+
+.discount-card {
+  border-radius: 8px;
+}
+
+.discount-white-box {
+  height: 50px;
+  width: 50px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.discount-deals {
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.exclusive-card-yellow-text {
+  color: rgba(255, 237, 96, 1);
+}
+
+.exclusive-card-blue-text {
+  color: rgba(52, 94, 194, 1);
+}
+
+.product-img {
+  width: 80.28px;
+  height: 77px;
+}
+
+.stratergy-img {
+  width: 110px;
+  height: 62px;
+}
+
+.report-img {
+  width: 78.49px;
+  height: 78.61px;
 }
 
 @keyframes pulseWidth {
-
   0%,
   100% {
     width: 9%;
   }
-
   50% {
     width: 7%;
   }
@@ -1331,78 +1421,37 @@ body::-webkit-scrollbar {
   bottom: 4%;
   left: 2%;
   width: 9%;
-  animation: pulseWidth 7s ease-in-out 2s infinite;
-  /* 2s duration, 0.5s delay, infinite loop */
+  animation: pulseWidth 7s ease-in-out 2s infinite; /* 2s duration, 0.5s delay, infinite loop */
+}
+.discount-slider .slick-prev {
+  display: none !important;
+}
+.discount-slider .slick-next {
+  display: none !important;
+}
+.exclusive-slider .slick-prev {
+  display: none !important;
+}
+.exclusive-slider .slick-next {
+  display: none !important;
 }
 
 .reward-slider .slick-prev {
-  left: 0.4%;
-  z-index: 2;
-  border: 1px solid var(--slider-arrow-color);
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-}
-
-.reward-slider .slick-prev:hover {
-  left: 0.4%;
-  z-index: 2;
-  border: 1px solid var(--slider-arrow-color);
-  background-color: var(--slider-arrow-color);
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-}
-
-.reward-slider .slick-prev:before {
-  content: url(../src/assets/MyRewards/rwdsldlftarw.svg);
-  position: relative;
-  top: -1px;
-}
-
-.reward-slider .slick-prev:hover:before {
-  content: url(../src/assets/MyRewards/rwdsldlfthvrarw.svg);
-  position: relative;
-  top: -1px;
+  display: none !important;
 }
 
 .reward-slider .slick-next {
-  right: 0%;
-  z-index: 2;
-  border: 1px solid var(--slider-arrow-color);
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-}
-
-.reward-slider .slick-next:hover {
-  right: 0%;
-  z-index: 2;
-  border: 1px solid var(--slider-arrow-color);
-  background-color: var(--slider-arrow-color);
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-}
-
-.reward-slider .slick-next:before {
-  content: url(../src/assets/MyRewards/rwdsldrgtarw.svg);
-  position: relative;
-  top: -1px;
-}
-
-.reward-slider .slick-next:hover:before {
-  content: url(../src/assets/MyRewards/rwdsldrgthvrarw.svg);
-  position: relative;
-  top: -1px;
+  display: none !important;
 }
 
 .reward-discount {
   background-image: url(../src/assets/MyRewards/discountbg.png);
 }
-
 .discount-border {
   border-radius: 0px 8px 0px 8px;
+}
+.height-100vh {
+  height: 100dvh;
 }
 
 // ==================================
@@ -1410,7 +1459,6 @@ body::-webkit-scrollbar {
 .excl-discount-card {
   width: 360px !important;
 }
-
 .exclusive-discount-sect .slick-slide {
   // width: auto !important;
   display: flex !important;
@@ -1420,18 +1468,16 @@ body::-webkit-scrollbar {
 .exclusive-discount-sect .slick-list {
   padding-left: 0px !important;
 }
-
 .myreward-third-section {
   // height: 100dvh;
-  background-image: url(../src/assets/MyRewards/reward3bg.png);
+  background-image: url(../src/assets/images/home/MyRewards/reward3bg.png);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 }
-
 .referred-banner {
-  background-image: url(../src/assets/MyRewards/referralsbg.png);
+  background-image: url(../src/assets/images/home/MyRewards/referralsbg.png);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1439,11 +1485,6 @@ body::-webkit-scrollbar {
 }
 
 // play and earn card css
-
-// body {
-//   display: flex;
-//   justify-content: center;
-// }
 
 .playearn-card {
   display: flex;
@@ -1453,38 +1494,131 @@ body::-webkit-scrollbar {
 }
 
 .playearn-content {
+  flex-grow: 1;
   min-width: 50px;
+  height: 100%;
   border-radius: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  background-position: center;
-  margin: 10px;
-  transition: all 0.7s cubic-bezier(0.05, 0.61, 0.41, 0.95);
-  background-size: cover;
   background-position: center !important;
   background-repeat: no-repeat;
-  cursor: grab;
+  background-size: cover;
+  margin: 10px;
+  transition: all 0.7s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+  position: relative;
+  overflow: hidden;
+}
+
+.playearn-content.active {
+  flex-grow: 100 !important;
+}
+.playearn-content {
+  width: calc(100% / 4 - 20px); // 4 cards with 20px gaps
 }
 
 .play-earn-card-1 {
   min-width: 50px;
 }
-
 .play-earn-card-2 {
   min-width: 70px;
 }
-
 .play-earn-card-3 {
   min-width: 90px;
 }
-
 .play-earn-card-4 {
   min-width: 110px;
 }
-
 // background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
 
 .redeem-claim {
   background: linear-gradient(180deg, #0b1e44 0%, #1a2a6c 50%, #1b4965 100%);
+}
+
+// ==================== MY REWARDS ANIMATIONS CSS ---------------------------------
+.ufo-fixed {
+  position: fixed;
+  right: 7.5%;
+  top: 12%;
+}
+.ufo-fixed-active {
+  position: fixed;
+  right: 7.5%;
+  top: 12%;
+  animation: moveUpRewUfo 0.7s ease forwards;
+}
+
+@keyframes moveUpRewUfo {
+  from {
+    top: 12%;
+  }
+  to {
+    top: 4%;
+  }
+}
+.reward-nav-animt-move-up {
+  animation: moveUpFadeOutResize 1s forwards;
+}
+@keyframes moveUpFadeOutResize {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    // max-height: 1%;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+    max-height: 0;
+    // margin-bottom: 7%;
+  }
+}
+.rwd-jrny-hide {
+  animation: hideRwdJrny 1s forwards;
+}
+@keyframes hideRwdJrny {
+  0% {
+    opacity: 1;
+    max-height: 16%;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    display: none;
+  }
+}
+.footer-rkt-down {
+  animation: moveDownRkt 1s forwards;
+}
+@keyframes moveDownRkt {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 16%;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100px);
+    max-height: 0;
+  }
+}
+//
+.rwd-jrny-sld {
+  right: -100%;
+  opacity: 0;
+}
+.rwd-jrny-sld-active {
+  right: -100%;
+  opacity: 0;
+  animation: rwdJrnySldMove 2s forwards;
+  animation-delay: 1s;
+}
+@keyframes rwdJrnySldMove {
+  0% {
+    right: -100%;
+    opacity: 1;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
 }
 
 /* ==================== MYREWARD SECTIONS CSS END ==================================== */
@@ -1638,6 +1772,9 @@ body::-webkit-scrollbar {
 
   .footer-responsive {
     margin-top: 4%;
+  }
+  .rocket-gif {
+    top: 39% !important;
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
@@ -1972,7 +2109,7 @@ body::-webkit-scrollbar {
 }
 
 .login-img img {
-   width: 100%;
+  width: 100%;
   max-width: 459px;
   height: auto;
   aspect-ratio: 459 / 300;
