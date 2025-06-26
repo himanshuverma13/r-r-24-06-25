@@ -9,11 +9,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home from './pages/home/index';
 import Login from './pages/auth/loginOtp';
 import AppRoutes from './routes/appRoutes';
+import Index from './pages/home/index';
 
 function App() {
   return (
     <>
-      <AppRoutes />
+      {/* <AppRoutes /> */}
+      <Index/>
+      <Index/>
     </>
   );
 }

@@ -345,7 +345,6 @@
 
 // export default Offer;
 
-
 // import React, { useState } from 'react';
 // import Slider from 'react-slick';
 // import 'slick-carousel/slick/slick.css';
@@ -681,7 +680,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 // import images
-import offerastro from '../../assets/icons/home/offer/offerastro.svg'
+import offerastro from '../../assets/icons/home/offer/offerastro.svg';
 import offersolor from '../../assets/icons/home/offer/offersolor.svg';
 import offerRocket from '../../assets/icons/home/offer/offerRocket.svg';
 import rightarrow from '../../assets/icons/home/offer/rightarrow.svg';
@@ -698,11 +697,10 @@ import plus from '../../assets/icons/home/offer/plus.svg';
 import minus from '../../assets/icons/home/offer/minus.svg';
 import semiplnt from '../../assets/icons/home/offer/semiplanet.svg';
 
-
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const Offer = () => {
+const Offer = ({ isActive }) => {
   const cards = [
     {
       id: 1,
@@ -745,7 +743,7 @@ const Offer = () => {
   };
 
   const [openIndex, setOpenIndex] = useState(null);
-    const [SemiPlntRaise, setSemiPlntRaise] = useState(true);
+  const [SemiPlntRaise, setSemiPlntRaise] = useState(true);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -786,12 +784,12 @@ const Offer = () => {
       <div className="offer-sect-content top-0 start-0 bottom-0 end-0">
         <div className="container-fluid px-5 pt-5">
           <div
-            className="row offer-slider-fade-left ${isActive ? 'aos-animate' : ''}"
-            data-aos="fade-left"
-            data-aos-offset="500"
-            data-aos-delay="200"
-            data-aos-easing="linear"
-            data-aos-duration="5000"
+            className={`row offer-slider-fade-left ${isActive ? 'aos-animate' : ''} `}
+            // data-aos="fade-left"
+            // data-aos-offset="500"
+            // data-aos-delay="200"
+            // data-aos-easing="linear"
+            // data-aos-duration="5000"
           >
             <Slider className="offer-slider" {...settings}>
               {cards?.map((card, index) => (
@@ -982,61 +980,66 @@ const Offer = () => {
               </div>
             </div>
           </div>
-          {/* FAQ SECTION */}
-          <h2 className="text-dark-blue mt-120 mb-1 pb-1 ">
-            Frequently Asked Questions
-          </h2>
-          <div className="row" 
-                  onMouseEnter={() => setSemiPlntRaise(true)}
-        onMouseLeave={() => setSemiPlntRaise(false)}>
-            <div className="accordion">
-              {items.map((item, index) => (
-                <div className="mt-4 pt-3" key={index}>
-                  <div
-                    className="purple-border-bottom pb-4 pt-1"
-                    id={`heading${index}`}
-                  >
-                    <h6 className="mb-0 font-16 text-dark-blue montserrat-medium">
-                      <button
-                        className="border-0 bg-transparent d-flex justify-content-between align-items-center w-100"
-                        onClick={() => toggle(index)}
-                        aria-expanded={openIndex === index}
-                        aria-controls={`collapse${index}`}
-                      >
-                        {item.title}
-                        <span className="">
-                          <img
-                            src={openIndex === index ? minus : plus}
-                            alt=""
-                          />
-                        </span>
-                      </button>
-                    </h6>
-                  </div>
-                  <div
-                    id={`collapse${index}`}
-                    className={`collapse ${openIndex === index ? 'show' : ''}`}
-                    aria-labelledby={`heading${index}`}
-                    data-parent="#accordion"
-                  >
-                    <div className="card-body p-3">
-                      <p className="mb-0 font-16 text-dark-blue montserrat-regular">
-                        {item.content}
-                      </p>
+        </div>
+
+        {/* FAQ SECTION */}
+        <div
+          className="faq-section"
+          onMouseEnter={() => setSemiPlntRaise(true)}
+          onMouseLeave={() => setSemiPlntRaise(false)}
+        >
+          <div className="container-fluid px-5 pb-5">
+            <h2 className="text-dark-blue mt-120 mb-1 pb-1 ">
+              Frequently Asked Questions
+            </h2>
+            <div className="row">
+              <div className="accordion">
+                {items.map((item, index) => (
+                  <div className="mt-4 pt-3" key={index}>
+                    <div
+                      className="purple-border-bottom pb-4 pt-1"
+                      id={`heading${index}`}
+                    >
+                      <h6 className="mb-0 font-16 text-dark-blue montserrat-medium">
+                        <button
+                          className="border-0 bg-transparent d-flex justify-content-between align-items-center w-100"
+                          onClick={() => toggle(index)}
+                          aria-expanded={openIndex === index}
+                          aria-controls={`collapse${index}`}
+                        >
+                          {item.title}
+                          <span className="">
+                            <img
+                              src={openIndex === index ? minus : plus}
+                              alt=""
+                            />
+                          </span>
+                        </button>
+                      </h6>
+                    </div>
+                    <div
+                      id={`collapse${index}`}
+                      className={`collapse ${openIndex === index ? 'show' : ''}`}
+                      aria-labelledby={`heading${index}`}
+                      data-parent="#accordion"
+                    >
+                      <div className="card-body p-3">
+                        <p className="mb-0 font-16 text-dark-blue montserrat-regular">
+                          {item.content}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-
+                ))}
+              </div>
             </div>
           </div>
-      
-
         </div>
         {/* FOOTER SECTION */}
-        <div className="offer-footer position-relative overflow-hidden mt-5"
-        onMouseEnter={() => setSemiPlntRaise(true)}
-        onMouseLeave={() => setSemiPlntRaise(false)}
+        <div
+          className="offer-footer position-relative overflow-hidden"
+          onMouseEnter={() => setSemiPlntRaise(true)}
+          onMouseLeave={() => setSemiPlntRaise(false)}
         >
           <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
             <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
@@ -1044,7 +1047,7 @@ const Offer = () => {
             </p>
           </div>
           <div
-            className={`position-absolute footer-semi-planet hoverRaiseSemiPlnt ${SemiPlntRaise ? "active" : ""} `}
+            className={`position-absolute footer-semi-planet hoverRaiseSemiPlnt ${SemiPlntRaise ? 'active' : ''} `}
             // data-aos="fade-up"
             // data-aos-delay="100"
           ></div>
