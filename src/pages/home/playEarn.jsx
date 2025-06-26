@@ -120,7 +120,9 @@ const PlayEarn = ({ isActive }) => {
   };
 
   return (
-    <section className={`pay-earn-section position-relative ${isActive ? 'animate-section' : ''}`}>
+    <section
+      className={`pay-earn-section position-relative ${isActive ? 'animate-section' : ''}`}
+    >
       <div className={`pay-earn-content ${isActive ? 'animate-content' : ''}`}>
         <div className="container h-100 pb-5">
           <div className="h-100 d-flex align-items-end position-relative">
@@ -129,7 +131,9 @@ const PlayEarn = ({ isActive }) => {
               src={spinwheel}
               alt="spinwheel"
             />
-            <div className={`row justify-content-between playearn-card p-4 rounded-4 ${isActive ? 'animate-card' : ''}`}>
+            <div
+              className={`row justify-content-between playearn-card p-4 rounded-4 ${isActive ? 'animate-card' : ''}`}
+            >
               {/* First Play & Win section */}
               <div className="col-lg-2 text-center ms-3 my-3">
                 <h4 className="mt-4 pt-1 mb-2 font-size-28 space-grotesk-bold text-uppercase text-dark-blue">
@@ -151,7 +155,8 @@ const PlayEarn = ({ isActive }) => {
                     Spin The Wheel
                   </h3>
                   <p className="font-size-16 montserrat-medium text-blue">
-                    Spin and win bonus points, perks, and exclusive rewards. Give it a go now!
+                    Spin and win bonus points, perks, and exclusive rewards.
+                    Give it a go now!
                   </p>
                   <button className="btn background-text-blue text-white font-size-16 montserrat-medium rounded-5 mb-4 px-4">
                     Play Now

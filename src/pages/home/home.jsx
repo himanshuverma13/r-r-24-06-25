@@ -1,6 +1,6 @@
 // import { useState, useEffect, useRef, useCallback } from 'react';
 // import '../../styles/main.scss';
-// import '../../App.scss'
+// import '../../App.scss';
 // import AOS from 'aos';
 // import 'aos/dist/aos.css';
 // import 'slick-carousel/slick/slick.css';
@@ -14,7 +14,6 @@
 // import RedeemAndEarn from './redeemAndEarn';
 // import PlayEarn from './playEarn';
 // import Offer from './offer';
-// import Test from './test';
 
 // function Home() {
 //   const [activeIndex, setActiveIndex] = useState(0);
@@ -22,6 +21,7 @@
 //   const [transitioning, setTransitioning] = useState(false);
 //   const offerRef = useRef(null);
 
+//   // Initialize AOS
 //   useEffect(() => {
 //     AOS.init({
 //       duration: 1500,
@@ -31,156 +31,61 @@
 //     });
 //   }, []);
 
-//   // useEffect(() => {
-//   //   if (activeIndex === 2 && activeIndex === 1) {
-//   //     setExitAnimation(false);
-//   //     setTimeout(() => AOS.refreshHard(), 100);
-//   //   } else if (activeIndex > 2) {
-//   //     setExitAnimation(true);
-//   //   }
-//   // }, [activeIndex]);
-// useEffect(() => {
-//   if (typeof window !== 'undefined') {
-//     requestAnimationFrame(() => {
-//       setTimeout(() => {
-//         AOS.refreshHard();
-//       }, 100);
-//     });
-//   }
-// }, [activeIndex]);
-
+//   // Refresh AOS on activeIndex change
 //   useEffect(() => {
 //     setTimeout(() => {
 //       AOS.refreshHard();
-//     }, 1000);
+//     }, 500);
 //   }, [activeIndex]);
-// useEffect(() => {
-//   if (activeIndex === 2) {
-//     setExitAnimation(false);
-//   } else if (activeIndex > 2) {
-//     setExitAnimation(true);
-//   }
-// }, [activeIndex]);
 
-// // const handleWheel = useCallback(
-// //   (e) => {
-// //     if (transitioning) return;
+//   // Control exit animation
+//   useEffect(() => {
+//     if (activeIndex === 2) {
+//       setExitAnimation(false);
+//     } else if (activeIndex > 2) {
+//       setExitAnimation(true);
+//     }
+//   }, [activeIndex]);
 
-// //     if (activeIndex === 5 && offerRef.current) {
-// //       const el = offerRef.current;
-// //       const { scrollTop, scrollHeight, clientHeight } = el;
+//   // Wheel scroll handler
+//   const handleWheel = useCallback(
+//     (e) => {
+//       if (transitioning) return;
 
-// //       if (
-// //         (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight) ||
-// //         (e.deltaY < 0 && scrollTop > 0)
-// //       ) {
-// //         return;
-// //       }
-// //     }
+//       if (activeIndex === 5 && offerRef.current) {
+//         const el = offerRef.current;
+//         const { scrollTop, scrollHeight, clientHeight } = el;
 
-// //     let newIndex = activeIndex;
-// //     if (e.deltaY > 0 && activeIndex < 5) {
-// //       newIndex = activeIndex + 1;
-// //     } else if (e.deltaY < 0 && activeIndex > 0) {
-// //       newIndex = activeIndex - 1;
-// //     }
-
-// //     if (newIndex !== activeIndex) {
-// //       setTransitioning(true);
-// //       setExitAnimation(true); // 🔥 trigger zoom-down-out animation
-
-// //       setTimeout(() => {
-// //         setActiveIndex(newIndex);
-// //         setTimeout(() => setTransitioning(false), 1500);
-// //       }, 500); // wait before section switch
-// //     }
-// //   },
-// //   [activeIndex, transitioning],
-// // );
-
-// //   const handleWheel = useCallback(
-// //     (e) => {
-// //       if (transitioning) return;
-
-// //       if (activeIndex === 5 && offerRef.current) {
-// //         const el = offerRef.current;
-// //         const { scrollTop, scrollHeight, clientHeight } = el;
-
-// //         if (
-// //           (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight) ||
-// //           (e.deltaY < 0 && scrollTop > 0)
-// //         ) {
-// //           return;
-// //         }
-// //       }
-
-// //       let newIndex = activeIndex;
-// //       if (e.deltaY > 0 && activeIndex < 5) {
-// //         newIndex = activeIndex + 1;
-// //       } else if (e.deltaY < 0 && activeIndex > 0) {
-// //         newIndex = activeIndex - 1;
-// //       }
-
-// //       // if (newIndex !== activeIndex) {
-// //       //   setTransitioning(true);
-// //       //   setTimeout(() => {
-// //       //     setActiveIndex(newIndex);
-// //       //     setTimeout(() => setTransitioning(false), 1500);
-// //       //   }, 300);
-// //       // }
-// //       if (newIndex !== activeIndex) {
-// //   setTransitioning(true);
-// //   setExitAnimation(true); // trigger exit animation
-
-// //   // Give time for exit animation before switching section
-// //   setTimeout(() => {
-// //     setActiveIndex(newIndex);
-// //     setTimeout(() => {
-// //       setTransitioning(false);
-// //     }, 1500); // matches zoom-down-out animation duration
-// //   }, 500); // delay before switching
-// // }
-
-// //     },
-// //     [activeIndex, transitioning],
-// //   );
-// const handleWheel = useCallback(
-//   (e) => {
-//     if (transitioning) return;
-
-//     if (activeIndex === 5 && offerRef.current) {
-//       const el = offerRef.current;
-//       const { scrollTop, scrollHeight, clientHeight } = el;
-
-//       if (
-//         (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight) ||
-//         (e.deltaY < 0 && scrollTop > 0)
-//       ) {
-//         return;
+//         if (
+//           (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight) ||
+//           (e.deltaY < 0 && scrollTop > 0)
+//         ) {
+//           return;
+//         }
 //       }
-//     }
 
-//     let newIndex = activeIndex;
-//     if (e.deltaY > 0 && activeIndex < 5) {
-//       newIndex = activeIndex + 1;
-//     } else if (e.deltaY < 0 && activeIndex > 0) {
-//       newIndex = activeIndex - 1;
-//     }
+//       let newIndex = activeIndex;
+//       if (e.deltaY > 0 && activeIndex < 5) {
+//         newIndex = activeIndex + 1;
+//       } else if (e.deltaY < 0 && activeIndex > 0) {
+//         newIndex = activeIndex - 1;
+//       }
 
-//     if (newIndex !== activeIndex) {
-//       setTransitioning(true);
-//       setExitAnimation(true); // Trigger exit animation
+//       if (newIndex !== activeIndex) {
+//         setTransitioning(true);
+//         setExitAnimation(true);
 
-//       setTimeout(() => {
-//         setActiveIndex(newIndex);
-//         setExitAnimation(false); // Clear exit flag AFTER section switch
-//         setTimeout(() => setTransitioning(false), 500); // matches animation time
-//       }, 500); // Full zoom-out animation duration before switch
-//     }
-//   },
-//   [activeIndex, transitioning],
-// );
+//         setTimeout(() => {
+//           setActiveIndex(newIndex);
+//           setExitAnimation(false);
+//           setTimeout(() => setTransitioning(false), 800);
+//         }, 800);
+//       }
+//     },
+//     [activeIndex, transitioning],
+//   );
 
+//   // Add wheel event listener
 //   useEffect(() => {
 //     window.addEventListener('wheel', handleWheel, { passive: false });
 //     return () => window.removeEventListener('wheel', handleWheel);
@@ -188,45 +93,47 @@
 
 //   return (
 //     <div className="fixed-section-container">
-//       {[
-//         Index,
-//         // Test,
-//         Invitefriend,
-//         Howitworks,
-//         RedeemAndEarn,
-//         PlayEarn,
-//         Offer,
-//       ].map((Component, index) => {
-//         const isActive = index === activeIndex;
-//         const isOfferSection = index === 5;
+//       {[Index, Invitefriend, Howitworks, RedeemAndEarn, PlayEarn, Offer].map(
+//         (Component, index) => {
+//           const isActive = index === activeIndex;
+//           const isOfferSection = index === 5;
 
-//         return (
-//           <div
-//             key={index}
-//             className={`section ${isActive ? 'active' : ''}`}
-//             ref={isOfferSection ? offerRef : null}
-//             style={{
-//               overflowY: isOfferSection && isActive ? 'auto' : 'hidden',
-//             }}
-//           >
-//             {index === 2 ? (
-//   <Howitworks isActive={isActive} isExiting={exitAnimation} />
-// ) : index === 1 ? (
-//   <Invitefriend isActive={isActive} isExiting={exitAnimation} />
-// ) : (
-//   <div data-aos="fade-up">
-//     <Component />
-//   </div>
-// )}
-
-//           </div>
-//         );
-//       })}
+//           return (
+//             <div
+//               key={index}
+//               className={`section ${isActive ? 'active' : ''}`}
+//               ref={isOfferSection ? offerRef : null}
+//               style={{
+//                 overflowY: isOfferSection && isActive ? 'auto' : 'hidden',
+//               }}
+//             >
+//               {index === 0 ? (
+//                 <Component />
+//               ) : index === 1 ? (
+//                 <Invitefriend isActive={isActive} isExiting={exitAnimation} />
+//               ) : index === 2 ? (
+//                 <Howitworks isActive={isActive} isExiting={exitAnimation} />
+//               ) : index === 3 ? (
+//                 <RedeemAndEarn isActive={isActive} />
+//               ) : index === 4 ? (
+//                 <PlayEarn isActive={isActive} />
+//               ) : index === 5 ? (
+//                 <Offer isActive={isActive} />
+//               ) : (
+//                 <div data-aos="fade-up">
+//                   <Component />
+//                 </div>
+//               )}
+//             </div>
+//           );
+//         },
+//       )}
 //     </div>
 //   );
 // }
 
 // export default Home;
+
 import { useState, useEffect, useRef, useCallback } from 'react';
 import '../../styles/main.scss';
 import '../../App.scss';
@@ -250,6 +157,9 @@ function Home() {
   const [transitioning, setTransitioning] = useState(false);
   const offerRef = useRef(null);
 
+  // Scroll lock flag for extra scroll at edge
+  const edgeScrollUpTriggered = useRef(false);
+
   // Initialize AOS
   useEffect(() => {
     AOS.init({
@@ -260,14 +170,12 @@ function Home() {
     });
   }, []);
 
-  // Refresh AOS on activeIndex change
   useEffect(() => {
     setTimeout(() => {
       AOS.refreshHard();
     }, 500);
   }, [activeIndex]);
 
-  // Control exit animation
   useEffect(() => {
     if (activeIndex === 2) {
       setExitAnimation(false);
@@ -276,48 +184,75 @@ function Home() {
     }
   }, [activeIndex]);
 
-  // Wheel scroll handler
-  const handleWheel = useCallback(
-    (e) => {
-      if (transitioning) return;
+  const handleWheel = useCallback((e) => {
+    const isOfferSection = activeIndex === 5;
 
-      if (activeIndex === 5 && offerRef.current) {
-        const el = offerRef.current;
-        const { scrollTop, scrollHeight, clientHeight } = el;
+    if (isOfferSection && offerRef.current) {
+      const el = offerRef.current;
+      const { scrollTop, scrollHeight, clientHeight } = el;
 
-        if (
-          (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight) ||
-          (e.deltaY < 0 && scrollTop > 0)
-        ) {
-          return;
+      // ✔️ Allow FULL native scroll inside offer section always
+      if (
+        (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight) || // scrolling down, content is still remaining
+        (e.deltaY < 0 && scrollTop > 0) // scrolling up but NOT at the top yet
+      ) {
+        // ✔️ Allow natural browser scroll
+        edgeScrollUpTriggered.current = false; // reset the flag while scrolling inside
+        return;
+      }
+
+      // ✔️ At the top of offer section: Require an extra scroll up to switch section
+      if (e.deltaY < 0 && scrollTop <= 0) {
+        if (edgeScrollUpTriggered.current) {
+          e.preventDefault();
+          changeSection(activeIndex - 1);
+          edgeScrollUpTriggered.current = false;
+        } else {
+          e.preventDefault();
+          edgeScrollUpTriggered.current = true; // First attempt to scroll up at the top
         }
+        return;
       }
 
-      let newIndex = activeIndex;
-      if (e.deltaY > 0 && activeIndex < 5) {
-        newIndex = activeIndex + 1;
-      } else if (e.deltaY < 0 && activeIndex > 0) {
-        newIndex = activeIndex - 1;
-      }
+      return; // inside Offer section → always allow scroll down freely
+    }
 
-      if (newIndex !== activeIndex) {
-        setTransitioning(true);
-        setExitAnimation(true);
+    // For all other sections
+    e.preventDefault();
+    if (transitioning) return;
 
-        setTimeout(() => {
-          setActiveIndex(newIndex);
-          setExitAnimation(false);
-          setTimeout(() => setTransitioning(false), 800);
-        }, 800);
-      }
-    },
-    [activeIndex, transitioning],
-  );
+    if (e.deltaY > 0 && activeIndex < 5) {
+      changeSection(activeIndex + 1);
+    } else if (e.deltaY < 0 && activeIndex > 0) {
+      changeSection(activeIndex - 1);
+    }
+  }, [activeIndex, transitioning]);
 
-  // Add wheel event listener
+  const changeSection = (newIndex) => {
+    if (transitioning) return;
+
+    setTransitioning(true);
+    setExitAnimation(true);
+
+    setTimeout(() => {
+      setActiveIndex(newIndex);
+      setExitAnimation(false);
+
+      edgeScrollUpTriggered.current = false;
+
+      setTimeout(() => {
+        setTransitioning(false);
+      }, 1200);
+    }, 800);
+  };
+
   useEffect(() => {
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
+    const wheelHandler = (e) => handleWheel(e);
+    window.addEventListener('wheel', wheelHandler, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', wheelHandler);
+    };
   }, [handleWheel]);
 
   return (
@@ -330,7 +265,7 @@ function Home() {
           return (
             <div
               key={index}
-              className={`section ${isActive ? 'active' : ''}`}
+              className={`section ${isActive ? 'active' : ''} ${isOfferSection ? ' offer': ''}`}
               ref={isOfferSection ? offerRef : null}
               style={{
                 overflowY: isOfferSection && isActive ? 'auto' : 'hidden',
@@ -355,7 +290,7 @@ function Home() {
               )}
             </div>
           );
-        },
+        }
       )}
     </div>
   );
