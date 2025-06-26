@@ -617,12 +617,12 @@ body::-webkit-scrollbar {
   &.start-animation {
     .howitwork-first {
       // animation: robotExit 1s ease-in-out forwards;
-      animation: robotMoveUp 1s forwards;
-      animation-delay: 0.8s;
+      animation: robotMoveUp 2s forwards;
+      animation-delay: 1s;
 
       .robort-image {
         width: 200px;
-        transition: all 1s ease;
+        transition: all 2s ease;
       }
 
       .robot-exit {
@@ -639,17 +639,23 @@ body::-webkit-scrollbar {
         }
 
         100% {
-          transform: translateY(-500px) scale(0.9);
+          transform: translateY(-700px) scale(0.9);
           opacity: 0;
         }
       }
 
     }
-
     .howitwork-second {
-      animation: fadeInSecondStep 1s ease-in-out forwards;
-      animation-delay: 1.2s; // starts after robot animation ends
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+      animation-delay: 1.5s; // starts after robot animation ends
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
     }
+  }
 
     @keyframes robotExit {
       0% {
@@ -663,15 +669,7 @@ body::-webkit-scrollbar {
       }
     }
 
-    @keyframes fadeInSecondStep {
-      0% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
+    
   }
 
   &.fade-out {
@@ -727,16 +725,7 @@ body::-webkit-scrollbar {
     }
   }
 
-  .howitwork-second {
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-  }
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
+  
 
   .rocket-gif {
     position: absolute;
@@ -857,7 +846,7 @@ body::-webkit-scrollbar {
 }
 
 .zoom-in-up-custom {
-  animation: zoomInUpCustom 3s ease forwards;
+  animation: zoomInUpCustom 1s ease forwards;
 }
 
 /*===================== HOW IT WORKS SECTION CSS END====================================*/
@@ -1881,8 +1870,8 @@ body::-webkit-scrollbar {
 .form-fade-down {
   opacity: 0;
   transition:
-    opacity 1s ease,
-    transform 1s ease;
+    opacity 1.5s ease,
+    transform 1.5s ease;
 }
 
 /* Slide down for footer section */
@@ -1890,8 +1879,8 @@ body::-webkit-scrollbar {
   opacity: 0;
   transform: translateY(100px);
   transition:
-    opacity 1s ease,
-    transform 1s ease;
+    opacity 1.5s ease,
+    transform 1.5s ease;
 }
 
 .asto-transition-all {
@@ -2183,7 +2172,7 @@ body::-webkit-scrollbar {
   z-index: 2;
 }
 
-.invite-card {
+.howit-card {
   background: linear-gradient(0deg, #F6F9FE 27.34%, #8FD3EA 56.12%, #493495 105.15%);
   border-radius: 24px;
   box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 0.15);
