@@ -37,7 +37,7 @@
   }
 }
 .section.active {
-  animation: fadeInUp 1s ease forwards;
+  // animation: fadeInUp 1s ease forwards;
   overflow: auto;
 }
 
@@ -61,6 +61,14 @@
 // Allow internal scroll for Offer section
 .section:nth-of-type(8).active {
   overflow-y: auto;
+  // position: relative!important;
+}
+.section.active.offer {
+  // position: relative !important;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: url('../src/assets/images/home/offer/offerbg.png');
+
 }
 
 // ============= MAIN ANIMATION CSS END =====================
@@ -929,13 +937,13 @@ body::-webkit-scrollbar {
 /* ==================== PLAY AND EARN SECTIONS CSS END ==================================== */
 /* ==================== OFFER SECTIONS CSS ==================================== */
 .offer-section {
-  background-image: url('../src/assets/images/home/offer/offerbg.png');
+  // background-image: url('../src/assets/images/home/offer/offerbg.png');
   width: 100%;
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 500vh;
-  overflow: scroll;
+  height: 350vh;
+  // overflow: scroll;
 }
 .offer-section::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
@@ -943,12 +951,12 @@ body::-webkit-scrollbar {
 .offer-sect-content {
   position: relative;
   z-index: 2;
-  height: 310dvh; /* Fill the parent height */
+  height: 10dvh; /* Fill the parent height */
 }
 // animation
 .offer-slider-fade-left{
   opacity: 0;
-  transform: translateX(250px);
+  transform: translateX(150px);
   transition: opacity 5s ease, transform 5s ease; /* 5000ms */
 }
 
