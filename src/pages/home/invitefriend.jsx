@@ -103,14 +103,14 @@ const Invitefriend = ({ isActive, onAnimationComplete }) => {
     <div className="invitefriend-wrapper invite-bg-image section-invitefriend position-relative overflow-hidden vh-100 d-flex align-items-center justify-content-center">
       {/* Top Stars */}
       <img
-        className={`w-100 position-absolute top-0 left-0 asto-transition-all ${animateTop ? 'nav-slide-top' : ''}`}
+        className={`w-100 position-absolute top-0 left-0 asto-transition-all ${animateTop ? 'nav-slide-top' : ''} ${isActive ? '' : 'invitefriend-slide-top'}`}
         src={stars}
         alt="Stars"
       />
 
       {/* Bottom Footer */}
       <img
-        className={`w-100 position-absolute bottom-0 left-0 asto-transition-all ${animateFooter ? 'astro-slide-down' : ''}`}
+        className={`w-100 position-absolute bottom-0 left-0 asto-transition-all ${animateFooter ? 'astro-slide-down' : ''} ${isActive ? '' : 'astro-slide-down'}`}
         src={footer}
         alt="Footer"
       />
