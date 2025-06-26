@@ -745,6 +745,7 @@ const Offer = () => {
   };
 
   const [openIndex, setOpenIndex] = useState(null);
+    const [SemiPlntRaise, setSemiPlntRaise] = useState(true);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -985,7 +986,9 @@ const Offer = () => {
           <h2 className="text-dark-blue mt-120 mb-1 pb-1 ">
             Frequently Asked Questions
           </h2>
-          <div className="row">
+          <div className="row" 
+                  onMouseEnter={() => setSemiPlntRaise(true)}
+        onMouseLeave={() => setSemiPlntRaise(false)}>
             <div className="accordion">
               {items.map((item, index) => (
                 <div className="mt-4 pt-3" key={index}>
@@ -1031,14 +1034,17 @@ const Offer = () => {
 
         </div>
         {/* FOOTER SECTION */}
-        <div className="offer-footer position-relative overflow-hidden mt-5">
+        <div className="offer-footer position-relative overflow-hidden mt-5"
+        onMouseEnter={() => setSemiPlntRaise(true)}
+        onMouseLeave={() => setSemiPlntRaise(false)}
+        >
           <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
             <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
               The more you refer, the brighter your rewards shine!
             </p>
           </div>
           <div
-            className="position-absolute footer-semi-planet"
+            className={`position-absolute footer-semi-planet hoverRaiseSemiPlnt ${SemiPlntRaise ? "active" : ""} `}
             // data-aos="fade-up"
             // data-aos-delay="100"
           ></div>

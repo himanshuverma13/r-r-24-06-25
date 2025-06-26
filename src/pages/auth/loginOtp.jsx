@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 // Assets icons
-import Loginimg from '../../assets/icons/auth/Frame 1171277201.svg';
+import Loginimg from '../../assets/icons/auth/login-side.svg';
 import Logo from '../../assets/icons/logo/logo.svg';
 
 // Assuming you're using Lucide icons
