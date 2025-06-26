@@ -48,7 +48,7 @@ const Navbar = () => {
                       <span
                         data-active-color="orange"
                         ref={(el) => (navRefs.current[index] = el)}
-                        className={`nav-link mx-3 ${
+                        className={`nav-link mx-3 cursor-pointer ${
                           activeIndex === index
                             ? 'active space-grotesk-bold'
                             : 'space-grotesk-medium'

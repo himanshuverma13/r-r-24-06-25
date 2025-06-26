@@ -265,7 +265,7 @@ const Howitworks = ({ isActive, isExiting }) => {
       } ${isActive ? 'aos-animate zoom-in-up-custom start-animation' : 'zoom-down'}`}
     >
       <div className="container position-relative h-100">
-        <h2 className="space-grotesk-bold font-40 text-black-heading mb-5">
+        <h2 className="space-grotesk-bold font-40 text-black-heading">
           How It Works
         </h2>
 
@@ -279,7 +279,7 @@ const Howitworks = ({ isActive, isExiting }) => {
         )}
 
         {showSteps && (
-          <div className="howitwork-second" data-aos="zoom-in-up">
+          <div className="howitwork-second h-100 d-flex align-items-center justify-content-center" data-aos="zoom-in-up">
             <img src={Rocketgif} alt="Rocket" className="rocket-gif mb-4" />
             <div className="row text-center position-relative inner-row-index">
               <div className={`col-4 howitworks-step ${step >= 1 ? 'visible' : ''}`}>

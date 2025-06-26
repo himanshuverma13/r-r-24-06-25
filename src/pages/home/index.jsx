@@ -213,8 +213,10 @@ const Index = () => {
                                         className=" text-white d-flex font-size-14 montserrat-medium"
                                         onClick={toggleAnimtElements}
                                     >
-                                        <img className="me-1" src={leftarrow} alt="leftarrow" />{' '}
-                                        Back
+                                        <img className="me-1 cursor-pointer" src={leftarrow} alt="leftarrow" />{' '}
+                                        <span className='cursor-pointer'>
+                                            Back
+                                        </span>
                                     </span>
                                 </div>
                                 <div className="col-lg-4 d-flex justify-content-end px-0 mt-4">
@@ -480,7 +482,7 @@ const Index = () => {
                                                     <div className="modal-header border-0">
                                                         <button
                                                             type="button"
-                                                            className="btn-close bg-light p-1 font-8 mb-2 rounded-circle"
+                                                            className="btn-close bg-light p-1 font-8 mb-2 rounded-circle cursor-pointer z-1"
                                                             onClick={handleClose}
                                                             aria-label="Close"
                                                         ></button>
@@ -498,7 +500,7 @@ const Index = () => {
                                                         </span>
                                                         <button
                                                             type="button"
-                                                            className="btn btn-light rounded-3 me-3 font-16 montserrat-semibold"
+                                                            className="btn btn-light rounded-3 me-3 font-16 montserrat-semibold cursor-pointer z-1"
                                                         >
                                                             View
                                                         </button>
@@ -513,27 +515,25 @@ const Index = () => {
                         {/* Footer Section */}
                         {/* planet section */}
 
-                        <div className="text-center solar-sys mt-5 pt-5">
-                            <div className="row align-items-center mt-5">
-                                <div
-                                    className={`d-flex justify-content-center`}
-                                >
-                                    <img
-                                        className={`bg-planet-ring position-absolute ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}
-                                        src={planetRing}
-                                        alt="planet-ring"
-                                        style={{
-                                            transform: `rotate(${ringRotation}deg)`,
-                                            transition: 'transform 0.2s linear',
-                                        }}
-                                    />
-                                </div>
+                        <div className="text-center solar-sys mt-5">
+                            <div className="row align-items-center">
+                                              <div className={`d-flex justify-content-center ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}>
+                  <img
+                    className={`bg-planet-ring position-absolute `}
+                    src={planetRing}
+                    alt="planet-ring"
+                    style={{
+                      transform: `rotate(${ringRotation}deg)`,
+                      transition: 'transform 0.2s linear',
+                    }}
+                  />
+                </div>
 
                                 <div
                                     className={` text-start`}
                                 >
                                     <img
-                                        className={`navitag-left planet-shadow-${prevIndex === 0 ? 'purple' : prevIndex === 1 ? 'yellow' : prevIndex === 2 ? 'green' : 'blue'} ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}
+                                        className={`navitag-left cursor-pointer planet-shadow-${prevIndex === 0 ? 'purple' : prevIndex === 1 ? 'yellow' : prevIndex === 2 ? 'green' : 'blue'} ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}
                                         onClick={() => rotate('left')}
                                         src={images[prevIndex]}
                                         alt="left-planet"
@@ -555,7 +555,7 @@ const Index = () => {
                                             src={images[currentIndex]}
                                             alt="center-planet"
                                             onClick={toggleAnimtElements}
-                                            className={`img-fluid rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${isAnimating ? 'fade-down-shrink' : ''
+                                            className={`img-fluid cursor-pointer rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${isAnimating ? 'fade-down-shrink' : ''
                                                 }`}
                                         />
                                     </div>
@@ -565,7 +565,7 @@ const Index = () => {
                                     className={` text-end`}
                                 >
                                     <img
-                                        className={`navitag-right planet-shadow-${nextIndex === 0 ? 'purple' : nextIndex === 1 ? 'yellow' : nextIndex === 2 ? 'green' : 'blue'} ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}
+                                        className={`navitag-right cursor-pointer planet-shadow-${nextIndex === 0 ? 'purple' : nextIndex === 1 ? 'yellow' : nextIndex === 2 ? 'green' : 'blue'} ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}
                                         onClick={() => rotate('right')}
                                         src={images[nextIndex]}
                                         alt="right-planet"

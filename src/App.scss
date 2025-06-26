@@ -75,7 +75,6 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: url('../src/assets/images/home/offer/offerbg.png');
-
 }
 
 // ============= MAIN ANIMATION CSS END =====================
@@ -87,8 +86,7 @@ body {
   height: 100vh;
   // overflow: hidden; // hides scroll and disables default scrolling
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  /* Firefox */
+  scrollbar-width: none; /* Firefox */
 
   background-image: url('../src/assets/images/home/filebackground.png') !important;
   background-size: cover;
@@ -401,7 +399,7 @@ body::-webkit-scrollbar {
 /* ==================== SECOND SCREEN SECTIONS CSS ==================================== */
 .second-screen-section {
   height: 100dvh;
-  background-image: url("../src/assets/images/home/secondscreenbg.png");
+  background-image: url('../src/assets/images/home/secondscreenbg.png');
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -730,7 +728,7 @@ body::-webkit-scrollbar {
   .rocket-gif {
     position: absolute;
     left: 0;
-    top: 35%;
+    top: 33%;
     width: 15%;
     z-index: 2;
     animation: moveRocket 5s linear forwards;
@@ -868,7 +866,9 @@ body::-webkit-scrollbar {
 .fade-up {
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 
   &.aos-animate {
     opacity: 1;
@@ -880,7 +880,9 @@ body::-webkit-scrollbar {
 .fade-left {
   opacity: 0;
   transform: translateX(200px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 
   &.aos-animate {
     opacity: 1;
@@ -892,14 +894,15 @@ body::-webkit-scrollbar {
 .fade-right {
   opacity: 0;
   transform: translateX(-200px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 
   &.aos-animate {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
 
 .redeem-shadow {
   filter: drop-shadow(-10px 0px 10px #493495);
@@ -1001,8 +1004,8 @@ body::-webkit-scrollbar {
 
 /* Animate Content (Fade Up) with delay */
 .animate-content {
-  animation: fadeUp 1s ease forwards;
-  animation-delay: 1s;
+  animation: zoomInUpFromBottom 1s ease forwards;
+  animation-delay: 1.5s;
 }
 
 @keyframes fadeUp {
@@ -1020,7 +1023,7 @@ body::-webkit-scrollbar {
 /* Animate Cards (Fade Up) with further delay */
 .animate-card {
   animation: fadeUpCard 0.3s ease forwards;
-  animation-delay: 2s;
+  animation-delay: 2.5s;
 }
 
 @keyframes fadeUpCard {
@@ -1110,7 +1113,6 @@ body::-webkit-scrollbar {
   transform: translateX(0);
 }
 
-
 .offer-bg-img-1 {
   background-image: url('../src/assets/images/home/offer/card3bg.png');
   background-position: top;
@@ -1199,7 +1201,7 @@ body::-webkit-scrollbar {
 }
 
 .footer-semi-planet {
-  background-image: url('../src/assets/images/home/offer/semiplanet.svg');
+  background-image: url('../src/assets/icons/home/offer/semiplanet.svg');
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1227,6 +1229,19 @@ body::-webkit-scrollbar {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+// ======= offer semi plnt raise animation ===========
+.hoverRaiseSemiPlnt {
+  opacity: 0;
+  // transform: translateY(0);
+  height: 0%;
+  transition: all 0.5s ease;
+}
+.hoverRaiseSemiPlnt.active {
+  opacity: 1;
+  height: 94%;
+  // transform: translateY(-0%);
 }
 
 /* ==================== OFFER SECTIONS CSS END ==================================== */
@@ -1485,7 +1500,7 @@ body::-webkit-scrollbar {
 }
 
 .register-form {
-  background-image: url(../src/assets/Registrartion/formbottom1.svg);
+  background-image: url(../src/assets/images/auth/formbottom1.svg);
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1625,7 +1640,6 @@ body::-webkit-scrollbar {
     margin-top: 4%;
   }
 }
-
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
   .reward-slider .reward-slides {
     width: 170px !important;
@@ -1958,9 +1972,12 @@ body::-webkit-scrollbar {
 }
 
 .login-img img {
-  height: 272px;
-  width: 459px;
-  display: block;
+   width: 100%;
+  max-width: 459px;
+  height: auto;
+  aspect-ratio: 459 / 300;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 //   .login-img img {
@@ -1983,7 +2000,11 @@ body::-webkit-scrollbar {
 // Product Page Css Start
 
 .product-footer {
-  background: linear-gradient(180deg, rgba(255, 228, 147, 0.1) 47.11%, rgba(255, 200, 39, 0.2) 105.98%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 228, 147, 0.1) 47.11%,
+    rgba(255, 200, 39, 0.2) 105.98%
+  );
 }
 
 .footer-star {
@@ -2054,15 +2075,27 @@ body::-webkit-scrollbar {
 }
 
 .card-bg-purple-color {
-  background: linear-gradient(180deg, rgba(125, 111, 195, 0.4) -70.65%, #EFF3F7 66.01%);
+  background: linear-gradient(
+    180deg,
+    rgba(125, 111, 195, 0.4) -70.65%,
+    #eff3f7 66.01%
+  );
 }
 
 .card-bg-pink-color {
-  background: linear-gradient(180deg, rgba(231, 191, 214, 0.6) -70.65%, #EFF3F7 47.72%);
+  background: linear-gradient(
+    180deg,
+    rgba(231, 191, 214, 0.6) -70.65%,
+    #eff3f7 47.72%
+  );
 }
 
 .card-bg-green-color {
-  background: linear-gradient(180deg, rgba(184, 226, 220, 0.8) -33.16%, #EFF3F7 47.72%);
+  background: linear-gradient(
+    180deg,
+    rgba(184, 226, 220, 0.8) -33.16%,
+    #eff3f7 47.72%
+  );
 }
 
 .text-red {
@@ -2126,9 +2159,11 @@ body::-webkit-scrollbar {
 }
 
 .referral-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
   border-radius: 12px;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
   transform-origin: bottom;
   width: 400px;
   cursor: pointer;
@@ -2136,9 +2171,9 @@ body::-webkit-scrollbar {
 }
 
 .referral-card:hover {
-  background: linear-gradient(180deg, rgba(77, 60, 155, 0) 0%, #4D3C9B 94.59%);
+  background: linear-gradient(180deg, rgba(77, 60, 155, 0) 0%, #4d3c9b 94.59%);
   box-shadow: 0px 4px 16px 0px rgba(255, 255, 255, 0.25);
-  transform: scale(1.10);
+  transform: scale(1.1);
   height: 443px;
 }
 
@@ -2147,7 +2182,7 @@ body::-webkit-scrollbar {
 }
 
 .referral-yellow-text {
-  color: #FFE14D;
+  color: #ffe14d;
 }
 
 .card-ufo-img {
@@ -2173,7 +2208,12 @@ body::-webkit-scrollbar {
 }
 
 .howit-card {
-  background: linear-gradient(0deg, #F6F9FE 27.34%, #8FD3EA 56.12%, #493495 105.15%);
+  background: linear-gradient(
+    0deg,
+    #f6f9fe 27.34%,
+    #8fd3ea 56.12%,
+    #493495 105.15%
+  );
   border-radius: 24px;
   box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 0.15);
   position: relative;
@@ -2200,7 +2240,7 @@ body::-webkit-scrollbar {
   left: 0;
   height: 100px;
   width: 100%;
-  background: url("../src/assets/images/MyReferral-img/BLUE\ PATTI.svg");
+  background: url('../src/assets/images/MyReferral-img/BLUE\ PATTI.svg');
   background-size: contain, cover;
   background-repeat: no-repeat;
   background-position: bottom;
