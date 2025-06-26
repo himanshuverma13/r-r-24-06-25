@@ -132,7 +132,7 @@ const PlayEarn = ({ isActive }) => {
               alt="spinwheel"
             />
             <div
-              className={`row justify-content-between playearn-card p-4 rounded-4 ${isActive ? 'animate-card' : ''}`}
+              className={`row justify-content-between playearn-card p-4 rounded-4 h-auto ${isActive ? 'animate-card' : ''}`}
             >
               {/* First Play & Win section */}
               <div className="col-lg-2 text-center ms-3 my-3">

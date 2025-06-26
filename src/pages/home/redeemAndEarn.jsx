@@ -135,7 +135,7 @@ const RedeemAndEarn = ({ isActive }) => {
       // Start second animation after 2 seconds
       const timer = setTimeout(() => {
         setShowCircles(true);
-      }, 2000);
+      }, 700);
 
       return () => clearTimeout(timer);
     } else {
