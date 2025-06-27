@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 // Images
-import plus from '../../../assets/offer/plus.svg';
-import minus from '../../../assets/offer/minus.svg';
+import plus from '../../src/assets/icons/home/offer/plus.svg';
+import minus from '../../src/assets/icons/home/offer/minus.svg';
 
 const FAQ = ({ items }) => {
     const [openIndex, setOpenIndex] = useState(null);
