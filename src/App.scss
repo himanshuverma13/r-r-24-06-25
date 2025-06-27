@@ -753,7 +753,7 @@ body::-webkit-scrollbar {
       -webkit-transform: scale(0.1);
       transform: scale(0.1);
       -webkit-transform-origin: 100% 70%;
-      transform-origin: 100% 70%;
+      transform-origin: 100% 80%;
     }
   }
 
@@ -793,7 +793,7 @@ body::-webkit-scrollbar {
     border-top: 2px dashed #a259ff;
     z-index: 0;
     width: 0;
-    animation: drawTimeline 5s linear forwards;
+    animation: drawTimeline 5.5s linear forwards;
   }
 
   @keyframes drawTimeline {
@@ -1783,6 +1783,11 @@ body::-webkit-scrollbar {
   .rocket-gif {
     top: 39% !important;
   }
+  .hoverRaiseSemiPlnt.active {
+  opacity: 1;
+  height: 78%;
+  // transform: translateY(-0%);
+}
 }
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
   .reward-slider .reward-slides {
