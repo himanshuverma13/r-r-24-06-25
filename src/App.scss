@@ -523,7 +523,7 @@ body::-webkit-scrollbar {
 
 /* styles.css */
 
-.left-box {
+.left-box, .right-box {
   position: relative;
   transition: all 0.5s ease;
 }
@@ -560,7 +560,14 @@ body::-webkit-scrollbar {
   .content-z-index {
     z-index: 2;
   }
-
+.invitefriend-slide-top {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition:
+    opacity 5s ease,
+    transform 5s ease;
+  visibility: hidden;
+}
   .copy-input-container {
     position: relative;
     display: inline-block;
@@ -2432,3 +2439,30 @@ body::-webkit-scrollbar {
 .cursor-pointer {
   cursor: pointer;
 }
+// .move-left {
+//   transform: translateX(-100%);
+//   transition: transform 1s ease-in-out;
+// }
+
+// .move-right {
+//   transform: translateX(100%);
+//   transition: transform 1s ease-in-out;
+// }
+// .left-box {
+//   transition: transform 0.7s ease, opacity 0.7s ease;
+// }
+
+// .left-box.default-position {
+//   transform: translateX(0);
+//   opacity: 1;
+// }
+
+// .left-box.move-left {
+//   transform: translateX(-150px);
+//   opacity: 0;
+// }
+
+// .left-box.move-right {
+//   transform: translateX(150px);
+//   opacity: 0;
+// }
