@@ -560,7 +560,14 @@ body::-webkit-scrollbar {
   .content-z-index {
     z-index: 2;
   }
-
+.invitefriend-slide-top {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition:
+    opacity 5s ease,
+    transform 5s ease;
+  visibility: hidden;
+}
   .copy-input-container {
     position: relative;
     display: inline-block;

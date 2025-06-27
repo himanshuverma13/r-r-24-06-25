@@ -695,7 +695,8 @@ import headphone from '../../assets/icons/home/offer/headphones.svg';
 
 import plus from '../../assets/icons/home/offer/plus.svg';
 import minus from '../../assets/icons/home/offer/minus.svg';
-import semiplnt from '../../assets/icons/home/offer/semiplanet.svg';
+// import semiplnt from '../../assets/icons/home/offer/semiplanet.svg';
+
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
