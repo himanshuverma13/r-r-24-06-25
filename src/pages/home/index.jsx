@@ -16,10 +16,6 @@ import astronot from '../../assets/icons/home/secondScreen/astronot.svg';
 import alenship from '../../assets/icons/home/secondScreen/alienship.svg';
 
 import pathway from '../../assets/icons/home/secondScreen/pathway.svg';
-// import blue from '../../assets/icons/planets/blue.svg';
-// import green from '../../assets/icons/planets/green.svg';
-// import purple from '../../assets/icons/planets/purple.svg';
-// import yellow from '../../assets/icons/planets/yellow.svg';
 import centerPlanet1 from '../../assets/icons/planets/purple.svg';
 import centerPlanet2 from '../../assets/icons/planets/yellow.svg';
 import centerPlanet3 from '../../assets/icons/planets/green.svg';
@@ -28,7 +24,7 @@ import planetRing from '../../assets/icons/planets/rings.svg';
 
 const images = [centerPlanet1, centerPlanet2, centerPlanet3, centerPlanet4];
 
-const Index = () => {
+const Index = ({isExiting,isActive}) => {
   const [isVisible, setIsVisible] = useState(true);
   const [showSecScr, setShowSecScr] = useState(true);
   const [SecScrAnimt, setSecScrAnimt] = useState(false);
@@ -70,120 +66,10 @@ const Index = () => {
   const [BoxOpacity, setBoxOpacity] = useState(1);
   const [sectionOpacity, setsectionOpacity] = useState(1);
 
-  const [leftBoxClass, setLeftBoxClass] = useState('left-box default-position');
-const [rightBoxClass, setRightBoxClass] = useState('left-box default-position');
+  // const [leftBoxClass, setLeftBoxClass] = useState('left-box default-position');
+// const [rightBoxClass, setRightBoxClass] = useState('left-box default-position');
 
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       if (b2Ref.current) {
-//         const b2Top = b2Ref.current.offsetTop;
-//         const b2Height = b2Ref.current.offsetHeight;
-//         const scrollY = window.scrollY || window.pageYOffset;
-//         const windowHeight = window.innerHeight;
-//         const scrollThreshold = windowHeight * 0.1; // 200vh in pixels
-//         const sectionOpacity = windowHeight * 0.1; // 200vh in pixels
 
-//         if (
-//           scrollY >= b2Top + b2Height - windowHeight / 0.1 &&
-//           scrollY >= sectionOpacity
-//         ) {
-//           const progress = Math.min(
-//             (scrollY - sectionOpacity) / (windowHeight * 0.1),
-//             1,
-//           ); // progress from 0 to 1
-//           const newOpacity = 1 - progress; // fade out
-//           setsectionOpacity(newOpacity);
-//         } else {
-//           setsectionOpacity(1);
-//         }
-
-//         if (
-//           scrollY >= b2Top + b2Height - windowHeight / 0.5 &&
-//           scrollY >= scrollThreshold
-//         ) {
-//           // Move left box to the left and fade out
-//           setLeftBoxLeft('-80%');
-//           setRightBoxLeft('80%');
-
-//           // Calculate opacity based on how far past the threshold we are
-//           const progress = Math.min(
-//             (scrollY - scrollThreshold) / (windowHeight * 0.1),
-//             1,
-//           ); // progress from 0 to 1
-//           const newOpacity = 1 - progress; // fade out
-//           setBoxOpacity(newOpacity);
-//           setBoxOpacity(newOpacity);
-//         } else {
-//           // Reset to center and full opacity
-//           setLeftBoxLeft('0%');
-//           setRightBoxLeft('0%');
-//           setBoxOpacity(1);
-//           setBoxOpacity(1);
-//         }
-//       }
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
-
-useEffect(() => {
-  const handleScroll = () => {
-    if (b2Ref.current) {
-      const b2Top = b2Ref.current.offsetTop;
-      const b2Height = b2Ref.current.offsetHeight;
-      const scrollY = window.scrollY || window.pageYOffset;
-      const windowHeight = window.innerHeight;
-      const scrollThreshold = windowHeight * 0.1; // 10% of viewport height
-
-      if (
-        scrollY >= b2Top + b2Height - windowHeight / 0.1 &&
-        scrollY >= sectionOpacity
-      ) {
-        // Fade out section
-        setsectionOpacity(prev => Math.max(prev - 0.1, 0));
-      } else {
-        setsectionOpacity(1);
-      }
-
-      if (
-        scrollY >= b2Top + b2Height - windowHeight / 0.5 &&
-        scrollY >= scrollThreshold
-      ) {
-        // Move boxes left and right, fade out
-        setLeftBoxClass('left-box move-left');
-        setRightBoxClass('left-box move-right');
-        setBoxOpacity(prev => Math.max(prev - 0.1, 0));
-      } else {
-        // Reset to default
-        setLeftBoxClass('left-box default-position');
-        setRightBoxClass('left-box default-position');
-        setBoxOpacity(1);
-      }
-    }
-  };
-
-  window.addEventListener('scroll', handleScroll);
-  return () => window.removeEventListener('scroll', handleScroll);
-}, []);
-//   const styles = {
-//     box1: {
-//       left: leftBoxLeft,
-//       transition: 'left 0.5s ease, opacity 0.5s ease',
-//       opacity: BoxOpacity,
-//     },
-//     box2: {
-//       left: rightBoxLeft,
-//       transition: 'left 0.5s ease, opacity 0.5s ease',
-//       opacity: BoxOpacity,
-//     },
-//     section: {
-//       transition: 'opacity 0.5s ease',
-//       opacity: sectionOpacity,
-//     },
-//   };
 
   // ===============================
   // Planet Section Functionality
@@ -391,7 +277,7 @@ useEffect(() => {
                     </div>
                   </div>
                   <div
-                    className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box ${leftBoxClass}`}
+                    className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box  ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'}`}
                     ref={leftBoxRef}
                     id="leftBox"
                   >
@@ -406,7 +292,7 @@ useEffect(() => {
                     <img src={longarrow} alt="longarrow" />
                   </div>
                   <div
-                    className={`d-flex justify-content-evenly background-dark-pink mt-0 rounded-2 position-relative py-2 left-box ${leftBoxClass}`}
+                    className={`d-flex justify-content-evenly background-dark-pink mt-0 rounded-2 position-relative py-2 left-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'} `}
                     ref={leftBoxRef}
                     id="leftBox"
                   >
@@ -511,7 +397,7 @@ useEffect(() => {
                     </div>
                   </div>
                   <div
-                    className={`footer-responsive position-relative right-box ${rightBoxClass} ${showModal ? 'visible' : 'invisible'}`}
+                    className={`footer-responsive position-relative right-box ${isActive ? 'default-position' : 'move-right'} ${isExiting ? 'move-right' : ''} ${showModal ? 'visible' : 'invisible'}`}
                     ref={rightBoxRef}
                     id="rightBox"
                   >

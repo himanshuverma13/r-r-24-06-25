@@ -15,9 +15,7 @@ function App() {
   return (
     <>
       <AppRoutes />
-      {/* <Index/> */}
-      {/* <Index/> */}
-    </>
+     </>
   );
 }
 
