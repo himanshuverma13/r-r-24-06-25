@@ -65,6 +65,7 @@ const Offer = ({ isActive }) => {
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: '20px',
+    autoplay: true,
   };
 
   const [openIndex, setOpenIndex] = useState(null);

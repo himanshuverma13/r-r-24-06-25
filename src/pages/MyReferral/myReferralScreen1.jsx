@@ -1,32 +1,36 @@
-import React from 'react'
-import Navbar from '../../Common/Navbar/navbar';
-import ReferralCards from '../../Common/MyReferralCards/referralCards';
-import Cloud from "../../../assets/MyReferral-img/coluds1.png"
-import Astronut1 from "../../../assets/MyReferral-img/Character.svg";
-import Astronut2 from "../../../assets/MyReferral-img/Astronaut.svg";
-import BlueBottom from "../../../assets/MyReferral-img/BLUE PATTI.svg"
+import React from 'react';
+// import Cloud from "../../../assets/MyReferral-img/coluds1.png"
+// import Astronut1 from "../../../assets/MyReferral-img/Character.svg";
+// import Astronut2 from "../../../assets/MyReferral-img/Astronaut.svg";
+// import BlueBottom from "../../../assets/MyReferral-img/BLUE PATTI.svg"
+import Navbar from '../../components/navbar';
+import ReferralCards from '../MyReferralCards/referralCards';
 const MyReferralScreen1 = () => {
-    // const inputRef = useRef(null);
-    // const [copied, setCopied] = useState(false);
+  // const inputRef = useRef(null);
+  // const [copied, setCopied] = useState(false);
 
-    // const handleCopy = async () => {
-    //     try {
-    //         await navigator.clipboard.writeText(inputRef.current.value);
-    //         setCopied(true);
-    //         setTimeout(() => setCopied(false), 1500);
-    //     } catch (err) {
-    //         console.error('Failed to copy: ', err);
-    //     }
-    // };
-    return (
-        <>
-            <section className="hero-section position-relative">
-                <Navbar />
-                <div className="referral-wrapper position-relative">
-                    <div className='container z-1 pt-5'>
-                        <ReferralCards />
-                        <div className="cloud-img position-absolute w-100 z-2"></div>
-                        {/* <div className='invite-card overflow-hidden z-3'>
+  // const handleCopy = async () => {
+  //     try {
+  //         await navigator.clipboard.writeText(inputRef.current.value);
+  //         setCopied(true);
+  //         setTimeout(() => setCopied(false), 1500);
+  //     } catch (err) {
+  //         console.error('Failed to copy: ', err);
+  //     }
+  // };
+  return (
+    <>
+      <section className="hero-section position-relative">
+        <Navbar />
+        <div className="referral-wrapper position-relative">
+          <div className="container z-1 pt-5">
+            <ReferralCards />
+            <div className="cloud-img position-absolute w-100 z-2">
+            </div>
+
+
+            
+            {/* <div className='invite-card overflow-hidden z-3'>
                             <div className='astronauts position-absolute'>
                                 <img src={Astronut1} alt="Loading" />
                                 <img src={Astronut2} alt="Loading" />
@@ -70,11 +74,11 @@ const MyReferralScreen1 = () => {
                             </div>
                             <div className='blue-bottom-img'></div>
                         </div> */}
-                    </div>
-                </div>
-            </section>
-        </>
-    );
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default MyReferralScreen1;

@@ -301,12 +301,12 @@ const Howitworks = ({ isActive, isExiting }) => {
                                 </p>
                             </div>
 
-                            <div className="col-12 my-4">
-                                <div className={`timeline-dot ${step >= 1 ? 'visible' : ''}`} />
-                                <div className={`timeline-dot ${step >= 2 ? 'visible' : ''}`} />
-                                <div className={`timeline-dot ${step >= 3 ? 'visible' : ''}`} />
-                                <div className="timeline-border" />
-                            </div>
+              <div className="col-12 my-4">
+                <div className={`timeline-dot ${step >= 1 ? 'visible' : ''}`} />
+                <div className={`timeline-dot ${step >= 3 ? 'visible' : ''}`} />
+                <div className={`timeline-dot ${step >= 4 ? 'visible' : ''}`} />
+                <div className="timeline-border" />
+              </div>
 
                             <div className={`col-4 howitworks-step ${step >= 2 ? 'visible' : ''}`}>
                                 <img src={Planet1} className="planet-width mt-3" alt="Planet 1" />
