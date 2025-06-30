@@ -304,8 +304,8 @@ const Howitworks = ({ isActive, isExiting }) => {
 
               <div className="col-12 my-4">
                 <div className={`timeline-dot ${step >= 1 ? 'visible' : ''}`} />
-                <div className={`timeline-dot ${step >= 2 ? 'visible' : ''}`} />
                 <div className={`timeline-dot ${step >= 3 ? 'visible' : ''}`} />
+                <div className={`timeline-dot ${step >= 4 ? 'visible' : ''}`} />
                 <div className="timeline-border" />
               </div>
 

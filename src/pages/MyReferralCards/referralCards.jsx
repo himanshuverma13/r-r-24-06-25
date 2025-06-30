@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 // Images
-import ReferralUfo from "../../../assets/MyReferral-img/UFO-LEFT.svg";
-import HoverUfo from "../../../assets/MyReferral-img/referral-ufo.svg";
+import ReferralUfo from "../../assets/icons/home/MyReferral/UFO-LEFT.svg";
+import HoverUfo from "../../assets/icons/home/MyReferral/referral-ufo.svg";
 const ReferralCards = () => {
     const [isHovered, setIsHovered] = useState(null);
 

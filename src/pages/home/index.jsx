@@ -182,7 +182,7 @@ const Index = ({isExiting,isActive}) => {
           >
             {showSecScr ? (
               <span className={`${!SecScrAnimt ? '' : 'middle-sect'}`}>
-                <Herosection />
+                <Herosection currentPlnt={['A', 'B', 'C', 'D'][currentIndex]} />
               </span>
             ) : (
               // second page middle section sidepanel and 4 plnts
@@ -412,7 +412,7 @@ const Index = ({isExiting,isActive}) => {
                           <div className="modal-header border-0">
                             <button
                               type="button"
-                              className="btn-close bg-light p-1 font-8 mb-2 rounded-circle cursor-pointer z-1"
+                              className="btn-close bg-light p-2 font-8 mb-2 rounded-circle cursor-pointer z-1"
                               onClick={handleClose}
                               aria-label="Close"
                             ></button>
@@ -503,7 +503,7 @@ const Index = ({isExiting,isActive}) => {
                   />
                   <span
                     className={`font-24 space-grotesk-medium text-dark-blue navi-plnt-right ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}
-                  >
+                    >
                     Planet {['A', 'B', 'C', 'D'][nextIndex]}
                   </span>
                 </div>

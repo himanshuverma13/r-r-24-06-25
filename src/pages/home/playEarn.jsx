@@ -105,11 +105,13 @@
 
 // export default PlayEarn;
 import React, { useState } from 'react';
-import spinwheel from '../../assets/images/home/playEarn/spinwheel.svg';
+import bottle from '../../assets/images/home/playEarn/bottle.svg';
+import astro from '../../assets/images/home/playEarn/astronaut.svg';
+import ticTac from '../../assets/images/home/playEarn/tic-tac.svg';
 import SideModal from './sideModal';
 
 const PlayEarn = ({ isActive }) => {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState();
 
   const handleMouseEnter = (cardId) => {
     setHoveredCard(cardId);
@@ -128,7 +130,10 @@ const PlayEarn = ({ isActive }) => {
           <div className="h-100 d-flex align-items-end position-relative">
             <img
               className={`position-absolute play-earn-img ${hoveredCard ? 'play-img-eft-act' : 'play-img-eft'} mt-5`}
-              src={spinwheel}
+              // src={hoveredCard == 1 ? ticTac ? hoveredCard == 2 ?astro : bottle}
+              src={
+                hoveredCard === 1 ? bottle : hoveredCard === 2 ? ticTac : astro
+              }
               alt="spinwheel"
             />
             <div

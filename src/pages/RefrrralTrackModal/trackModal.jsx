@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import "./trackModal.scss";
-import astronaut from "../../../assets/MyReferral-img/track-astronut.svg";
+import astronaut from "../../assets/icons/home/MyReferral/track-astronut.svg";
 import { Modal, Button } from 'react-bootstrap';
 // import { FaCheck } from "react-icons/fa6";
 
 // Import Images
-import PinkInvite from "../../../assets/MyReferral-img/pink-invite.png";
-import GrayBox from "../../../assets/MyReferral-img/gray-box.png";
-import GrayCart from "../../../assets/MyReferral-img/gray-cart.png";
-import PurpleBox from "../../../assets/MyReferral-img/purple-box.png";
-import OrangeCart from "../../../assets/MyReferral-img/orange-cart.png";
+import PinkInvite from "../../assets/images/home/MyReferral/pink-invite.png";
+import GrayBox from "../../assets/images/home/MyReferral/gray-box.png";
+import GrayCart from "../../assets/images/home/MyReferral/gray-cart.png";
+import PurpleBox from "../../assets/images/home/MyReferral/purple-box.png";
+import OrangeCart from "../../assets/images/home/MyReferral/orange-cart.png";
 
 const TrackModal = () => {
     const [show, setShow] = useState(false);
@@ -72,9 +72,9 @@ const TrackModal = () => {
     }
     return (
         <>
-            <Button className="track-btn px-2 py-1 rounded font-size-14 border-0 text-blue" onClick={handleShow}>
+            <button className="track-btn px-2 py-1 rounded font-size-14 border-0 text-blue" onClick={handleShow}>
                 Track
-            </Button>
+            </button>
 
             <Modal
                 show={show}
