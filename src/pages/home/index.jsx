@@ -20,7 +20,7 @@ import centerPlanet1 from '../../assets/icons/planets/purple.svg';
 import centerPlanet2 from '../../assets/icons/planets/yellow.svg';
 import centerPlanet3 from '../../assets/icons/planets/green.svg';
 import centerPlanet4 from '../../assets/icons/planets/blue.svg';
-import planetRing from '../../assets/icons/planets/rings.svg';
+import planetRing from '../../assets/icons/planets/rings.svg'; 
 
 const images = [centerPlanet1, centerPlanet2, centerPlanet3, centerPlanet4];
 

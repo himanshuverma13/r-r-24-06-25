@@ -1,3 +1,2964 @@
+// .logo {
+//   height: 6em;
+//   padding: 1.5em;
+//   will-change: filter;
+//   transition: filter 300ms;
+// }
+
+// .logo:hover {
+//   filter: drop-shadow(0 0 2em #646cffaa);
+// }
+
+// .logo.react:hover {
+//   filter: drop-shadow(0 0 2em #61dafbaa);
+// }
+
+// // ============= MAIN ANIMATION CSS =========================
+// .section {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100vh;
+//   opacity: 0;
+//   pointer-events: none;
+//   // transition: opacity 1s ease-in-out;
+//   z-index: 1;
+//   overflow: hidden;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+
+//   &:nth-child(1) {
+//     // opacity: 1;
+//     // z-index: 9;
+//     // transition:none;
+//     &.active {
+//       // animation: none;
+//     }
+//   }
+// }
+
+// .section.active {
+//   // animation: fadeInUp 1s ease forwards;
+//   overflow: auto;
+// }
+
+// @keyframes fadeInUp {
+//   from {
+//     opacity: 0;
+//     transform: translateY(30px);
+//   }
+
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// .section.active {
+//   opacity: 1;
+//   pointer-events: auto;
+//   z-index: 2;
+// }
+
+// // Allow internal scroll for Offer section
+// .section:nth-of-type(8).active {
+//   overflow-y: auto;
+//   // position: relative!important;
+// }
+
+// .section.active.offer {
+//   // position: relative !important;
+//   overflow-y: auto;
+//   -webkit-overflow-scrolling: touch;
+//   background-image: url('../src/assets/images/home/offer/offerbg.png');
+// }
+
+// // ============= MAIN ANIMATION CSS END =====================
+
+// html,
+// body {
+//   margin: 0;
+//   padding: 0;
+//   height: 100vh;
+//   // overflow: hidden; // hides scroll and disables default scrolling
+//   -webkit-overflow-scrolling: touch;
+//   scrollbar-width: none; /* Firefox */
+
+//   background-image: url('../src/assets/images/home/filebackground.png') !important;
+//   background-size: cover;
+//   background-position: top;
+// }
+
+// body::-webkit-scrollbar {
+//   display: none;
+//   /* Chrome, Safari */
+// }
+
+// @keyframes logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
+// @media (prefers-reduced-motion: no-preference) {
+//   a:nth-of-type(2) .logo {
+//     animation: logo-spin infinite 20s linear;
+//   }
+// }
+
+// .card {
+//   padding: 2em;
+// }
+
+// .read-the-docs {
+//   color: #888;
+// }
+
+// :root {
+//   --text-blue: rgba(26, 42, 108, 1);
+//   --text-dark-blue: rgba(11, 30, 68, 1);
+//   --light-white: rgba(250, 250, 250, 1);
+//   --light-blue: rgba(64, 123, 255, 1);
+//   --border-light: rgba(255, 255, 255, 0.4);
+//   --light-white-bg: rgba(255, 255, 255, 0.15);
+//   --text-blue-2: rgba(73, 52, 149, 1);
+//   --dark-pink: rgba(224, 77, 176, 1);
+//   --push-notification: rgba(157, 146, 210, 1);
+//   --light-yellow: rgba(255, 217, 57, 1);
+//   --text-light-black: rgba(51, 51, 51, 1);
+//   --light-white: rgba(239, 243, 247, 0.7);
+//   --light-white-1: rgba(239, 243, 247, 0.7);
+//   --light-white-2: rgba(239, 243, 247, 1);
+//   --light-cream: rgba(255, 242, 178, 1);
+//   --slider-arrow-color: rgba(75, 50, 173, 1);
+//   --light-pink: rgba(255, 153, 153, 1);
+//   --light-yellow: rgba(255, 240, 96, 1);
+//   --register-inp: rgba(92, 75, 161, 0.1);
+//   --text-light-gray: rgba(161, 161, 161, 1);
+// }
+
+// /* ================ font colors ============== */
+// .text-blue {
+//   color: var(--text-blue);
+// }
+
+// .text-light-white {
+//   color: var(--light-white);
+// }
+
+// .text-dark-blue {
+//   color: var(--text-dark-blue);
+// }
+
+// .text-blue-2 {
+//   color: var(--text-blue-2);
+// }
+
+// .text-light-yellow {
+//   color: var(--light-yellow);
+// }
+
+// .text-light-black {
+//   color: var(--text-light-black);
+// }
+
+// .text-light-yellow {
+//   color: var(--light-yellow);
+// }
+
+// .text-light-gray {
+//   color: var(--text-light-gray);
+// }
+
+// /* ============================================= */
+
+// /* ================ background colors ================ */
+
+// .background-text-blue {
+//   background-color: var(--text-blue) !important;
+// }
+
+// .background-light-blue {
+//   background-color: var(--light-blue);
+// }
+
+// .background-dark-pink {
+//   background-color: var(--dark-pink);
+// }
+
+// .background-push-notification {
+//   background-color: var(--push-notification) !important;
+// }
+
+// .background-light-white {
+//   background-color: var(--light-white);
+// }
+
+// .background-light-white-2 {
+//   background-color: var(--light-white-2);
+// }
+
+// .background-light-cream {
+//   background-color: var(--light-cream);
+// }
+
+// .background-light-pink {
+//   background-color: var(--light-pink);
+// }
+
+// .background-light-white {
+//   background-color: var(--light-white-bg);
+// }
+
+// .background-register-input {
+//   background-color: var(--register-inp);
+// }
+// .background-light-white-1 {
+//   background-color: var(--light-white-1);
+// }
+
+// /* ============================================= */
+
+// /* ================ font size ================ */
+// .font-size-14 {
+//   font-size: 14px;
+// }
+
+// .font-size-16 {
+//   font-size: 16px !important;
+// }
+
+// .font-size-18 {
+//   font-size: 18px;
+// }
+
+// .font-size-24 {
+//   font-size: 24px !important;
+// }
+
+// .font-size-28 {
+//   font-size: 28px;
+// }
+
+// .font-size-40 {
+//   font-size: 40px;
+// }
+
+// .font-size-46 {
+//   font-size: 46px;
+// }
+
+// /* ============================================ */
+
+// // =============== BORDER ================================================
+// .border-blue {
+//   border: 1px solid var(--text-blue);
+// }
+
+// // =======================================================================
+
+// // =============== LETTER SPACING ================================================
+
+// .ls-4 {
+//   letter-spacing: 4px;
+// }
+
+// // =======================================================================
+
+// /* ===================== Navbar Or Header Css ============================ */
+
+// .text-underline-offset-6 {
+//   text-underline-offset: 6px;
+// }
+
+// .header-center-img {
+//   filter: drop-shadow(0px 4px 4px #fff);
+// }
+
+// /* Navbar effect Css */
+
+// .nav-indicator {
+//   bottom: 65px;
+//   height: 3px;
+//   transition: all 0.3s ease;
+//   z-index: 0;
+// }
+
+// .active-blur-shadow {
+//   height: 100%;
+//   width: 200px;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   z-index: 0;
+//   background-image: url('../src/assets/images/home/bg-blur.svg');
+//   background-position: center;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+// }
+
+// /* ======================================================================= */
+
+// /* ======================== Hero Section ================================== */
+// .hero-section {
+//   height: 100dvh;
+//   // background-image: url('../src/assets/images/home/filebackground.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
+// }
+
+// #banner-sec-heading-desk {
+//   display: block;
+// }
+
+// #banner-sec-heading-mob {
+//   display: none;
+// }
+
+// /* =========================================================================== */
+
+// /* ============== planet animation ==================*/
+
+// .solar-sys {
+//   bottom: 7%;
+// }
+
+// .navitag-left {
+//   position: absolute;
+//   left: -5%;
+//   width: 10%;
+//   bottom: 12%;
+// }
+
+// .navitag-right {
+//   position: absolute;
+//   right: -5%;
+//   width: 10%;
+//   bottom: 12%;
+// }
+
+// .navi-plnt-left {
+//   position: absolute;
+//   bottom: 20%;
+//   left: 7%;
+// }
+
+// .navi-plnt-right {
+//   position: absolute;
+//   bottom: 20%;
+//   right: 7%;
+// }
+
+// .image-container {
+//   width: 23%;
+//   margin: auto;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   bottom: 5%;
+//   transition: transform 1s ease-in-out;
+// }
+
+// .image-container img {
+//   transition: opacity 0.1s ease-in-out;
+//   /* width: 100%; */
+//   height: 100%;
+// }
+
+// .planet-shadow-purple {
+//   filter: drop-shadow(-7px 7px 38px #55024ccc);
+// }
+
+// .planet-shadow-yellow {
+//   filter: drop-shadow(-7px 7px 38px #fc941acc);
+// }
+
+// .planet-shadow-green {
+//   filter: drop-shadow(-7px 7px 38px #66968b);
+// }
+
+// .planet-shadow-blue {
+//   filter: drop-shadow(-7px 7px 38px #4babdf);
+// }
+
+// /* =========================================================================== */
+// .bg-planet-ring {
+//   top: 50%;
+// }
+
+// .heigth-85vh {
+//   height: 85vh;
+// }
+
+// /* ==================== SECOND SCREEN SECTIONS CSS ==================================== */
+// .second-screen-section {
+//   height: 100dvh;
+//   background-image: url('../src/assets/images/home/secondscreenbg.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
+// }
+
+// .till-ship {
+//   background: rgba(64, 123, 255, 0.3);
+// }
+
+// .till-ship-img {
+//   left: -14.7%;
+//   bottom: 0%;
+// }
+
+// .till-ship {
+//   background-color: rgba(64, 123, 255, 0.3);
+// }
+
+// .progress-sect-rocket {
+//   top: -82%;
+//   left: 2%;
+// }
+
+// .progress-sect-astronot {
+//   bottom: 0%;
+//   width: 20%;
+//   left: 2%;
+// }
+
+// .tilte-shadow {
+//   box-shadow: 0px 4px 16px 0px rgba(184, 179, 203, 1);
+// }
+
+// .progress-sect-name {
+//   line-height: 1.2;
+// }
+
+// .till-ship-border-color {
+//   border-right: 0.5px solid var(--border-light) !important;
+// }
+
+// .progress-sect {
+//   background: linear-gradient(
+//     180deg,
+//     rgba(255, 228, 147, 0.2) 47.11%,
+//     rgba(255, 200, 39, 0.4) 105.98%
+//   );
+// }
+
+// .progress-side-sec {
+//   width: 20%;
+// }
+
+// .progress-side-hr {
+//   border: 2px solid rgba(255, 240, 96, 1);
+//   height: 35px;
+//   margin: 0 auto;
+// }
+
+// .progress-side-hr11 {
+//   border: 2px dashed rgba(255, 240, 96, 1);
+//   height: 30px;
+//   margin: 0 auto;
+// }
+
+// .progress-side-hr-2 {
+//   border: 2px dashed rgba(255, 240, 96, 1);
+//   height: 20px;
+//   margin: 0 auto;
+// }
+
+// .progress-foot-alen {
+//   left: -4%;
+//   bottom: 0%;
+// }
+
+// .push-notification-close {
+//   background-color: rgba(157, 146, 210, 0.15) !important;
+// }
+
+// .second-screen-pathway {
+//   width: 79% !important;
+//   transform: translate(12.5%, 0%);
+// }
+
+// .second-scrn-bottom {
+//   margin-top: 8px !important;
+// }
+
+// .second-scrn-padding {
+//   padding: auto !important;
+// }
+
+// // TOOLTIP CSS
+
+// .tooltiptext {
+//   visibility: auto;
+//   background-color: rgba(85, 68, 158, 0.3);
+//   color: rgba(255, 240, 96, 1);
+//   text-align: center;
+//   border: 1px solid rgba(255, 240, 96, 1);
+//   bottom: -25%;
+//   left: 20%;
+// }
+
+// .tooltiptext::after {
+//   content: '';
+//   position: absolute;
+//   top: 50%;
+//   right: 100%;
+//   margin-top: -6px;
+//   border-width: 7px;
+//   border-style: solid;
+//   border-color: transparent rgba(255, 240, 96, 1) transparent transparent;
+// }
+
+// // SECOND SCREEN BOTTOM ANIMATIONS CSS-----------
+
+// /* styles.css */
+
+// .left-box, .right-box {
+//   position: relative;
+//   transition: all 0.5s ease;
+// }
+
+// .default-position {
+//   /* Default position, no movement */
+//   left: 0%;
+//   opacity: 1;
+// }
+
+// .move-left {
+//   /* Moved to the left and faded out */
+//   left: -80%;
+//   opacity: 0;
+// }
+
+// .move-right {
+//   /* Moved to the right and faded out */
+//   left: 80%;
+//   opacity: 0;
+// }
+
+
+// /* ==================== SECOND SCREEN SECTIONS CSS END ==================================== */
+// /*=====================INVITE A FRIEND SECTION CSS STRAT==================================*/
+// .section-invitefriend {
+//   height: 100vh;
+//   // background-image:url('../src/assets/images/home/filebackground.png');
+//   background-position: top;
+//   background-size: cover;
+//   background-repeat: repeat;
+//   width: 100%;
+
+//   .content-z-index {
+//     z-index: 2;
+//   }
+// .invitefriend-slide-top {
+//   opacity: 0;
+//   transform: translateY(-100px);
+//   transition:
+//     opacity 5s ease,
+//     transform 5s ease;
+//   visibility: hidden;
+// }
+//   .copy-input-container {
+//     position: relative;
+//     display: inline-block;
+//     width: 100%;
+
+//     .input-invite-friend {
+//       padding: 11px 16px;
+//       width: 100%;
+//       height: 68px;
+//       font-size: 14px;
+//       border-radius: 8px;
+//       border: 1px solid #ffffff;
+//     }
+
+//     .copy-button {
+//       position: absolute;
+//       right: 16px;
+//       top: 50%;
+//       transform: translateY(-50%);
+//       font-size: 18px;
+//       padding: 0 10px;
+//       cursor: pointer;
+//       background: #1a2a6c;
+//       color: #ffffff;
+//       border: 1px solid #1a2a6c;
+//       padding: 10px 24px;
+//       border-radius: 8px;
+//       outline: none;
+//     }
+//   }
+
+//   .divider-with-text {
+//     display: flex;
+//     align-items: center;
+//     text-align: center;
+//     margin: 60px auto;
+//     width: 80%;
+
+//     &::before,
+//     &::after {
+//       content: '';
+//       flex: 1;
+//       border-bottom: 1px solid #9d92d2;
+//       width: 50%;
+//     }
+
+//     .divider-border {
+//       margin: 0 10px;
+//       color: #9d92d2;
+//       font-weight: 500;
+//       white-space: nowrap;
+//     }
+//   }
+
+//   .btn-share-via-whatsapp {
+//     border-radius: 40px;
+//     width: 100%;
+//     text-align: center;
+//     padding: 10px 60px;
+//     background: #1a2a6c;
+//     outline: none;
+//     border: none;
+//   }
+
+//   .social-nav {
+//     display: flex;
+//     gap: 42px;
+//     justify-content: center;
+//   }
+// }
+
+// /*===================== INVITE A FRIEND SECTION CSS END====================================*/
+// /*===================== HOW IT WORKS SECTION CSS END====================================*/
+// .section-howitworks {
+//   height: 100vh;
+//   position: relative;
+//   background-image: url('../src//assets/images/home/HowItWorks/bg-HIW.png');
+//   background-position: top;
+//   background-size: cover;
+//   background-repeat: repeat;
+//   width: 100%;
+//   padding: 80px 0;
+
+//   &.start-animation {
+//     .howitwork-first {
+//       // animation: robotExit 1s ease-in-out forwards;
+//       animation: robotMoveUp 2s forwards;
+//       animation-delay: 1s;
+
+//       .robort-image {
+//         width: 200px;
+//         transition: all 2s ease;
+//       }
+
+//       .robot-exit {
+//         // animation: robotMoveUp 1s forwards;
+//         // animation-delay: 0.5s;
+//       }
+
+//       @keyframes robotMoveUp {
+//         0% {
+//           transform: translateY(0) scale(1);
+//           opacity: 1;
+//         }
+
+//         100% {
+//           transform: translateY(-700px) scale(0.9);
+//           opacity: 0;
+//         }
+//       }
+//     }
+//     .howitwork-second {
+//       opacity: 0;
+//       animation: fadeIn 1s forwards;
+//       animation-delay: 1.5s; // starts after robot animation ends
+//     }
+
+//     @keyframes fadeIn {
+//       to {
+//         opacity: 1;
+//       }
+//     }
+
+//     @keyframes robotExit {
+//       0% {
+//         opacity: 1;
+//         transform: translateY(0);
+//       }
+
+//       100% {
+//         opacity: 0;
+//         transform: translateY(-100px);
+//       }
+//     }
+//   }
+
+//   &.fade-out {
+//     animation: fadeOut 1s ease-in-out forwards;
+//   }
+
+//   @keyframes fadeOut {
+//     0% {
+//       opacity: 1;
+//     }
+
+//     100% {
+//       opacity: 0;
+//     }
+//   }
+
+//   &.zoom-down-out {
+//     -webkit-animation: scale-down-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+//       both;
+//     animation: scale-down-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+//     opacity: 1;
+//   }
+
+//   @-webkit-keyframes scale-down-right {
+//     0% {
+//       -webkit-transform: scale(1);
+//       transform: scale(1);
+//       -webkit-transform-origin: 100% 50%;
+//       transform-origin: 100% 50%;
+//     }
+
+//     100% {
+//       -webkit-transform: scale(0.5);
+//       transform: scale(0.5);
+//       -webkit-transform-origin: 100% 50%;
+//       transform-origin: 100% 50%;
+//     }
+//   }
+
+//   @keyframes scale-down-right {
+//     0% {
+//       -webkit-transform: scale(1);
+//       transform: scale(1);
+//       -webkit-transform-origin: 100% 50%;
+//       transform-origin: 100% 50%;
+//     }
+
+//     100% {
+//       -webkit-transform: scale(0.1);
+//       transform: scale(0.1);
+//       -webkit-transform-origin: 100% 70%;
+//       transform-origin: 100% 80%;
+//     }
+//   }
+
+//   .rocket-gif {
+//     position: absolute;
+//     left: 0;
+//     top: 33%;
+//     width: 15%;
+//     z-index: 2;
+//     animation: moveRocket 5s linear forwards;
+//   }
+
+//   @keyframes moveRocket {
+//     0% {
+//       left: 0%;
+//       opacity: 1;
+//     }
+
+//     33% {
+//       left: 15%;
+//     }
+
+//     66% {
+//       left: 49%;
+//     }
+
+//     100% {
+//       left: 84%;
+//     }
+//   }
+
+//   .timeline-border {
+//     position: absolute;
+//     top: 50%;
+//     left: 0;
+//     height: 0;
+//     border-top: 2px dashed #a259ff;
+//     z-index: 0;
+//     width: 0;
+//     animation: drawTimeline 5.5s linear forwards;
+//   }
+
+//   @keyframes drawTimeline {
+//     from {
+//       width: 0;
+//     }
+
+//     to {
+//       width: 100%;
+//     }
+//   }
+
+//   .inner-row-index {
+//     position: relative;
+//     z-index: 1;
+//     display: flex;
+//     justify-content: space-around;
+//     margin-right: 50px;
+
+//     .timeline-dot {
+//       width: 30px;
+//       height: 30px;
+//       position: absolute;
+//       top: 50%;
+//       transform: translateY(-50%);
+//       border-radius: 50%;
+//       background-color: #000;
+//       opacity: 0;
+//       z-index: 2;
+//       transition: opacity 0.5s ease-in;
+
+//       &.visible {
+//         opacity: 1;
+//       }
+
+//       &:nth-of-type(1) {
+//         left: 15%;
+//       }
+
+//       &:nth-of-type(2) {
+//         left: 49%;
+//       }
+
+//       &:nth-of-type(3) {
+//         left: 82%;
+//       }
+//     }
+
+//     .planet-width {
+//       width: 126px;
+//     }
+//   }
+
+//   .howitworks-step {
+//     opacity: 0;
+//     transform: translateX(-100px);
+//     transition: all 0.7s ease-in-out;
+
+//     &.visible {
+//       opacity: 1;
+//       transform: translateX(0);
+//     }
+//   }
+//   h2.space-grotesk-bold {
+//     z-index: 5;
+//     position: relative;
+//   }
+// }
+
+// @keyframes zoomInUpCustom {
+//   0% {
+//     opacity: 0;
+//     transform: scale(0.6) translateY(400px);
+//   }
+
+//   100% {
+//     opacity: 1;
+//     transform: scale(1) translateY(0);
+//   }
+// }
+
+// .zoom-in-up-custom {
+//   animation: zoomInUpCustom 1s ease forwards;
+// }
+
+// /*===================== HOW IT WORKS SECTION CSS END====================================*/
+
+// /* ==================== REDEEM AND EARN SECTIONS CSS ==================================== */
+// .redeem-circle {
+//   width: 300px;
+//   height: 300px;
+//   background-image: url('../src/assets/images/home/redeemEarn/blueBaseStar.png');
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   border-radius: 100%;
+//   overflow: hidden;
+// }
+
+// /* Fade Up Animation */
+// .fade-up {
+//   opacity: 0;
+//   transform: translateY(50px);
+//   transition:
+//     opacity 1s ease,
+//     transform 1s ease;
+
+//   &.aos-animate {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// /* Fade Left Animation */
+// .fade-left {
+//   opacity: 0;
+//   transform: translateX(200px);
+//   transition:
+//     opacity 1s ease,
+//     transform 1s ease;
+
+//   &.aos-animate {
+//     opacity: 1;
+//     transform: translateX(0);
+//   }
+// }
+
+// /* Fade Right Animation */
+// .fade-right {
+//   opacity: 0;
+//   transform: translateX(-200px);
+//   transition:
+//     opacity 1s ease,
+//     transform 1s ease;
+
+//   &.aos-animate {
+//     opacity: 1;
+//     transform: translateX(0);
+//   }
+// }
+
+// .redeem-shadow {
+//   filter: drop-shadow(-10px 0px 10px #493495);
+// }
+
+// .redem-box {
+//   top: 10%;
+//   right: 31%;
+// }
+
+// .gift-circle-sec {
+//   margin-left: 0;
+//   transition: margin-left 1s ease;
+//   /* 1 second transition */
+// }
+
+// .gift-circle-sec:hover {
+//   margin-left: -7rem;
+// }
+
+// .playearn-circle-sec {
+//   margin-left: 0;
+//   transition: margin-left 1s ease;
+//   /* 1 second transition */
+// }
+
+// .playearn-circle-sec:hover {
+//   margin-left: 7rem;
+// }
+
+// .launch-rocket {
+//   bottom: 18%;
+// }
+
+// .redeem-circle-sect {
+//   left: 70%;
+//   bottom: 60%;
+// }
+
+// .earnmore-circle-sect {
+//   left: 5%;
+//   bottom: -60%;
+// }
+
+// .coins-box {
+//   top: 10%;
+//   right: 23%;
+// }
+
+// .earn-shadow {
+//   filter: drop-shadow(10px 0px 10px #493495);
+// }
+
+// .howitwork-side-modal {
+//   bottom: 15%;
+// }
+
+// .howitwork-side-modal .side-text {
+//   writing-mode: sideways-lr;
+// }
+
+// /* ==================== REDEEM AND EARN SECTIONS CSS END ==================================== */
+// /* ==================== PLAY AND EARN SECTIONS CSS ==================================== */
+// .pay-earn-section {
+//   background-image: url('../src/assets/images/home/playEarn/PlayAndearn.png');
+//   width: 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100vh;
+// }
+
+// /* Initial hidden state */
+// .pay-earn-section,
+// .pay-earn-content {
+//   opacity: 0;
+//   transform: scale(0.5);
+// }
+
+// /* Animate Section (Zoom In from Bottom) */
+// .animate-section {
+//   animation: zoomInUpFromBottom 1s ease forwards;
+// }
+
+// @keyframes zoomInUpFromBottom {
+//   0% {
+//     opacity: 0;
+//     transform: scale(0.3) translateY(100vh);
+//     /* Start from bottom */
+//   }
+
+//   100% {
+//     opacity: 1;
+//     transform: scale(1) translateY(0);
+//     /* Final position */
+//   }
+// }
+
+// /* Animate Content (Fade Up) with delay */
+// .animate-content {
+//   animation: zoomInUpFromBottom 1s ease forwards;
+//   animation-delay: 1.5s;
+// }
+
+// @keyframes fadeUp {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(50px);
+//   }
+
+//   100% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// /* Animate Cards (Fade Up) with further delay */
+// .animate-card {
+//   animation: fadeUpCard 0.3s ease forwards;
+//   animation-delay: 2.5s;
+//   opacity: 0;
+// }
+
+// @keyframes fadeUpCard {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(50px);
+//   }
+
+//   100% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// .pay-earn-content {
+//   height: 100vh;
+//   background: radial-gradient(
+//     50% 50% at 50% 50%,
+//     rgba(0, 0, 0, 0) 0%,
+//     rgba(10, 28, 69, 0.8) 100%
+//   );
+// }
+
+// .play-earn-img {
+//   left: 50%;
+//   transform: translate(-50%, -0%);
+//   top: 2%;
+// }
+
+// .play-img-eft {
+//   width: 0%;
+// }
+
+// .play-img-eft-act {
+//   transition: width 0.5s ease;
+//   width: 20%;
+// }
+
+// .pay-earn-content .row {
+//   background-color: rgba(255, 255, 255, 0.5);
+// }
+
+// .hover-card {
+//   transition:
+//     transform 0.3s ease,
+//     box-shadow 0.3s ease;
+// }
+
+// .hover-card:hover {
+//   transform: scale(1.05);
+//   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+//   z-index: 10;
+// }
+
+// /* ==================== PLAY AND EARN SECTIONS CSS END ==================================== */
+// /* ==================== OFFER SECTIONS CSS ==================================== */
+// .offer-section {
+//   // background-image: url('../src/assets/images/home/offer/offerbg.png');
+//   width: 100%;
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 350vh;
+//   // overflow-x: scroll;
+// }
+
+// .offer-section::-webkit-scrollbar {
+//   display: none;
+//   /* Chrome, Safari */
+// }
+
+// .offer-sect-content {
+//   position: relative;
+//   z-index: 2;
+//   height: 10dvh;
+//   /* Fill the parent height */
+// }
+
+// // animation
+// .offer-slider-fade-left {
+//   opacity: 0;
+//   transform: translateX(150px);
+//   transition:
+//     opacity 5s ease,
+//     transform 5s ease;
+//   /* 5000ms */
+//   overflow-x: hidden;
+// }
+
+// .offer-slider-fade-left.aos-animate {
+//   opacity: 1;
+//   transform: translateX(0);
+// }
+
+// .offer-bg-img-1 {
+//   background-image: url('../src/assets/images/home/offer/card3bg.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+// .offer-bg-img-2,
+// .offer-bg-img-4 {
+//   background-image: url('../src/assets/images/home/offer/card2bg.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+// .offer-bg-img-3 {
+//   background-image: url('../src/assets/images/home/offer/card1bg.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+// .offer-cards {
+//   border-radius: 24px;
+//   height: 307px;
+// }
+
+// .offer-slider .slick-slide {
+//   padding: 0px 24px 0px 0px !important;
+//   box-sizing: border-box;
+// }
+
+// .offer-slider .slick-arrow {
+//   display: none !important;
+// }
+
+// .offer-exc-card {
+//   width: 410px !important;
+// }
+
+// .offer-exc-rocket {
+//   left: 14%;
+//   bottom: 45%;
+// }
+
+// .price-trolley {
+//   border-radius: 70px 20px 20px 20px;
+//   background-image: url('../src/assets/images/home/offer/exclperk1.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 491px;
+// }
+
+// .price-watch {
+//   border-radius: 20px;
+//   background-image: url('../src/assets/images/home/offer/exclperk2.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 233px;
+// }
+
+// .price-headphone {
+//   border-radius: 20px 20px 70px 20px;
+//   background-image: url('../src/assets/images/home/offer/exclperk3.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 233px;
+// }
+
+// .purple-border-bottom {
+//   border-bottom: 1px solid var(--push-notification);
+// }
+
+// .offer-footer-section {
+//   background-image: url('../src/assets/images/home/offer/Footer.svg');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   width: 100%;
+//   height: 75dvh;
+//   z-index: 9;
+//   overflow: hidden;
+// }
+
+// .footer-semi-planet {
+//   background-image: url('../src/assets/icons/home/offer/semiplanet.svg');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   width: 50%;
+//   height: 94%;
+//   bottom: 0%;
+//   z-index: 1;
+//   left: 25%;
+// }
+
+// .price-exclusive {
+//   // grid-auto-columns: 1rf 1rf 1rf;
+//   grid-template-columns: auto auto auto;
+// }
+
+// .truncate-text-2 {
+//   display: -webkit-box;
+//   -webkit-line-clamp: 2;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+// }
+
+// .truncate-text-3 {
+//   display: -webkit-box;
+//   -webkit-line-clamp: 3;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+// }
+
+// // ======= offer semi plnt raise animation ===========
+// .hoverRaiseSemiPlnt {
+//   opacity: 0;
+//   // transform: translateY(0);
+//   height: 0%;
+//   transition: all 0.5s ease;
+// }
+// .hoverRaiseSemiPlnt.active {
+//   opacity: 1;
+//   height: 94%;
+//   // transform: translateY(-0%);
+// }
+
+// /* ==================== OFFER SECTIONS CSS END ==================================== */
+
+// //===================== FOOTER CSS AND ANIMATION CSS -=============================
+
+// @keyframes fadeUp {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(70px);
+//   }
+
+//   100% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// .footer-fade-up {
+//   opacity: 0;
+//   /* start hidden */
+//   animation: fadeUp 1s forwards;
+//   /* duration of 1s, keep end state */
+// }
+
+// .footer-delay-700 {
+//   animation-delay: 0.7s;
+// }
+
+// //===================== FOOTER CSS AND ANIMATION CSS END -=============================
+
+// /* ==================== MYREWARD SECTIONS CSS ==================================== */
+// .reward-section {
+//   // height: 100dvh;
+//   background-image: url('../src/assets/images/home/filebackground.png');
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
+// }
+// .myreward-card-1 {
+//   background-image: url(../src/assets/images/home/MyRewards/starsbg.png);
+//   background-position: center;
+//   background-size: cover;
+// }
+// .myreward-card-2 {
+//   background-image: url(../src/assets/images/home/MyRewards/withoutstarsbg.png);
+//   background-position: center;
+//   background-size: cover;
+// }
+// .myreward-star {
+//   top: -30%;
+//   right: -10%;
+//   height: 84px;
+//   width: 80.98px;
+// }
+// .myreward-pocket {
+//   top: -7%;
+//   right: 3%;
+// }
+// .myreward-shotingmeteor {
+//   right: 0;
+//   bottom: 29%;
+//   width: 108.17px;
+//   height: 93.22px;
+// }
+
+// .myreward-voucher {
+//   top: -25%;
+//   right: -10%;
+//   width: 164.32px;
+//   height: 145.6px;
+// }
+
+// .my-reward-cards {
+//   grid-template-columns: auto auto;
+// }
+// .reward-slider .slick-slide {
+//   display: flex !important;
+//   justify-content: center;
+//   // width: auto !important;
+// }
+// .reward-slider .reward-slides {
+//   width: 235px !important;
+// }
+
+// .discount-code-section {
+//   border-radius: 16px;
+//   border: 1px solid rgba(26, 42, 108, 1);
+//   background-color: rgba(239, 243, 247, 1);
+//   box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 0.25);
+// }
+
+// .discount-bg-img {
+//   background: url(./assets/MyRewards/discount-bg-star.svg);
+// }
+
+// .discount-card {
+//   border-radius: 8px;
+// }
+
+// .discount-white-box {
+//   height: 50px;
+//   width: 50px;
+//   border-radius: 8px;
+//   background-color: rgba(255, 255, 255, 1);
+// }
+
+// .discount-deals {
+//   border-bottom-left-radius: 8px;
+//   border-top-right-radius: 8px;
+// }
+
+// .exclusive-card-yellow-text {
+//   color: rgba(255, 237, 96, 1);
+// }
+
+// .exclusive-card-blue-text {
+//   color: rgba(52, 94, 194, 1);
+// }
+
+// .product-img {
+//   width: 80.28px;
+//   height: 77px;
+// }
+
+// .stratergy-img {
+//   width: 110px;
+//   height: 62px;
+// }
+
+// .report-img {
+//   width: 78.49px;
+//   height: 78.61px;
+// }
+
+// @keyframes pulseWidth {
+//   0%,
+//   100% {
+//     width: 9%;
+//   }
+//   50% {
+//     width: 7%;
+//   }
+// }
+
+// .reward-moving-rkt {
+//   bottom: 4%;
+//   left: 2%;
+//   width: 9%;
+//   animation: pulseWidth 7s ease-in-out 2s infinite; /* 2s duration, 0.5s delay, infinite loop */
+// }
+// .discount-slider .slick-prev {
+//   display: none !important;
+// }
+// .discount-slider .slick-next {
+//   display: none !important;
+// }
+// .exclusive-slider .slick-prev {
+//   display: none !important;
+// }
+// .exclusive-slider .slick-next {
+//   display: none !important;
+// }
+
+// .reward-slider .slick-prev {
+//   display: none !important;
+// }
+
+// .reward-slider .slick-next {
+//   display: none !important;
+// }
+
+// .reward-discount {
+//   background-image: url(../src/assets/MyRewards/discountbg.png);
+// }
+// .discount-border {
+//   border-radius: 0px 8px 0px 8px;
+// }
+// .height-100vh {
+//   height: 100dvh;
+// }
+
+// // ==================================
+
+// .excl-discount-card {
+//   width: 360px !important;
+// }
+// .exclusive-discount-sect .slick-slide {
+//   // width: auto !important;
+//   display: flex !important;
+//   justify-content: start;
+// }
+
+// .exclusive-discount-sect .slick-list {
+//   padding-left: 0px !important;
+// }
+// .myreward-third-section {
+//   // height: 100dvh;
+//   background-image: url(../src/assets/images/home/MyRewards/reward3bg.png);
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
+// }
+// .referred-banner {
+//   background-image: url(../src/assets/images/home/MyRewards/referralsbg.png);
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
+// }
+
+// // play and earn card css
+
+// .playearn-card {
+//   display: flex;
+//   min-width: 500px;
+//   height: 346px;
+//   width: 100%;
+// }
+
+// .playearn-content {
+//   flex-grow: 1;
+//   min-width: 50px;
+//   height: 100%;
+//   border-radius: 20px;
+//   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+//   background-position: center !important;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   margin: 10px;
+//   transition: all 0.7s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+//   position: relative;
+//   overflow: hidden;
+// }
+
+// .playearn-content.active {
+//   flex-grow: 100 !important;
+// }
+// .playearn-content {
+//   width: calc(100% / 4 - 20px); // 4 cards with 20px gaps
+// }
+
+// .play-earn-card-1 {
+//   min-width: 50px;
+// }
+// .play-earn-card-2 {
+//   min-width: 70px;
+// }
+// .play-earn-card-3 {
+//   min-width: 90px;
+// }
+// .play-earn-card-4 {
+//   min-width: 110px;
+// }
+// // background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+
+// .redeem-claim {
+//   background: linear-gradient(180deg, #0b1e44 0%, #1a2a6c 50%, #1b4965 100%);
+// }
+
+// // ==================== MY REWARDS ANIMATIONS CSS ---------------------------------
+// .ufo-fixed {
+//   position: fixed;
+//   right: 7.5%;
+//   top: 12%;
+// }
+// .ufo-fixed-active {
+//   position: fixed;
+//   right: 7.5%;
+//   top: 12%;
+//   animation: moveUpRewUfo 0.7s ease forwards;
+// }
+
+// @keyframes moveUpRewUfo {
+//   from {
+//     top: 12%;
+//   }
+//   to {
+//     top: 4%;
+//   }
+// }
+// .reward-nav-animt-move-up {
+//   animation: moveUpFadeOutResize 1s forwards;
+// }
+// @keyframes moveUpFadeOutResize {
+//   0% {
+//     opacity: 1;
+//     transform: translateY(0);
+//     // max-height: 1%;
+//   }
+//   100% {
+//     opacity: 0;
+//     transform: translateY(-100px);
+//     max-height: 0;
+//     // margin-bottom: 7%;
+//   }
+// }
+// .rwd-jrny-hide {
+//   animation: hideRwdJrny 1s forwards;
+// }
+// @keyframes hideRwdJrny {
+//   0% {
+//     opacity: 1;
+//     max-height: 16%;
+//   }
+//   100% {
+//     opacity: 0;
+//     max-height: 0;
+//     display: none;
+//   }
+// }
+// .footer-rkt-down {
+//   animation: moveDownRkt 1s forwards;
+// }
+// @keyframes moveDownRkt {
+//   0% {
+//     opacity: 1;
+//     transform: translateY(0);
+//     max-height: 16%;
+//   }
+//   100% {
+//     opacity: 0;
+//     transform: translateY(100px);
+//     max-height: 0;
+//   }
+// }
+// //
+// .rwd-jrny-sld {
+//   right: -100%;
+//   opacity: 0;
+// }
+// .rwd-jrny-sld-active {
+//   right: -100%;
+//   opacity: 0;
+//   animation: rwdJrnySldMove 2s forwards;
+//   animation-delay: 1s;
+// }
+// @keyframes rwdJrnySldMove {
+//   0% {
+//     right: -100%;
+//     opacity: 1;
+//   }
+//   100% {
+//     right: 0;
+//     opacity: 1;
+//   }
+// }
+
+// /* ==================== MYREWARD SECTIONS CSS END ==================================== */
+
+// /* ==================== REGISTRATION SECTIONS CSS ==================================== */
+// .registration-section {
+//   height: 100dvh;
+//   background-image: url(../src/assets/Registrartion/Registrationbg.png);
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
+// }
+
+// .register-form {
+//   background-image: url(../src/assets/images/auth/formbottom1.svg);
+//   background-position: bottom;
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   overflow: hidden;
+// }
+
+// /* ==================== REGISTRATION SECTIONS CSS END ==================================== */
+
+// .fade-out {
+//   opacity: 0;
+//   transition: opacity 1s ease-in-out;
+//   pointer-events: none;
+// }
+
+// .fade-in {
+//   opacity: 1;
+//   transition: opacity 1s ease-in-out;
+// }
+
+// .fade-down-shrink {
+//   animation: fadeDownShrink 0.8s forwards;
+// }
+
+// @keyframes fadeDownShrink {
+//   0% {
+//     transform: translateY(0) scale(1);
+//     opacity: 1;
+//   }
+
+//   100% {
+//     transform: translateY(100px) scale(0.5);
+//     opacity: 0.7;
+//   }
+// }
+
+// .visually-hidden {
+//   visibility: hidden;
+//   position: absolute;
+// }
+
+// /* =================== MEDIA QUERY ===============================*/
+
+// @media only screen and (min-width: 768px) and (max-width: 1024px) {
+//   #banner-sec-heading-desk {
+//     display: none !important;
+//   }
+
+//   #banner-sec-heading-mob {
+//     display: flex;
+//   }
+
+//   .login-img img {
+//     max-width: 459px;
+//     max-height: 272px;
+//     width: 100%;
+//     height: auto;
+//   }
+// }
+
+// @media only screen and (min-width: 1024px) and (max-width: 1535px) {
+//   .image-container {
+//     width: 20%;
+//   }
+
+//   .bg-planet-ring {
+//     top: 50%;
+//     width: 70%;
+//   }
+
+//   .second-scrn-bottom {
+//     margin-top: 0px !important;
+//   }
+
+//   .second-scrn-padding {
+//     padding: 0 !important;
+//   }
+
+//   .second-screen-xl {
+//     margin-top: 0.5rem !important;
+//   }
+
+//   .till-ship-img {
+//     left: -16.7% !important;
+//   }
+// }
+
+// @media only screen and (min-width: 700px) and (max-width: 1023px) {
+//   .bg-planet-ring {
+//     top: 42%;
+//     width: 85%;
+//   }
+
+//   .image-container {
+//     width: 45%;
+//     bottom: 17.5%;
+//   }
+
+//   .navitag-left {
+//     position: absolute;
+//     left: -2%;
+//     width: 20%;
+//     bottom: 45%;
+//   }
+
+//   .navitag-right {
+//     position: absolute;
+//     right: -2%;
+//     width: 20%;
+//     bottom: 45%;
+//   }
+
+//   .navi-plnt-right {
+//     position: absolute;
+//     bottom: 50%;
+//     right: 20%;
+//   }
+
+//   .navi-plnt-left {
+//     position: absolute;
+//     bottom: 50%;
+//     left: 20%;
+//   }
+// }
+
+// @media only screen and (min-width: 1600px) and (max-width: 1920px) {
+//   .second-screen-xl {
+//     margin-top: 4rem !important;
+//   }
+// }
+
+// @media only screen and (min-width: 1440px) and (max-width: 1440px) {
+//   .planet-section {
+//     padding-top: 4%;
+//   }
+
+//   .footer-responsive {
+//     margin-top: 4%;
+//   }
+//   .rocket-gif {
+//     top: 39% !important;
+//   }
+//   .hoverRaiseSemiPlnt.active {
+//   opacity: 1;
+//   height: 78%;
+//   // transform: translateY(-0%);
+// }
+// }
+// @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+//   .reward-slider .reward-slides {
+//     width: 170px !important;
+//   }
+
+//   .excl-discount-card {
+//     width: 298px !important;
+//   }
+// }
+
+// @media only screen and (min-width: 1024px) and (max-width: 1200px) {
+//   .reward-slider .reward-slides {
+//     width: 150px !important;
+//   }
+// }
+
+// @media only screen and (min-width: 1300px) {
+//   .planet-section {
+//     padding-top: 2%;
+//   }
+// }
+
+// /* =================== MEDIA QUERY END ========================== */
+
+// // -===================================
+
+// //  testing css
+
+// .height-100vh {
+//   height: 100vh;
+// }
+
+// @keyframes slideUp {
+//   0% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+
+//   100% {
+//     opacity: 0;
+//     transform: translateY(-50px);
+//     display: none !important;
+//   }
+// }
+
+// @keyframes slideDown {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(-50px);
+//   }
+
+//   100% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// .nav-slide-up {
+//   animation: slideUp 1s forwards;
+//   display: block;
+// }
+
+// .nav-slide-down {
+//   display: block;
+//   animation: slideDown 1s forwards;
+// }
+
+// // ---------- middle sect with second screen css
+// .middle-sect {
+//   opacity: 0;
+//   transition: opacity 0.5s ease;
+// }
+
+// .visible-second-sect {
+//   opacity: 1;
+//   transition: opacity 0.5s ease;
+// }
+
+// .hidden-second-sect {
+//   opacity: 0;
+//   transition: opacity 0.5s ease;
+// }
+
+// // ------------------------------------aa
+
+// .plnt-animt {
+//   // display: block;
+//   animation: plntDown 1s forwards;
+// }
+
+// /* Animation for appearing */
+// @keyframes slideUpFadeIn {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(50px);
+//   }
+
+//   100% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// /* Animation for disappearing */
+// @keyframes slideDownFadeOut {
+//   0% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+
+//   100% {
+//     opacity: 0;
+//     transform: translateY(200px);
+//   }
+// }
+
+// .plnt-animt-up {
+//   animation: slideUpFadeIn 0.5s forwards;
+// }
+
+// .plnt-animt-down {
+//   animation: slideDownFadeOut 0.5s forwards;
+// }
+
+// .plnt-animt-ring-up {
+//   animation: slideUpFadeIn 0.5s forwards;
+// }
+
+// .plnt-animt-ring-down {
+//   animation: slideDownFadeOut 0.5s forwards;
+// }
+
+// // =====================================
+// // Plant move top bottom animation
+
+// .big-plnt-btm {
+//   animation: movePlntToBottomCenter 1s forwards;
+// }
+
+// .big-plnt-top {
+//   animation: movePlntToTopLeft 1s forwards;
+// }
+
+// @keyframes movePlntToTopLeft {
+//   0% {
+//     right: 0;
+//     bottom: 5%;
+//     width: 23%;
+//     left: 0;
+//   }
+
+//   100% {
+//     width: 7.1%;
+//     right: 28%;
+//     bottom: 67.7%;
+//     left: 0;
+//     opacity: 0;
+//     visibility: hidden;
+//   }
+// }
+
+// @keyframes movePlntToBottomCenter {
+//   0% {
+//     width: 8%;
+//     right: 27.6%;
+//     bottom: 66%;
+//     left: 0;
+//     visibility: hidden;
+//   }
+
+//   100% {
+//     right: 0;
+//     bottom: 5%;
+//     width: 23%;
+//     left: 0;
+//   }
+// }
+
+// // --------------/-
+// // navbar move animation
+
+// @keyframes moveUpFade {
+//   from {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+
+//   to {
+//     opacity: 0;
+//     transform: translateY(-50px);
+//   }
+// }
+
+// @keyframes moveDownFade {
+//   from {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+
+//   to {
+//     opacity: 0;
+//     transform: translateY(50px);
+//   }
+// }
+
+// @keyframes fadeInUp {
+//   from {
+//     opacity: 0;
+//     transform: translateY(20px);
+//   }
+
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// @keyframes fadeInDown {
+//   from {
+//     opacity: 0;
+//     transform: translateY(-20px);
+//   }
+
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// // -------------------------------------------------------------------------
+// //  Invite Friend Css
+
+// /* Background image with transition */
+// .invite-bg-image {
+//   // background-image: url('../src/assets/images/home/filebackground.png')!important;
+//   background-size: cover;
+//   background-position: top;
+//   height: 150vh;
+// }
+
+// /* Fade down for middle section */
+// .form-fade-down {
+//   opacity: 0;
+//   transition:
+//     opacity 1.5s ease,
+//     transform 1.5s ease;
+// }
+
+// /* Slide down for footer section */
+// .astro-slide-down {
+//   opacity: 0;
+//   transform: translateY(100px);
+//   transition:
+//     opacity 1.5s ease,
+//     transform 1.5s ease;
+// }
+
+// .asto-transition-all {
+//   transition: all 1s ease;
+// }
+
+// .nav-slide-top {
+//   opacity: 0;
+//   transform: translateY(-100px);
+//   transition:
+//     opacity 5s ease,
+//     transform 5s ease;
+//   visibility: hidden;
+// }
+
+// .left-0 {
+//   left: 0px;
+// }
+
+// .asto-transition-all {
+//   transition: all 1s ease;
+// }
+
+// .scrHghRed {
+//   animation: scrHghRed 4s forwards;
+// }
+
+// .scrHghInc {
+//   animation: scrHghInc 4s forwards;
+// }
+
+// @keyframes scrHghRed {
+//   from {
+//     height: 100vh;
+//   }
+
+//   to {
+//     height: 0vh;
+//   }
+// }
+
+// @keyframes scrHghInc {
+//   from {
+//     height: 100vh;
+//   }
+
+//   to {
+//     height: 100vh;
+//   }
+// }
+
+// .zoom-in-up {
+//   animation: zoomInUp 4s ease both;
+// }
+
+// @keyframes zoomInUp {
+//   0% {
+//     opacity: 0;
+//     transform: scale(0.2) translateY(100px);
+//   }
+
+//   100% {
+//     opacity: 1;
+//     transform: scale(1) translateY(0);
+//   }
+// }
+
+// // =============== Login Css Start =======================
+// .login-bg-img {
+//   background: url(./assets/Registrartion//Registrationbg.png);
+//   // background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100vh;
+// }
+
+// .login-img img {
+//   width: 100%;
+//   max-width: 459px;
+//   height: auto;
+//   aspect-ratio: 459 / 300;
+//   border-radius: 8px;
+//   object-fit: cover;
+// }
+
+// //   .login-img img {
+// //   max-width: 459px;
+// //   max-height: 272px;
+// //   width: 100%;
+// //   height: auto;
+// //    display: block;
+// // }
+
+// .login-form-section {
+//   border-radius: 16px;
+//   background-color: rgba(239, 243, 247, 1);
+// }
+
+// .form-control {
+//   background-color: rgba(92, 75, 161, 0.1) !important;
+// }
+
+// // Product Page Css Start
+
+// .product-footer {
+//   background: linear-gradient(
+//     180deg,
+//     rgba(255, 228, 147, 0.1) 47.11%,
+//     rgba(255, 200, 39, 0.2) 105.98%
+//   );
+// }
+
+// .footer-star {
+//   margin-left: -25px;
+//   background: url(./assets/Product-img/product-footer-star.svg) no-repeat left;
+// }
+
+// .footer-star img {
+//   height: 46.26px;
+//   width: 53.66px;
+// }
+
+// .product-top-frame {
+//   margin-top: -40px;
+//   margin-left: 35%;
+// }
+
+// .slider-container.product-slider {
+//   padding: 0 !important;
+//   margin: 0 auto !important;
+//   overflow: visible !important;
+//   width: 100vw !important;
+//   max-width: 100vw !important;
+// }
+
+// // Slider Arrow hide
+// .product-slider .slick-prev,
+// .slick-next {
+//   display: none !important;
+// }
+
+// .product-card {
+//   border-radius: 12px !important;
+//   // width: 260px !important;
+//   height: 350px !important;
+//   box-shadow: 0px 4px 16px 1px rgba(75, 56, 151, 0.2);
+//   transform: scale(0.7);
+//   transition: transform 0.3s ease;
+//   position: relative;
+//   // overflow: hidden;
+// }
+
+// .slick-current .product-card {
+//   border-radius: 12px !important;
+//   width: 350px !important;
+//   height: 400px !important;
+//   transform: scale(0.9);
+//   transition: transform 0.3s ease;
+// }
+
+// /* Discount badge */
+// .discount-badge {
+//   position: absolute;
+//   top: -33px;
+//   left: 40%;
+//   background: url(./assets/Product-img/product-frame.svg) no-repeat;
+//   font-weight: bold;
+//   font-size: 14px;
+//   color: rgba(232, 90, 90, 1);
+//   min-width: 80px;
+//   /* ensure enough space */
+//   min-height: 100px;
+// }
+
+// .slick-track {
+//   display: flex !important;
+//   align-items: center !important;
+// }
+
+// .card-bg-purple-color {
+//   background: linear-gradient(
+//     180deg,
+//     rgba(125, 111, 195, 0.4) -70.65%,
+//     #eff3f7 66.01%
+//   );
+// }
+
+// .card-bg-pink-color {
+//   background: linear-gradient(
+//     180deg,
+//     rgba(231, 191, 214, 0.6) -70.65%,
+//     #eff3f7 47.72%
+//   );
+// }
+
+// .card-bg-green-color {
+//   background: linear-gradient(
+//     180deg,
+//     rgba(184, 226, 220, 0.8) -33.16%,
+//     #eff3f7 47.72%
+//   );
+// }
+
+// .text-red {
+//   color: rgba(232, 90, 90, 1);
+// }
+
+// .product-btn {
+//   border-radius: 8px;
+// }
+
+// .product-btn-purple {
+//   background-color: rgba(144, 133, 204, 1);
+// }
+
+// .product-btn-pink {
+//   background-color: rgba(219, 159, 193, 1);
+// }
+
+// .product-btn-green {
+//   background-color: rgba(139, 208, 198, 1);
+// }
+
+// .orange-planet {
+//   position: absolute;
+//   top: 0px;
+//   left: -30px;
+//   width: 210.55px;
+//   height: 115.12px;
+//   // z-index: 1;
+// }
+
+// .green-planet {
+//   position: absolute;
+//   top: 0px;
+//   left: 0px;
+//   width: 78px;
+//   height: 78px;
+// }
+
+// .pink-planet {
+//   position: absolute;
+//   top: 0px;
+//   left: 0px;
+//   width: 95.82px;
+//   height: 114.16px;
+// }
+
+// // Ufo top Fixed Css
+// .ufo-fixed {
+//   position: fixed;
+//   top: 90px;
+//   right: 12%;
+// }
+
+// // =====================================
+// // My Referral Css start Here
+// // =========================================
+
+// .referral-wrapper {
+//   position: relative;
+// }
+
+// .referral-card {
+//   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+//   border-radius: 12px;
+//   transition:
+//     transform 0.3s ease,
+//     background 0.3s ease;
+//   transform-origin: bottom;
+//   width: 400px;
+//   cursor: pointer;
+//   z-index: 1;
+// }
+
+// .referral-card:hover {
+//   background: linear-gradient(180deg, rgba(77, 60, 155, 0) 0%, #4d3c9b 94.59%);
+//   box-shadow: 0px 4px 16px 0px rgba(255, 255, 255, 0.25);
+//   transform: scale(1.1);
+//   height: 443px;
+// }
+
+// .referral-card:hover .referral-txt {
+//   color: var(--text-blue) !important;
+// }
+
+// .referral-yellow-text {
+//   color: #ffe14d;
+// }
+
+// .card-ufo-img {
+//   position: absolute;
+//   top: -60px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   height: auto;
+//   z-index: 1;
+// }
+
+// .cloud-img {
+//   position: absolute;
+//   top: 200px;
+//   left: 0;
+//   width: 100%;
+//   height: 600px;
+//   background-image: url('./assets/MyReferral-img/clouds\ \(2\).svg');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: bottom;
+//   z-index: 2;
+// }
+
+// .howit-card {
+//   background: linear-gradient(
+//     0deg,
+//     #f6f9fe 27.34%,
+//     #8fd3ea 56.12%,
+//     #493495 105.15%
+//   );
+//   border-radius: 24px;
+//   box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 0.15);
+//   position: relative;
+//   padding: 10px;
+// }
+
+// .astronauts {
+//   bottom: 70px;
+//   left: 50px;
+//   position: absolute;
+//   z-index: 3;
+//   display: flex;
+//   gap: 10px;
+// }
+
+// .astronauts img {
+//   width: 68.86px;
+//   height: 158px;
+// }
+
+// .blue-bottom-img {
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   height: 100px;
+//   width: 100%;
+//   background: url('../src/assets/images/MyReferral-img/BLUE\ PATTI.svg');
+//   background-size: contain, cover;
+//   background-repeat: no-repeat;
+//   background-position: bottom;
+// }
+
+// .copy-input-container {
+//   position: relative;
+//   display: inline-block;
+//   width: 100%;
+
+//   .input-invite-friend {
+//     padding: 11px 16px;
+//     width: 100%;
+//     height: 48px;
+//     font-size: 14px;
+//     border-radius: 8px;
+//     border: 1px solid #ffffff;
+//   }
+
+//   .copy-button {
+//     position: absolute;
+//     right: 8px;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     font-size: 14px;
+//     padding: 0 10px;
+//     cursor: pointer;
+//     background: #1a2a6c;
+//     color: #ffffff;
+//     border: 1px solid #1a2a6c;
+//     padding: 7px 24px;
+//     border-radius: 4px;
+//     outline: none;
+//   }
+// }
+
+// @media (max-width: 991px) {
+//   .ufo-fixed {
+//     right: 5%;
+//   }
+// }
+
+// /* For mobile devices (screen width ≤ 767px) */
+// @media (max-width: 767px) {
+//   .ufo-fixed {
+//     right: 2%;
+//     top: 70px;
+//     /* optional: move it up slightly on smaller screens */
+//   }
+// }
+
+// .cursor-pointer {
+//   cursor: pointer;
+// }
+// // .move-left {
+// //   transform: translateX(-100%);
+// //   transition: transform 1s ease-in-out;
+// // }
+
+// // .move-right {
+// //   transform: translateX(100%);
+// //   transition: transform 1s ease-in-out;
+// // }
+// // .left-box {
+// //   transition: transform 0.7s ease, opacity 0.7s ease;
+// // }
+
+// // .left-box.default-position {
+// //   transform: translateX(0);
+// //   opacity: 1;
+// // }
+
+// // .left-box.move-left {
+// //   transform: translateX(-150px);
+// //   opacity: 0;
+// // }
+
+// // .left-box.move-right {
+// //   transform: translateX(150px);
+// //   opacity: 0;
+// // }
+// ============= VARIABLES SCSS========================
+$mobile-breakpoint: 768px;
+$tablet-breakpoint: 1024px;
+
+$white: #FFFFFF;
+$white-secondry: #F8F7FF;
+$primary-color:#1A2A6C;
+$secondry-color:#CEBACF;
+$dark-color:#675262;
+$dark-secondary:#A595A6;
+$light-color:#F1E8F2;
+$black:#000000;
+$black-secondry:#2D241F;
+
+// Define the color groups for background and text colors
+$background-colors: (
+  "white": $white,
+  "white-secondry":$white-secondry,
+  "primary": $primary-color,
+  "secondary-color": $secondry-color,
+  "dark-color":$dark-color,
+  "dark-secondary":$dark-secondary,
+  "light-color":$light-color,
+  "black": $black,
+  "black-secondary": $black-secondry,
+);
+
+$font-colors: (
+  "white": $white,
+  "white-secondry":$white-secondry,
+  "primary-color": $primary-color,
+  "secondary-color": $secondry-color,
+  "dark-color":$dark-color,
+  "dark-secondary":$dark-secondary,
+  "light-color":$light-color,
+  "black": $black,
+  "black-secondary": $black-secondry
+);
+
+// ============= VARIABLES SCSS END ===================
+// =============Functions==============================
+@use "sass:math";
+
+// =========================
+// CONFIGURATION
+// =========================
+
+// Functions
+@function pxToRem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+@function lineHeight($font-size, $multiplier: 1.5) {
+  $scaled: math.div($font-size * $multiplier, 1);
+  @return pxToRem($scaled);
+}
+
+@function responsive-scale($value, $ratio) {
+  @return $value * $ratio;
+}
+
+// Breakpoints
+$breakpoint-sm: 768px;      // Mobile
+$breakpoint-md: 1200px;     // Tablet
+$breakpoint-lg: 1536px;     // Desktop
+$breakpoint-xl: 1920px;     // Large Desktop
+$breakpoint-2xl: 2560px;    // Ultra-Wide
+$breakpoint-4k: 3840px;     // 4K Display
+
+// Font and spacing values
+$font-sizes: 8, 12, 14, 16, 18, 20, 24,28, 32, 36, 40, 44,46, 48, 52, 56, 60, 64, 68, 72;
+$spacing-values: 0, 4, 8, 10, 12, 14, 16, 20, 24, 32,34, 36, 40, 44, 46, 48, 52, 56, 58, 62, 68, 72, 78,120;
+
+// =========================
+// FONT SIZE CLASSES
+// =========================
+
+// @each $size in $font-sizes {
+//   .font-#{$size} {
+//     font-size: pxToRem($size);
+//     line-height: lineHeight($size);
+
+//     @media (max-width: $breakpoint-md) {
+//       font-size: pxToRem(responsive-scale($size, 0.66));
+//       line-height: lineHeight(responsive-scale($size, 0.66));
+//     }
+
+//     @media (min-width: $breakpoint-lg) {
+//       font-size: pxToRem(responsive-scale($size, 1.25));
+//       line-height: lineHeight(responsive-scale($size, 1.25));
+//     }
+
+//     @media (min-width: $breakpoint-xl) {
+//       font-size: pxToRem(responsive-scale($size, 1.5));
+//       line-height: lineHeight(responsive-scale($size, 1.5));
+//     }
+
+//     @media (min-width: $breakpoint-2xl) {
+//       font-size: pxToRem(responsive-scale($size, 1.75));
+//       line-height: lineHeight(responsive-scale($size, 1.75));
+//     }
+
+//     @media (min-width: $breakpoint-4k) {
+//       font-size: pxToRem(responsive-scale($size, 2));
+//       line-height: lineHeight(responsive-scale($size, 2));
+//     }
+//   }
+// }
+
+@each $size in $font-sizes {
+  .font-#{$size} {
+    font-size: pxToRem($size);
+    line-height: lineHeight($size);
+ 
+    @media (max-width: $breakpoint-md) {
+      font-size: pxToRem($size);
+      line-height: lineHeight($size);
+      // font-size: pxToRem(responsive-scale($size, 0.66));
+      // line-height: lineHeight(responsive-scale($size, 0.66));
+      font-size: pxToRem($size);
+      line-height: lineHeight($size);
+      // font-size: pxToRem(responsive-scale($size, 0.66));
+      // line-height: lineHeight(responsive-scale($size, 0.66));
+    }
+ 
+    @media (min-width: $breakpoint-lg) {
+      font-size: pxToRem($size);
+      line-height: lineHeight($size);
+      // font-size: pxToRem(responsive-scale($size, 1.125));
+      // line-height: lineHeight(responsive-scale($size, 1.125));
+    }
+ 
+    @media (min-width: $breakpoint-xl) {
+      font-size: pxToRem(responsive-scale($size, 1.25));
+      line-height: lineHeight(responsive-scale($size, 1.25));
+    }
+ 
+    @media (min-width: $breakpoint-2xl) {
+      font-size: pxToRem(responsive-scale($size, 1.5));
+      line-height: lineHeight(responsive-scale($size, 1.5));
+    }
+ 
+    @media (min-width: $breakpoint-4k) {
+      font-size: pxToRem(responsive-scale($size, 1.875));
+      line-height: lineHeight(responsive-scale($size, 1.875));
+    }
+  }
+}
+
+
+// =========================
+// SPACING CLASSES
+// =========================
+
+@each $value in $spacing-values {
+  @each $prefix, $property in (m: margin, mt: margin-top, mr: margin-right, mb: margin-bottom, ml: margin-left, p: padding, pt: padding-top, pr: padding-right, pb: padding-bottom, pl: padding-left) {
+    .#{$prefix}-#{$value} {
+      #{$property}: pxToRem($value);
+
+      @media (max-width: $breakpoint-md) {
+        #{$property}: pxToRem(responsive-scale($value, 0.66));
+      }
+
+      @media (min-width: $breakpoint-lg) {
+        #{$property}: pxToRem(responsive-scale($value, 1.25));
+      }
+
+      @media (min-width: $breakpoint-xl) {
+        #{$property}: pxToRem(responsive-scale($value, 1.5));
+      }
+
+      @media (min-width: $breakpoint-2xl) {
+        #{$property}: pxToRem(responsive-scale($value, 1.75));
+      }
+
+      @media (min-width: $breakpoint-4k) {
+        #{$property}: pxToRem(responsive-scale($value, 2));
+      }
+    }
+  }
+}
+
+// =========================
+// WIDTH CLASSES (1% to 100%) with BREAKPOINT SUFFIXES
+// =========================
+
+@for $i from 1 through 100 {
+  .width-#{$i} {
+    width: ($i * 1%);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    .width-sm-#{$i} {
+      width: ($i * 1%);
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    .width-md-#{$i} {
+      width: ($i * 1%);
+    }
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    .width-lg-#{$i} {
+      width: ($i * 1%);
+    }
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    .width-xl-#{$i} {
+      width: ($i * 1%);
+    }
+  }
+
+  @media (min-width: $breakpoint-2xl) {
+    .width-2xl-#{$i} {
+      width: ($i * 1%);
+    }
+  }
+
+  @media (min-width: $breakpoint-4k) {
+    .width-4k-#{$i} {
+      width: ($i * 1%);
+    }
+  }
+}
+
+
+// Generate border-radius classes from 4px to 100px in steps of 4px
+@each $value in $spacing-values {
+  .border-radius-#{$value} {
+    border-radius: pxToRem($value);
+  }
+}
+// ===========function end=============================
+// =========== MIXINS SCSS ============================
+// Import Google Fonts in your main index.html or layout file, not here!
+
+// Font Mixins
+@mixin font-be-vietnam($weight, $style: normal) {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin font-montserrat($weight, $style: normal) {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin font-poppins($weight, $style: normal) {
+  font-family: 'Poppins', sans-serif;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin font-space-grotesk($weight, $style: normal) {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: $weight;
+  font-style: $style;
+}
+@mixin font-montserrat-alternates($weight, $style: normal) {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+// Alias mixin (optional, for Be Vietnam only)
+@mixin font-variation($weight, $style: normal) {
+  @include font-be-vietnam($weight, $style);
+}
+
+
+// =========== MIXINS SCSS END=========================
+// =========== COMMON CSS===============================
+// @import './mixins';
+
+body {
+  margin: 0;
+  background-color: #f9f9f9; // Replace $white-secondry with a real value or define the variable
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+// Be Vietnam Pro font utilities
+.be-vietnam-pro-thin        { @include font-be-vietnam(100); }
+.be-vietnam-pro-extralight  { @include font-be-vietnam(200); }
+.be-vietnam-pro-light       { @include font-be-vietnam(300); }
+.be-vietnam-pro-regular     { @include font-be-vietnam(400); }
+.be-vietnam-pro-medium      { @include font-be-vietnam(500); }
+.be-vietnam-pro-semibold    { @include font-be-vietnam(600); }
+.be-vietnam-pro-bold        { @include font-be-vietnam(700); }
+.be-vietnam-pro-extrabold   { @include font-be-vietnam(800); }
+.be-vietnam-pro-black       { @include font-be-vietnam(900); }
+
+// Montserrat font utilities
+.montserrat-thin       { @include font-montserrat(100); }
+.montserrat-extralight { @include font-montserrat(200); }
+.montserrat-light      { @include font-montserrat(300); }
+.montserrat-regular    { @include font-montserrat(400); }
+.montserrat-medium     { @include font-montserrat(500); }
+.montserrat-semibold   { @include font-montserrat(600); }
+.montserrat-bold       { @include font-montserrat(700); }
+.montserrat-extrabold  { @include font-montserrat(800); }
+.montserrat-black      { @include font-montserrat(900); }
+
+// Poppins font utilities
+.poppins-thin       { @include font-poppins(100); }
+.poppins-extralight { @include font-poppins(200); }
+.poppins-light      { @include font-poppins(300); }
+.poppins-regular    { @include font-poppins(400); }
+.poppins-medium     { @include font-poppins(500); }
+.poppins-semibold   { @include font-poppins(600); }
+.poppins-bold       { @include font-poppins(700); }
+.poppins-extrabold  { @include font-poppins(800); }
+.poppins-black      { @include font-poppins(900); }
+
+// Space Grotesk font utilities
+.space-grotesk-light    { @include font-space-grotesk(300); }
+.space-grotesk-regular  { @include font-space-grotesk(400); }
+.space-grotesk-medium   { @include font-space-grotesk(500); }
+.space-grotesk-semibold { @include font-space-grotesk(600); }
+.space-grotesk-bold     { @include font-space-grotesk(700); }
+.montserrat-alternates-thin {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.montserrat-alternates-extralight {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.montserrat-alternates-light {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.montserrat-alternates-regular {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-alternates-medium {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-alternates-semibold {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.montserrat-alternates-bold {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-alternates-extrabold {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.montserrat-alternates-black {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.montserrat-alternates-thin-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.montserrat-alternates-extralight-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.montserrat-alternates-light-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.montserrat-alternates-regular-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.montserrat-alternates-medium-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.montserrat-alternates-semibold-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.montserrat-alternates-bold-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.montserrat-alternates-extrabold-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.montserrat-alternates-black-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+// Headings
+.heading-h1 {
+  font-size: pxToRem(72);
+  line-height: 150%;
+  @include font-be-vietnam(600);
+}
+.heading-h2 {
+  font-size: pxToRem(60);
+}
+.heading-h3 {
+  font-size: pxToRem(52);
+}
+.heading-h4 {
+  font-size: pxToRem(48);
+}
+
+// Section padding
+.section-larg-padding-T-B {
+  padding-top: pxToRem(80);
+  padding-bottom: pxToRem(80);
+}
+.section-medium-padding-T-B {
+  padding-top: pxToRem(40);
+  padding-bottom: pxToRem(40);
+}
+.section-small-padding-T-B {
+  padding-top: pxToRem(24);
+  padding-bottom: pxToRem(24);
+}
+
+// Margin utility
+.margin-larg-T-B {
+  margin-top: pxToRem(80);
+  margin-bottom: pxToRem(80);
+}
+.margin-medium-T-B {
+  margin-top: pxToRem(48);
+  margin-bottom: pxToRem(48);
+}
+.margin-small-T-B {
+  margin-top: pxToRem(24);
+  margin-bottom: pxToRem(24);
+}
+
+.w-80 {
+  width: 80%;
+}
+
+// =========== COMMON CSS END===========================
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -13,7 +2974,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-// ============= MAIN ANIMATION CSS =========================
+// =============LANDING PAGE MAIN ANIMATION CSS =========================
 .section {
   position: fixed;
   top: 0;
@@ -28,19 +2989,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  &:nth-child(1) {
-    // opacity: 1;
-    // z-index: 9;
-    // transition:none;
-    &.active {
-      // animation: none;
-    }
-  }
 }
 
 .section.active {
-  // animation: fadeInUp 1s ease forwards;
+  animation: fadeInUp 1s ease forwards;
   overflow: auto;
 }
 
@@ -61,15 +3013,11 @@
   pointer-events: auto;
   z-index: 2;
 }
-
-// Allow internal scroll for Offer section
 .section:nth-of-type(8).active {
   overflow-y: auto;
-  // position: relative!important;
 }
 
 .section.active.offer {
-  // position: relative !important;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: url('../src/assets/images/home/offer/offerbg.png');
@@ -85,7 +3033,6 @@ body {
   // overflow: hidden; // hides scroll and disables default scrolling
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
-
   background-image: url('../src/assets/images/home/filebackground.png') !important;
   background-size: cover;
   background-position: top;
@@ -272,27 +3219,27 @@ body::-webkit-scrollbar {
 // =======================================================================
 
 /* ===================== Navbar Or Header Css ============================ */
-
 .text-underline-offset-6 {
-  text-underline-offset: 6px;
+  text-underline-offset: pxToRem(6);
 }
 
 .header-center-img {
-  filter: drop-shadow(0px 4px 4px #fff);
+  filter: drop-shadow(0px pxToRem(4) pxToRem(4) #fff);
 }
 
-/* Navbar effect Css */
-
+// =====================
+// Navbar Effect SCSS
+// =====================
 .nav-indicator {
-  bottom: 65px;
-  height: 3px;
+  bottom: pxToRem(65);
+  height: pxToRem(3);
   transition: all 0.3s ease;
   z-index: 0;
 }
 
 .active-blur-shadow {
   height: 100%;
-  width: 200px;
+  width: pxToRem(200);
   left: 0;
   right: 0;
   top: 0;
@@ -303,16 +3250,22 @@ body::-webkit-scrollbar {
   background-repeat: no-repeat;
 }
 
+
 /* ======================================================================= */
 
 /* ======================== Hero Section ================================== */
 .hero-section {
   height: 100dvh;
-  // background-image: url('../src/assets/images/home/filebackground.png');
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+
+  & .container {
+    & .home-animt-show {
+      // Add specific styles if needed
+    }
+  }
 }
 
 #banner-sec-heading-desk {
@@ -323,9 +3276,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* =========================================================================== */
-
-/* ============== planet animation ==================*/
+// =================== Planet Animation ===================
 
 .solar-sys {
   bottom: 7%;
@@ -365,31 +3316,29 @@ body::-webkit-scrollbar {
   right: 0;
   bottom: 5%;
   transition: transform 1s ease-in-out;
-}
 
-.image-container img {
-  transition: opacity 0.1s ease-in-out;
-  /* width: 100%; */
-  height: 100%;
+  img {
+    transition: opacity 0.1s ease-in-out;
+    height: 100%;
+  }
 }
 
 .planet-shadow-purple {
-  filter: drop-shadow(-7px 7px 38px #55024ccc);
+  filter: drop-shadow(pxToRem(-7) pxToRem(7) pxToRem(38) #55024ccc);
 }
 
 .planet-shadow-yellow {
-  filter: drop-shadow(-7px 7px 38px #fc941acc);
+  filter: drop-shadow(pxToRem(-7) pxToRem(7) pxToRem(38) #fc941acc);
 }
 
 .planet-shadow-green {
-  filter: drop-shadow(-7px 7px 38px #66968b);
+  filter: drop-shadow(pxToRem(-7) pxToRem(7) pxToRem(38) #66968b);
 }
 
 .planet-shadow-blue {
-  filter: drop-shadow(-7px 7px 38px #4babdf);
+  filter: drop-shadow(pxToRem(-7) pxToRem(7) pxToRem(38) #4babdf);
 }
 
-/* =========================================================================== */
 .bg-planet-ring {
   top: 50%;
 }
@@ -398,7 +3347,8 @@ body::-webkit-scrollbar {
   height: 85vh;
 }
 
-/* ==================== SECOND SCREEN SECTIONS CSS ==================================== */
+// =================== Second Screen ===================
+
 .second-screen-section {
   height: 100dvh;
   background-image: url('../src/assets/images/home/secondscreenbg.png');
@@ -410,15 +3360,15 @@ body::-webkit-scrollbar {
 
 .till-ship {
   background: rgba(64, 123, 255, 0.3);
-}
 
-.till-ship-img {
-  left: -14.7%;
-  bottom: 0%;
-}
+  &-img {
+    left: -14.7%;
+    bottom: 0%;
+  }
 
-.till-ship {
-  background-color: rgba(64, 123, 255, 0.3);
+  &-border-color {
+    border-right: pxToRem(0.5) solid var(--border-light) !important;
+  }
 }
 
 .progress-sect-rocket {
@@ -433,15 +3383,11 @@ body::-webkit-scrollbar {
 }
 
 .tilte-shadow {
-  box-shadow: 0px 4px 16px 0px rgba(184, 179, 203, 1);
+  box-shadow: 0  pxToRem(4) pxToRem(16) 0 rgba(184, 179, 203, 1);
 }
 
 .progress-sect-name {
   line-height: 1.2;
-}
-
-.till-ship-border-color {
-  border-right: 0.5px solid var(--border-light) !important;
 }
 
 .progress-sect {
@@ -450,28 +3396,41 @@ body::-webkit-scrollbar {
     rgba(255, 228, 147, 0.2) 47.11%,
     rgba(255, 200, 39, 0.4) 105.98%
   );
+
+  &-rocket {
+    top: -82%;
+    left: 2%;
+  }
+
+  &-astronot {
+    bottom: 0%;
+    width: 20%;
+    left: 2%;
+  }
 }
 
 .progress-side-sec {
   width: 20%;
 }
 
-.progress-side-hr {
-  border: 2px solid rgba(255, 240, 96, 1);
-  height: 35px;
-  margin: 0 auto;
-}
-
-.progress-side-hr11 {
-  border: 2px dashed rgba(255, 240, 96, 1);
-  height: 30px;
-  margin: 0 auto;
-}
-
+.progress-side-hr,
+.progress-side-hr11,
 .progress-side-hr-2 {
-  border: 2px dashed rgba(255, 240, 96, 1);
-  height: 20px;
+  border: pxToRem(2) dashed rgba(255, 240, 96, 1);
   margin: 0 auto;
+
+  &.progress-side-hr {
+    border-style: solid;
+    height: pxToRem(35);
+  }
+
+  &.progress-side-hr11 {
+    height: pxToRem(30);
+  }
+
+  &.progress-side-hr-2 {
+    height: pxToRem(20);
+  }
 }
 
 .progress-foot-alen {
@@ -489,69 +3448,65 @@ body::-webkit-scrollbar {
 }
 
 .second-scrn-bottom {
-  margin-top: 8px !important;
+  margin-top: pxToRem(8) !important;
 }
 
 .second-scrn-padding {
   padding: auto !important;
 }
 
-// TOOLTIP CSS
+// =================== Tooltip ===================
 
 .tooltiptext {
   visibility: auto;
   background-color: rgba(85, 68, 158, 0.3);
   color: rgba(255, 240, 96, 1);
   text-align: center;
-  border: 1px solid rgba(255, 240, 96, 1);
+  border: pxToRem(1) solid rgba(255, 240, 96, 1);
   bottom: -25%;
   left: 20%;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: pxToRem(-6);
+    border-width: pxToRem(7);
+    border-style: solid;
+    border-color: transparent rgba(255, 240, 96, 1) transparent transparent;
+  }
 }
 
-.tooltiptext::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -6px;
-  border-width: 7px;
-  border-style: solid;
-  border-color: transparent rgba(255, 240, 96, 1) transparent transparent;
-}
+// =================== Left & Right Box Animations ===================
 
-// SECOND SCREEN BOTTOM ANIMATIONS CSS-----------
-
-/* styles.css */
-
-.left-box, .right-box {
+.left-box,
+.right-box {
   position: relative;
   transition: all 0.5s ease;
-}
 
-.default-position {
-  /* Default position, no movement */
-  left: 0%;
-  opacity: 1;
-}
+  &.default-position {
+    left: 0%;
+    opacity: 1;
+  }
 
-.move-left {
-  /* Moved to the left and faded out */
-  left: -80%;
-  opacity: 0;
-}
+  &.move-left {
+    left: -80%;
+    opacity: 0;
+  }
 
-.move-right {
-  /* Moved to the right and faded out */
-  left: 80%;
-  opacity: 0;
+  &.move-right {
+    left: 80%;
+    opacity: 0;
+  }
 }
 
 
 /* ==================== SECOND SCREEN SECTIONS CSS END ==================================== */
 /*=====================INVITE A FRIEND SECTION CSS STRAT==================================*/
+
 .section-invitefriend {
   height: 100vh;
-  // background-image:url('../src/assets/images/home/filebackground.png');
   background-position: top;
   background-size: cover;
   background-repeat: repeat;
@@ -560,41 +3515,42 @@ body::-webkit-scrollbar {
   .content-z-index {
     z-index: 2;
   }
-.invitefriend-slide-top {
-  opacity: 0;
-  transform: translateY(-100px);
-  transition:
-    opacity 5s ease,
-    transform 5s ease;
-  visibility: hidden;
-}
+
+  .invitefriend-slide-top {
+    opacity: 0;
+    transform: translateY(pxToRem(-100));
+    transition:
+      opacity 5s ease,
+      transform 5s ease;
+    visibility: hidden;
+  }
+
   .copy-input-container {
     position: relative;
     display: inline-block;
     width: 100%;
 
     .input-invite-friend {
-      padding: 11px 16px;
+      padding: pxToRem(11) pxToRem(16);
       width: 100%;
-      height: 68px;
-      font-size: 14px;
-      border-radius: 8px;
+      height: pxToRem(68);
+      font-size: pxToRem(14);
+      border-radius: pxToRem(8);
       border: 1px solid #ffffff;
     }
 
     .copy-button {
       position: absolute;
-      right: 16px;
+      right: pxToRem(16);
       top: 50%;
       transform: translateY(-50%);
-      font-size: 18px;
-      padding: 0 10px;
+      font-size: pxToRem(18);
+      padding: pxToRem(10) pxToRem(24);
       cursor: pointer;
       background: #1a2a6c;
       color: #ffffff;
       border: 1px solid #1a2a6c;
-      padding: 10px 24px;
-      border-radius: 8px;
+      border-radius: pxToRem(8);
       outline: none;
     }
   }
@@ -603,7 +3559,7 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 60px auto;
+    margin: pxToRem(60) auto;
     width: 80%;
 
     &::before,
@@ -615,7 +3571,7 @@ body::-webkit-scrollbar {
     }
 
     .divider-border {
-      margin: 0 10px;
+      margin: 0 pxToRem(10);
       color: #9d92d2;
       font-weight: 500;
       white-space: nowrap;
@@ -623,10 +3579,10 @@ body::-webkit-scrollbar {
   }
 
   .btn-share-via-whatsapp {
-    border-radius: 40px;
+    border-radius: pxToRem(40);
     width: 100%;
     text-align: center;
-    padding: 10px 60px;
+    padding: pxToRem(10) pxToRem(60);
     background: #1a2a6c;
     outline: none;
     border: none;
@@ -634,7 +3590,7 @@ body::-webkit-scrollbar {
 
   .social-nav {
     display: flex;
-    gap: 42px;
+    gap: pxToRem(42);
     justify-content: center;
   }
 }
@@ -649,22 +3605,20 @@ body::-webkit-scrollbar {
   background-size: cover;
   background-repeat: repeat;
   width: 100%;
-  padding: 80px 0;
+  padding: pxToRem(80) 0;
 
   &.start-animation {
     .howitwork-first {
-      // animation: robotExit 1s ease-in-out forwards;
       animation: robotMoveUp 2s forwards;
       animation-delay: 1s;
 
       .robort-image {
-        width: 200px;
+        width: pxToRem(200);
         transition: all 2s ease;
       }
 
       .robot-exit {
-        // animation: robotMoveUp 1s forwards;
-        // animation-delay: 0.5s;
+        // Additional animation if needed
       }
 
       @keyframes robotMoveUp {
@@ -674,15 +3628,16 @@ body::-webkit-scrollbar {
         }
 
         100% {
-          transform: translateY(-700px) scale(0.9);
+          transform: translateY(pxToRem(-700)) scale(0.9);
           opacity: 0;
         }
       }
     }
+
     .howitwork-second {
       opacity: 0;
       animation: fadeIn 1s forwards;
-      animation-delay: 1.5s; // starts after robot animation ends
+      animation-delay: 1.5s;
     }
 
     @keyframes fadeIn {
@@ -699,7 +3654,7 @@ body::-webkit-scrollbar {
 
       100% {
         opacity: 0;
-        transform: translateY(-100px);
+        transform: translateY(pxToRem(-100));
       }
     }
   }
@@ -719,8 +3674,7 @@ body::-webkit-scrollbar {
   }
 
   &.zoom-down-out {
-    -webkit-animation: scale-down-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-      both;
+    -webkit-animation: scale-down-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation: scale-down-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     opacity: 1;
   }
@@ -790,7 +3744,7 @@ body::-webkit-scrollbar {
     top: 50%;
     left: 0;
     height: 0;
-    border-top: 2px dashed #a259ff;
+    border-top: pxToRem(2) dashed #a259ff;
     z-index: 0;
     width: 0;
     animation: drawTimeline 5.5s linear forwards;
@@ -811,11 +3765,11 @@ body::-webkit-scrollbar {
     z-index: 1;
     display: flex;
     justify-content: space-around;
-    margin-right: 50px;
+    margin-right: pxToRem(50);
 
     .timeline-dot {
-      width: 30px;
-      height: 30px;
+      width: pxToRem(30);
+      height: pxToRem(30);
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -843,13 +3797,13 @@ body::-webkit-scrollbar {
     }
 
     .planet-width {
-      width: 126px;
+      width: pxToRem(126);
     }
   }
 
   .howitworks-step {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(pxToRem(-100));
     transition: all 0.7s ease-in-out;
 
     &.visible {
@@ -857,6 +3811,7 @@ body::-webkit-scrollbar {
       transform: translateX(0);
     }
   }
+
   h2.space-grotesk-bold {
     z-index: 5;
     position: relative;
@@ -866,7 +3821,7 @@ body::-webkit-scrollbar {
 @keyframes zoomInUpCustom {
   0% {
     opacity: 0;
-    transform: scale(0.6) translateY(400px);
+    transform: scale(0.6) translateY(pxToRem(400));
   }
 
   100% {
@@ -882,9 +3837,10 @@ body::-webkit-scrollbar {
 /*===================== HOW IT WORKS SECTION CSS END====================================*/
 
 /* ==================== REDEEM AND EARN SECTIONS CSS ==================================== */
+
 .redeem-circle {
-  width: 300px;
-  height: 300px;
+  width: pxToRem(300);
+  height: pxToRem(300);
   background-image: url('../src/assets/images/home/redeemEarn/blueBaseStar.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -893,13 +3849,12 @@ body::-webkit-scrollbar {
   overflow: hidden;
 }
 
-/* Fade Up Animation */
+// ================= Fade Animations =================
+
 .fade-up {
   opacity: 0;
-  transform: translateY(50px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  transform: translateY(pxToRem(50));
+  transition: opacity 1s ease, transform 1s ease;
 
   &.aos-animate {
     opacity: 1;
@@ -907,13 +3862,10 @@ body::-webkit-scrollbar {
   }
 }
 
-/* Fade Left Animation */
 .fade-left {
   opacity: 0;
-  transform: translateX(200px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  transform: translateX(pxToRem(200));
+  transition: opacity 1s ease, transform 1s ease;
 
   &.aos-animate {
     opacity: 1;
@@ -921,13 +3873,10 @@ body::-webkit-scrollbar {
   }
 }
 
-/* Fade Right Animation */
 .fade-right {
   opacity: 0;
-  transform: translateX(-200px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  transform: translateX(pxToRem(-200));
+  transition: opacity 1s ease, transform 1s ease;
 
   &.aos-animate {
     opacity: 1;
@@ -936,7 +3885,7 @@ body::-webkit-scrollbar {
 }
 
 .redeem-shadow {
-  filter: drop-shadow(-10px 0px 10px #493495);
+  filter: drop-shadow(pxToRem(-10) 0 pxToRem(10) #493495);
 }
 
 .redem-box {
@@ -947,21 +3896,19 @@ body::-webkit-scrollbar {
 .gift-circle-sec {
   margin-left: 0;
   transition: margin-left 1s ease;
-  /* 1 second transition */
-}
 
-.gift-circle-sec:hover {
-  margin-left: -7rem;
+  &:hover {
+    margin-left: -7rem;
+  }
 }
 
 .playearn-circle-sec {
   margin-left: 0;
   transition: margin-left 1s ease;
-  /* 1 second transition */
-}
 
-.playearn-circle-sec:hover {
-  margin-left: 7rem;
+  &:hover {
+    margin-left: 7rem;
+  }
 }
 
 .launch-rocket {
@@ -984,19 +3931,20 @@ body::-webkit-scrollbar {
 }
 
 .earn-shadow {
-  filter: drop-shadow(10px 0px 10px #493495);
+  filter: drop-shadow(pxToRem(10) 0 pxToRem(10) #493495);
 }
 
 .howitwork-side-modal {
   bottom: 15%;
-}
 
-.howitwork-side-modal .side-text {
-  writing-mode: sideways-lr;
+  .side-text {
+    writing-mode: sideways-lr;
+  }
 }
 
 /* ==================== REDEEM AND EARN SECTIONS CSS END ==================================== */
 /* ==================== PLAY AND EARN SECTIONS CSS ==================================== */
+
 .pay-earn-section {
   background-image: url('../src/assets/images/home/playEarn/PlayAndearn.png');
   width: 100%;
@@ -1004,68 +3952,24 @@ body::-webkit-scrollbar {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-}
 
-/* Initial hidden state */
-.pay-earn-section,
-.pay-earn-content {
+  // Initial hidden state
   opacity: 0;
   transform: scale(0.5);
-}
 
-/* Animate Section (Zoom In from Bottom) */
-.animate-section {
-  animation: zoomInUpFromBottom 1s ease forwards;
-}
-
-@keyframes zoomInUpFromBottom {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) translateY(100vh);
-    /* Start from bottom */
+  &.animate-section {
+    animation: zoomInUpFromBottom 1s ease forwards;
   }
 
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    /* Final position */
-  }
-}
-
-/* Animate Content (Fade Up) with delay */
-.animate-content {
-  animation: zoomInUpFromBottom 1s ease forwards;
-  animation-delay: 1.5s;
-}
-
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Animate Cards (Fade Up) with further delay */
-.animate-card {
-  animation: fadeUpCard 0.3s ease forwards;
-  animation-delay: 2.5s;
-  opacity: 0;
-}
-
-@keyframes fadeUpCard {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  @keyframes zoomInUpFromBottom {
+    0% {
+      opacity: 0;
+      transform: scale(0.3) translateY(100vh);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
   }
 }
 
@@ -1076,11 +3980,39 @@ body::-webkit-scrollbar {
     rgba(0, 0, 0, 0) 0%,
     rgba(10, 28, 69, 0.8) 100%
   );
+  opacity: 0;
+  transform: scale(0.5);
+
+  &.animate-content {
+    animation: zoomInUpFromBottom 1s ease forwards;
+    animation-delay: 1.5s;
+  }
+
+  .row {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes fadeUpCard {
+  0% {
+    opacity: 0;
+    transform: translateY(pxToRem(50));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card {
+  animation: fadeUpCard 0.3s ease forwards;
+  animation-delay: 2.5s;
+  opacity: 0;
 }
 
 .play-earn-img {
   left: 50%;
-  transform: translate(-50%, -0%);
+  transform: translate(-50%, 0);
   top: 2%;
 }
 
@@ -1093,218 +4025,173 @@ body::-webkit-scrollbar {
   width: 20%;
 }
 
-.pay-earn-content .row {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
 .hover-card {
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-.hover-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 10;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 pxToRem(4) pxToRem(20) rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
 }
 
 /* ==================== PLAY AND EARN SECTIONS CSS END ==================================== */
 /* ==================== OFFER SECTIONS CSS ==================================== */
+
 .offer-section {
-  // background-image: url('../src/assets/images/home/offer/offerbg.png');
   width: 100%;
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   height: 350vh;
-  // overflow-x: scroll;
-}
 
-.offer-section::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari */
-}
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-.offer-sect-content {
-  position: relative;
-  z-index: 2;
-  height: 10dvh;
-  /* Fill the parent height */
-}
+  .offer-sect-content {
+    position: relative;
+    z-index: 2;
+    height: 10dvh;
+  }
 
-// animation
-.offer-slider-fade-left {
-  opacity: 0;
-  transform: translateX(150px);
-  transition:
-    opacity 5s ease,
-    transform 5s ease;
-  /* 5000ms */
-  overflow-x: hidden;
-}
-
-.offer-slider-fade-left.aos-animate {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.offer-bg-img-1 {
-  background-image: url('../src/assets/images/home/offer/card3bg.png');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.offer-bg-img-2,
-.offer-bg-img-4 {
-  background-image: url('../src/assets/images/home/offer/card2bg.png');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.offer-bg-img-3 {
-  background-image: url('../src/assets/images/home/offer/card1bg.png');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.offer-cards {
-  border-radius: 24px;
-  height: 307px;
-}
-
-.offer-slider .slick-slide {
-  padding: 0px 24px 0px 0px !important;
-  box-sizing: border-box;
-}
-
-.offer-slider .slick-arrow {
-  display: none !important;
-}
-
-.offer-exc-card {
-  width: 410px !important;
-}
-
-.offer-exc-rocket {
-  left: 14%;
-  bottom: 45%;
-}
-
-.price-trolley {
-  border-radius: 70px 20px 20px 20px;
-  background-image: url('../src/assets/images/home/offer/exclperk1.png');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 491px;
-}
-
-.price-watch {
-  border-radius: 20px;
-  background-image: url('../src/assets/images/home/offer/exclperk2.png');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 233px;
-}
-
-.price-headphone {
-  border-radius: 20px 20px 70px 20px;
-  background-image: url('../src/assets/images/home/offer/exclperk3.png');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 233px;
-}
-
-.purple-border-bottom {
-  border-bottom: 1px solid var(--push-notification);
-}
-
-.offer-footer-section {
-  background-image: url('../src/assets/images/home/offer/Footer.svg');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 75dvh;
-  z-index: 9;
-  overflow: hidden;
-}
-
-.footer-semi-planet {
-  background-image: url('../src/assets/icons/home/offer/semiplanet.svg');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 50%;
-  height: 94%;
-  bottom: 0%;
-  z-index: 1;
-  left: 25%;
-}
-
-.price-exclusive {
-  // grid-auto-columns: 1rf 1rf 1rf;
-  grid-template-columns: auto auto auto;
-}
-
-.truncate-text-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.truncate-text-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-// ======= offer semi plnt raise animation ===========
-.hoverRaiseSemiPlnt {
-  opacity: 0;
-  // transform: translateY(0);
-  height: 0%;
-  transition: all 0.5s ease;
-}
-.hoverRaiseSemiPlnt.active {
-  opacity: 1;
-  height: 94%;
-  // transform: translateY(-0%);
-}
-
-/* ==================== OFFER SECTIONS CSS END ==================================== */
-
-//===================== FOOTER CSS AND ANIMATION CSS -=============================
-
-@keyframes fadeUp {
-  0% {
+  .offer-slider-fade-left {
     opacity: 0;
-    transform: translateY(70px);
+    transform: translateX(pxToRem(150));
+    transition: opacity 5s ease, transform 5s ease;
+    overflow-x: hidden;
+
+    &.aos-animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  .offer-slider {
+    .slick-slide {
+      padding: 0 pxToRem(24) 0 0 !important;
+      box-sizing: border-box;
+    }
+
+    .slick-arrow {
+      display: none !important;
+    }
   }
-}
 
-.footer-fade-up {
-  opacity: 0;
-  /* start hidden */
-  animation: fadeUp 1s forwards;
-  /* duration of 1s, keep end state */
-}
+  .offer-cards {
+    border-radius: pxToRem(24);
+    height: pxToRem(307);
+  }
 
-.footer-delay-700 {
-  animation-delay: 0.7s;
+  .offer-exc-card {
+    width: pxToRem(410) !important;
+  }
+
+  .offer-exc-rocket {
+    left: 14%;
+    bottom: 45%;
+  }
+
+  .offer-bg-img-1 {
+    background: url('../src/assets/images/home/offer/card3bg.png') top / cover no-repeat;
+  }
+
+  .offer-bg-img-2,
+  .offer-bg-img-4 {
+    background: url('../src/assets/images/home/offer/card2bg.png') top / cover no-repeat;
+  }
+
+  .offer-bg-img-3 {
+    background: url('../src/assets/images/home/offer/card1bg.png') top / cover no-repeat;
+  }
+
+  .price-trolley {
+    border-radius: pxToRem(70) pxToRem(20) pxToRem(20) pxToRem(20);
+    background: url('../src/assets/images/home/offer/exclperk1.png') top / cover no-repeat;
+    height: pxToRem(491);
+  }
+
+  .price-watch {
+    border-radius: pxToRem(20);
+    background: url('../src/assets/images/home/offer/exclperk2.png') top / cover no-repeat;
+    height: pxToRem(233);
+  }
+
+  .price-headphone {
+    border-radius: pxToRem(20) pxToRem(20) pxToRem(70) pxToRem(20);
+    background: url('../src/assets/images/home/offer/exclperk3.png') top / cover no-repeat;
+    height: pxToRem(233);
+  }
+
+  .purple-border-bottom {
+    border-bottom: 1px solid var(--push-notification);
+  }
+
+  .offer-footer-section {
+    background: url('../src/assets/images/home/offer/Footer.svg') top / cover no-repeat;
+    width: 100%;
+    height: 75dvh;
+    z-index: 9;
+    overflow: hidden;
+  }
+
+  .footer-semi-planet {
+    background: url('../src/assets/icons/home/offer/semiplanet.svg') top / cover no-repeat;
+    width: 50%;
+    height: 94%;
+    bottom: 0%;
+    z-index: 1;
+    left: 25%;
+  }
+
+  .price-exclusive {
+    grid-template-columns: auto auto auto;
+  }
+
+  .truncate-text-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .truncate-text-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hoverRaiseSemiPlnt {
+    opacity: 0;
+    height: 0%;
+    transition: all 0.5s ease;
+
+    &.active {
+      opacity: 1;
+      height: 94%;
+    }
+  }
+
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(pxToRem(70));
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .footer-fade-up {
+    opacity: 0;
+    animation: fadeUp 1s forwards;
+  }
+
+  .footer-delay-700 {
+    animation-delay: 0.7s;
+  }
 }
 
 //===================== FOOTER CSS AND ANIMATION CSS END -=============================
@@ -2444,30 +5331,3 @@ body::-webkit-scrollbar {
 .cursor-pointer {
   cursor: pointer;
 }
-// .move-left {
-//   transform: translateX(-100%);
-//   transition: transform 1s ease-in-out;
-// }
-
-// .move-right {
-//   transform: translateX(100%);
-//   transition: transform 1s ease-in-out;
-// }
-// .left-box {
-//   transition: transform 0.7s ease, opacity 0.7s ease;
-// }
-
-// .left-box.default-position {
-//   transform: translateX(0);
-//   opacity: 1;
-// }
-
-// .left-box.move-left {
-//   transform: translateX(-150px);
-//   opacity: 0;
-// }
-
-// .left-box.move-right {
-//   transform: translateX(150px);
-//   opacity: 0;
-// }
