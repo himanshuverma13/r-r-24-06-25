@@ -4137,22 +4137,7 @@ body::-webkit-scrollbar {
     border-bottom: 1px solid var(--push-notification);
   }
 
-  .offer-footer-section {
-    background: url('../src/assets/images/home/offer/Footer.svg') top / cover no-repeat;
-    width: 100%;
-    height: 75dvh;
-    z-index: 9;
-    overflow: hidden;
-  }
 
-  .footer-semi-planet {
-    background: url('../src/assets/icons/home/offer/semiplanet.svg') top / cover no-repeat;
-    width: 50%;
-    height: 94%;
-    bottom: 0%;
-    z-index: 1;
-    left: 25%;
-  }
 
   .price-exclusive {
     grid-template-columns: auto auto auto;
@@ -4203,6 +4188,22 @@ body::-webkit-scrollbar {
     animation-delay: 0.7s;
   }
 }
+  .offer-footer-section {
+    background: url('../src/assets/images/home/offer/Footer.svg') top / cover no-repeat;
+    width: 100%;
+    height: 75dvh;
+    z-index: 9;
+    overflow: hidden;
+  }
+
+  .footer-semi-planet {
+    background: url('../src/assets/icons/home/offer/semiplanet.svg') top / cover no-repeat;
+    width: 50%;
+    height: 94%;
+    bottom: 0%;
+    z-index: 1;
+    left: 25%;
+  }
 
 //===================== FOOTER CSS AND ANIMATION CSS END -=============================
 
