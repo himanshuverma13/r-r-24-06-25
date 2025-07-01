@@ -3167,6 +3167,7 @@ body::-webkit-scrollbar {
   --light-yellow: rgba(255, 240, 96, 1);
   --register-inp: rgba(92, 75, 161, 0.1);
   --text-light-gray: rgba(161, 161, 161, 1);
+  --light-blue-background:rgba(73, 52, 149, 0.1);
 }
 
 /* ================ font colors ============== */
@@ -4351,6 +4352,9 @@ body::-webkit-scrollbar {
   width: 164.32px;
   height: 145.6px;
 }
+.reward-history{
+  border: 1.5px solid var(--text-blue);
+}
 
 .my-reward-cards {
   grid-template-columns: auto auto;
@@ -4543,12 +4547,12 @@ body::-webkit-scrollbar {
 // ==================== MY REWARDS ANIMATIONS CSS ---------------------------------
 .ufo-fixed {
   position: fixed;
-  right: 7.5%;
+  // right: 7.5%;
   top: 12%;
 }
 .ufo-fixed-active {
   position: fixed;
-  right: 7.5%;
+  // right: 7.5%;
   top: 12%;
   animation: moveUpRewUfo 0.7s ease forwards;
 }
@@ -5299,7 +5303,7 @@ body::-webkit-scrollbar {
 .ufo-fixed {
   position: fixed;
   top: 90px;
-  right: 7.5%;
+  // right: 7.5%;
 }
 
 // ========================================================================
