@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./trackModal.scss";
 import astronaut from "../../assets/icons/home/MyReferral/track-astronut.svg";
+import tick from "../../assets/icons/home/MyReferral/tick.svg";
 import { Modal, Button } from 'react-bootstrap';
 // import { FaCheck } from "react-icons/fa6";
 
@@ -95,27 +96,29 @@ const TrackModal = () => {
 
                     <div className="progress-section my-3">
                         {steps.map(step => (
-                            <div key={step.key} className="row step justify-content-center">
+                            <div key={step?.key} className="row step justify-content-center">
                                 <div className="col-lg-8 step-content d-flex">
                                     <div>
-                                        <img src={progressSteps[step.key] ? step.img : step.grayImg} className='me-2' alt="Step Icon" />
+                                        <img src={progressSteps[step?.key] ? step?.img : step?.grayImg} className='me-2' alt="Step Icon" />
                                     </div>
                                     <div>
-                                        <p className={`space-grotesk-medium font-size-18 mb-0 ${progressSteps[step.key] ? 'text-blue' : 'text-gray'}`}>
-                                            {step.title}
+                                        <p className={`space-grotesk-medium font-size-18 mb-0 ${progressSteps[step?.key] ? 'text-blue' : 'text-gray'}`}>
+                                            {step?.title}
                                         </p>
-                                        <p className={`mb-0 font-size-12 space-grotesk-regular lh-1 ${progressSteps[step.key] ? 'text-blue' : 'text-gray'}`}>
-                                            {step.desc}
+                                        <p className={`mb-0 font-size-12 space-grotesk-regular lh-1 ${progressSteps[step?.key] ? 'text-blue' : 'text-gray'}`}>
+                                            {step?.desc}
                                         </p>
                                     </div>
                                 </div>
                                 <div className="col-lg-3 d-flex align-items-center flex-column position-relative">
                                     <div className="circle-wrapper position-relative">
-                                        <div className={`circle ${progressSteps[step.key] ? 'filled-circle' : 'empty-circle'}`}>
-                                            {progressSteps[step.key] && <FaCheck />}
+                                        <div className={`circle ${progressSteps[step?.key] ? 'filled-circle' : 'empty-circle'}`}>
+                                            {progressSteps[step?.key] &&
+                                            <img className='track-tick' src={tick} alt="" />
+                                             }
                                         </div>
-                                        {steps.length - 1 !== steps.findIndex(s => s.key === step.key) && (
-                                            <div className={`vertical-line ${animateSteps[step.key] ? 'line-fill' : ''}`}></div>
+                                        {steps.length - 1 !== steps.findIndex(s => s.key === step?.key) && (
+                                            <div className={`vertical-line ${animateSteps[step?.key] ? 'line-fill' : ''}`}></div>
                                         )}
                                     </div>
                                 </div>
