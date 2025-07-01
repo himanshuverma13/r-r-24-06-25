@@ -34,8 +34,10 @@ import Stratergy from '../../assets/icons/home/MyRewards/strategry-consultant.sv
 import Report from '../../assets/icons/home/MyRewards/report.svg';
 import refalien from '../../assets/icons/home/MyRewards/refalien.svg';
 import StartFour from '../../assets/icons/home/MyRewards/StarFour.svg';
+import revClock from '../../assets/icons/home/MyRewards/clock.svg';
 import FAQ from '../../components/faq';
 import PlayAndEarnCard from '../../components/playAndEarnCard';
+import RewardHistory from './rewardHistory';
 
 const RewardSliderJson = [
   { num: 'A', img: gifplnt1, lock: false },
@@ -227,6 +229,8 @@ const MyRewardFirstScreen = () => {
   // States
   // ==============
   const [RwdAnimate, setRwdAnimate] = useState(false);
+  const [showRwrdHstry, setshowRwrdHstry] = useState(false);
+  console.log('showRwrdHstry: ', showRwrdHstry);
   const [ShowSecScr, setShowSecScr] = useState(true);
   const [leftScrolAnimt, setleftScrolAnimt] = useState(true);
   const [UfoBg, setUfoBg] = useState(false);
@@ -265,93 +269,104 @@ const MyRewardFirstScreen = () => {
       <section
         className={` reward-section position-relative ${RwdAnimate ? '' : 'height-100vh overflow-hidden'}`}
       >
-        <div className="reward-inner-section">
-          <div
-            className={`reward-nav-animt ${RwdAnimate ? 'reward-nav-animt-move-up' : ''}`}
-          >
-            <Navbar />
-          </div>
-
-          {/* UFO SHIP SIDE NAV */}
-          <div className="container-fluid ">
+        {showRwrdHstry ? (
+          <>
+          <RewardHistory showHistory={setshowRwrdHstry} />
+          </>
+        ) : (
+          <div className="reward-inner-section">
             <div
-              className={`px-0 position-fixed z-1 w-100 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
-              style={{
-                height: '95px',
-              }}
-            ></div>
-            <div
-              className={`row justify-content-between ${RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} w-100 z-3 px-3 mt-lg-3`}
+              className={`reward-nav-animt ${RwdAnimate ? 'reward-nav-animt-move-up' : ''}`}
             >
-              <div className="col-lg-3"></div>
-              <div className="col-lg-4 d-flex justify-content-end px-0">
-                <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
-                  <img
-                    className="position-absolute till-ship-img"
-                    src={tiltship}
-                    alt="tiltship"
-                  />
-                  <div className="py-2 offset-2 text-white d-flex justify-content-evenly align-items-center">
-                    <span className="montserrat-bold font-14 montserrat-bold till-ship-border-color pe-3 z-1 position-relative">
-                      300
-                      <img className="my-1 mx-2" src={metero} alt="metero" />
-                      <span className="font-14 montserrat-medium">Meteors</span>
-                    </span>
-                    <span className="font-14 montserrat-semibold">
-                      1
-                      <img className="mx-1" src={star} alt="star" />
-                      <span className="space-grotesk-medium">star</span>
-                    </span>
+              <Navbar />
+            </div>
+
+            {/* UFO SHIP SIDE NAV */}
+            <div className="container-fluid ">
+              <div
+                className={`px-0 position-fixed z-1 w-100 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
+                style={{
+                  height: '95px',
+                }}
+              ></div>
+              <div
+                className={`row justify-content-between ${RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} w-100 z-3 px-3 mt-lg-3`}
+              >
+                <div className="col-lg-4 d-flex justify-content-end px-0">
+                  <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
+                    <img
+                      className="position-absolute till-ship-img"
+                      src={tiltship}
+                      alt="tiltship"
+                    />
+                    <div className="py-2 offset-2 text-white d-flex justify-content-evenly align-items-center">
+                      <span className="montserrat-bold font-14 montserrat-bold till-ship-border-color pe-3 z-1 position-relative">
+                        300
+                        <img className="my-1 mx-2" src={metero} alt="metero" />
+                        <span className="font-14 montserrat-medium">
+                          Meteors
+                        </span>
+                      </span>
+                      <span className="font-14 montserrat-semibold">
+                        1
+                        <img className="mx-1" src={star} alt="star" />
+                        <span className="space-grotesk-medium">star</span>
+                      </span>
+                    </div>
                   </div>
+                </div>
+                <div className="col-lg-3 text-center">
+                  <button onClick={()=>setshowRwrdHstry(true)} className="bg-transparent rounded-5 px-3 py-1 text-blue font-16 montserrat-semibold reward-history">
+                  Reward History <img className='' src={revClock} alt="" />
+                </button>
                 </div>
               </div>
             </div>
-          </div>
-          {/* MY REWARDS FIRST SCREEN */}
-          {ShowSecScr && (
-            <>
-              <div className="container sdfsdfd">
-                <div className={`d-flex my-reward-cards gap-4 mt-5 px-0 `}>
-                  <div className="w-50 myreward-card-1 px-4 pb-4 rounded-4">
-                    <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
-                      My Collections
-                    </h2>
-                    <p className="font-14 montserrat-medium text-white">
-                      Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                    </p>
-                    <div className="row justify-content-around">
-                      <div className="col-lg-7">
-                        <div className="rounded-4 background-light-white-1 position-relative px-2 pb-1 pt-2 mt-4">
-                          <span className="font-46 montserrat-semibold text-blue ms-1">
-                            X
-                          </span>{' '}
-                          <span className="text-blue font-16 montserrat-semibold ms-1">
-                            Stars
-                          </span>{' '}
-                          <img
-                            className="position-absolute w-50 myreward-star"
-                            src={star}
-                            alt="star"
-                          />
-                        </div>
-
-                        <div className="d-flex position-relative justify-content-between rounded-4 background-light-white-1 px-2 pb-1 pt-5 mt-4">
-                          <div className="d-inline">
+            {/* MY REWARDS FIRST SCREEN */}
+            {ShowSecScr && (
+              <>
+                <div className="container sdfsdfd">
+                  <div className={`d-flex my-reward-cards gap-4 mt-5 px-0 `}>
+                    <div className="w-50 myreward-card-1 px-4 pb-4 rounded-4">
+                      <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
+                        My Collections
+                      </h2>
+                      <p className="font-14 montserrat-medium text-white">
+                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                      </p>
+                      <div className="row justify-content-around">
+                        <div className="col-lg-7">
+                          <div className="rounded-4 background-light-white-1 position-relative px-2 pb-1 pt-2 mt-4">
                             <span className="font-46 montserrat-semibold text-blue ms-1">
                               X
                             </span>{' '}
                             <span className="text-blue font-16 montserrat-semibold ms-1">
-                              Meteors
+                              Stars
                             </span>{' '}
+                            <img
+                              className="position-absolute w-50 myreward-star"
+                              src={star}
+                              alt="star"
+                            />
                           </div>
-                          <img
-                            className="w-25 position-absolute myreward-shotingmeteor"
-                            src={shootingmeteor}
-                            alt="star"
-                          />
+
+                          <div className="d-flex position-relative justify-content-between rounded-4 background-light-white-1 px-2 pb-1 pt-5 mt-4">
+                            <div className="d-inline">
+                              <span className="font-46 montserrat-semibold text-blue ms-1">
+                                X
+                              </span>{' '}
+                              <span className="text-blue font-16 montserrat-semibold ms-1">
+                                Meteors
+                              </span>{' '}
+                            </div>
+                            <img
+                              className="w-25 position-absolute myreward-shotingmeteor"
+                              src={shootingmeteor}
+                              alt="star"
+                            />
+                          </div>
                         </div>
-                      </div>
-                      {/* <div className="rounded-4 background-light-white position-relative px-2 pb-1 pt-2 mt-4">
+                        {/* <div className="rounded-4 background-light-white position-relative px-2 pb-1 pt-2 mt-4">
                     <span className="font-46 montserrat-semibold text-blue ms-1">
                       X
                     </span>{' '}
@@ -365,240 +380,248 @@ const MyRewardFirstScreen = () => {
                     />
                   </div> */}
 
-                      <div className="col-lg-4 rounded-4 background-light-white-1 px-2 pb-1 pt-4 mt-4 position-relative">
-                        <img
-                          src={Label}
-                          className="position-absolute myreward-voucher"
-                          alt="Laoding"
-                        />
+                        <div className="col-lg-4 rounded-4 background-light-white-1 px-2 pb-1 pt-4 mt-4 position-relative">
+                          <img
+                            src={Label}
+                            className="position-absolute myreward-voucher"
+                            alt="Laoding"
+                          />
 
-                        <div className="position-absolute bottom-0">
-                          <span className="font-46 montserrat-semibold text-blue ms-1">
-                            X
-                          </span>{' '}
-                          <span className="text-blue font-16 montserrat-semibold ms-1">
-                            Vouchers
-                          </span>{' '}
+                          <div className="position-absolute bottom-0">
+                            <span className="font-46 montserrat-semibold text-blue ms-1">
+                              X
+                            </span>{' '}
+                            <span className="text-blue font-16 montserrat-semibold ms-1">
+                              Vouchers
+                            </span>{' '}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="w-50 myreward-card-2 px-4 pb-4 rounded-4">
-                    <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
-                      Earn More
-                    </h2>
-                    <p className="font-14 montserrat-medium text-white">
-                      Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                    </p>
-                    <label
-                      className="d-block font-14 montserrat-medium text-white mb-1"
-                      htmlFor="Invite Code"
-                    >
-                      Invite Code
-                    </label>
-                    <input
-                      className="background-light-white-2 border-0 rounded-3 w-100 py-2"
-                      type="text"
-                      name=""
-                      id=""
-                    />
-                    <label
-                      className="d-block font-14 montserrat-medium text-white mt-4 mb-1"
-                      htmlFor="Invite Link"
-                    >
-                      Invite Link
-                    </label>
-                    <input
-                      className="background-light-white-2 border-0 rounded-3 w-100 py-2"
-                      type="text"
-                      name=""
-                      id=""
-                    />
-                    <div className="d-flex justify-content-between mt-4">
-                      <button className="px-4 font-16 montserrat-semibold width-48 py-2 bg-white text-blue border-blue rounded-3">
-                        Play & Earn
-                      </button>
-                      <button className="px-4 font-16 montserrat-semibold width-48 py-2 text-white background-text-blue rounded-3">
-                        Invite a Friend
-                      </button>
+                    <div className="w-50 myreward-card-2 px-4 pb-4 rounded-4">
+                      <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
+                        Earn More
+                      </h2>
+                      <p className="font-14 montserrat-medium text-white">
+                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                      </p>
+                      <label
+                        className="d-block font-14 montserrat-medium text-white mb-1"
+                        htmlFor="Invite Code"
+                      >
+                        Invite Code
+                      </label>
+                      <input
+                        className="background-light-white-2 border-0 rounded-3 w-100 py-2"
+                        type="text"
+                        name=""
+                        id=""
+                      />
+                      <label
+                        className="d-block font-14 montserrat-medium text-white mt-4 mb-1"
+                        htmlFor="Invite Link"
+                      >
+                        Invite Link
+                      </label>
+                      <input
+                        className="background-light-white-2 border-0 rounded-3 w-100 py-2"
+                        type="text"
+                        name=""
+                        id=""
+                      />
+                      <div className="d-flex justify-content-between mt-4">
+                        <button className="px-4 font-16 montserrat-semibold width-48 py-2 bg-white text-blue border-blue rounded-3">
+                          Play & Earn
+                        </button>
+                        <button className="px-4 font-16 montserrat-semibold width-48 py-2 text-white background-text-blue rounded-3">
+                          Invite a Friend
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  className={`myreward-bottom mt-5 text-center ${RwdAnimate ? 'rwd-jrny-hide' : ''}`}
-                >
-                  <h2 className="m-0 font-32 space-grotesk-bold text-blue">
-                    Your Reward Journey So Far
-                  </h2>
-                  <img
-                    onClick={handleRewardAnimate}
-                    className="offset-3 cursor-pointer"
-                    src={longArrow}
-                    alt="longArrow"
-                  />
-                </div>
-                <div
-                  className={`position-absolute bottom-0 start-0 ${RwdAnimate ? 'footer-rkt-down' : ''}`}
-                >
-                  <img
-                    className="width-60"
-                    src={rewardRocket}
-                    alt="footerrocket"
-                  />
-                </div>
-              </div>
-            </>
-          )}
-
-          {leftScrolAnimt && (
-            <>
-              {/* REWARD JOURNEY SLIDER */}
-              <div className="container">
-                <div
-                  className={`d-flex justify-content-between background-text-blue rounded-4 overflow-hidden position-relative py-3 mt-5 ${RwdAnimate ? 'rwd-jrny-sld-active' : 'rwd-jrny-sld'}`}
-                >
-                  <div className="width-16">
-                    <h3 className="font-20 montserrat-semibold text-white ms-3 w-75">
-                      Your Reward Journey <br /> So Far
-                    </h3>
+                  <div
+                    className={`myreward-bottom mt-5 text-center ${RwdAnimate ? 'rwd-jrny-hide' : ''}`}
+                  >
+                    <h2 className="m-0 font-32 space-grotesk-bold text-blue">
+                      Your Reward Journey So Far
+                    </h2>
                     <img
-                      className="position-absolute reward-moving-rkt"
-                      src={moverocket}
-                      alt="moverocket"
-                    />
-                    <img
-                      className="width-10 position-absolute bottom-0 "
-                      src={clouds}
-                      alt="clouds"
+                      onClick={handleRewardAnimate}
+                      className="offset-3 cursor-pointer"
+                      src={longArrow}
+                      alt="longArrow"
                     />
                   </div>
-                  <div className="slider-container width-82 pe-2">
-                    <Slider className="reward-slider" {...rewardSliderSetting}>
-                      {RewardSliderJson?.map((slide) => (
-                        <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 ">
-                          <h4 className="font-14 montserrat-semibold text-blue">
-                            Planet {slide?.num}
-                          </h4>
-                          <div className="position-relative d-flex justify-content-center">
-                            <img
-                              className="width-24 mx-auto position-absolute"
-                              src={slide?.img}
-                              alt="reward image"
-                            />
-                            <img
-                              className="width-34 mx-auto mt-5"
-                              src={plntbase}
-                              alt="reward image"
-                            />
-                          </div>
-
-                          {/* <h4 className="font-14 montserrat-regular">1000 Meteors</h4> */}
-                          {slide?.lock ? (
-                            <button className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
-                              1000 Meteors{' '}
-                              <img className=" ms-3" src={lock} alt="Loading" />
-                            </button>
-                          ) : (
-                            <button
-                              onClick={handleNextScrAnimt}
-                              className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12  py-2 mx-3 montserrat-semibold text-white"
-                            >
-                              <span className="">1000 Meteors</span>
-                            </button>
-                          )}
-                        </div>
-                      ))}
-                    </Slider>
+                  <div
+                    className={`position-absolute bottom-0 start-0 ${RwdAnimate ? 'footer-rkt-down' : ''}`}
+                  >
+                    <img
+                      className="width-60"
+                      src={rewardRocket}
+                      alt="footerrocket"
+                    />
                   </div>
                 </div>
-                {/* Discount Cards start here */}
-                <div className="discount-code-section my-5 px-4">
-                  <div className="discount-bg-img pt-4">
-                    <p className="font-size-18 montserrat-bold text-blue">
-                      Discount Codes
-                    </p>
-                  </div>
-                  <p className="text-blue font-size-14 montserrat-medium mb-1">
-                    Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                  </p>
-                  <div className="slider-container discount-slider pb-4 px-2">
-                    <Slider className="" {...settings}>
-                      {discountData.map((item, index) => (
-                        <div key={index} className="px-2">
-                          <div className="discount-card background-text-blue row ps-2 gx-0 position-relative">
-                            <div className="col-8 text-white d-flex align-items-center my-2 justify-content-center">
-                              <div className="discount-white-box"></div>
-                              <p className="font-size-14 montserrat-medium ps-2 mt-2 lh-sm">
-                                {item.mainText}
-                                <span className="montserrat-bold">
-                                  {item.highlight}
-                                </span>{' '}
-                                {item.subText}
-                              </p>
+              </>
+            )}
+
+            {leftScrolAnimt && (
+              <>
+                {/* REWARD JOURNEY SLIDER */}
+                <div className="container">
+                  <div
+                    className={`d-flex justify-content-between background-text-blue rounded-4 overflow-hidden position-relative py-3 mt-5 ${RwdAnimate ? 'rwd-jrny-sld-active' : 'rwd-jrny-sld'}`}
+                  >
+                    <div className="width-16">
+                      <h3 className="font-20 montserrat-semibold text-white ms-3 w-75">
+                        Your Reward Journey <br /> So Far
+                      </h3>
+                      <img
+                        className="position-absolute reward-moving-rkt"
+                        src={moverocket}
+                        alt="moverocket"
+                      />
+                      <img
+                        className="width-10 position-absolute bottom-0 "
+                        src={clouds}
+                        alt="clouds"
+                      />
+                    </div>
+                    <div className="slider-container width-82 pe-2">
+                      <Slider
+                        className="reward-slider"
+                        {...rewardSliderSetting}
+                      >
+                        {RewardSliderJson?.map((slide) => (
+                          <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 ">
+                            <h4 className="font-14 montserrat-semibold text-blue">
+                              Planet {slide?.num}
+                            </h4>
+                            <div className="position-relative d-flex justify-content-center">
+                              <img
+                                className="width-24 mx-auto position-absolute"
+                                src={slide?.img}
+                                alt="reward image"
+                              />
+                              <img
+                                className="width-34 mx-auto mt-5"
+                                src={plntbase}
+                                alt="reward image"
+                              />
                             </div>
-                            <div className="col-4">
-                              <div
-                                className={`discount-deals montserrat-semibold font-size-12 ${item.badgeClass} px-3 py-1 text-blue me-0 position-absolute top-0 end-0`}
+
+                            {/* <h4 className="font-14 montserrat-regular">1000 Meteors</h4> */}
+                            {slide?.lock ? (
+                              <button className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
+                                1000 Meteors{' '}
+                                <img
+                                  className=" ms-3"
+                                  src={lock}
+                                  alt="Loading"
+                                />
+                              </button>
+                            ) : (
+                              <button
+                                onClick={handleNextScrAnimt}
+                                className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12  py-2 mx-3 montserrat-semibold text-white"
                               >
-                                {item.badgeText}
+                                <span className="">1000 Meteors</span>
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                      </Slider>
+                    </div>
+                  </div>
+                  {/* Discount Cards start here */}
+                  <div className="discount-code-section my-5 px-4">
+                    <div className="discount-bg-img pt-4">
+                      <p className="font-size-18 montserrat-bold text-blue">
+                        Discount Codes
+                      </p>
+                    </div>
+                    <p className="text-blue font-size-14 montserrat-medium mb-1">
+                      Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                    </p>
+                    <div className="slider-container discount-slider pb-4 px-2">
+                      <Slider className="" {...settings}>
+                        {discountData.map((item, index) => (
+                          <div key={index} className="px-2">
+                            <div className="discount-card background-text-blue row ps-2 gx-0 position-relative">
+                              <div className="col-8 text-white d-flex align-items-center my-2 justify-content-center">
+                                <div className="discount-white-box"></div>
+                                <p className="font-size-14 montserrat-medium ps-2 mt-2 lh-sm">
+                                  {item.mainText}
+                                  <span className="montserrat-bold">
+                                    {item.highlight}
+                                  </span>{' '}
+                                  {item.subText}
+                                </p>
+                              </div>
+                              <div className="col-4">
+                                <div
+                                  className={`discount-deals montserrat-semibold font-size-12 ${item.badgeClass} px-3 py-1 text-blue me-0 position-absolute top-0 end-0`}
+                                >
+                                  {item.badgeText}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </Slider>
+                        ))}
+                      </Slider>
+                    </div>
                   </div>
-                </div>
 
-                {/* Exclusive Perks */}
-                <div className="discount-code-section my-5 px-4">
-                  <div className="discount-bg-img pt-4">
-                    <p className="font-size-18 montserrat-bold text-blue">
-                      Exclusive Perks
+                  {/* Exclusive Perks */}
+                  <div className="discount-code-section my-5 px-4">
+                    <div className="discount-bg-img pt-4">
+                      <p className="font-size-18 montserrat-bold text-blue">
+                        Exclusive Perks
+                      </p>
+                    </div>
+                    <p className="text-blue font-size-14 montserrat-medium mb-2">
+                      Exclusive perks just for you
                     </p>
-                  </div>
-                  <p className="text-blue font-size-14 montserrat-medium mb-2">
-                    Exclusive perks just for you
-                  </p>
 
-                  <div className="slider-container exclusive-slider pb-4">
-                    <Slider {...settings}>
-                      {ExclusiveCardData.map((item, index) => (
-                        <div key={index}>
-                          <div className="discount-card background-text-blue row gx-0 p-3 mx-2">
-                            <div className="col-8 text-white">
-                              <p className="font-size-16 mb-0 text-uppercase montserrat-medium">
-                                {item.title}
-                              </p>
-                              <p className="font-size-14 montserrat-semibold exclusive-card-yellow-text">
-                                {item.subtitle}
-                              </p>
-                            </div>
-                            <div className="col-4 d-flex justify-content-end">
-                              <img
-                                src={item.image}
-                                className={`${item.imgClass}`}
-                                alt="Loading"
-                              />
-                            </div>
-                            <div className="col-12 d-flex justify-content-between align-items-center mt-3">
-                              <p className="font-size-14 space-grotesk-medium text-white mb-0">
-                                {item.pointsText}
-                              </p>
-                              <p className="exclusive-card-blue-text font-size-12 montserrat-medium mb-0">
-                                T&C Applied
-                              </p>
+                    <div className="slider-container exclusive-slider pb-4">
+                      <Slider {...settings}>
+                        {ExclusiveCardData.map((item, index) => (
+                          <div key={index}>
+                            <div className="discount-card background-text-blue row gx-0 p-3 mx-2">
+                              <div className="col-8 text-white">
+                                <p className="font-size-16 mb-0 text-uppercase montserrat-medium">
+                                  {item.title}
+                                </p>
+                                <p className="font-size-14 montserrat-semibold exclusive-card-yellow-text">
+                                  {item.subtitle}
+                                </p>
+                              </div>
+                              <div className="col-4 d-flex justify-content-end">
+                                <img
+                                  src={item.image}
+                                  className={`${item.imgClass}`}
+                                  alt="Loading"
+                                />
+                              </div>
+                              <div className="col-12 d-flex justify-content-between align-items-center mt-3">
+                                <p className="font-size-14 space-grotesk-medium text-white mb-0">
+                                  {item.pointsText}
+                                </p>
+                                <p className="exclusive-card-blue-text font-size-12 montserrat-medium mb-0">
+                                  T&C Applied
+                                </p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </Slider>
+                        ))}
+                      </Slider>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </>
-          )}
-        </div>
+              </>
+            )}
+          </div>
+        )}
       </section>
       <section
         className={`myreward-second-section ${RwdAnimate ? '' : 'd-none'}`}
