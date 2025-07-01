@@ -13,10 +13,10 @@ import instaImg from '../../assets/icons/home/MyReferral/insta.svg';
 import whtpImg from '../../assets/icons/home/MyReferral/whatsapp.svg';
 
 // Common Components
-import SliderCard from '../MyReferralSliderCards/SliderCard';
+import SliderCard from '../MyReferral/SliderCard';
 import FAQ from '../../components/faq';
 import Navbar from '../../components/navbar';
-import ReferralCards from '../MyReferralCards/referralCards';
+import ReferralCards from '../MyReferral/referralCards';
 
 // Import Json
 const faqData = [
@@ -39,7 +39,7 @@ const faqData = [
   },
 ];
 
-const MyReferralScreen2 = () => {
+const MyReferralScreen = () => {
   const inputRef = useRef(null);
   const [copied, setCopied] = useState(false);
 
@@ -55,16 +55,20 @@ const MyReferralScreen2 = () => {
 
   return (
     <>
-      <section className="hero-section position-relative d-flex align-items-center justify-content-center">
-        {/* <Navbar />
+      <section className="hero-section position-relative">
+        {/*
         <div className="referral-wrapper position-relative">
-          <div className="container z-1 pt-5">
-            <ReferralCards />
+        <div className="container z-1 pt-5">
+        <ReferralCards />
           </div>
         </div> */}
-        <div className="cloud-img position-absolute w-100 z-2 h-75 overflow-auto">
+        <div className="overflow-scroll h-100">
+          <Navbar />
           <div className="container">
-            <div className="invite-card overflow-hidden">
+            <div className="mb-5">
+              <ReferralCards /> 
+            </div>
+            <div className="invite-card my-refral-inner-content overflow-hidden">
               <div className="row pt-5 px-5 align-items-center">
                 <div className="col-lg-6 d-flex justify-content-center">
                   <div>
@@ -122,46 +126,45 @@ const MyReferralScreen2 = () => {
                 </div>
               </div>
             </div>
+            <div className="my-refral-inner-content">
+              {/* Referral Cards */}
+              <SliderCard />
+              {/* INVITING, TRACKING CARD SECTION */}
+              <div className="container">
+                <div className="font-32 space-grotesk-bold text-blue mt-120 mb-4 pb-4 ">
+                  Here's How You Earn with Every Referral
+                </div>
 
-            {/* Referral Cards */}
-            <SliderCard />
+                <div className="redeem-claim text-center py-5  rounded-4">
+                  <div className="font-24 montserrat-semibold text-white mb-3 ls-4">
+                    Inviting, Tracking, And Earning From Referrals
+                  </div>
+                  <p className="font-18 montserrat-medium text-white ls-4">
+                    Refer your circle, track your impact, and watch your rewards
+                    grow
+                  </p>
 
-            {/* INVITING, TRACKING CARD SECTION */}
-            <div className="container">
-              <div className="text-dark-blue mt-120 mb-4 pb-4 space-grotesk-bold font-size-32">
-                Here's How You Earn with Every Referral
+                  <div className="text-light-yellow font-32 space-grotesk-bold d-flex justify-content-center my-5 ls-4">
+                    Invite
+                    <img className="mx-4" src={StartFour} alt="Loading" />
+                    Friend Invests
+                    <img className="mx-4" src={StartFour} alt="Loading" />
+                    You Earn
+                  </div>
+                  <div className="pt-3 ">
+                    <button className="py-2 mx-3 width-18 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                      Invite a Friend
+                    </button>
+                    <button className="py-2 mx-3 width-18 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+                      Track
+                    </button>
+                  </div>
+                </div>
               </div>
-
-              <div className="redeem-claim text-center py-5">
-                <div className="font-24 montserrat-semibold text-white mb-3 ls-4">
-                  Inviting, Tracking, And Earning From Referrals
-                </div>
-                <p className="font-18 montserrat-medium text-white ls-4">
-                  Refer your circle, track your impact, and watch your rewards
-                  grow
-                </p>
-
-                <div className="text-light-yellow font-32 space-grotesk-bold d-flex justify-content-center my-5 ls-4">
-                  Invite
-                  <img className="mx-4" src={StartFour} alt="Loading" />
-                  Friend Invests
-                  <img className="mx-4" src={StartFour} alt="Loading" />
-                  You Earn
-                </div>
-                <div className="pt-3 ">
-                  <button className="py-2 mx-3 width-18 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
-                    Invite a Friend
-                  </button>
-                  <button className="py-2 mx-3 width-18 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
-                    Track
-                  </button>
-                </div>
+              {/* FAQ Section Start here */}
+              <div className="mb-5">
+                <FAQ items={faqData} />
               </div>
-            </div>
-
-            {/* FAQ Section Start here */}
-            <div className="mb-5">
-              <FAQ items={faqData} />
             </div>
           </div>
           {/* FOOTER SECTION */}
@@ -172,15 +175,16 @@ const MyReferralScreen2 = () => {
               </p>
             </div>
             <div
-              className="position-absolute footer-semi-planet"
+              className="position-absolute footer-semi-planet z-3"
               //   data-aos="fade-up"
               //   data-aos-delay="200"
             ></div>
           </div>
         </div>
+        <div className="cloud-img position-absolute w-100 z-2"></div>
       </section>
     </>
   );
 };
 
-export default MyReferralScreen2;
+export default MyReferralScreen;
