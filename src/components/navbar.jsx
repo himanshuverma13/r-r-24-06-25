@@ -40,7 +40,7 @@ const Navbar = () => {
         <div class="container-fluid justify-content-end">
           <div class="navbar-collapse my-0 py-0">
             <div className="container-fluid px-5">
-              <ul className="d-flex justify-content-between my-0 py-0 px-0">
+              <ul className="d-flex justify-content-between nav-ul my-0 py-0 px-0">
                 {navItems?.map((i, index) => {
                   return !i?.img ? (
                     <Link to={i?.to}>

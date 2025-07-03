@@ -110,7 +110,7 @@ const Index = ({isExiting,isActive}) => {
   // =================================
   return (
     <>
-      <section className="hero-section  position-relative height-100vh">
+      <section className={`hero-section  position-relative height-100vh ${showSecScr ? 'bg-firstscreen' : 'bg-secondscreen'}`}>
         <div className={`${showSecScr ? '' : 'container'}`}>
           {/* Navbar */}
           <div className={`${isVisible ? 'home-animt-show' : ''}`}>
@@ -177,7 +177,7 @@ const Index = ({isExiting,isActive}) => {
           </div>
           {/* Middle Section */}
           <div
-            className="row justify-content-between second-screen-xl"
+            className="row justify-content-between second-screen-xl mt-xl-72"
             ref={b2Ref}
           >
             {showSecScr ? (
@@ -277,7 +277,7 @@ const Index = ({isExiting,isActive}) => {
                     </div>
                   </div>
                   <div
-                    className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box  ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'}`}
+                    className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box play-earn-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'}`}
                     ref={leftBoxRef}
                     id="leftBox"
                   >
