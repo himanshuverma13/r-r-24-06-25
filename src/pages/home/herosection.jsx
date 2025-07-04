@@ -8,7 +8,7 @@ const Herosection = ({currentPlnt,HomeDataAPI}) => {
   // =========
 
   return (
-    <section className="banner-section">
+    <section id="Hero_Section" className="banner-section">
       <div className="container">
         <div className="text-center">
           <h3 className="text-uppercase text-blue space-grotesk-bold font-46 mb-0">
