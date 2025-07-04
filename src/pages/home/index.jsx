@@ -110,7 +110,7 @@ const Index = ({isExiting,isActive}) => {
   // =================================
   return (
     <>
-      <section className="hero-section  position-relative height-100vh">
+      <section id='Heome_Section' className={`hero-section  position-relative height-100vh ${showSecScr ? 'bg-firstscreen' : 'bg-secondscreen'}`}>
         <div className={`${showSecScr ? '' : 'container'}`}>
           {/* Navbar */}
           <div className={`${isVisible ? 'home-animt-show' : ''}`}>
@@ -177,17 +177,17 @@ const Index = ({isExiting,isActive}) => {
           </div>
           {/* Middle Section */}
           <div
-            className="row justify-content-between second-screen-xl"
+            className="row justify-content-between second-screen-xl mt-xl-72"
             ref={b2Ref}
           >
             {showSecScr ? (
-              <span className={`${!SecScrAnimt ? '' : 'middle-sect'}`}>
+              <div className={`${!SecScrAnimt ? '' : 'middle-sect'}`}>
                 <Herosection currentPlnt={['A', 'B', 'C', 'D'][currentIndex]} />
-              </span>
+              </div>
             ) : (
               // second page middle section sidepanel and 4 plnts
-              <span
-                className={`row justify-content-between second-screen-xl ${
+              <div
+                className={`row justify-content-between second-screen-xl ${isExiting ? 'hidden-second-sect' : 'visible-second-sect'} ${isActive ? 'default-position' : 'hidden-second-sect'} ${
                   !SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
                 }`}
               >
@@ -197,11 +197,7 @@ const Index = ({isExiting,isActive}) => {
                   }`}
                 >
                   <div
-                    className={`left-sidebar-main-div  ${
-                      !SecScrAnimt
-                        ? 'visible-second-sect'
-                        : 'hidden-second-sect'
-                    }`}
+                    className={`left-sidebar-main-div ${isExiting ? 'hidden-second-sect' : 'visible-second-sect'} ${isActive ? 'default-position' : 'hidden-second-sect'} `}
                   >
                     <p className="text-dark-blue space-grotesk-medium font-16 mb-3">
                       Your Progress So far
@@ -220,7 +216,7 @@ const Index = ({isExiting,isActive}) => {
                           <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                             300 Meteors
                           </span>
-                          <span className="ms-2 progress-sect-name space-grotesk-medium font-16 text-blue-2">
+                          <span className="ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2">
                             Planet A
                           </span>
                         </li>
@@ -233,11 +229,11 @@ const Index = ({isExiting,isActive}) => {
                               alt="prgicon"
                             />{' '}
                           </div>{' '}
-                          <span className="ms-2 progress-sect-name mt-1 d-flex align-items-end space-grotesk-medium font-16 text-blue-2">
+                          <span className="ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2">
                             Planet B
                           </span>
                         </li>
-                        <li className="d-flex pt-2">
+                        <li className="d-flex pt-2_">
                           <div className="d-grid progress-side-sec">
                             <hr className="opacity-100 progress-side-hr-2" />
                             <img
@@ -246,11 +242,11 @@ const Index = ({isExiting,isActive}) => {
                               alt="prgicon"
                             />{' '}
                           </div>{' '}
-                          <span className="ms-2 progress-sect-name mt-1 d-flex align-items-end space-grotesk-medium font-16 text-blue-2">
+                          <span className="ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2">
                             Planet C
                           </span>
                         </li>
-                        <li className="d-flex pt-2">
+                        <li className="d-flex pt-2_">
                           <div className="d-grid progress-side-sec">
                             <hr className="opacity-100 progress-side-hr-2" />
                             <img
@@ -259,7 +255,7 @@ const Index = ({isExiting,isActive}) => {
                               alt="prgicon"
                             />{' '}
                           </div>{' '}
-                          <span className="ms-2 progress-sect-name mt-1 d-flex align-items-end space-grotesk-medium font-16 text-blue-2">
+                          <span className="ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2">
                             Planet D
                           </span>
                         </li>
@@ -277,7 +273,7 @@ const Index = ({isExiting,isActive}) => {
                     </div>
                   </div>
                   <div
-                    className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box  ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'}`}
+                    className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box play-earn-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'}`}
                     ref={leftBoxRef}
                     id="leftBox"
                   >
@@ -440,7 +436,7 @@ const Index = ({isExiting,isActive}) => {
                     </div>
                   </div>
                 </div>
-              </span>
+              </div>
             )}
             {/* Footer Section */}
             {/* planet section */}

@@ -223,7 +223,7 @@ const Howitworks = ({ isActive, isExiting }) => {
                         return prev;
                     }
                 });
-            }, 1000);
+            }, 900);
 
             return () => clearInterval(interval);
         }
@@ -258,13 +258,13 @@ const Howitworks = ({ isActive, isExiting }) => {
     }, [isExiting]);
 
     return (
-        <section
+        <section id="HowItWorks_Section"
             ref={sectionRef}
             className={`section-howitworks text-center ${showExit ? (scrollDir === 'down' ? 'zoom-down-out' : 'fade-out') : ''
                 } ${isActive ? 'aos-animate zoom-in-up-custom start-animation' : 'zoom-down'}`}
         >
             <div className="container position-relative h-100">
-                <h2 className="space-grotesk-bold font-40 text-black-heading">
+                <h2 className="space-grotesk-bold section-heading font-40 text-black-secondry">
                     How It Works
                 </h2>
 

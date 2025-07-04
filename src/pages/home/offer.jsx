@@ -77,17 +77,22 @@ const Offer = ({ isActive }) => {
 
   const items = [
     {
-      title: '1. Collapsible Group Item',
+      title: '1. What is Wealth Elite’s Reward & Referral Program?',
       content:
         'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
     },
     {
-      title: '2. Collapsible Group Item',
+      title: '2. How can I track my referrals?',
       content:
         'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
     },
     {
-      title: '3. Collapsible Group Item',
+      title: '3. What does a successful referral mean?',
+      content:
+        'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
+    },
+    {
+      title: '4. What does a successful referral mean?',
       content:
         'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
     },
@@ -106,17 +111,11 @@ const Offer = ({ isActive }) => {
   }, []);
 
   return (
-    <section className="offer-section">
+    <section id='Offer_Section' className="offer-section">
       <div className="offer-sect-content top-0 start-0 bottom-0 end-0">
         <div className="container-fluid px-5 pt-5 overflow-hidden">
           <div
-            className={`row offer-slider-fade-left ${isActive ? 'aos-animate' : ''} `}
-            // data-aos="fade-left"
-            // data-aos-offset="500"
-            // data-aos-delay="200"
-            // data-aos-easing="linear"
-            // data-aos-duration="5000"
-          >
+            className={`row offer-slider-fade-left ${isActive ? 'aos-animate' : ''} `}>
             <Slider className="offer-slider" {...settings}>
               {cards?.map((card, index) => (
                 <div
@@ -150,7 +149,7 @@ const Offer = ({ isActive }) => {
             </Slider>
           </div>
           {/*  Exclusive Offers SECTION */}
-          <h1 className="text-dark-blue mt-120 mb-4 pb-4 ">Exclusive Offers</h1>
+          <h1 className="text-dark-blue font-40 space-grotesk-bold mt-120 mb-4 pb-4 ">Exclusive Offers</h1>
           <div className="pt-5 d-grid price-exclusive gap-3">
             <div className="mt-5 rounded-4 shadow-lg bg-white px-0">
               <div className="head-sec position-relative">
@@ -166,12 +165,12 @@ const Offer = ({ isActive }) => {
                 <h3 className="font-24 text-light-black montserrat-semibold mt-3 mb-2">
                   Get 10% Off on Zomato
                 </h3>
-                <p className="font-16 text-light-black montserrat-regular">
+                <p className="font-16 text-light-black space-grotesk-regular">
                   Enjoy delicious deals on your next order!
                 </p>
-                <hr className="my-4 border-1" />
+                <hr className="my-4 border-1 card-divider width-65" />
                 <button
-                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 w-100 rounded-5"
+                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 width-65 rounded-5"
                   type="button"
                 >
                   Claim Now
@@ -192,12 +191,12 @@ const Offer = ({ isActive }) => {
                 <h3 className="font-24 text-light-black montserrat-semibold mt-3 mb-2">
                   Get 10% Off on Zomato
                 </h3>
-                <p className="font-16 text-light-black montserrat-regular">
+                <p className="font-16 text-light-black space-grotesk-regular">
                   Enjoy delicious deals on your next order!
                 </p>
-                <hr className="my-4 border-1" />
+                <hr className="my-4 border-1 card-divider width-65" />
                 <button
-                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 w-100 rounded-5"
+                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 width-65 rounded-5"
                   type="button"
                 >
                   Claim Now
@@ -218,12 +217,12 @@ const Offer = ({ isActive }) => {
                 <h3 className="font-24 text-light-black montserrat-semibold mt-3 mb-2">
                   Get 10% Off on Zomato
                 </h3>
-                <p className="font-16 text-light-black montserrat-regular">
+                <p className="font-16 text-light-black space-grotesk-regular">
                   Enjoy delicious deals on your next order!
                 </p>
-                <hr className="my-4 border-1" />
+                <hr className="my-4 border-1 card-divider width-65" />
                 <button
-                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 w-100 rounded-5"
+                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 width-65 rounded-5"
                   type="button"
                 >
                   Claim Now
@@ -232,7 +231,7 @@ const Offer = ({ isActive }) => {
             </div>
           </div>
           {/* Win Exciting Prizes SECTION */}
-          <h2 className="text-dark-blue mt-120 mb-4 pb-4 ">
+          <h2 className="text-dark-blue mt-120 font-40 space-grotesk-bold mb-4 pb-4 ">
             Win Exciting Prizes
           </h2>
           <div className="row justify-content-between">
@@ -247,7 +246,7 @@ const Offer = ({ isActive }) => {
                   </p>
                 </div>
                 <div className="section-offer align-self-end mb-3 pb-1">
-                  <h4 className="font-40 montserrat-medium text-white mb-0">
+                  <h4 className="font-40 space-grotesk-medium text-white mb-0">
                     Collect
                   </h4>
                   <div className="d-flex align-items-center">
@@ -268,7 +267,7 @@ const Offer = ({ isActive }) => {
             <div className="col-lg-6 px-4 d-grid">
               <div className="col-lg-12 shadow-lg py-3 d-flex price-watch align-self-start">
                 <div className="col-lg-8  ms-4 ps-4 align-self-end mb-1">
-                  <h4 className="font-40 montserrat-medium text-white mb-0">
+                  <h4 className="font-40 space-grotesk-medium text-white mb-0">
                     Collect
                   </h4>
                   <div className="d-flex align-items-center">
@@ -287,7 +286,7 @@ const Offer = ({ isActive }) => {
               </div>
               <div className="col-lg-12 py-3 shadow-lg d-flex price-headphone align-self-end">
                 <div className="col-lg-8  ms-4 ps-4 align-self-end mb-1">
-                  <h4 className="font-40 montserrat-medium text-white mb-0">
+                  <h4 className="font-40 space-grotesk-medium text-white mb-0">
                     Collect
                   </h4>
                   <div className="d-flex align-items-center">
@@ -315,7 +314,7 @@ const Offer = ({ isActive }) => {
           onMouseLeave={() => setSemiPlntRaise(false)}
         >
           <div className="container-fluid px-5 pb-5">
-            <h2 className="text-dark-blue mt-120 mb-1 pb-1 ">
+            <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-1 pb-1 ">
               Frequently Asked Questions
             </h2>
             <div className="row">

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import '../../styles/main.scss';
+// import '../../styles/main.scss';
 import '../../App.scss';
+import '../../../src/styles/main.scss'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'slick-carousel/slick/slick.css';
