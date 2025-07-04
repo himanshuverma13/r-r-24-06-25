@@ -65,7 +65,7 @@
 //                 />
 //               </div>
 //             </div>
-            
+
 //             <div
 //               className="earnmore-circle-sect  position-absolute"
 //               data-aos="fade-right"
@@ -113,7 +113,7 @@
 // };
 
 // export default RedeemAndEarn;
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 // imports images
 import metero from '../../assets/icons/home/secondScreen/metero.svg';
@@ -122,10 +122,13 @@ import leftcloud from '../../assets/icons/home/redeemEarn/leftcloud.svg';
 import rocket from '../../assets/icons/home/redeemEarn/moverokt.svg';
 import coins from '../../assets/icons/home/redeemEarn/coinsclt.svg';
 import SideModal from './sideModal';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 const RedeemAndEarn = ({ isActive }) => {
   const [showBox, setShowBox] = useState(false);
   const [showCircles, setShowCircles] = useState(false);
+
+  const { ContextHomeDataAPI } = useContext(UserContext);
 
   useEffect(() => {
     if (isActive) {
@@ -181,7 +184,7 @@ const RedeemAndEarn = ({ isActive }) => {
                 </h2>
                 <div className="text-white d-flex justify-content-center align-items-center ms-5 ps-4">
                   <span className="text-light-yellow font-size-12 montserrat-semibold">
-                    150
+                    {ContextHomeDataAPI?.part6}
                   </span>
                   <img className="mx-1" src={metero} alt="metero" />
                   <span className="font-size-14 montserrat-medium">
@@ -219,7 +222,7 @@ const RedeemAndEarn = ({ isActive }) => {
                 </h2>
                 <div className="text-white d-flex justify-content-center align-items-center ms-5 ps-4">
                   <span className="text-light-yellow font-size-12 montserrat-semibold">
-                    150
+                    {ContextHomeDataAPI?.part2}
                   </span>
                   <img className="mx-1" src={metero} alt="metero" />
                   <span className="font-size-14 montserrat-medium">

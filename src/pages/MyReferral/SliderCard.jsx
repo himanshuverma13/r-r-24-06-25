@@ -79,7 +79,7 @@ const referralData = [
     }
 ];
 
-const SliderCard = () => {
+const SliderCard = ({RefralDataAPI}) => {
     const [showTable, setShowTable] = useState(false);
     var settings = {
         arrows: false,
@@ -177,23 +177,23 @@ const SliderCard = () => {
                             </tr>
                         </thead>
                         <tbody className='referral-table-body text-center'>
-                            {referralData.map((item, index) => (
+                            {RefralDataAPI?.part4.map((item, index) => (
                                 <tr key={index}>
                                     <td scope="row" className='text-start ps-5 d-flex'>
                                         <span className='referral-table-user rounded-circle me-3'></span>
                                         <div>
-                                            <p className='font-size-16 montserrat-semibold mb-0'>{item?.name}</p>
-                                            <p className='font-size-14 montserrat-medium mb-0'>{item?.email}</p>
+                                            <p className='font-size-16 montserrat-semibold mb-0'>{item?.username}</p>
+                                            <p className='font-size-14 montserrat-medium mb-0'>{item?.email || "abc@gmail.com"}</p>
                                         </div>
                                     </td>
-                                    <td className='font-size-16 montserrat-semibold'>{item?.referredOn}</td>
-                                    <td className='font-size-16 montserrat-semibold'>{item?.status}</td>
-                                    <td className='font-size-16 montserrat-semibold'>{item?.points}</td>
+                                    <td className='font-size-16 montserrat-semibold'>{item?.date}</td>
+                                    <td className='font-size-16 montserrat-semibold'>{item?.referral_status}</td>
+                                    <td className='font-size-16 montserrat-semibold'>{item?.earned_meteors}</td>
                                     <td className='font-size-24 montserrat-medium'>
-                                        {item?.action === "Track" ? (
+                                        {item?.referral_status !== "completed" ? (
                                             <TrackModal />
                                         ) : (
-                                            item?.action
+                                            "-"
                                         )}
                                     </td>
                                 </tr>
