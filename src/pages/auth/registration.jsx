@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 
 // Assets icons
 import Logo from '../../assets/icons/logo/logo.svg';
+import { postData } from '../../services/api';
 
 const Registration = () => {
   const {
@@ -13,9 +14,20 @@ const Registration = () => {
   } = useForm();
 
   const password = watch('password');
-
-  const onSubmit = (data) => {
-    console.log('Form Submitted:', data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await postData('/register', {
+        confirm_password: data?.confirmPassword,
+        email: data?.email,
+        mobile_number: data?.mobile,
+        username: data?.name,
+        password: data?.password,
+        referral_code: data?.referralCode,
+        tag_id: '',
+      });
+      console.log(response);
+      console.log('Form Submitted:', data);
+    } catch (error) {}
   };
 
   return (
@@ -32,7 +44,7 @@ const Registration = () => {
               </p>
               <p className="text-blue montserrat-semibold font-size-20 pb-2">
                 Riya invited you! Sign up now to get your reward and start your
-                 journey <br /> to more exclusive perks
+                journey <br /> to more exclusive perks
               </p>
             </div>
             <div className="login-form-section register-form">
@@ -94,15 +106,9 @@ const Registration = () => {
                       class="form-control py-2"
                       id="exampleFormControlInput1"
                       placeholder="Your Referral Code"
-                      {...register('referralCode', {
-                        required: 'Referral Code No. is required',
-                      })}
+                      {...register('referralCode', )}
                     />
-                    {errors.referralCode && (
-                      <div className="text-danger">
-                        {errors.referralCode.message}
-                      </div>
-                    )}
+                   
                   </div>
                 </div>
 

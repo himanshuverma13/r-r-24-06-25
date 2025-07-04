@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 // Images
 import Astronut1 from '../../assets/icons/home/MyReferral/Character.svg';
@@ -17,6 +17,9 @@ import SliderCard from '../MyReferral/SliderCard';
 import FAQ from '../../components/faq';
 import Navbar from '../../components/navbar';
 import ReferralCards from '../MyReferral/referralCards';
+import { postData } from '../../services/api';
+import { DecryptFunction } from '../../utils/decryptFunction';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 // Import Json
 const faqData = [
@@ -42,6 +45,12 @@ const faqData = [
 const MyReferralScreen = () => {
   const inputRef = useRef(null);
   const [copied, setCopied] = useState(false);
+  const [RefralDataAPI, setRefralDataAPI] = useState();
+
+  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const { ContextHomeDataAPI } =
+  useContext(UserContext);
+  console.log('ContextHomeDataAPI: ', ContextHomeDataAPI);
 
   const handleCopy = async () => {
     try {
@@ -52,6 +61,29 @@ const MyReferralScreen = () => {
       console.error('Failed to copy: ', err);
     }
   };
+
+  // =================================
+  //       API FUNCTIONALITY
+  // =================================
+
+  const HandleAPI = async () => {
+    try {
+      const enyptData = await postData('/my-referrals', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      const Decrpty = await DecryptFunction(enyptData);
+      console.log('Decrpty: ', Decrpty);
+      setRefralDataAPI(Decrpty);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
+  useEffect(() => {
+    HandleAPI();
+  }, []);
 
   return (
     <>
@@ -66,7 +98,7 @@ const MyReferralScreen = () => {
           <Navbar />
           <div className="container">
             <div className="mb-5">
-              <ReferralCards /> 
+              <ReferralCards RefralDataAPI={RefralDataAPI} />
             </div>
             <div className="invite-card my-refral-inner-content overflow-hidden">
               <div className="row pt-5 px-5 align-items-center">
@@ -86,7 +118,7 @@ const MyReferralScreen = () => {
                       <input
                         ref={inputRef}
                         type="text"
-                        defaultValue="https://example.com/my-link"
+                        defaultValue={RefralDataAPI?.part6}
                         className="copy-input input-invite-friend bg-white mb-60"
                       />
                       <button
@@ -105,7 +137,7 @@ const MyReferralScreen = () => {
                       <input
                         ref={inputRef}
                         type="text"
-                        defaultValue="https://example.com/my-link"
+                        defaultValue={RefralDataAPI?.part5}
                         className="copy-input input-invite-friend bg-white mb-60"
                       />
                       <button
@@ -128,7 +160,7 @@ const MyReferralScreen = () => {
             </div>
             <div className="my-refral-inner-content">
               {/* Referral Cards */}
-              <SliderCard />
+            <SliderCard RefralDataAPI={RefralDataAPI} />
               {/* INVITING, TRACKING CARD SECTION */}
               <div className="container">
                 <div className="font-32 space-grotesk-bold text-blue mt-120 mb-4 pb-4 ">

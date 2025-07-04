@@ -2,7 +2,8 @@ import { useState } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './rewardHistory.css';
 
-const RewardHistory = ({ showHistory }) => {
+const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
+  console.log('MyRewardDataAPI: ', MyRewardDataAPI);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -129,7 +130,7 @@ const RewardHistory = ({ showHistory }) => {
   };
 
   const handleNext = () => {
-    const totalPages = Math.ceil(rewardsData.length / rowsPerPage);
+    const totalPages = Math.ceil((MyRewardDataAPI?.part5 || rewardsData)?.length / rowsPerPage);
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
@@ -147,7 +148,7 @@ const RewardHistory = ({ showHistory }) => {
   // Calculate displayed data based on pagination
   const startIndex = (currentPage - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const displayedData = rewardsData.slice(startIndex, endIndex);
+  const displayedData = (MyRewardDataAPI?.part5 || rewardsData)?.slice(startIndex, endIndex);
 
   const StatCard = ({ number, title, index }) => (
     <div
@@ -163,24 +164,24 @@ const RewardHistory = ({ showHistory }) => {
       <td className="py-3 bg-transparent px-4">
         <div className="d-flex align-items-center font-16 montserrat-semibold">
           {/* <span className={`reward-dot me-2 ${reward.type}`}></span> */}
-          {reward.rewardType}
+          {reward?.earned_by_action}
         </div>
       </td>
       <td className="py-3 px-4 bg-transparent font-16 montserrat-semibold">
-        {reward.date}
+        {reward?.referred_on}
       </td>
       <td
         className="py-3 px-4 bg-transparent font-16 text-center montserrat-semibold"
         // style={{ color: reward.expiryDate === '-' ? '#6c757d' : '#dc3545' }}
       >
-        {reward.expiryDate}
+        {reward.expiryDate || '-'}
       </td>
       <td className="py-3 px-4 bg-transparent text-center">
         <span
           className={`p-1 px-2 rounded-2 font-14  montserrat-medium bg-light text-blue`}
         >
           <span className="dot">*</span>
-          {reward.earnings}
+          {reward?.earned_meteors}
         </span>
       </td>
     </tr>
@@ -244,8 +245,8 @@ const RewardHistory = ({ showHistory }) => {
                       </tr>
                     </thead>
                     <tbody className="">
-                      {displayedData.map((reward) => (
-                        <RewardRow key={reward.id} reward={reward} />
+                      {displayedData?.map((reward,index) => (
+                        <RewardRow key={index} reward={reward} />
                       ))}
                     </tbody>
                   </table>
