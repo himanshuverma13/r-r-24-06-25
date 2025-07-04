@@ -146,7 +146,7 @@ const RedeemAndEarn = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <section className="hero-section d-flex justify-content-center align-items-center px-5 position-relative">
+    <section id='RedeemAndEarn_Section' className="hero-section d-flex justify-content-center align-items-center px-5 position-relative">
       <div className="container">
         <div className="row justify-content-center position-relative">
           {/* Redeem Box */}

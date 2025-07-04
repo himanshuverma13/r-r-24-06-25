@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 // import './invitefriend.scss';
 
 import stars from '../../assets/icons/home/redeemEarn/starts.svg';
@@ -9,79 +9,80 @@ import TwitterIcon from '../../assets/icons/home/Invitefriend/twitter-invite.svg
 import InstaIcon from '../../assets/icons/home/Invitefriend/insta-invite.svg';
 import YoutubeIcon from '../../assets/icons/home/Invitefriend/youtube-invite.svg';
 
-const Invitefriend = ({ isActive, onAnimationComplete }) => {
+// const Invitefriend = ({ isActive, onAnimationComplete , isExiting }) => {
+const Invitefriend = ({ isActive , isExiting }) => {
   const inputRef = useRef(null);
-  const animationTriggered = useRef(false);
+  // const animationTriggered = useRef(false);
 
-  const [animateTop, setAnimateTop] = useState(false);
-  const [animateFooter, setAnimateFooter] = useState(false);
-  const [animateMiddle, setAnimateMiddle] = useState(false);
+  // const [animateTop, setAnimateTop] = useState(false);
+  // const [animateFooter, setAnimateFooter] = useState(false);
+  // const [animateMiddle, setAnimateMiddle] = useState(false);
   const [copied, setCopied] = useState(false);
 
   // Disable scroll outside while active
-  useEffect(() => {
-    document.body.style.overflow = isActive ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isActive]);
+  // useEffect(() => {
+  //   document.body.style.overflow = isActive ? 'hidden' : '';
+  //   return () => {
+  //     document.body.style.overflow = '';
+  //   };
+  // }, [isActive]);
 
   // Reset animations when Invitefriend becomes active (either from up or down)
-  useEffect(() => {
-    if (isActive) {
-      setTimeout(() => {
-        setAnimateTop(false);
-        setAnimateFooter(false);
-        setAnimateMiddle(false);
-        animationTriggered.current = false;
-      }, 50); // small delay to force DOM update before next animation
-    }
-  }, [isActive]);
+  // useEffect(() => {
+  //   if (isActive) {
+  //     setTimeout(() => {
+  //       setAnimateTop(false);
+  //       setAnimateFooter(false);
+  //       setAnimateMiddle(false);
+  //       animationTriggered.current = false;
+  //     }, 50); // small delay to force DOM update before next animation
+  //   }
+  // }, [isActive]);
 
-  // Scroll-based animation trigger
-  useEffect(() => {
-    const handleWheel = (e) => {
-      if (!isActive || animationTriggered.current) return;
+  // // Scroll-based animation trigger
+  // useEffect(() => {
+  //   const handleWheel = (e) => {
+  //     if (!isActive || animationTriggered.current) return;
 
-      const direction = e.deltaY;
-      animationTriggered.current = true;
-      e.preventDefault();
+  //     const direction = e.deltaY;
+  //     animationTriggered.current = true;
+  //     e.preventDefault();
 
-      if (direction > 0) {
-        // Scroll Down
-        setAnimateTop(true);
-        setAnimateFooter(true);
-        setAnimateMiddle(true);
+  //     if (direction > 0) {
+  //       // Scroll Down
+  //       setAnimateTop(true);
+  //       setAnimateFooter(true);
+  //       setAnimateMiddle(true);
 
-        setTimeout(() => {
-          if (typeof onAnimationComplete === 'function') {
-            onAnimationComplete(); // go forward
-          }
-          animationTriggered.current = false;
-        }, 1200);
-      } else {
-        // Scroll Up
-        setAnimateTop(false);
-        setAnimateFooter(false);
-        setAnimateMiddle(false);
+  //       setTimeout(() => {
+  //         if (typeof onAnimationComplete === 'function') {
+  //           onAnimationComplete(); // go forward
+  //         }
+  //         animationTriggered.current = false;
+  //       }, 1200);
+  //     } else {
+  //       // Scroll Up
+  //       setAnimateTop(false);
+  //       setAnimateFooter(false);
+  //       setAnimateMiddle(false);
 
-        setTimeout(() => {
-          if (typeof onAnimationComplete === 'function') {
-            onAnimationComplete('reverse'); // go back
-          }
-          animationTriggered.current = false;
-        }, 1200);
-      }
-    };
+  //       setTimeout(() => {
+  //         if (typeof onAnimationComplete === 'function') {
+  //           onAnimationComplete('reverse'); // go back
+  //         }
+  //         animationTriggered.current = false;
+  //       }, 1200);
+  //     }
+  //   };
 
-    if (isActive) {
-      window.addEventListener('wheel', handleWheel, { passive: false });
-    }
+  //   if (isActive) {
+  //     window.addEventListener('wheel', handleWheel, { passive: false });
+  //   }
 
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, [isActive, onAnimationComplete]);
+  //   return () => {
+  //     window.removeEventListener('wheel', handleWheel);
+  //   };
+  // }, [isActive, onAnimationComplete]);
 
   const handleCopy = () => {
     if (inputRef.current) {
@@ -100,26 +101,30 @@ const Invitefriend = ({ isActive, onAnimationComplete }) => {
   };
 
   return (
-    <div className="invitefriend-wrapper invite-bg-image section-invitefriend position-relative overflow-hidden vh-100 d-flex align-items-center justify-content-center">
+    <div id='InviteFriend_Section' className="invitefriend-wrapper invite-bg-image section-invitefriend position-relative overflow-hidden vh-100 d-flex align-items-start pt-80 ustify-content-center">
       {/* Top Stars */}
-      <img
+      {/* <img
         className={`w-100 position-absolute top-0 left-0 asto-transition-all ${animateTop ? 'nav-slide-top' : ''} ${isActive ? '' : 'invitefriend-slide-top'}`}
         src={stars}
         alt="Stars"
+      /> */}
+      <img
+        className={`w-100 position-absolute top-0 left-0 asto-transition-all ${isExiting ? 'nav-slide-top' : ''} ${isActive ? '' : 'nav-slide-top'}`}
+        src={stars}
+        alt="Stars"
       />
-
       {/* Bottom Footer */}
       <img
-        className={`w-100 position-absolute bottom-0 left-0 asto-transition-all ${animateFooter ? 'astro-slide-down' : ''} ${isActive ? '' : 'astro-slide-down'}`}
+        className={`w-100 position-absolute bottom-0 left-0 asto-transition-all ${isExiting ? 'astro-slide-down' : ''} ${isActive ? '' : 'astro-slide-down'}`}
         src={footer}
         alt="Footer"
       />
 
       {/* Center Section */}
-      <div className={`container center-section transition-all duration-1000 ${animateMiddle ? 'form-fade-down' : ''}`}>
+      <div className={`container center-section transition-all duration-1000 ${isExiting ? 'form-fade-down' : ''}`}>
         <div className="row text-center justify-content-center align-items-start h-100">
-          <div className="col-12 col-md-5 content-z-index pt-72">
-            <h2 className="text-white font-40 mb-58 space-grotesk-b">Invite a friend</h2>
+          <div className="col-12 col-md-6 content-z-index">
+            <h2 className="text-white font-40 mb-58 space-grotesk-bold">Invite a friend</h2>
 
             <div className="copy-input-container">
               <input
@@ -129,7 +134,7 @@ const Invitefriend = ({ isActive, onAnimationComplete }) => {
                 className="copy-input input-invite-friend bg-white mb-60"
               />
               <button className="copy-button" onClick={handleCopy}>
-                {copied ? 'Copied!' : 'Copy'}
+                {copied ? 'Copied!' : 'Copy Link'}
               </button>
             </div>
 
@@ -139,7 +144,7 @@ const Invitefriend = ({ isActive, onAnimationComplete }) => {
 
             <button
               onClick={handleClick}
-              className="btn-share-via-whatsapp poppins-regular text-white bg-primary-color font-18 mb-46"
+              className="btn-share-via-whatsapp width-80 poppins-regular text-white bg-primary-color font-18 mb-46"
             >
               Share Via Whatsapp
             </button>
