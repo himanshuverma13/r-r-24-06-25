@@ -1,0 +1,67 @@
+          .sidebar {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            height: fit-content;
+          }
+
+
+  
+
+          .main-content {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+          }
+
+          .table-container {
+            border-radius: 12px;
+            overflow: hidden;
+          }
+
+          .table thead th {
+            border: none;
+            font-weight: 600;
+            color: #5a6c7d;
+            padding: 15px;
+            font-size: 0.9rem;
+          }
+
+
+
+
+          .btn-pagination {
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+          }
+
+          .btn-pagination:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
+          }
+
+          .btn-pagination.active {
+            color: white;
+            border:0;
+          }
+
+          .btn-pagination:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+
+          .rows-select {
+            border-radius: 6px;
+            padding: 5px 10px;
+            color: #5a6c7d;
+
+          }
+
+          .rows-select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+          }

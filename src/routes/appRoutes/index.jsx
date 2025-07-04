@@ -1,12 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Login from "../../pages/auth/login";
+import Login from '../../pages/auth/login';
 // import NotFound from "../pages/NotFound";
-import LoginOtp from "../../pages/auth/loginOtp";
-import Registration from "../../pages/auth/registration";
-import Product from "../../pages/auth/product";
+import LoginOtp from '../../pages/auth/loginOtp';
+import Registration from '../../pages/auth/registration';
+import Product from '../../pages/auth/product';
 import Home from '../../pages/home/home';
+import MyRewardFirstScreen from '../../pages/myReward/myRewardSection';
+import MyReferralScreen from '../../pages/MyReferral/MyReferralScreen';
 
 // import ProtectedRoute from "./ProtectedRoute";
 
@@ -14,11 +16,13 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/loginOtp" element={<LoginOtp />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/subscription" element={<Product />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/reward" element={<MyRewardFirstScreen />} />
+        <Route path="/referral" element={<MyReferralScreen />} />
         {/* <Route
           path="/dashboard"
           element={

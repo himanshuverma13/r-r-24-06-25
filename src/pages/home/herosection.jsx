@@ -1,13 +1,13 @@
 import React from "react";
 
-const Herosection = () => {
+const Herosection = ({currentPlnt}) => {
 
   // =========
   // States
   // =========
 
   return (
-    <section className="banner-section">
+    <section id="Hero_Section" className="banner-section">
       <div className="container">
         <div className="text-center">
           <h3 className="text-uppercase text-blue space-grotesk-bold font-46 mb-0">
@@ -17,7 +17,7 @@ const Herosection = () => {
         <ul className="d-flex  justify-content-between mb-0 mt-4 pt-2 px-0" id="banner-sec-heading-desk">
             <li className="list-unstyled text-dark-blue  montserrat-semibold font-24"><span className="d-block font-16 space-grotesk-regular text-white mb-1">Meteors Gained</span>300 Meteors</li>
             <li className="list-unstyled text-dark-blue  montserrat-semibold font-24"><span className="d-block font-16 space-grotesk-regular text-white mb-1">Stars Gained</span>0 Stars</li>
-            <li className="list-unstyled space-grotesk-medium font-46 text-white">Planet A</li>
+            <li className="list-unstyled space-grotesk-medium font-46 text-white">Planet {currentPlnt}</li>
             <li className="list-unstyled text-dark-blue  montserrat-semibold font-24"><span className="d-block font-16 space-grotesk-regular text-white mb-1">Total Meteors</span>1000 Meteors</li>
             <li className="list-unstyled text-dark-blue  montserrat-semibold font-24"><span className="d-block font-16 space-grotesk-regular text-white mb-1">Planet Status</span>Unlocked</li>
         </ul>
