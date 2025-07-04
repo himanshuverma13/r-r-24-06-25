@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // import component
 import Navbar from '../../components/navbar';
 
@@ -38,6 +38,9 @@ import revClock from '../../assets/icons/home/MyRewards/clock.svg';
 import FAQ from '../../components/faq';
 import PlayAndEarnCard from '../../components/playAndEarnCard';
 import RewardHistory from './rewardHistory';
+import { postData } from '../../services/api';
+import { DecryptFunction } from '../../utils/decryptFunction';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 const RewardSliderJson = [
   { num: 'A', img: gifplnt1, lock: false },
@@ -142,6 +145,9 @@ const FaqData = [
 ];
 
 const MyRewardFirstScreen = () => {
+  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const { ContextHomeDataAPI } = useContext(UserContext);
+
   const rewardSliderSetting = {
     dots: false,
     infinite: true,
@@ -230,10 +236,10 @@ const MyRewardFirstScreen = () => {
   // ==============
   const [RwdAnimate, setRwdAnimate] = useState(false);
   const [showRwrdHstry, setshowRwrdHstry] = useState(false);
-  console.log('showRwrdHstry: ', showRwrdHstry);
   const [ShowSecScr, setShowSecScr] = useState(true);
   const [leftScrolAnimt, setleftScrolAnimt] = useState(true);
   const [UfoBg, setUfoBg] = useState(false);
+  const [MyRewardDataAPI, setMyRewardDataAPI] = useState();
 
   // =============
   // Functions
@@ -245,6 +251,29 @@ const MyRewardFirstScreen = () => {
     setShowSecScr(false);
     setleftScrolAnimt(false);
   };
+
+  // =================================
+  //       API FUNCTIONALITY
+  // =================================
+
+  const HandleAPI = async () => {
+    try {
+      const enyptData = await postData('/my-rewards', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      const Decrpty = await DecryptFunction(enyptData);
+      console.log('Decrpty: ', Decrpty);
+      setMyRewardDataAPI(Decrpty);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
+  useEffect(() => {
+    HandleAPI();
+  }, []);
 
   //============
   // UseEffect
@@ -271,7 +300,10 @@ const MyRewardFirstScreen = () => {
       >
         {showRwrdHstry ? (
           <>
-          <RewardHistory showHistory={setshowRwrdHstry} />
+            <RewardHistory
+              MyRewardDataAPI={MyRewardDataAPI}
+              showHistory={setshowRwrdHstry}
+            />
           </>
         ) : (
           <div className="reward-inner-section">
@@ -301,14 +333,14 @@ const MyRewardFirstScreen = () => {
                     />
                     <div className="py-2 offset-2 text-white d-flex justify-content-evenly align-items-center">
                       <span className="montserrat-bold font-14 montserrat-bold till-ship-border-color pe-3 z-1 position-relative">
-                        300
+                        {ContextHomeDataAPI?.part2}
                         <img className="my-1 mx-2" src={metero} alt="metero" />
                         <span className="font-14 montserrat-medium">
                           Meteors
                         </span>
                       </span>
                       <span className="font-14 montserrat-semibold">
-                        1
+                        {ContextHomeDataAPI?.part1}
                         <img className="mx-1" src={star} alt="star" />
                         <span className="space-grotesk-medium">star</span>
                       </span>
@@ -316,9 +348,12 @@ const MyRewardFirstScreen = () => {
                   </div>
                 </div>
                 <div className="col-lg-3 text-center">
-                  <button onClick={()=>setshowRwrdHstry(true)} className="bg-transparent rounded-5 px-3 py-1 text-blue font-16 montserrat-semibold reward-history">
-                  Reward History <img className='' src={revClock} alt="" />
-                </button>
+                  <button
+                    onClick={() => setshowRwrdHstry(true)}
+                    className="bg-transparent rounded-5 px-3 py-1 text-blue font-16 montserrat-semibold reward-history"
+                  >
+                    Reward History <img className="" src={revClock} alt="" />
+                  </button>
                 </div>
               </div>
             </div>
@@ -338,7 +373,7 @@ const MyRewardFirstScreen = () => {
                         <div className="col-lg-7">
                           <div className="rounded-4 background-light-white-1 position-relative px-2 pb-1 pt-2 mt-4">
                             <span className="font-46 montserrat-semibold text-blue ms-1">
-                              X
+                              {MyRewardDataAPI?.part1}
                             </span>{' '}
                             <span className="text-blue font-16 montserrat-semibold ms-1">
                               Stars
@@ -353,7 +388,7 @@ const MyRewardFirstScreen = () => {
                           <div className="d-flex position-relative justify-content-between rounded-4 background-light-white-1 px-2 pb-1 pt-5 mt-4">
                             <div className="d-inline">
                               <span className="font-46 montserrat-semibold text-blue ms-1">
-                                X
+                                {MyRewardDataAPI?.part2}
                               </span>{' '}
                               <span className="text-blue font-16 montserrat-semibold ms-1">
                                 Meteors
@@ -389,7 +424,7 @@ const MyRewardFirstScreen = () => {
 
                           <div className="position-absolute bottom-0">
                             <span className="font-46 montserrat-semibold text-blue ms-1">
-                              X
+                              {MyRewardDataAPI?.part3}
                             </span>{' '}
                             <span className="text-blue font-16 montserrat-semibold ms-1">
                               Vouchers
@@ -412,8 +447,9 @@ const MyRewardFirstScreen = () => {
                         Invite Code
                       </label>
                       <input
-                        className="background-light-white-2 border-0 rounded-3 w-100 py-2"
+                        className="background-light-white-2 border-0 rounded-3 w-100 p-2"
                         type="text"
+                        defaultValue={MyRewardDataAPI?.part4}
                         name=""
                         id=""
                       />
@@ -424,8 +460,9 @@ const MyRewardFirstScreen = () => {
                         Invite Link
                       </label>
                       <input
-                        className="background-light-white-2 border-0 rounded-3 w-100 py-2"
+                        className="background-light-white-2 border-0 rounded-3 w-100 p-2"
                         type="text"
+                        defaultValue={MyRewardDataAPI?.part6}
                         name=""
                         id=""
                       />
@@ -492,7 +529,7 @@ const MyRewardFirstScreen = () => {
                         className="reward-slider"
                         {...rewardSliderSetting}
                       >
-                        {RewardSliderJson?.map((slide) => (
+                        {RewardSliderJson?.map((slide,index) => (
                           <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 ">
                             <h4 className="font-14 montserrat-semibold text-blue">
                               Planet {slide?.num}
@@ -511,7 +548,7 @@ const MyRewardFirstScreen = () => {
                             </div>
 
                             {/* <h4 className="font-14 montserrat-regular">1000 Meteors</h4> */}
-                            {slide?.lock ? (
+                            {index >= ContextHomeDataAPI?.part3?.length ? (
                               <button className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
                                 1000 Meteors{' '}
                                 <img

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import Navbar from '../../components/navbar';
 import Herosection from './herosection';
 // import PlanetSlider from './PlanetSlider/planetSlider';
@@ -20,17 +20,25 @@ import centerPlanet1 from '../../assets/icons/planets/purple.svg';
 import centerPlanet2 from '../../assets/icons/planets/yellow.svg';
 import centerPlanet3 from '../../assets/icons/planets/green.svg';
 import centerPlanet4 from '../../assets/icons/planets/blue.svg';
-import planetRing from '../../assets/icons/planets/rings.svg'; 
+import planetRing from '../../assets/icons/planets/rings.svg';
+import { postData } from '../../services/api';
+import { UserContext } from '../../utils/UseContext/useContext';
+import { DecryptFunction } from '../../utils/decryptFunction';
+// import { processDynamicSpecificFieldsParallel } from '../../utils/decryptFunction';
 
 const images = [centerPlanet1, centerPlanet2, centerPlanet3, centerPlanet4];
 
-const Index = ({isExiting,isActive}) => {
+const Index = ({ isExiting, isActive }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [showSecScr, setShowSecScr] = useState(true);
   const [SecScrAnimt, setSecScrAnimt] = useState(false);
+  const { AuthLocal, ContextHomeDataAPI, setContextHomeDataAPI } =
+    useContext(UserContext);
 
   // --------------------------------------------------
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(
+    ContextHomeDataAPI?.part4?.length - 1 || 0,
+  );
   const [rotation, setRotation] = useState(0);
   const [ringRotation, setRingRotation] = useState(0);
   const [direction, setDirection] = useState('');
@@ -65,11 +73,12 @@ const Index = ({isExiting,isActive}) => {
   const [rightBoxLeft, setRightBoxLeft] = useState('0%'); // initial position for right box
   const [BoxOpacity, setBoxOpacity] = useState(1);
   const [sectionOpacity, setsectionOpacity] = useState(1);
+  const [HomeDataAPI, setHomeDataAPI] = useState();
+
+  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
 
   // const [leftBoxClass, setLeftBoxClass] = useState('left-box default-position');
-// const [rightBoxClass, setRightBoxClass] = useState('left-box default-position');
-
-
+  // const [rightBoxClass, setRightBoxClass] = useState('left-box default-position');
 
   // ===============================
   // Planet Section Functionality
@@ -108,6 +117,31 @@ const Index = ({isExiting,isActive}) => {
   // =================================
   // Planet Section Functionality END
   // =================================
+
+  // =================================
+  //       API FUNCTIONALITY
+  // =================================
+
+  const HandleAPI = async () => {
+    try {
+      const enyptData = await postData('/home', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      const Decrpty = await DecryptFunction(enyptData);
+      setHomeDataAPI(Decrpty);
+      setContextHomeDataAPI(Decrpty);
+      setCurrentIndex(Decrpty?.part4?.length - 1 || 0);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
+  useEffect(() => {
+    HandleAPI();
+  }, []);
+
   return (
     <>
       <section className="hero-section  position-relative height-100vh">
@@ -158,14 +192,14 @@ const Index = ({isExiting,isActive}) => {
                     />
                     <div className="py-2 offset-2 text-white d-flex justify-content-evenly align-items-center">
                       <span className="montserrat-bold font-14 montserrat-bold till-ship-border-color pe-3 z-1 position-relative">
-                        300
+                      {ContextHomeDataAPI?.part2}
                         <img className="my-1 mx-2" src={metero} alt="metero" />
                         <span className="font-14 montserrat-medium">
                           Meteors
                         </span>
                       </span>
                       <span className="font-14 montserrat-semibold">
-                        1
+                        {ContextHomeDataAPI?.part1}
                         <img className="mx-1" src={star} alt="star" />
                         <span className="space-grotesk-medium">star</span>
                       </span>
@@ -182,7 +216,10 @@ const Index = ({isExiting,isActive}) => {
           >
             {showSecScr ? (
               <span className={`${!SecScrAnimt ? '' : 'middle-sect'}`}>
-                <Herosection currentPlnt={['A', 'B', 'C', 'D'][currentIndex]} />
+                <Herosection
+                  HomeDataAPI={HomeDataAPI}
+                  currentPlnt={['A', 'B', 'C', 'D'][currentIndex]}
+                />
               </span>
             ) : (
               // second page middle section sidepanel and 4 plnts
@@ -486,8 +523,12 @@ const Index = ({isExiting,isActive}) => {
                     <img
                       src={images[currentIndex]}
                       alt="center-planet"
-                      onClick={toggleAnimtElements}
-                      className={`img-fluid cursor-pointer rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${
+                      onClick={
+                        currentIndex <= ContextHomeDataAPI?.part3?.length - 1
+                          ? toggleAnimtElements
+                          : null
+                      }
+                      className={`img-fluid ${currentIndex <= ContextHomeDataAPI?.part3?.length - 1 ? 'cursor-pointer' : ''} rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${
                         isAnimating ? 'fade-down-shrink' : ''
                       }`}
                     />
@@ -503,7 +544,7 @@ const Index = ({isExiting,isActive}) => {
                   />
                   <span
                     className={`font-24 space-grotesk-medium text-dark-blue navi-plnt-right ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}
-                    >
+                  >
                     Planet {['A', 'B', 'C', 'D'][nextIndex]}
                   </span>
                 </div>

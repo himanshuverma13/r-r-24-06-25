@@ -5120,7 +5120,7 @@ body::-webkit-scrollbar {
 
 // =============== Login Css Start =======================
 .login-bg-img {
-  background: url(./assets/Registrartion//Registrationbg.png);
+  background: url(./assets/images/auth/bg-img.png);
   // background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -5144,9 +5144,17 @@ body::-webkit-scrollbar {
 //    display: block;
 // }
 
+.login-form::placeholder{
+  color: var(--text-light-gray) !important;
+}
+
 .login-form-section {
   border-radius: 16px;
   background-color: rgba(239, 243, 247, 1);
+}
+.login-check{
+  right: 3%;
+    top: 22%;
 }
 
 .form-control {

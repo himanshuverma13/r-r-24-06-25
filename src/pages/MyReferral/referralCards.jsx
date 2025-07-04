@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 // Images
 import ReferralUfo from "../../assets/icons/home/MyReferral/UFO-LEFT.svg";
 import HoverUfo from "../../assets/icons/home/MyReferral/referral-ufo.svg";
-const ReferralCards = () => {
+const ReferralCards = ({RefralDataAPI}) => {
     const [isHovered, setIsHovered] = useState(null);
 
     const cardsData = [
         {
             id: 1,
-            count: "04",
+            count: `${RefralDataAPI?.part1}`,
             title: "Total Referrals",
             subtitle: "People You've Referred",
             image: ReferralUfo,
@@ -17,7 +17,7 @@ const ReferralCards = () => {
         },
         {
             id: 2,
-            count: "03",
+            count: `${RefralDataAPI?.part2}`,
             title: "Referrals Earnings",
             subtitle: "People You've Referred",
             image: ReferralUfo,
@@ -25,7 +25,7 @@ const ReferralCards = () => {
         },
         {
             id: 3,
-            count: "01",
+            count: `${RefralDataAPI?.part3}`,
             title: "Pending Referrals",
             subtitle: "No of Invites Waiting to Join",
             image: ReferralUfo,

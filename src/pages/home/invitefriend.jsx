@@ -1,5 +1,4 @@
-
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 // import './invitefriend.scss';
 
 import stars from '../../assets/icons/home/redeemEarn/starts.svg';
@@ -7,7 +6,9 @@ import footer from '../../assets/images/home/Invitefriend/Bottom-invite.svg';
 import FacebookIcon from '../../assets/icons/home/Invitefriend/fb-invite.svg';
 import TwitterIcon from '../../assets/icons/home/Invitefriend/twitter-invite.svg';
 import InstaIcon from '../../assets/icons/home/Invitefriend/insta-invite.svg';
-import YoutubeIcon from '../../assets/icons/home/Invitefriend/youtube-invite.svg';
+import telegram from '../../assets/icons/home/Invitefriend/telegram.svg';
+import { postData } from '../../services/api';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 const Invitefriend = ({ isActive, onAnimationComplete }) => {
   const inputRef = useRef(null);
@@ -17,6 +18,8 @@ const Invitefriend = ({ isActive, onAnimationComplete }) => {
   const [animateFooter, setAnimateFooter] = useState(false);
   const [animateMiddle, setAnimateMiddle] = useState(false);
   const [copied, setCopied] = useState(false);
+  const { ContextHomeDataAPI } = useContext(UserContext);
+  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
 
   // Disable scroll outside while active
   useEffect(() => {
@@ -92,11 +95,32 @@ const Invitefriend = ({ isActive, onAnimationComplete }) => {
     }
   };
 
-  const handleClick = () => {
-    const url = `https://wa.me/?text=${encodeURIComponent(
-      'Join me on this amazing app: https://example.com/my-link'
-    )}`;
-    window.open(url, '_blank');
+  const handleClick = async () => {
+    try {
+      const response = await postData('/send-whatsapp-invite', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      if (response?.success) {
+        window.open(response?.link, '_blank');
+      }
+    } catch (error) {}
+  };
+
+  const handleIconLink = async (icon) => {
+    try {
+      const response = await postData(`/send-${icon}-invite`, {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      if (response?.success && response?.link) {
+        window.open(response?.link, '_blank');
+      }
+    } catch (error) {
+      console.log('error: ', error);
+    }
   };
 
   return (
@@ -116,16 +140,20 @@ const Invitefriend = ({ isActive, onAnimationComplete }) => {
       />
 
       {/* Center Section */}
-      <div className={`container center-section transition-all duration-1000 ${animateMiddle ? 'form-fade-down' : ''}`}>
+      <div
+        className={`container center-section transition-all duration-1000 ${animateMiddle ? 'form-fade-down' : ''}`}
+      >
         <div className="row text-center justify-content-center align-items-start h-100">
           <div className="col-12 col-md-5 content-z-index pt-72">
-            <h2 className="text-white font-40 mb-58 space-grotesk-b">Invite a friend</h2>
+            <h2 className="text-white font-40 mb-58 space-grotesk-b">
+              Invite a friend
+            </h2>
 
             <div className="copy-input-container">
               <input
                 ref={inputRef}
                 type="text"
-                defaultValue="https://example.com/my-link"
+                defaultValue={ContextHomeDataAPI?.part5}
                 className="copy-input input-invite-friend bg-white mb-60"
               />
               <button className="copy-button" onClick={handleCopy}>
@@ -145,25 +173,69 @@ const Invitefriend = ({ isActive, onAnimationComplete }) => {
             </button>
 
             <ul className="social-nav pl-0 d-flex justify-content-center">
-              <li className="social-list">
-                <a className="social-link" href="#" target="_blank" rel="noopener noreferrer">
-                  <img className="social-icon" src={FacebookIcon} alt="Facebook" />
-                </a>
+              <li
+                onClick={() => handleIconLink('facebook')}
+                className="social-list"
+              >
+                <span
+                  className="social-link"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="social-icon"
+                    src={FacebookIcon}
+                    alt="Facebook"
+                  />
+                </span>
               </li>
-              <li className="social-list">
-                <a className="social-link" href="#" target="_blank" rel="noopener noreferrer">
-                  <img className="social-icon" src={InstaIcon} alt="Instagram" />
-                </a>
+              <li
+                onClick={() => handleIconLink('insta')}
+                className="social-list"
+              >
+                <span
+                  className="social-link"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="social-icon"
+                    src={InstaIcon}
+                    alt="Instagram"
+                  />
+                </span>
               </li>
-              <li className="social-list">
-                <a className="social-link" href="#" target="_blank" rel="noopener noreferrer">
-                  <img className="social-icon" src={YoutubeIcon} alt="YouTube" />
-                </a>
+              <li
+                onClick={() => handleIconLink('telegram')}
+                className="social-list"
+              >
+                <span
+                  className="social-link"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img className="social-icon" src={telegram} alt="YouTube" />
+                </span>
               </li>
-              <li className="social-list">
-                <a className="social-link" href="#" target="_blank" rel="noopener noreferrer">
-                  <img className="social-icon" src={TwitterIcon} alt="Twitter" />
-                </a>
+              <li
+                onClick={() => handleIconLink('twitter')}
+                className="social-list"
+              >
+                <span
+                  className="social-link"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="social-icon"
+                    src={TwitterIcon}
+                    alt="Twitter"
+                  />
+                </span>
               </li>
             </ul>
           </div>
