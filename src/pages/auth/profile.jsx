@@ -78,6 +78,11 @@ const Profile = () => {
     // Handle form submit
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        // Mobile number validation
+        if (!/^\d{10}$/.test(profileData.mobile)) {
+            alert('Mobile number must be exactly 10 digits.');
+            return;
+        }
         alert('Profile updated successfully!');
         setIsEditModalOpen(false);
     };
@@ -528,7 +533,7 @@ const Profile = () => {
                                         onChange={handleInputChange}
                                     />
                                 </div>
-                                <div className="mb-32">
+                                {/* <div className="mb-32">
                                     <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
                                         Your Mobile No
                                     </label>
@@ -539,7 +544,28 @@ const Profile = () => {
                                         value={profileData.mobile}
                                         onChange={handleInputChange}
                                     />
+                                </div> */}
+                                <div className="mb-32">
+                                    <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
+                                        Your Mobile No
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control font-14 text-primary-color montserrat-medium"
+                                        name="mobile"
+                                        value={profileData.mobile}
+                                        onChange={handleInputChange}
+                                        maxLength={10}
+                                        pattern="\d{10}"
+                                        onKeyPress={(e) => {
+                                            if (!/[0-9]/.test(e.key)) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                        required
+                                    />
                                 </div>
+
                                 <div className="mb-32">
                                     <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
                                         Your Email
@@ -646,16 +672,11 @@ const Profile = () => {
                                     <label className="form-label mb-8 font-14 text-light-color montserrat-regular d-block">
                                         Attachments (If any)
                                     </label>
+
                                     <div className="col-8">
-
-
                                         {/* Custom File Upload Button */}
                                         <label className="custom-upload-btn w-100 text-light-color font-12">
-                                            <img
-                                                src={UploadIcon}
-                                                alt="Upload File Icon"
-                                                className="me-2"
-                                            />
+                                            <img src={UploadIcon} alt="Upload File Icon" className="me-2" />
                                             Attachments (up to 5 files)
                                             <input
                                                 type="file"
@@ -663,27 +684,45 @@ const Profile = () => {
                                                 hidden
                                                 onChange={(e) => {
                                                     const selectedFiles = Array.from(e.target.files);
-                                                    if (selectedFiles.length > 5) {
-                                                        alert('You can only upload up to 5 files.');
+                                                    const totalFiles = messageForm.files.length + selectedFiles.length;
+
+                                                    if (totalFiles > 5) {
+                                                        alert(`You can only upload up to 5 files. You already selected ${messageForm.files.length} file(s).`);
                                                         return;
                                                     }
+
                                                     setMessageForm({
                                                         ...messageForm,
-                                                        files: selectedFiles,
+                                                        files: [...messageForm.files, ...selectedFiles],
                                                     });
                                                 }}
                                             />
                                         </label>
 
-                                        {/* Show File Names */}
+                                        {/* Show File Names with Remove Option */}
                                         {messageForm.files.length > 0 && (
-                                            <ul className="mt-2">
+                                            <ul className="mt-2 file-list">
                                                 {messageForm.files.map((file, index) => (
-                                                    <li key={index}>{file.name}</li>
+                                                    <li key={index} className="d-flex justify-content-between align-items-center mb-2">
+                                                        <span>{file.name}</span>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-sm btn-danger"
+                                                            onClick={() => {
+                                                                const updatedFiles = [...messageForm.files];
+                                                                updatedFiles.splice(index, 1);
+                                                                setMessageForm({ ...messageForm, files: updatedFiles });
+                                                            }}
+                                                        >
+                                                            Remove
+                                                        </button>
+                                                    </li>
                                                 ))}
                                             </ul>
                                         )}
                                     </div>
+
+
                                     <div className="col-4">
                                         <button type="submit" className="btn w-100 btn-primaryColor text-white font-14 montserrat-medium">
                                             Send
