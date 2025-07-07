@@ -9,6 +9,7 @@ import Logo from '../../assets/icons/logo/logo.svg';
 import { Clock, AlertCircle } from 'lucide-react';
 import { postData } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import { toastError, toastSuccess } from '../../utils/toster';
 
 const ConfirmForgotPasswordOtp = () => {
   const {
@@ -26,6 +27,7 @@ const ConfirmForgotPasswordOtp = () => {
   const [otpStatus, setOtpStatus] = useState('sent'); // 'sent', 'verifying', 'error'
   const [error, setError] = useState('');
   const [timer, setTimer] = useState(60);
+      const [loading, setLoading] = useState(false);
 
   const UserEmailNum = localStorage.getItem('email');
   // Timer countdown
@@ -75,16 +77,17 @@ const ConfirmForgotPasswordOtp = () => {
   };
 
   const handleVerify = async () => {
+    setLoading(true);
     try {
       console.clear();
       const response = await postData('/login/verify-code', {
         verification_code: Number(otp?.join('')),
         email: UserEmailNum,
       });
-      console.log(response);
       setOtpStatus('verifying');
       setTimeout(() => {
         if (response?.success) {
+          toastSuccess(response?.message)
           navigate('/resetpassword');
           setOtpStatus('sent');
           setError('');
@@ -94,7 +97,10 @@ const ConfirmForgotPasswordOtp = () => {
         }
       }, 1000);
     } catch (error) {
-      console.log('error: ', error);
+      toastError(error?.message)
+    }
+       finally{
+      setLoading(false);
     }
   };
 
@@ -104,12 +110,10 @@ const ConfirmForgotPasswordOtp = () => {
     setError('');
     setTimer(60);
     inputRefs.current[0].focus();
-    // alert('OTP Resent');
     try {
       const response = await postData('/login/forgot-password', {
         email: UserEmailNum,
       });
-      console.log('response: ', response);
     } catch (error) {}
   };
 
@@ -120,7 +124,6 @@ const ConfirmForgotPasswordOtp = () => {
   };
 
   const onSubmit = (data) => {
-    console.log('Form Submitted:', data);
   };
 
   return (
@@ -212,6 +215,7 @@ const ConfirmForgotPasswordOtp = () => {
                     )}
                     <button
                       onClick={handleVerify}
+                      disabled={loading}
                       //   disabled={
                       //     otp.some((digit) => digit === '') ||
                       //     otpStatus === 'verifying'
@@ -221,7 +225,8 @@ const ConfirmForgotPasswordOtp = () => {
                       {/* {otpStatus === 'verifying'
                         ? 'Verifying...'
                         : 'Verify OTP'} */}
-                      Submit
+                      {/* Submit */}
+                      {loading ? 'Loading...' : 'Submit'}
                     </button>
                   </div>
                 )}

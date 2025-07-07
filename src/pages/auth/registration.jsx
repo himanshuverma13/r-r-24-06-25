@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 // Assets icons
@@ -12,9 +12,11 @@ const Registration = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const [loading, setLoading] = useState(false);
 
   const password = watch('password');
   const onSubmit = async (data) => {
+    setLoading(true);
     try {
       const response = await postData('/register', {
         confirm_password: data?.confirmPassword,
@@ -25,9 +27,12 @@ const Registration = () => {
         referral_code: data?.referralCode,
         tag_id: '',
       });
-      console.log(response);
-      console.log('Form Submitted:', data);
-    } catch (error) {}
+    } catch (error) {
+
+    }
+        finally{
+      setLoading(false);
+    }
   };
 
   return (
@@ -154,9 +159,11 @@ const Registration = () => {
                 <div className="col-lg-10 mb-3">
                   <button
                     type="submit"
-                    className="montserrat-bold w-100 font-size-16 py-2 rounded-3 background-text-blue text-white"
+                    disabled={loading}
+                    className="montserrat-bold w-100 font-size-16 py-2 border-0 rounded-3 background-text-blue text-white"
                   >
-                    Sign Up
+                    {/* Sign Up */}
+                    {loading ? 'Loading...' : 'Sign Up'}
                   </button>
                   <p className="font-size-16 montserrat-medium text-center mt-3 text-light-gray">
                     Powered by Red Vision Technologies

@@ -122,10 +122,10 @@ const SliderCard = ({RefralDataAPI}) => {
         <>
             <div className='d-flex align-items-center justify-content-between'>
                 <p className='font-32 space-grotesk-bold text-blue mt-5'>My Referrals</p>
-                <div className='referral-toggle-btn text-center d-flex align-items-center justify-content-center'
+                <div className='referral-toggle-btn text-center d-flex align-items-center justify-content-center cursor-pointer'
                     onClick={() => setShowTable(!showTable)}
                 >
-                    <FaList className='fs-5 text-blue' />
+                    <FaList className='fs-5 text-blue cursor-pointer' />
                 </div>
             </div>
 

@@ -50,7 +50,6 @@ const MyReferralScreen = () => {
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const { ContextHomeDataAPI } =
   useContext(UserContext);
-  console.log('ContextHomeDataAPI: ', ContextHomeDataAPI);
 
   const handleCopy = async () => {
     try {
@@ -74,7 +73,6 @@ const MyReferralScreen = () => {
         mode: Auth?.mode,
       });
       const Decrpty = await DecryptFunction(enyptData);
-      console.log('Decrpty: ', Decrpty);
       setRefralDataAPI(Decrpty);
     } catch (error) {
       console.log('error: ', error);

@@ -3,7 +3,6 @@ import { useState } from 'react';
 import './rewardHistory.css';
 
 const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
-  console.log('MyRewardDataAPI: ', MyRewardDataAPI);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
