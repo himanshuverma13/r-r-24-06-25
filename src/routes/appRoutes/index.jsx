@@ -12,6 +12,7 @@ import MyReferralScreen from '../../pages/MyReferral/MyReferralScreen';
 import SendOtpForgotPassword from '../../pages/auth/forgotPassword';
 import ConfirmForgotPasswordOtp from '../../pages/auth/confirmForgotPWOtp';
 import ResetPassword from '../../pages/auth/resetPassword';
+import Profile from '../../pages/auth/profile';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
@@ -51,6 +52,7 @@ const AppRoutes = () => {
         <Route path="/subscription" element={<Product />} />
         <Route path="/reward" element={<MyRewardFirstScreen />} />
         <Route path="/referral" element={<MyReferralScreen />} />
+        <Route path="/profile" element={<Profile/>}/>
         {/* <Route
           path="/dashboard"
           element={
