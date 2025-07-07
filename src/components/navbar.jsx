@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import navCenterImg from '../assets/images/home/navCenterImg.svg';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   const navItems = [
-    { label: 'Home', color: 'orange' },
-    { label: 'My Rewards', color: 'green' },
+    { label: 'Home',to:"/", color: 'orange' },
+    { label: 'My Rewards',to:"/reward", color: 'green' },
     { img: navCenterImg },
-    { label: 'My Referrals', color: 'blue' },
-    { label: 'Profile', color: 'rebeccapurple' },
+    { label: 'My Referrals', to:"/referral", color: 'blue' },
+    { label: 'Profile',to:"", color: 'rebeccapurple' },
   ];
   const indicatorRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -39,9 +40,10 @@ const Navbar = () => {
         <div class="container-fluid justify-content-end">
           <div class="navbar-collapse my-0 py-0">
             <div className="container-fluid px-5">
-              <ul className="d-flex justify-content-between my-0 py-0 px-0">
+              <ul className="d-flex justify-content-between nav-ul my-0 py-0 px-0">
                 {navItems?.map((i, index) => {
                   return !i?.img ? (
+                    <Link to={i?.to}>
                     <li
                       className={`list-unstyled list-background h-100 text-white mt-4 pt-3`}
                     >
@@ -58,6 +60,7 @@ const Navbar = () => {
                         {i?.label}
                       </span>
                     </li>
+                    </Link>
                   ) : (
                     <li className="list-unstyled text-center">
                       <img

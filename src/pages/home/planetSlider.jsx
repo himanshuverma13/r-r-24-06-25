@@ -39,7 +39,7 @@ const PlanetSlider = ({ onPlanetClick, setIsVisible, isVisible }) => {
   };
 
   return (
-    <div className="text-center solar-sys mt-5 pt-5">
+    <div id='PlanetSLider_Section' className="text-center solar-sys mt-5 pt-5">
       <div className="row align-items-center mt-5">
         <div className={`d-flex justify-content-center ${isVisible ? 'plnt-animt-up' : 'plnt-animt-down'}`}>
           <img

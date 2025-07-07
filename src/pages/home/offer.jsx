@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 // import images
-import offerastro from '../../assets/icons/home/offer/offerastro.svg'
+import offerastro from '../../assets/icons/home/offer/offerastro.svg';
 import offersolor from '../../assets/icons/home/offer/offersolor.svg';
 import offerRocket from '../../assets/icons/home/offer/offerRocket.svg';
 import rightarrow from '../../assets/icons/home/offer/rightarrow.svg';
@@ -25,7 +25,7 @@ import minus from '../../assets/icons/home/offer/minus.svg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const Offer = () => {
+const Offer = ({ isActive }) => {
   const cards = [
     {
       id: 1,
@@ -65,10 +65,11 @@ const Offer = () => {
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: '20px',
+    autoplay: true,
   };
 
   const [openIndex, setOpenIndex] = useState(null);
-    const [SemiPlntRaise, setSemiPlntRaise] = useState(true);
+  const [SemiPlntRaise, setSemiPlntRaise] = useState(true);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -76,17 +77,22 @@ const Offer = () => {
 
   const items = [
     {
-      title: '1. Collapsible Group Item',
+      title: '1. What is Wealth Elite’s Reward & Referral Program?',
       content:
         'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
     },
     {
-      title: '2. Collapsible Group Item',
+      title: '2. How can I track my referrals?',
       content:
         'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
     },
     {
-      title: '3. Collapsible Group Item',
+      title: '3. What does a successful referral mean?',
+      content:
+        'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
+    },
+    {
+      title: '4. What does a successful referral mean?',
       content:
         'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
     },
@@ -105,17 +111,11 @@ const Offer = () => {
   }, []);
 
   return (
-    <section className="offer-section">
+    <section id='Offer_Section' className="offer-section">
       <div className="offer-sect-content top-0 start-0 bottom-0 end-0">
-        <div className="container-fluid px-5 pt-5">
+        <div className="container-fluid px-5 pt-5 overflow-hidden">
           <div
-            className="row offer-slider-fade-left ${isActive ? 'aos-animate' : ''}"
-            data-aos="fade-left"
-            data-aos-offset="500"
-            data-aos-delay="200"
-            data-aos-easing="linear"
-            data-aos-duration="5000"
-          >
+            className={`row offer-slider-fade-left ${isActive ? 'aos-animate' : ''} `}>
             <Slider className="offer-slider" {...settings}>
               {cards?.map((card, index) => (
                 <div
@@ -149,7 +149,7 @@ const Offer = () => {
             </Slider>
           </div>
           {/*  Exclusive Offers SECTION */}
-          <h1 className="text-dark-blue mt-120 mb-4 pb-4 ">Exclusive Offers</h1>
+          <h1 className="text-dark-blue font-40 space-grotesk-bold mt-120 mb-4 pb-4 ">Exclusive Offers</h1>
           <div className="pt-5 d-grid price-exclusive gap-3">
             <div className="mt-5 rounded-4 shadow-lg bg-white px-0">
               <div className="head-sec position-relative">
@@ -165,12 +165,12 @@ const Offer = () => {
                 <h3 className="font-24 text-light-black montserrat-semibold mt-3 mb-2">
                   Get 10% Off on Zomato
                 </h3>
-                <p className="font-16 text-light-black montserrat-regular">
+                <p className="font-16 text-light-black space-grotesk-regular">
                   Enjoy delicious deals on your next order!
                 </p>
-                <hr className="my-4 border-1" />
+                <hr className="my-4 border-1 card-divider width-65" />
                 <button
-                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 w-100 rounded-5"
+                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 width-65 rounded-5"
                   type="button"
                 >
                   Claim Now
@@ -191,12 +191,12 @@ const Offer = () => {
                 <h3 className="font-24 text-light-black montserrat-semibold mt-3 mb-2">
                   Get 10% Off on Zomato
                 </h3>
-                <p className="font-16 text-light-black montserrat-regular">
+                <p className="font-16 text-light-black space-grotesk-regular">
                   Enjoy delicious deals on your next order!
                 </p>
-                <hr className="my-4 border-1" />
+                <hr className="my-4 border-1 card-divider width-65" />
                 <button
-                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 w-100 rounded-5"
+                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 width-65 rounded-5"
                   type="button"
                 >
                   Claim Now
@@ -217,12 +217,12 @@ const Offer = () => {
                 <h3 className="font-24 text-light-black montserrat-semibold mt-3 mb-2">
                   Get 10% Off on Zomato
                 </h3>
-                <p className="font-16 text-light-black montserrat-regular">
+                <p className="font-16 text-light-black space-grotesk-regular">
                   Enjoy delicious deals on your next order!
                 </p>
-                <hr className="my-4 border-1" />
+                <hr className="my-4 border-1 card-divider width-65" />
                 <button
-                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 w-100 rounded-5"
+                  className="btn background-text-blue text-white font-14 montserrat-medium mb-4 width-65 rounded-5"
                   type="button"
                 >
                   Claim Now
@@ -231,7 +231,7 @@ const Offer = () => {
             </div>
           </div>
           {/* Win Exciting Prizes SECTION */}
-          <h2 className="text-dark-blue mt-120 mb-4 pb-4 ">
+          <h2 className="text-dark-blue mt-120 font-40 space-grotesk-bold mb-4 pb-4 ">
             Win Exciting Prizes
           </h2>
           <div className="row justify-content-between">
@@ -246,7 +246,7 @@ const Offer = () => {
                   </p>
                 </div>
                 <div className="section-offer align-self-end mb-3 pb-1">
-                  <h4 className="font-40 montserrat-medium text-white mb-0">
+                  <h4 className="font-40 space-grotesk-medium text-white mb-0">
                     Collect
                   </h4>
                   <div className="d-flex align-items-center">
@@ -267,7 +267,7 @@ const Offer = () => {
             <div className="col-lg-6 px-4 d-grid">
               <div className="col-lg-12 shadow-lg py-3 d-flex price-watch align-self-start">
                 <div className="col-lg-8  ms-4 ps-4 align-self-end mb-1">
-                  <h4 className="font-40 montserrat-medium text-white mb-0">
+                  <h4 className="font-40 space-grotesk-medium text-white mb-0">
                     Collect
                   </h4>
                   <div className="d-flex align-items-center">
@@ -286,7 +286,7 @@ const Offer = () => {
               </div>
               <div className="col-lg-12 py-3 shadow-lg d-flex price-headphone align-self-end">
                 <div className="col-lg-8  ms-4 ps-4 align-self-end mb-1">
-                  <h4 className="font-40 montserrat-medium text-white mb-0">
+                  <h4 className="font-40 space-grotesk-medium text-white mb-0">
                     Collect
                   </h4>
                   <div className="d-flex align-items-center">
@@ -305,61 +305,66 @@ const Offer = () => {
               </div>
             </div>
           </div>
-          {/* FAQ SECTION */}
-          <h2 className="text-dark-blue mt-120 mb-1 pb-1 ">
-            Frequently Asked Questions
-          </h2>
-          <div className="row" 
-                  onMouseEnter={() => setSemiPlntRaise(true)}
-        onMouseLeave={() => setSemiPlntRaise(false)}>
-            <div className="accordion">
-              {items.map((item, index) => (
-                <div className="mt-4 pt-3" key={index}>
-                  <div
-                    className="purple-border-bottom pb-4 pt-1"
-                    id={`heading${index}`}
-                  >
-                    <h6 className="mb-0 font-16 text-dark-blue montserrat-medium">
-                      <button
-                        className="border-0 bg-transparent d-flex justify-content-between align-items-center w-100"
-                        onClick={() => toggle(index)}
-                        aria-expanded={openIndex === index}
-                        aria-controls={`collapse${index}`}
-                      >
-                        {item.title}
-                        <span className="">
-                          <img
-                            src={openIndex === index ? minus : plus}
-                            alt=""
-                          />
-                        </span>
-                      </button>
-                    </h6>
-                  </div>
-                  <div
-                    id={`collapse${index}`}
-                    className={`collapse ${openIndex === index ? 'show' : ''}`}
-                    aria-labelledby={`heading${index}`}
-                    data-parent="#accordion"
-                  >
-                    <div className="card-body p-3">
-                      <p className="mb-0 font-16 text-dark-blue montserrat-regular">
-                        {item.content}
-                      </p>
+        </div>
+
+        {/* FAQ SECTION */}
+        <div
+          className="faq-section"
+          onMouseEnter={() => setSemiPlntRaise(true)}
+          onMouseLeave={() => setSemiPlntRaise(false)}
+        >
+          <div className="container-fluid px-5 pb-5">
+            <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-1 pb-1 ">
+              Frequently Asked Questions
+            </h2>
+            <div className="row">
+              <div className="accordion">
+                {items.map((item, index) => (
+                  <div className="mt-4 pt-3" key={index}>
+                    <div
+                      className="purple-border-bottom pb-4 pt-1"
+                      id={`heading${index}`}
+                    >
+                      <h6 className="mb-0 font-16 text-dark-blue montserrat-medium">
+                        <button
+                          className="border-0 bg-transparent d-flex justify-content-between align-items-center w-100"
+                          onClick={() => toggle(index)}
+                          aria-expanded={openIndex === index}
+                          aria-controls={`collapse${index}`}
+                        >
+                          {item.title}
+                          <span className="">
+                            <img
+                              src={openIndex === index ? minus : plus}
+                              alt=""
+                            />
+                          </span>
+                        </button>
+                      </h6>
+                    </div>
+                    <div
+                      id={`collapse${index}`}
+                      className={`collapse ${openIndex === index ? 'show' : ''}`}
+                      aria-labelledby={`heading${index}`}
+                      data-parent="#accordion"
+                    >
+                      <div className="card-body p-3">
+                        <p className="mb-0 font-16 text-dark-blue montserrat-regular">
+                          {item.content}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-
+                ))}
+              </div>
             </div>
           </div>
-      
-
         </div>
         {/* FOOTER SECTION */}
-        <div className="offer-footer position-relative overflow-hidden mt-5"
-        onMouseEnter={() => setSemiPlntRaise(true)}
-        onMouseLeave={() => setSemiPlntRaise(false)}
+        <div
+          className="offer-footer position-relative overflow-hidden"
+          onMouseEnter={() => setSemiPlntRaise(true)}
+          onMouseLeave={() => setSemiPlntRaise(false)}
         >
           <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
             <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
@@ -367,7 +372,7 @@ const Offer = () => {
             </p>
           </div>
           <div
-            className={`position-absolute footer-semi-planet hoverRaiseSemiPlnt ${SemiPlntRaise ? "active" : ""} `}
+            className={`position-absolute footer-semi-planet hoverRaiseSemiPlnt ${SemiPlntRaise ? 'active' : ''} `}
             // data-aos="fade-up"
             // data-aos-delay="100"
           ></div>
