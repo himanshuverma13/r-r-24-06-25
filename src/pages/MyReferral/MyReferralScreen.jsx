@@ -49,7 +49,7 @@ const MyReferralScreen = () => {
 
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const { ContextHomeDataAPI } =
-  useContext(UserContext);
+    useContext(UserContext);
   console.log('ContextHomeDataAPI: ', ContextHomeDataAPI);
 
   const handleCopy = async () => {
@@ -160,7 +160,7 @@ const MyReferralScreen = () => {
             </div>
             <div className="my-refral-inner-content">
               {/* Referral Cards */}
-            <SliderCard RefralDataAPI={RefralDataAPI} />
+              <SliderCard RefralDataAPI={RefralDataAPI} />
               {/* INVITING, TRACKING CARD SECTION */}
               <div className="container">
                 <div className="font-32 space-grotesk-bold text-blue mt-120 mb-4 pb-4 ">
@@ -208,8 +208,8 @@ const MyReferralScreen = () => {
             </div>
             <div
               className="position-absolute footer-semi-planet z-3"
-              //   data-aos="fade-up"
-              //   data-aos-delay="200"
+            //   data-aos="fade-up"
+            //   data-aos-delay="200"
             ></div>
           </div>
         </div>
