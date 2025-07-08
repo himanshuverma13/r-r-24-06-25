@@ -99,9 +99,10 @@ const MyReferralScreen = () => {
               <ReferralCards RefralDataAPI={RefralDataAPI} />
             </div>
             <div className="invite-card my-refral-inner-content overflow-hidden">
-              <div className="row pt-5 px-5 align-items-center">
-                <div className="col-lg-6 d-flex justify-content-center">
-                  <div>
+              <div className="row pt-36 px-5 align-items-center">
+                <div className='col-lg-1'></div>
+                <div className="col-lg-5">
+                  <div className='d-flex justify-content-center'>
                     <p className="font-32 text-white space-grotesk-bold ms-5">
                       Invite A Friend
                     </p>
@@ -117,13 +118,13 @@ const MyReferralScreen = () => {
                         ref={inputRef}
                         type="text"
                         defaultValue={RefralDataAPI?.part6}
-                        className="copy-input input-invite-friend bg-white mb-60"
+                        className="copy-input input-invite-friend bg-white mb-16"
                       />
                       <button
-                        className="copy-button montserrat-regular"
+                        className="copy-button font-14 montserrat-regular"
                         onClick={handleCopy}
                       >
-                        {copied ? 'Copied!' : 'Copy Link'}
+                        {copied ? 'Copied!' : 'Copy Code'}
                       </button>
                     </div>
                   </div>
@@ -136,10 +137,10 @@ const MyReferralScreen = () => {
                         ref={inputRef}
                         type="text"
                         defaultValue={RefralDataAPI?.part5}
-                        className="copy-input input-invite-friend bg-white mb-60"
+                        className="copy-input input-invite-friend bg-white mb-16"
                       />
                       <button
-                        className="copy-button  montserrat-medium"
+                        className="copy-button font-14 montserrat-regular"
                         onClick={handleCopy}
                       >
                         {copied ? 'Copied!' : 'Copy Link'}
@@ -158,7 +159,7 @@ const MyReferralScreen = () => {
             </div>
             <div className="my-refral-inner-content">
               {/* Referral Cards */}
-            <SliderCard RefralDataAPI={RefralDataAPI} />
+              <SliderCard RefralDataAPI={RefralDataAPI} />
               {/* INVITING, TRACKING CARD SECTION */}
               <div className="container">
                 <div className="font-32 space-grotesk-bold text-blue mt-120 mb-4 pb-4 ">
@@ -206,8 +207,8 @@ const MyReferralScreen = () => {
             </div>
             <div
               className="position-absolute footer-semi-planet z-3"
-              //   data-aos="fade-up"
-              //   data-aos-delay="200"
+            //   data-aos="fade-up"
+            //   data-aos-delay="200"
             ></div>
           </div>
         </div>

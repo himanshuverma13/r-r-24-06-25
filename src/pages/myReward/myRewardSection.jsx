@@ -34,13 +34,14 @@ import Stratergy from '../../assets/icons/home/MyRewards/strategry-consultant.sv
 import Report from '../../assets/icons/home/MyRewards/report.svg';
 import refalien from '../../assets/icons/home/MyRewards/refalien.svg';
 import StartFour from '../../assets/icons/home/MyRewards/StarFour.svg';
-import revClock from '../../assets/icons/home/MyRewards/clock.svg';
+// import revClock from '../../assets/icons/home/MyRewards/clock.svg';
 import FAQ from '../../components/faq';
 import PlayAndEarnCard from '../../components/playAndEarnCard';
 import RewardHistory from './rewardHistory';
 import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import { UserContext } from '../../utils/UseContext/useContext';
+import { GiBackwardTime } from "react-icons/gi";
 
 const RewardSliderJson = [
   { num: 'A', img: gifplnt1, lock: false },
@@ -69,6 +70,20 @@ const discountData = [
     mainText: '',
     highlight: '₹ 2000 Off',
     subText: 'on Robo Advisory',
+    badgeText: '7 d',
+    badgeClass: 'background-light-cream',
+  },
+  {
+    mainText: 'Flat ',
+    highlight: '10% Off',
+    subText: 'on Sales Ninja',
+    badgeText: '7 d',
+    badgeClass: 'background-light-cream',
+  },
+  {
+    mainText: 'Flat ',
+    highlight: '10% Off',
+    subText: 'on Sales Ninja',
     badgeText: '7 d',
     badgeClass: 'background-light-cream',
   },
@@ -190,11 +205,15 @@ const MyRewardFirstScreen = () => {
   };
   const settings = {
     arrow: false,
-    className: 'center',
+    // className: 'center',
     infinite: true,
-    centerPadding: '40px',
+    centerMode: false,
+    // centerPadding: '40px',
     slidesToShow: 3.5,
     swipeToSlide: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
     afterChange: function (index) {
       console.log(
         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
@@ -295,7 +314,7 @@ const MyRewardFirstScreen = () => {
   return (
     <>
       <section
-        className={` reward-section position-relative ${RwdAnimate ? '' : 'height-100vh overflow-hidden'}`}
+        className={`reward-section position-relative ${RwdAnimate ? '' : 'height-100vh overflow-hidden'}`}
       >
         {showRwrdHstry ? (
           <>
@@ -313,7 +332,13 @@ const MyRewardFirstScreen = () => {
             </div>
 
             {/* UFO SHIP SIDE NAV */}
-            <div className="container-fluid ">
+            <div
+              className={`position-fixed top-0 left-0 z-1  ${UfoBg ? 'redeem-claim' : ''}`}
+              style={{ height: '95px' }}
+            ></div>
+
+            {/* Content inside container */}
+            <div className="container-fluid pb-2">
               <div
                 className={`px-0 position-fixed z-1 w-100 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
                 style={{
@@ -349,9 +374,11 @@ const MyRewardFirstScreen = () => {
                 <div className="col-lg-3 text-center">
                   <button
                     onClick={() => setshowRwrdHstry(true)}
-                    className="bg-transparent rounded-5 px-3 py-1 text-blue font-16 montserrat-semibold reward-history"
+                    className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg ? 'text-white border-white' : 'text-blue reward-history'}`}
                   >
-                    Reward History <img className="" src={revClock} alt="" />
+                    Reward History
+                    <GiBackwardTime className={`ms-2 font-18 montserrat-semibold ${UfoBg ? 'text-white' : 'text-blue'}`} />
+
                   </button>
                 </div>
               </div>
@@ -359,7 +386,7 @@ const MyRewardFirstScreen = () => {
             {/* MY REWARDS FIRST SCREEN */}
             {ShowSecScr && (
               <>
-                <div className="container sdfsdfd">
+                <div className="container pt-5 sdfsdfd">
                   <div className={`d-flex my-reward-cards gap-4 mt-5 px-0 `}>
                     <div className="w-50 myreward-card-1 px-4 pb-4 rounded-4">
                       <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
@@ -506,10 +533,10 @@ const MyRewardFirstScreen = () => {
                 {/* REWARD JOURNEY SLIDER */}
                 <div className="container">
                   <div
-                    className={`d-flex justify-content-between background-text-blue rounded-4 overflow-hidden position-relative py-3 mt-5 ${RwdAnimate ? 'rwd-jrny-sld-active' : 'rwd-jrny-sld'}`}
+                    className={`d-flex justify-content-between reward-slider-card rounded-4 overflow-hidden position-relative py-3 mt-5 ${RwdAnimate ? 'rwd-jrny-sld-active' : 'rwd-jrny-sld'}`}
                   >
                     <div className="width-16">
-                      <h3 className="font-20 montserrat-semibold text-white ms-3 w-75">
+                      <h3 className="font-20 montserrat-semibold text-white ms-3 w-100">
                         Your Reward Journey <br /> So Far
                       </h3>
                       <img
@@ -528,9 +555,9 @@ const MyRewardFirstScreen = () => {
                         className="reward-slider"
                         {...rewardSliderSetting}
                       >
-                        {RewardSliderJson?.map((slide,index) => (
+                        {RewardSliderJson?.map((slide, index) => (
                           <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 ">
-                            <h4 className="font-14 montserrat-semibold text-blue">
+                            <h4 className="font-14 space-grotesk-bold montserrat-semibold text-blue">
                               Planet {slide?.num}
                             </h4>
                             <div className="position-relative d-flex justify-content-center">
@@ -572,18 +599,18 @@ const MyRewardFirstScreen = () => {
                   {/* Discount Cards start here */}
                   <div className="discount-code-section my-5 px-4">
                     <div className="discount-bg-img pt-4">
-                      <p className="font-size-18 montserrat-bold text-blue">
+                      <p className="font-size-18 space-grotesk-bold text-blue">
                         Discount Codes
                       </p>
                     </div>
                     <p className="text-blue font-size-14 montserrat-medium mb-1">
                       Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                     </p>
-                    <div className="slider-container discount-slider pb-4 px-2">
+                    <div className="slider-container discount-slider pb-4">
                       <Slider className="" {...settings}>
                         {discountData.map((item, index) => (
                           <div key={index} className="px-2">
-                            <div className="discount-card background-text-blue row ps-2 gx-0 position-relative">
+                            <div className="discount-card background-text-blue row p-2 gx-0 position-relative">
                               <div className="col-8 text-white d-flex align-items-center my-2 justify-content-center">
                                 <div className="discount-white-box"></div>
                                 <p className="font-size-14 montserrat-medium ps-2 mt-2 lh-sm">
@@ -611,7 +638,7 @@ const MyRewardFirstScreen = () => {
                   {/* Exclusive Perks */}
                   <div className="discount-code-section my-5 px-4">
                     <div className="discount-bg-img pt-4">
-                      <p className="font-size-18 montserrat-bold text-blue">
+                      <p className="font-size-18 space-grotesk-bold text-blue">
                         Exclusive Perks
                       </p>
                     </div>
@@ -623,7 +650,7 @@ const MyRewardFirstScreen = () => {
                       <Slider {...settings}>
                         {ExclusiveCardData.map((item, index) => (
                           <div key={index}>
-                            <div className="discount-card background-text-blue row gx-0 p-3 mx-2">
+                            <div className="discount-card w-100 background-text-blue row gx-0 p-3">
                               <div className="col-8 text-white">
                                 <p className="font-size-16 mb-0 text-uppercase montserrat-medium">
                                   {item.title}
@@ -667,23 +694,23 @@ const MyRewardFirstScreen = () => {
         <div className="referred-banner position-relative">
           <div className="container">
             <div className="row py-5 my-4">
-              <div className="col-lg-5">
+              <div className="col-lg-6">
                 <h2 className="text-white font-32 montserrat-semibold">
                   You Have Referred To 5 Friends
                 </h2>
                 <p className="text-white font-24 space-grotesk-medium">
                   Keep Referring To Earn Even More !!
                 </p>
-                <div className="d-flex justify-content-between">
-                  <button className="py-2 px-5 rounded-3 font-16 montserrat-semibold border border-0 background-text-blue text-white">
+                <div className="d-flex justify-content-between gap-4">
+                  <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border border-0 background-text-blue text-white">
                     See my Referrals
                   </button>
-                  <button className="py-2 px-5 rounded-3 font-16 montserrat-semibold border-blue text-blue">
+                  <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border-blue text-blue">
                     Refer more & Earn
                   </button>
                 </div>
               </div>
-              <div className="col-lg-7">
+              <div className="col-lg-6">
                 <img
                   className="position-absolute bottom-0"
                   src={refalien}
@@ -695,12 +722,12 @@ const MyRewardFirstScreen = () => {
         </div>
         {/* PLAY AND EARN CARDS */}
         <div className="container">
-          <h2 className="text-dark-blue mt-120 mb-4 pb-4 ">Play & Earn</h2>
+          <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-4 pb-4 ">Play & Earn</h2>
           <PlayAndEarnCard />
         </div>
         {/* REDEEM CLAIM SECTION */}
         <div className="container">
-          <h2 className="text-dark-blue mt-120 mb-4 pb-4 ">
+          <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-4 pb-4 ">
             Here's How You Unlock Every Reward
           </h2>
 
@@ -740,8 +767,8 @@ const MyRewardFirstScreen = () => {
           </div>
           <div
             className="position-absolute footer-semi-planet"
-            // data-aos="fade-up"
-            // data-aos-delay="200"
+          // data-aos="fade-up"
+          // data-aos-delay="200"
           ></div>
         </div>
       </section>

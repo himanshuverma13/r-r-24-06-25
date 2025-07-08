@@ -44,8 +44,8 @@ const Profile = () => {
     const [profileImage, setProfileImage] = useState(null);
 
     // Invite links
-    const [inviteLink] = useState('https://example.com/invite-link');
-    const [inviteCode] = useState('123456');
+    const [inviteLink] = useState('Invite Link');
+    const [inviteCode] = useState('Invite Code');
 
     // Accordion toggle
     const toggleSection = (section) => {

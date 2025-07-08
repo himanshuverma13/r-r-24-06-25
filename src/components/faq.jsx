@@ -14,7 +14,7 @@ const FAQ = ({ items }) => {
     return (
         <>
             <div className="container">
-                <h2 className="text-dark-blue mt-120 mb-1 pb-1">
+                <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-1 pb-1">
                     Frequently Asked Questions
                 </h2>
                 <div className="row">
@@ -22,7 +22,7 @@ const FAQ = ({ items }) => {
                         {items.map((item, index) => (
                             <div className="mt-4 pt-3" key={index}>
                                 <div
-                                    className="purple-border-bottom pb-4 pt-1"
+                                    className="purple-border-bottom mb-4 pt-1 d-block"
                                     id={`heading${index}`}
                                 >
                                     <h6 className="mb-0 font-16 text-dark-blue montserrat-medium">
