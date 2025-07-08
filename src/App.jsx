@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { UserProvider } from './utils/UseContext/useContext';
 import Product from './pages/auth/product';
+import UserFaqs from './pages/auth/userFaqs';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <UserProvider>
         <AppRoutes />
       </UserProvider>
-      {/* <Product/> */}
+      {/* <UserFaqs/> */}
     </>
   );
 }

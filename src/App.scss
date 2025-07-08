@@ -904,7 +904,9 @@ body::-webkit-scrollbar {
 .border-blue {
   border: 1px solid var(--text-blue);
 }
-
+  .purple-border-bottom {
+    border-bottom: 1px solid var(--push-notification);
+  }
 // =======================================================================
 
 // =============== LETTER SPACING ================================================

@@ -7,7 +7,7 @@ const Navbar = () => {
     { label: 'My Rewards',to:"/reward", color: 'green' },
     { img: navCenterImg },
     { label: 'My Referrals', to:"/referral", color: 'blue' },
-    { label: 'Profile',to:"", color: 'rebeccapurple' },
+    { label: 'Profile',to:"/profile", color: 'rebeccapurple' },
   ];
   const indicatorRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
