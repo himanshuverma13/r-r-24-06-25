@@ -2197,13 +2197,13 @@ border:1px solid $primary-color!important;
 
 // ==================== MY REWARDS ANIMATIONS CSS ---------------------------------
 .ufo-fixed {
-  // position: fixed;
+  position: fixed;
   // right: 7.5%;
-  // top: 12%;
+  top: 12%;
 }
 .ufo-fixed-active {
   position: fixed;
-  // right: 7.5%;
+  // right: 5%;
   top: 12%;
   animation: moveUpRewUfo 0.7s ease forwards;
 }
@@ -2826,8 +2826,8 @@ border:1px solid $primary-color!important;
 
 // Ufo top Fixed Css
 .ufo-fixed {
-  // position: fixed;
-  // top: 90px;
+  position: fixed;
+  top: 90px;
   // right: 7.5%;
 }
 

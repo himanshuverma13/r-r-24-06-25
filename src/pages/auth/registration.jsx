@@ -31,7 +31,7 @@ const Registration = () => {
         tag_id: '',
       });
       toastSuccess(response?.message);
-      navigate('/login');
+      navigate('/subscription');
     } catch (error) {
       toastError(error?.error);
     } finally {
@@ -41,7 +41,7 @@ const Registration = () => {
 
   return (
     <>
-      <div className="login-bg-img vh-100">
+      <div className="login-bg-img vh-100 overflow-hidden">
         <div className="nav-logo text-center mt-0">
           <img className="header-center-img width-13" src={Logo} alt="logo" />
         </div>

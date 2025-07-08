@@ -212,8 +212,8 @@ const Login = () => {
                         required: 'Password is required',
                       })}
                     />
-                    {errors.name && (
-                      <div className="text-danger">{errors.name.message}</div>
+                    {errors.password && (
+                      <div className="text-danger">{errors.password.message}</div>
                     )}
                   </div>
                   <div className="my-2">

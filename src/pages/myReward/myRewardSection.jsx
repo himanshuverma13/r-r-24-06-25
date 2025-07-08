@@ -338,9 +338,9 @@ const MyRewardFirstScreen = () => {
             ></div>
 
             {/* Content inside container */}
-            <div className="container pb-4">
+            <div className="container-fluid pb-4">
               <div
-                className={`px-0 position-fixed z-1 w-100 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
+                className={`px-0 position-fixed w-100 z-1 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
                 style={{
                   height: '95px',
                 }}
