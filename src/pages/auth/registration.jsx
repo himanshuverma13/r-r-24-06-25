@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 // Assets icons
 import Logo from '../../assets/icons/logo/logo.svg';
 import { postData } from '../../services/api';
+import { toastError, toastSuccess } from '../../utils/toster';
+import { useNavigate } from 'react-router-dom';
 
 const Registration = () => {
   const {
@@ -13,6 +15,7 @@ const Registration = () => {
     formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const password = watch('password');
   const onSubmit = async (data) => {
@@ -27,10 +30,11 @@ const Registration = () => {
         referral_code: data?.referralCode,
         tag_id: '',
       });
+      toastSuccess(response?.message);
+      navigate('/login');
     } catch (error) {
-
-    }
-        finally{
+      toastError(error?.error);
+    } finally {
       setLoading(false);
     }
   };
@@ -111,9 +115,8 @@ const Registration = () => {
                       class="form-control py-2"
                       id="exampleFormControlInput1"
                       placeholder="Your Referral Code"
-                      {...register('referralCode', )}
+                      {...register('referralCode')}
                     />
-                   
                   </div>
                 </div>
 

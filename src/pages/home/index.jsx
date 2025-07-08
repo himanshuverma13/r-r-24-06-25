@@ -77,6 +77,8 @@ const Index = ({ isExiting, isActive }) => {
 
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
 
+  let pnt = 3000;
+
   // const [leftBoxClass, setLeftBoxClass] = useState('left-box default-position');
   // const [rightBoxClass, setRightBoxClass] = useState('left-box default-position');
 
@@ -130,6 +132,7 @@ const Index = ({ isExiting, isActive }) => {
         mode: Auth?.mode,
       });
       const Decrpty = await DecryptFunction(enyptData);
+      console.log('Decrpty: ', Decrpty);
       setHomeDataAPI(Decrpty);
       setContextHomeDataAPI(Decrpty);
       setCurrentIndex(Decrpty?.part4?.length - 1 || 0);
@@ -144,7 +147,10 @@ const Index = ({ isExiting, isActive }) => {
 
   return (
     <>
-      <section id='Heome_Section' className={`hero-section  position-relative height-100vh ${showSecScr ? 'bg-firstscreen' : 'bg-secondscreen'}`}>
+      <section
+        id="Heome_Section"
+        className={`hero-section  position-relative height-100vh ${showSecScr ? 'bg-firstscreen' : 'bg-secondscreen'}`}
+      >
         <div className={`${showSecScr ? '' : 'container'}`}>
           {/* Navbar */}
           <div className={`${isVisible ? 'home-animt-show' : ''}`}>
@@ -192,7 +198,7 @@ const Index = ({ isExiting, isActive }) => {
                     />
                     <div className="py-2 offset-2 text-white d-flex justify-content-evenly align-items-center">
                       <span className="montserrat-bold font-14 montserrat-bold till-ship-border-color pe-3 z-1 position-relative">
-                      {ContextHomeDataAPI?.part2}
+                        {ContextHomeDataAPI?.part2}
                         <img className="my-1 mx-2" src={metero} alt="metero" />
                         <span className="font-14 montserrat-medium">
                           Meteors
@@ -240,7 +246,7 @@ const Index = ({ isExiting, isActive }) => {
                       Your Progress So far
                     </p>
                     <div className="progress-sect rounded-4">
-                      <ul className="list-unstyled mb-0 ps-4 pt-1">
+                      {/* <ul className="list-unstyled mb-0 ps-4 pt-1">
                         <li className="d-flex pt-2 mt-2 position-relative">
                           <div className="d-grid progress-side-sec">
                             <img
@@ -250,29 +256,220 @@ const Index = ({ isExiting, isActive }) => {
                             />{' '}
                             <hr className="opacity-100 progress-side-hr " />
                           </div>{' '}
-                          <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
-                            300 Meteors
-                          </span>
-                          <span className="ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2">
+                          {pnt <= 1000 ? (
+                            <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
+                              {pnt} Meteors
+                            </span>
+                          ) : null}
+
+                          {<span className="ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2">
                             Planet A
-                          </span>
+                          </span>}
                         </li>
-                        <li className="d-flex pt-1">
+                        <li
+                          className={`d-flex ${pnt >= 1000 ? 'position-relative' : ''}`}
+                        >
                           <div className="d-grid progress-side-sec">
-                            <hr className="opacity-100 progress-side-hr11" />
+                            {pnt <= 1000 ? (
+                              <hr className="opacity-100 progress-side-hr11" />
+                            ) : null}
                             <img
                               className="w-50 mx-auto"
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
+                            {pnt > 1000 && pnt <= 2000 ? (
+                              <hr className="opacity-100 progress-side-hr " />
+                            ) : null}
                           </div>{' '}
-                          <span className="ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2">
+                          {pnt > 1001 && pnt <= 2000  ? (
+                            <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
+                              {pnt} Meteors
+                            </span>
+                          ) : null}
+                          <span
+                            className={`${pnt >= 2000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                          >
                             Planet B
                           </span>
                         </li>
-                        <li className="d-flex pt-2_">
+                        <li
+                          className={`d-flex ${pnt > 1999 && pnt <= 3000 ? 'position-relative' : ''}`}
+                        >
                           <div className="d-grid progress-side-sec">
-                            <hr className="opacity-100 progress-side-hr-2" />
+                            {pnt >=1000 && pnt <= 2000 ? (
+                              <hr className="opacity-100 progress-side-hr11" />
+                            ) : null}
+                            <img
+                              className="w-50 mx-auto"
+                              src={prgicon}
+                              alt="prgicon"
+                            />{' '}
+                            {pnt >= 2000 && pnt <= 3000 ? (
+                              <hr className="opacity-100 progress-side-hr " />
+                            ) : null}
+                          </div>{' '}
+                          {pnt > 2001 && pnt <= 3000 ? (
+                            <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
+                              {pnt} Meteors
+                            </span>
+                          ) : null}
+                          <span
+                            className={`${pnt <=2000 && pnt >= 3000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                          >
+                            Planet C
+                          </span>
+                        </li>
+                        <li
+                          className={`d-flex ${pnt <= 2000 && pnt >= 3000 ? 'position-relative' : ''}`}
+                        >
+                          <div className="d-grid progress-side-sec">
+                            {pnt >= 1000 && pnt <= 2999 ? (
+                              <hr className="opacity-100 progress-side-hr11" />
+                            ) : null}
+                            <img
+                              className="w-50 mx-auto"
+                              src={prgicon}
+                              alt="prgicon"
+                            />{' '}
+                            {pnt >= 3000 && pnt <= 4000 ? (
+                              <hr className="opacity-100 progress-side-hr " />
+                            ) : null}
+                          </div>{' '}
+                          {pnt >= 3000 && pnt <= 4000 ? (
+                            <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
+                              {pnt} Meteors
+                            </span>
+                          ) : null}
+                          <span
+                            className={`${pnt <= 3000 && pnt >= 4000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                          >
+                            Planet D
+                          </span>
+                        </li> */}
+
+                      {/* let pnt = 3000; */}
+
+                      <ul className="list-unstyled mb-0 ps-4 pt-1">
+                        {/* Planet A - 0 to 999 */}
+                        <li
+                          className={`d-flex pt-2 mt-2 ${pnt <= 1000 ? 'position-relative' : ''}`}
+                        >
+                          <div className="d-grid progress-side-sec">
+                            <img
+                              className="w-50 mx-auto"
+                              src={prgicon}
+                              alt="prgicon"
+                            />
+                            {pnt >= 1000 && (
+                              <hr className="opacity-100 progress-side-hr" />
+                            )}
+                          </div>
+                          {pnt <= 1000 && (
+                            <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
+                              {pnt} Meteors
+                            </span>
+                          )}
+                          <span className="ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2">
+                            Planet A
+                          </span>
+                        </li>
+
+                        {/* Planet B - 1000 to 1999 */}
+                        <li
+                          className={`d-flex ${pnt >= 1001 && pnt <= 2000 ? 'position-relative' : ''}`}
+                        >
+                          <div className="d-grid progress-side-sec">
+                            {pnt <= 1000 && (
+                              <hr className="opacity-100 progress-side-hr11" />
+                            )}
+                            <img
+                              className="w-50 mx-auto"
+                              src={prgicon}
+                              alt="prgicon"
+                            />
+                            {pnt >= 1001 && (
+                              <hr className="opacity-100 progress-side-hr" />
+                            )}
+                          </div>
+                          {pnt >= 1001 && pnt <= 2000 && (
+                            <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
+                              {pnt} Meteors
+                            </span>
+                          )}
+                          <span
+                            className={`${pnt >= 1001  ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                          >
+                            Planet B
+                          </span>
+                        </li>
+
+                        {/* Planet C - 2000 to 2999 */}
+                        <li
+                          className={`d-flex ${pnt >= 2001 && pnt <= 3000 ? 'position-relative' : ''}`}
+                        >
+                          <div className="d-grid progress-side-sec">
+                            {pnt <= 2000 && (
+                              <hr className="opacity-100 progress-side-hr11" />
+                            )}
+                            <img
+                              className="w-50 mx-auto"
+                              src={prgicon}
+                              alt="prgicon"
+                            />
+                            {pnt >= 2001 && (
+                              <hr className="opacity-100 progress-side-hr" />
+                            )}
+                          </div>
+                          {pnt >= 2001 && pnt <= 3000 && (
+                            <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
+                              {pnt} Meteors
+                            </span>
+                          )}
+                          <span
+                            className={`${pnt >= 2001 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                          >
+                            Planet C
+                          </span>
+                        </li>
+
+                        {/* Planet D - 3000 to 3999 */}
+                        <li
+                          className={`d-flex ${pnt >= 3001 && pnt <= 4000 ? 'position-relative' : ''}`}
+                        >
+                          <div className="d-grid progress-side-sec">
+                            {pnt <= 3000 && (
+                              <hr className="opacity-100 progress-side-hr11" />
+                            )}
+                            <img
+                              className="w-50 mx-auto"
+                              src={prgicon}
+                              alt="prgicon"
+                            />
+                            {pnt >= 3001 && (
+                              <hr className="opacity-100 progress-side-hr" />
+                            )}
+                          </div>
+                          {pnt >= 3001 && pnt <= 4000 && (
+                            <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
+                              {pnt} Meteors
+                            </span>
+                          )}
+                          <span
+                            className={`${pnt >= 3001 && pnt <= 4000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                          >
+                            Planet D
+                          </span>
+                        </li>
+                      </ul>
+
+                      {/* <li
+                          className={`d-flex ${pnt >= 4000 ? 'position-relative' : ''}`}
+                        >
+                          <div className="d-grid progress-side-sec">
+                            {pnt <= 2000 ? (
+                              <hr className="opacity-100 progress-side-hr-2" />
+                            ) : null}
                             <img
                               className="w-50 mx-auto opacity-75"
                               src={prgicon}
@@ -283,9 +480,13 @@ const Index = ({ isExiting, isActive }) => {
                             Planet C
                           </span>
                         </li>
-                        <li className="d-flex pt-2_">
+                        <li
+                          className={`d-flex ${pnt >= 5000 ? 'position-relative' : ''}`}
+                        >
                           <div className="d-grid progress-side-sec">
-                            <hr className="opacity-100 progress-side-hr-2" />
+                            {pnt >= 5000 ? (
+                              <hr className="opacity-100 progress-side-hr-2" />
+                            ) : null}
                             <img
                               className="w-50 mx-auto opacity-75"
                               src={prgicon}
@@ -295,8 +496,8 @@ const Index = ({ isExiting, isActive }) => {
                           <span className="ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2">
                             Planet D
                           </span>
-                        </li>
-                      </ul>
+                        </li> */}
+                      {/* </ul> */}
                       <div className="text-center mt-34 pb-3">
                         <img
                           className="w-25"
@@ -520,9 +721,10 @@ const Index = ({ isExiting, isActive }) => {
                       src={images[currentIndex]}
                       alt="center-planet"
                       onClick={
-                        currentIndex <= ContextHomeDataAPI?.part3?.length - 1
-                          ? toggleAnimtElements
-                          : null
+                        // currentIndex <= ContextHomeDataAPI?.part3?.length - 1
+                        // ?
+                        toggleAnimtElements
+                        // : null
                       }
                       className={`img-fluid ${currentIndex <= ContextHomeDataAPI?.part3?.length - 1 ? 'cursor-pointer' : ''} rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${
                         isAnimating ? 'fade-down-shrink' : ''

@@ -59,6 +59,7 @@ const Offer = ({ isActive }) => {
     },
   ];
 
+     const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const settings = {
     dots: false,
     infinite: true,
@@ -114,7 +115,7 @@ const Offer = ({ isActive }) => {
         });
         const Decrpty = await DecryptFunction(enyptData);
         setFaqDataAPI()
-        console.log('Decrpty: ', Decrpty);
+        // console.log('Decrpty: ', Decrpty);
       } catch (error) {
         console.log('error: ', error);
       }

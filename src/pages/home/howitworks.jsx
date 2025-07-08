@@ -175,6 +175,8 @@ import Planet1 from '../../assets/icons/home/HowItWorks/HIW-planet-1.svg';
 import Planet2 from '../../assets/icons/home/HowItWorks/HIW-planet-2.svg';
 import Planet3 from '../../assets/icons/home/HowItWorks/HIW-planet-3.svg';
 import Rocketgif from '../../assets/icons/home/HowItWorks/racketgif.gif';
+import { postData } from "../../services/api";
+import { DecryptFunction } from "../../utils/decryptFunction";
 
 const Howitworks = ({ isActive, isExiting }) => {
     const sectionRef = useRef(null);
@@ -183,6 +185,28 @@ const Howitworks = ({ isActive, isExiting }) => {
     const [showSteps, setShowSteps] = useState(false);
     const [showExit, setShowExit] = useState(false);
     const [scrollDir, setScrollDir] = useState('down'); // Local scroll direction
+    const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+
+      // =================================
+      //       API FUNCTIONALITY
+      // =================================
+    
+      const HandleAPI = async () => {
+        try {
+          const enyptData = await postData('/admin/fetch_custom_data', {
+            user_id: Auth?.user_id,
+            log_alt: Auth?.log_alt,
+            mode: Auth?.mode,
+          });
+          const Decrpty = await DecryptFunction(enyptData);
+        } catch (error) {
+          console.log('error: ', error);
+        }
+      };
+    
+      useEffect(() => {
+        HandleAPI();
+      }, []);
 
     // AOS init
     useEffect(() => {

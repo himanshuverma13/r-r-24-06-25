@@ -10,6 +10,7 @@ import AppRoutes from './routes/appRoutes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { UserProvider } from './utils/UseContext/useContext';
+import ProductPage from './pages/home/product';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <UserProvider>
         <AppRoutes />
       </UserProvider>
+      {/* <ProductPage/> */}
     </>
   );
 }
