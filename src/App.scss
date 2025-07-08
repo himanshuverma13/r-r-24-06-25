@@ -1998,7 +1998,9 @@ border:1px solid $primary-color!important;
 .reward-history {
   border: 1.5px solid var(--text-blue);
 }
-
+.reward-slider-card{
+  background: linear-gradient(180deg, #0B1E44 0%, #1A2A6C 50%, #1B4965 100%);
+}
 .my-reward-cards {
   grid-template-columns: auto auto;
 }
@@ -2210,7 +2212,7 @@ border:1px solid $primary-color!important;
     top: 12%;
   }
   to {
-    top: 4%;
+    top: 3%;
   }
 }
 .reward-nav-animt-move-up {

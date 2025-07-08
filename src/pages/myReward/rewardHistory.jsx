@@ -1,11 +1,13 @@
 import { useState } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './rewardHistory.css';
-
-const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
+import Dropdown from 'react-bootstrap/Dropdown';
+import { PiFadersHorizontal } from 'react-icons/pi';
+import { IoIosArrowBack } from 'react-icons/io';
+const RewardHistory = ({ showHistory, MyRewardDataAPI }) => {
   console.log('MyRewardDataAPI: ', MyRewardDataAPI);
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   // Sample data for rewards
   const rewardsData = [
@@ -152,7 +154,7 @@ const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
 
   const StatCard = ({ number, title, index }) => (
     <div
-      className={`stat-card ${index == 4 ? '' : 'border-bottom border-2 border-secondary'} py-4 px-5 mx-3 text-center`}
+      className={`stat-card ${index == 4 ? '' : 'border-bottom border-1 border-white'} py-4 px-5 mx-3 text-center`}
     >
       <div className="font-24 text-blue montserrat-bold py-2">{number}</div>
       <div className="font-16 text-blue montserrat-semibold py-2">{title}</div>
@@ -171,16 +173,16 @@ const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
         {reward?.referred_on}
       </td>
       <td
-        className="py-3 px-4 bg-transparent font-16 text-center montserrat-semibold"
-        // style={{ color: reward.expiryDate === '-' ? '#6c757d' : '#dc3545' }}
+        className="py-3 px-4 expiry-text-color bg-transparent font-16 montserrat-semibold"
+      // style={{ color: reward.expiryDate === '-' ? '#6c757d' : '#dc3545' }}
       >
         {reward.expiryDate || '-'}
       </td>
-      <td className="py-3 px-4 bg-transparent text-center">
+      <td className="py-3 px-4 bg-transparent d-flex align-items-center">
         <span
-          className={`p-1 px-2 rounded-2 font-14  montserrat-medium bg-light text-blue`}
+          className={`py-2 px-3 rounded-2 btn-green font-14 montserrat-medium text-blue d-flex align-items-center`}
         >
-          <span className="dot">*</span>
+          <span className={`dot dot-green rounded-circle me-3`}></span>
           {reward?.earned_meteors}
         </span>
       </td>
@@ -191,25 +193,37 @@ const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
     <section className="hero-section">
       <div className="">
         <div className="container-fluid px-5">
-          <div onClick={HandleToggle} className="back my-3">
-            {'<'}Back
+          <div onClick={HandleToggle} className="back text-white my-3 d-flex align-items-center font-14 montserrat-medium">
+            <IoIosArrowBack /> Back
           </div>
           <div className="head d-flex  justify-content-between my-3">
             <h2 className="font-32 space-grotesk-bold text-blue">
               My Reward History
             </h2>
             <span>
-              <select
-                className="rows-select   "
+              {/* <select
+                className="rows-select"
                 value={'Filter'}
-                // onChange={handleRowsPerPageChange}
+              // onChange={handleRowsPerPageChange}
               >
                 <option value={5}>Filter</option>
                 <option value={5}>5</option>
                 <option value={10}>10</option>
                 <option value={15}>15</option>
                 <option value={20}>20</option>
-              </select>
+              </select> */}
+              <Dropdown>
+                <Dropdown.Toggle variant="light" id="dropdown-basic" className='custom-filter font-14 montserrat-medium'>
+                  Filter
+                  <PiFadersHorizontal className='ms-2 text-blue font-24' />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className='custom-filter'>
+                  <Dropdown.Item href="#/action-1">Date</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Earned</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Redeemed</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </span>
           </div>
           <div className="row">
@@ -227,7 +241,7 @@ const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
             <div className="col-lg-9 col-md-8">
               <div className="main-content">
                 <div className="table-container">
-                  <table className="table table-hover mb-0">
+                  <table className="table table-hover text-start mb-0">
                     <thead className="">
                       <tr className="">
                         <th className="px-4 font-14 montserrat-semibold">
@@ -236,16 +250,16 @@ const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
                         <th className="px-4 font-14 montserrat-semibold">
                           Date
                         </th>
-                        <th className="px-4 font-14 montserrat-semibold text-center">
+                        <th className="px-4 font-14 montserrat-semibold">
                           Expiry Date
                         </th>
-                        <th className="px-4 font-14 montserrat-semibold text-center">
+                        <th className="px-4 font-14 montserrat-semibold">
                           Earnings/Redemption
                         </th>
                       </tr>
                     </thead>
                     <tbody className="">
-                      {displayedData?.map((reward,index) => (
+                      {displayedData?.map((reward, index) => (
                         <RewardRow key={index} reward={reward} />
                       ))}
                     </tbody>
@@ -257,14 +271,14 @@ const RewardHistory = ({ showHistory,MyRewardDataAPI }) => {
                 <div className="space"></div>
                 <div className="d-flex align-items-center">
                   <button
-                    className="btn btn-pagination me-2"
+                    className="btn btn-pagination me-2 font-14 montserrat-medium"
                     onClick={handlePrevious}
                     disabled={currentPage === 1}
                   >
                     Previous
                   </button>
                   <button
-                    className="btn btn-pagination background-text-blue active"
+                    className="btn btn-pagination background-text-blue text-white active font-14 montserrat-medium"
                     onClick={handleNext}
                     disabled={
                       currentPage >= Math.ceil(rewardsData.length / rowsPerPage)
