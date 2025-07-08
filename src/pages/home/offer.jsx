@@ -333,7 +333,7 @@ const Offer = ({ isActive }) => {
 
         {/* FAQ SECTION */}
         <div
-          className="faq-section"
+          className={`faq-section ${isActive ? 'planet-slide-up' : ''}`}
           onMouseEnter={() => setSemiPlntRaise(true)}
           onMouseLeave={() => setSemiPlntRaise(false)}
         >
