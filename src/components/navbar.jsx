@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import navCenterImg from '../assets/images/home/navCenterImg.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const navItems = [
     { label: 'Home',to:"/", color: 'orange' },
@@ -13,10 +13,18 @@ const Navbar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const navRefs = useRef([]);
   const blurShadowRef = useRef(null);
+  const location = useLocation();
 
-  const handleClick = (index) => {
-    setActiveIndex(index);
-  };
+  // const handleClick = (index) => {
+  //   setActiveIndex(index);
+  // };
+useEffect(() => {
+  const currentPath = location.pathname;
+  const foundIndex = navItems.findIndex((item) => item?.to === currentPath);
+  if (foundIndex !== -1) {
+    setActiveIndex(foundIndex);
+  }
+}, [location.pathname]);
 
   useEffect(() => {
     const currentItem = navRefs.current[activeIndex];
@@ -46,6 +54,7 @@ const Navbar = () => {
                     <Link to={i?.to}>
                     <li
                       className={`list-unstyled list-background h-100 text-white mt-4 pt-3`}
+                      // onClick={() => handleClick(index)}
                     >
                       <span
                         data-active-color="orange"
@@ -55,7 +64,6 @@ const Navbar = () => {
                             ? 'active space-grotesk-bold'
                             : 'space-grotesk-medium'
                         }`}
-                        onClick={() => handleClick(index)}
                       >
                         {i?.label}
                       </span>
