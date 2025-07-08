@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // ============= VARIABLES SCSS========================
 $mobile-breakpoint: 768px;
 $tablet-breakpoint: 1024px;
@@ -8,7 +10,7 @@ $primary-color: #1a2a6c;
 $secondry-color: #cebacf;
 $dark-color: #675262;
 $dark-secondary: #a595a6;
-$light-color: #f1e8f2;
+$light-color: #A1A1A1;
 $black: #000000;
 $blue-secondry: #0b1e44;
 // Base Variables
@@ -20,6 +22,7 @@ $border-light: rgba(255, 255, 255, 0.4);
 $light-white-bg: rgba(255, 255, 255, 0.15);
 $blue-2: rgba(73, 52, 149, 1);
 $dark-pink: rgba(224, 77, 176, 1);
+$light-purple-transparent: #BA68C81A;
 $push-notification: rgba(157, 146, 210, 1);
 $light-yellow: rgba(255, 240, 96, 1);
 $text-light-black: rgba(51, 51, 51, 1);
@@ -48,6 +51,9 @@ $semi-transparent-purple: rgba(85, 68, 158, 0.3);
 $muted-purple: #9d92d2;
 $bright-violet: #a259ff;
 $deep-violet: #493495;
+$transparent:transparent;
+$light-gray-blue: #EFF3F7;
+
 
 // Background Colors Map
 $background-colors: (
@@ -68,6 +74,11 @@ $background-colors: (
   'light-pink': $light-pink,
   'register-inp': $register-inp,
   'blue-secondry': $blue-secondry,
+  'primary-color':$primary-color,
+  'light-purple-transparent':$light-purple-transparent,
+  'light-color':$light-color,
+  'transparent':$transparent,
+  'light-gray-blue':$light-gray-blue,
 );
 
 // Font Colors Map
@@ -86,11 +97,33 @@ $font-colors: (
   'light-pink': $light-pink,
   'text-light-gray': $text-light-gray,
   'blue-secondry': $blue-secondry,
+  'primary-color':$primary-color,
+  'light-purple-transparent':$light-purple-transparent,
+  'light-color':$light-color,
+  'transparent':$transparent,
+  'light-gray-blue':$light-gray-blue,
 );
+// =========================
+// FONT COLOR CLASSES
+// =========================
+@each $name, $color in $font-colors {
+  .text-#{$name} {
+    color: $color !important;
+  }
+}
+
+// =========================
+// BACKGROUND COLOR CLASSES
+// =========================
+@each $name, $color in $background-colors {
+  .bg-#{$name} {
+    background-color: $color !important;
+  }
+}
+
 
 // ============= VARIABLES SCSS END ===================
 // =============Functions==============================
-@use 'sass:math';
 
 // =========================
 // CONFIGURATION
@@ -122,7 +155,7 @@ $breakpoint-4k: 3840px; // 4K Display
 $font-sizes:
   8, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 44, 46, 48, 52, 56, 60, 64, 68, 72;
 $spacing-values:
-  0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52, 56, 58, 62,
+  0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52, 56, 58,60, 62,
   68, 72, 78, 80, 88, 90, 92, 120;
 
 // =========================
@@ -883,6 +916,19 @@ body::-webkit-scrollbar {
 // =======================================================================
 
 /* ===================== Navbar Or Header Css ============================ */
+.btn-primaryColor{
+  background: $primary-color!important;
+  border-radius: pxToRem(30)!important;
+  padding: pxToRem(12) pxToRem(40)!important;
+  text-align: center;
+}
+.btn-outlineDark{
+  padding: pxToRem(16) pxToRem(40)!important;
+text-align: center;
+background-color: $transparent;
+border-radius: pxToRem(30)!important;
+border:1px solid $primary-color!important;
+}
 .text-underline-offset-6 {
   text-underline-offset: pxToRem(6);
 }
@@ -3088,6 +3134,303 @@ body::-webkit-scrollbar {
 //   }
 // }
 // /* =================== MEDIA QUERY END ========================== */
+// ======================Profile section ==========================
+.profile-container {
+  min-height: 100vh;
+  .form-switch{
+    padding-left: 0!important;
+  }
+  .form-check-input{
+    &:checked{
+      background-color: $primary-color!important;
+    }
+    &:focus{
+      box-shadow: none;
+      outline: none;
+    }
+  }
+  .bg-profile-detail {
+    background: #F7F7F7;
+    .user-name,.user-contact{
+      color: $primary-color;
+    }
+    .ref-code-div{
+      padding: pxToRem(10);
+      background:#BA68C81A;
+      .text-ref-code{
+        color:$light-color;
+
+      }
+      .digit-ref-code{
+        color:$primary-color ;
+      }
+    }
+    .btn-edit-profile{
+      padding: pxToRem(10)  pxToRem(10)  pxToRem(10)  pxToRem(32);
+      background: $primary-color;
+      color: $white;
+      .edit-icon{
+        position: absolute;
+        top: 35%;
+        left: 10%;
+        height: pxToRem(12.94);
+        width: pxToRem(12.94);
+      }
+    }
+    .heading-reward-summary{
+      color: $light-color;
+    }
+    
+  }
+
+   .btn-dark {
+    background-color: #4b0082 !important;
+    border-color: #4b0082 !important;
+  }
+  
+  .form-check-input:checked {
+    background-color: $light-color
+  }
+  .addprofile-plus-icon{
+      position: absolute;
+      top: 65%;
+      right: pxToRem(10);
+      height: pxToRem(32.5);
+      width: pxToRem(32.5);
+    }
+  .profile-pic {
+    width: pxToRem(100);
+    height: pxToRem(100);
+    // background-color: #d9d9d9;
+    border-radius: 50%;
+    .user-profile-icon{
+    }
+  
+  }
+  .border-l-r-b-0{
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+  .light-border-top{
+    border-top: 1px solid $light-color;
+  }
+  .input-profile-copy-link{
+    height: 48px;
+    border-radius: 6px;
+    background: $light-purple-transparent;
+    padding: pxToRem(16) pxToRem(8) pxToRem(16) pxToRem(24);
+  }
+  .btn-profile-copy-link{
+    border-radius: pxToRem(4)!important;
+    padding: pxToRem(3) pxToRem(20);
+    right: pxToRem(8);
+    top:pxToRem(8);
+    outline: none;
+    height: pxToRem(32);
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: $transparent;
+    // border-top: 0;
+    padding-top: 0;
+  }
+  .accordion-button{
+    border-top: 1px solid $light-color;
+  }
+  .accordion-body{
+    padding-top: 0;
+  }
+  .accordion-button:focus{
+    box-shadow: none;
+  }
+
+  li {
+    cursor: pointer;
+    & .anchor-link{
+      text-decoration: none;
+      color: $primary-color!important;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1050;
+
+  .modal-content {
+    // background: white;
+    width: 400px;
+    max-width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    border-radius: 0;
+    position: relative;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+    border-bottom-left-radius: pxToRem(24);
+    border-top-left-radius: pxToRem(24);
+    &.slide-in {
+      transform: translateX(0);
+    }
+    .addprofile-plus-icon{
+      right: 74%;
+    }
+    .btn_close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      .close-icon{
+        height: pxToRem(32);
+        width: pxToRem(32);
+      }
+    }
+      @keyframes slideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+ }
+}
+.message-modal,.edit-modal{
+.form-control,.textarea-message{
+    background-color: $light-purple-transparent!important;
+    border-radius: pxToRem(6);
+    border: none;
+    padding: pxToRem(12) pxToRem(16)!important;
+    &:focus{
+      box-shadow: none;
+      border: none;
+      outline: none;
+    }
+  }  
+  .textarea-message{
+     resize: none; 
+  overflow-y: auto;
+  height: pxToRem(40);
+  }
+}
+.message-modal{
+  position: fixed;
+  top: 0%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1050;
+
+  .modal-content {
+    width: 500px;
+    max-width: 100%;
+    height: 389px;
+    right: 35%;
+    // left: 50%;
+    overflow-y: auto;
+    border-radius: 0;
+    position: relative;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+
+    &.slide-in {
+      transform: translateX(0);
+    }
+
+    .btn_close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      .close-icon{
+        height: pxToRem(32);
+        width: pxToRem(32);
+      }
+    }
+  }
+    @keyframes slideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .file-list {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 6px 10px;
+    border-radius: 4px;
+
+    button {
+      background-color: #ff4d4f;
+      border: none;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+
+      &:hover {
+        background-color: #e60000;
+      }
+    }
+  }
+}
+
+.custom-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $light-purple-transparent!important;
+  padding: pxToRem(12) pxToRem(16);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    // background-color: #2e2e80;
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+}
+
+}
+
+.h-max-content {
+  height: max-content !important;
+}
+ 
+// ======================Profile Section END ======================
 /* =================== MEDIA QUERY ===============================*/
 
 /* Tablet View */
