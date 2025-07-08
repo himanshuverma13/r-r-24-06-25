@@ -176,7 +176,7 @@ const Invitefriend = ({ isActive , isExiting }) => {
             <ul className="social-nav pl-0 d-flex justify-content-center">
               <li
                 onClick={() => handleIconLink('facebook')}
-                className="social-list"
+                className="social-list cursor-pointer"
               >
                 <span
                   className="social-link"
@@ -193,7 +193,7 @@ const Invitefriend = ({ isActive , isExiting }) => {
               </li>
               <li
                 onClick={() => handleIconLink('insta')}
-                className="social-list"
+                className="social-list cursor-pointer"
               >
                 <span
                   className="social-link"
@@ -210,7 +210,7 @@ const Invitefriend = ({ isActive , isExiting }) => {
               </li>
               <li
                 onClick={() => handleIconLink('telegram')}
-                className="social-list"
+                className="social-list cursor-pointer" 
               >
                 <span
                   className="social-link"
@@ -223,7 +223,7 @@ const Invitefriend = ({ isActive , isExiting }) => {
               </li>
               <li
                 onClick={() => handleIconLink('twitter')}
-                className="social-list"
+                className="social-list cursor-pointer"
               >
                 <span
                   className="social-link"

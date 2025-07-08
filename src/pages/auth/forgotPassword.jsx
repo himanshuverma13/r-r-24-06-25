@@ -8,6 +8,7 @@ import Logo from '../../assets/icons/logo/logo.svg';
 // React Router
 import { useNavigate } from 'react-router-dom';
 import { postData } from '../../services/api';
+import { toastError, toastSuccess } from '../../utils/toster';
 
 const SendOtpForgotPassword = () => {
   const {
@@ -29,11 +30,12 @@ const SendOtpForgotPassword = () => {
       });
 
       if (response?.success) {
+        toastSuccess(response?.message)
         localStorage.setItem("email",data?.contact)
         navigate('/confirmforgotPasswordotp');
       }
     } catch (error) {
-      console.log('error: ', error);
+      toastError(error?.message)
     } finally {
       setLoading(false);
     }

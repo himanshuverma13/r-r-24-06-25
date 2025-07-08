@@ -24,6 +24,8 @@ import minus from '../../assets/icons/home/offer/minus.svg';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { DecryptFunction } from '../../utils/decryptFunction';
+import { postData } from '../../services/api';
 
 const Offer = ({ isActive }) => {
   const cards = [
@@ -57,6 +59,7 @@ const Offer = ({ isActive }) => {
     },
   ];
 
+     const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const settings = {
     dots: false,
     infinite: true,
@@ -70,6 +73,7 @@ const Offer = ({ isActive }) => {
 
   const [openIndex, setOpenIndex] = useState(null);
   const [SemiPlntRaise, setSemiPlntRaise] = useState(true);
+  const [FaqDataAPI, setFaqDataAPI] = useState();
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -98,8 +102,28 @@ const Offer = ({ isActive }) => {
     },
   ];
 
+    // =================================
+    //       API FUNCTIONALITY
+    // =================================
+  
+    const HandleAPI = async () => {
+      try {
+        const enyptData = await postData('/home', {
+          user_id: Auth?.user_id,
+          log_alt: Auth?.log_alt,
+          mode: Auth?.mode,
+        });
+        const Decrpty = await DecryptFunction(enyptData);
+        setFaqDataAPI()
+        // console.log('Decrpty: ', Decrpty);
+      } catch (error) {
+        console.log('error: ', error);
+      }
+    };
+
   // Initialize AOS on component mount
   useEffect(() => {
+    HandleAPI()
     AOS.init({
       duration: 1500,
       once: false,

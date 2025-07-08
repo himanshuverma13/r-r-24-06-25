@@ -49,8 +49,7 @@ const MyReferralScreen = () => {
 
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const { ContextHomeDataAPI } =
-    useContext(UserContext);
-  console.log('ContextHomeDataAPI: ', ContextHomeDataAPI);
+  useContext(UserContext);
 
   const handleCopy = async () => {
     try {

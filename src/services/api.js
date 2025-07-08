@@ -5,7 +5,7 @@ const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
 
 // 🔧 Base URL setup
 const ApiURL =
-  'https://89fc-2401-4900-8823-59fe-740b-66bc-59c-b93c.ngrok-free.app'; // Replace with your actual API base URL
+  'https://a894b498e633.ngrok-free.app'; // Replace with your actual API base URL
 
 // 🌐 Axios instance
 const api = axios.create({
