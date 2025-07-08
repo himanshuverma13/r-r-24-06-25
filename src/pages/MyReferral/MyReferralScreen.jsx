@@ -94,9 +94,9 @@ const MyReferralScreen = () => {
         <ReferralCards />
           </div>
         </div> */}
-        <div className="overflow-scroll h-100">
+        <div className="overflow-scroll h-100 z-3">
           <Navbar />
-          <div className="container">
+          <div className="container pt-36">
             <div className="mb-5">
               <ReferralCards RefralDataAPI={RefralDataAPI} />
             </div>
