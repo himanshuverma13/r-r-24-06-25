@@ -46,10 +46,11 @@ const Login = () => {
         let Decrpty = await DecryptFunction(enyptData);
         setContextHomeDataAPI(Decrpty);
         toastSuccess(response?.message)
-        navigate('/');
+        navigate('/home');
       }
     } catch (error) {
       toastError(error?.error);
+      toastError(error?.message);
     } finally {
       setLoading(false);
     }
