@@ -1250,7 +1250,7 @@ border:1px solid $primary-color!important;
     width: 100%;
 
     .input-invite-friend {
-      padding: pxToRem(11) pxToRem(16);
+      padding: pxToRem(8) pxToRem(16);
       width: 100%;
       height: pxToRem(68);
       font-size: pxToRem(14);
@@ -1258,7 +1258,7 @@ border:1px solid $primary-color!important;
       border: 1px solid $white;
     }
 
-    .copy-button {
+    .invite-copy-button {
       position: absolute;
       right: pxToRem(16);
       top: 50%;
@@ -2906,11 +2906,12 @@ border:1px solid $primary-color!important;
   padding: 10px;
 }
 .invite-card {
-  background-image: url(./assets/icons/home/MyReferral/inviteFrnd.svg);
+  background-image: url('./assets/icons/home/MyReferral/inviteFrnd.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 16px;
+  height: 321px;
 }
 
 .astronauts {
@@ -2947,7 +2948,7 @@ border:1px solid $primary-color!important;
   .input-invite-friend {
     padding: 11px 16px;
     width: 100%;
-    height: 48px;
+    // height: 48px;
     font-size: 14px;
     border-radius: 8px;
     border: 1px solid $white;
@@ -2956,7 +2957,7 @@ border:1px solid $primary-color!important;
   .copy-button {
     position: absolute;
     right: 8px;
-    top: 50%;
+    top: 36%;
     transform: translateY(-50%);
     font-size: 14px;
     padding: 0 10px;
@@ -3227,11 +3228,14 @@ border:1px solid $primary-color!important;
   }
   .accordion-button:not(.collapsed) {
     background-color: $transparent;
-    // border-top: 0;
+    box-shadow: none;
     padding-top: 0;
   }
   .accordion-button{
     border-top: 1px solid $light-color;
+    &::after{
+      background-image: url('../src/assets/icons/auth/accordion-down.svg')!important;
+    }
   }
   .accordion-body{
     padding-top: 0;
@@ -3342,7 +3346,7 @@ border:1px solid $primary-color!important;
     right: 35%;
     // left: 50%;
     overflow-y: auto;
-    border-radius: 0;
+    border-radius: pxToRem(16);
     position: relative;
     transform: translateX(100%);
     transition: transform 0.5s ease-in-out;
@@ -3619,6 +3623,34 @@ border:1px solid $primary-color!important;
 @media only screen and (min-width: 1300px) {
   .planet-section {
     padding-top: 2%;
+  }
+}
+@media (max-height: 700px) {
+  .invitefriend-wrapper{
+    &.pt-80{
+      padding-top: pxToRem(60);
+    }
+    .center-section{
+      .copy-input-container{
+        .input-invite-friend{
+          height: pxToRem(48);        
+          padding: pxToRem(6) pxToRem(12);  
+        }
+        .invite-copy-button{
+            padding: pxToRem(6) pxToRem(16);
+            right: pxToRem(6);
+          }
+      }
+      .divider-with-text{
+        margin:pxToRem(32) auto;
+      }
+      .mb-58{
+        margin-bottom: pxToRem(32);
+      }
+      .mb-46{
+        margin-bottom: pxToRem(28);
+      }
+    }
   }
 }
 

@@ -155,9 +155,9 @@ const Invitefriend = ({ isActive , isExiting }) => {
                 ref={inputRef}
                 type="text"
                 defaultValue={ContextHomeDataAPI?.part5}
-                className="copy-input input-invite-friend bg-white mb-60"
+                className="copy-input input-invite-friend bg-white"
               />
-              <button className="copy-button" onClick={handleCopy}>
+              <button className="invite-copy-button" onClick={handleCopy}>
                 {copied ? 'Copied!' : 'Copy Link'}
               </button>
             </div>
