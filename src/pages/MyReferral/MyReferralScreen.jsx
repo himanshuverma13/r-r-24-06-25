@@ -122,10 +122,10 @@ const MyReferralScreen = () => {
                         className="copy-input input-invite-friend bg-white mb-60"
                       />
                       <button
-                        className="copy-button montserrat-regular"
+                        className="copy-button font-14 montserrat-regular"
                         onClick={handleCopy}
                       >
-                        {copied ? 'Copied!' : 'Copy Link'}
+                        {copied ? 'Copied!' : 'Copy Code'}
                       </button>
                     </div>
                   </div>
@@ -141,7 +141,7 @@ const MyReferralScreen = () => {
                         className="copy-input input-invite-friend bg-white mb-60"
                       />
                       <button
-                        className="copy-button  montserrat-medium"
+                        className="copy-button font-14 montserrat-regular"
                         onClick={handleCopy}
                       >
                         {copied ? 'Copied!' : 'Copy Link'}
