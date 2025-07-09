@@ -117,8 +117,8 @@ useEffect(() => {
         <ReferralCards />
           </div>
         </div> */}
-        <div className="overflow-scroll h-100 z-3">
           <Navbar />
+        <div className="overflow-scroll h-100 z-3">
           <div className="container pt-36">
             <div className="mb-5">
               <ReferralCards RefralDataAPI={RefralDataAPI} />
