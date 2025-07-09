@@ -161,7 +161,7 @@ const FaqData = [
 
 const MyRewardFirstScreen = () => {
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
-  const { ContextHomeDataAPI } = useContext(UserContext);
+  const { ContextHomeDataAPI,ContextFaqsDataAPI } = useContext(UserContext);
 
   const rewardSliderSetting = {
     dots: false,
@@ -215,9 +215,7 @@ const MyRewardFirstScreen = () => {
     autoplaySpeed: 3000,
     speed: 500,
     afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      );
+
     },
     responsive: [
       {
@@ -343,11 +341,11 @@ useEffect(() => {
   const [copiedLink, setCopiedLink] = useState(false);
   const inviteCode = "ABC123XYZ";
   const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
+  
   const handleCopy = (ref, type) => {
     if (ref.current) {
       const value = ref.current.value;
       navigator.clipboard.writeText(value);
-
       // Set state to show "Copied!" text
       if (type === "code") {
         setCopiedCode(true);
@@ -819,7 +817,7 @@ useEffect(() => {
           </div>
         </div>
         {/* FAQ SECTION */}
-        <FAQ items={FaqData} />
+        <FAQ items={ContextFaqsDataAPI?.rewards_faqs} />
         {/* FOOTER SECTION */}
         <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
           <div className="offer-footer-section position-relative d-flex justify-content-center text-center">

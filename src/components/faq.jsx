@@ -32,7 +32,7 @@ const FAQ = ({ items,classes }) => {
                                             aria-expanded={openIndex === index}
                                             aria-controls={`collapse${index}`}
                                         >
-                                            {item.title}
+                                            {item?.question}
                                             <span>
                                                 <img src={openIndex === index ? minus : plus} alt="" />
                                             </span>
@@ -47,7 +47,7 @@ const FAQ = ({ items,classes }) => {
                                 >
                                     <div className="card-body p-3">
                                         <p className="mb-0 font-16 text-dark-blue montserrat-regular">
-                                            {item.content}
+                                            {item?.answer}
                                         </p>
                                     </div>
                                 </div>

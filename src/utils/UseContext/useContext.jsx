@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [ContextHomeDataAPI, setContextHomeDataAPI] = useState();
+  const [ContextFaqsDataAPI, setContextFaqsDataAPI] = useState();
   const [ContextMyRewardDataAPI, setContextMyRewardDataAPI] = useState();
   const [AuthLocal, setAuthLocal] = useState();
   return (
@@ -13,6 +14,8 @@ export const UserProvider = ({ children }) => {
         setContextHomeDataAPI,
         ContextMyRewardDataAPI,
         setContextMyRewardDataAPI,
+        ContextFaqsDataAPI,
+        setContextFaqsDataAPI,
         AuthLocal,
         setAuthLocal,
       }}

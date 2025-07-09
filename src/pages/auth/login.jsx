@@ -180,13 +180,13 @@ const Login = () => {
                 exciting reward and referral program!
               </p>
             </div>
-            <div className="login-form-section row py-3 px-3 d-flex align-items-center justify-content-center">
-              <div className="col-lg-6 col-md-6 col-12 d-flex justify-content-center">
+            <div className="login-form-section row py-3 px-3 d-flex justify-content-center align-items-center">
+              <div className="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center">
                 <div className="login-img">
                   <img src={Loginimg} alt="Laoding" className="img-fluid" />
                 </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-12">
+              <div className="col-lg-6 col-md-6 col-12 pt-3">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div class="mb-4">
                     <input
@@ -240,7 +240,7 @@ const Login = () => {
                       {loading ? 'Loging...' : 'Login'}
                     </button>
                   </div>
-                  <p className="font-size-12 montserrat-regular text-center mt-3 text-light-gray">
+                  <p className="font-12 montserrat-regular text-center mt-3 text-light-gray mb-0">
                     Not an existing user? <span>
                       <NavLink to={"/registration"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
                         Register Now

@@ -145,18 +145,18 @@ const SliderCard = ({RefralDataAPI}) => {
                                     <div className='col-lg-3'>
                                         <div className='status d-flex justify-content-center align-items-center py-1'>
                                             <span className='rounded-circle bg-white small-white-circle me-2'></span>
-                                            <p className='text-white font-size-10 montserrat-regular mb-0'>{user?.referral_status}</p>
+                                            <p className='text-white font-10 montserrat-regular mb-0'>{user?.referral_status}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='user-card-bottom d-flex justify-content-between align-items-center p-3'>
                                     <div className='text-white'>
-                                        <p className='mb-0 font-size-12 montserrat-regular'>Referred on</p>
-                                        <p className='mb-0 font-size-16 montserrat-medium'>{user?.date}</p>
+                                        <p className='mb-0 font-12 montserrat-regular'>Referred on</p>
+                                        <p className='mb-0 font-16 montserrat-medium'>{user?.date}</p>
                                     </div>
                                     <div className='text-white'>
-                                        <p className='mb-0 font-size-12 montserrat-regular'>Earned Points</p>
-                                        <p className='mb-0 font-size-16 montserrat-medium text-end'>{user?.earned_meteors}</p>
+                                        <p className='mb-0 font-12 montserrat-regular'>Earned Points</p>
+                                        <p className='mb-0 font-16 montserrat-medium text-end'>{user?.earned_meteors}</p>
                                     </div>
                                 </div>
                             </div>

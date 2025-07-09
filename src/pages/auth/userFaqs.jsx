@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FAQ from '../../components/faq';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 // Import Json
 const faqData = [
@@ -23,10 +24,12 @@ const faqData = [
 ];
 
 const UserFaqs = () => {
+    const { ContextFaqsDataAPI } = useContext(UserContext);
+    
   return (
     <section className="pt-5 pb-5">
       <div className="container pt-5 mt-5 pb-5 bg-white rounded-4">
-        <FAQ items={faqData} classes={'mt-0'} />
+        <FAQ items={ContextFaqsDataAPI?.help_and_support} classes={'mt-0'} />
       </div>
     </section>
   );
