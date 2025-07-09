@@ -102,29 +102,31 @@ const Offer = ({ isActive }) => {
     },
   ];
 
-  const faqRef = useRef(null);
-  const [showFooterPlanet, setShowFooterPlanet] = useState(false);
+  const footerRef = useRef(null);
+const [showFooterPlanet, setShowFooterPlanet] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        setShowFooterPlanet(entry.isIntersecting);
-      },
-      {
-        root: null,
-        threshold: 0.3, // Adjust how much of FAQ should be visible to trigger
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        // add delay before showing
+        setTimeout(() => setShowFooterPlanet(true), 500);
+      } else {
+        setShowFooterPlanet(false);
       }
-    );
-
-    if (faqRef.current) {
-      observer.observe(faqRef.current);
+    },
+    {
+      root: null,
+      threshold: 0.3,
     }
+  );
 
-    return () => {
-      if (faqRef.current) observer.unobserve(faqRef.current);
-    };
-  }, []);
+  if (footerRef.current) observer.observe(footerRef.current);
+  return () => {
+    if (footerRef.current) observer.unobserve(footerRef.current);
+  };
+}, []);
+
 
     // =================================
     //       API FUNCTIONALITY
@@ -358,7 +360,6 @@ const Offer = ({ isActive }) => {
         {/* FAQ SECTION */}
         <div
           className={`faq-section ${isActive ? 'planet-slide-up' : ''}`}
-          ref={faqRef}
         >
           <div className="container-fluid px-5 pb-5">
             <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-1 pb-1 ">
@@ -408,7 +409,7 @@ const Offer = ({ isActive }) => {
           </div>
         </div>
         {/* FOOTER SECTION */}
-        <div
+        <div ref={footerRef}
           className="offer-footer position-relative overflow-hidden"
           onMouseEnter={() => setSemiPlntRaise(true)}
           onMouseLeave={() => setSemiPlntRaise(false)}
