@@ -437,7 +437,7 @@ useEffect(() => {
                         Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                       </p>
                       <div className="row justify-content-around">
-                        <div className="col-lg-7">
+                        <div className="col-lg-7 col-md-7">
                           <div className="rounded-4 background-light-white-1 position-relative px-2 pb-1 pt-2 mt-4">
                             <span className="font-46 montserrat-semibold text-blue ms-1">
                               {MyRewardDataAPI?.part1}
@@ -482,7 +482,7 @@ useEffect(() => {
                     />
                   </div> */}
 
-                        <div className="col-lg-4 rounded-4 background-light-white-1 px-2 pb-1 pt-4 mt-4 position-relative">
+                        <div className="col-lg-4 col-md-4 rounded-4 background-light-white-1 px-2 pb-1 pt-4 mt-4 position-relative">
                           <img
                             src={Label}
                             className="position-absolute myreward-voucher"
@@ -712,7 +712,7 @@ useEffect(() => {
                       <Slider {...settings}>
                         {ExclusiveCardData.map((item, index) => (
                           <div key={index}>
-                            <div className="discount-card w-100 background-text-blue row gx-0 p-3">
+                            <div className="discount-card exclusive-cards w-100 background-text-blue row gx-0 p-3">
                               <div className="col-8 text-white">
                                 <p className="font-size-16 mb-0 text-uppercase montserrat-medium">
                                   {item.title}
