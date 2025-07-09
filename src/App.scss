@@ -1620,7 +1620,9 @@ body::-webkit-scrollbar {
 }
 
 // ================= Fade Animations =================
+.planet-slide-up{
 
+}
 .fade-up {
   opacity: 0;
   transform: translateY(pxToRem(50));
@@ -1974,6 +1976,22 @@ body::-webkit-scrollbar {
   bottom: 0%;
   z-index: 1;
   left: 25%;
+   opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+}
+
+.footer-semi-planet.fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.footer-semi-planet.invisible {
+  opacity: 0;
+  transform: translateY(200px);
+  pointer-events: none;
 }
 
 //===================== FOOTER CSS AND ANIMATION CSS END -=============================
@@ -3220,156 +3238,144 @@ body::-webkit-scrollbar {
 // }
 // /* =================== MEDIA QUERY END ========================== */
 // ======================Profile section ==========================
-.profile-container {
+.profile-section{
+  background-image: url('../src/assets/images/auth/bg-profile.png')!important;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
-
+  .profile-container {
+  
   .form-switch {
-    padding-left: 0 !important;
-  }
-
+      padding-left: 0 !important;
+    }
+  
   .form-check-input {
-    &:checked {
-      background-color: $primary-color !important;
-    }
-
+      &:checked {
+        background-color: $primary-color !important;
+      }
+  
     &:focus {
-      box-shadow: none;
-      outline: none;
+        box-shadow: none;
+        outline: none;
+      }
     }
-  }
-
+  
   .bg-profile-detail {
-    background: #F7F7F7;
-
+      background: #F7F7F7;
+  
     .user-name,
     .user-contact {
-      color: $primary-color;
-    }
-
+        color: $primary-color;
+      }
+  
     .ref-code-div {
-      padding: pxToRem(10);
-      background: #BA68C81A;
-
+        padding: pxToRem(10);
+        background: #BA68C81A;
+  
       .text-ref-code {
+          color: $light-color;
+
+        }
+        .digit-ref-code{
+          color:$primary-color ;
+        }
+      }
+      .btn-edit-profile{
+        padding: pxToRem(10)  pxToRem(10)  pxToRem(10)  pxToRem(32);
+        background: $primary-color;
+        color: $white;
+        .edit-icon{
+          position: absolute;
+          top: 35%;
+          left: 10%;
+          height: pxToRem(12.94);
+          width: pxToRem(12.94);
+        }
+      }
+      .heading-reward-summary{
         color: $light-color;
-
       }
-
-      .digit-ref-code {
-        color: $primary-color ;
-      }
+      
     }
 
-    .btn-edit-profile {
-      padding: pxToRem(10) pxToRem(10) pxToRem(10) pxToRem(32);
-      background: $primary-color;
-      color: $white;
-
-      .edit-icon {
+    .btn-dark {
+      background-color: #4b0082 !important;
+      border-color: #4b0082 !important;
+    }
+    
+    .form-check-input:checked {
+      background-color: $light-color
+    }
+    .addprofile-plus-icon{
         position: absolute;
-        top: 35%;
-        left: 10%;
-        height: pxToRem(12.94);
-        width: pxToRem(12.94);
+        top: 65%;
+        right: pxToRem(10);
+        height: pxToRem(32.5);
+        width: pxToRem(32.5);
+      }
+    .profile-pic {
+      width: pxToRem(100);
+      height: pxToRem(100);
+      // background-color: #d9d9d9;
+      border-radius: 50%;
+      .user-profile-icon{
+      }
+    
+    }
+    .border-l-r-b-0{
+      border-bottom: 0;
+      border-right: 0;
+      border-left: 0;
+      border-radius: 0;
+    }
+    .light-border-top{
+      border-top: 1px solid $light-color;
+    }
+    .input-profile-copy-link{
+      height: 48px;
+      border-radius: 6px;
+      background: $light-purple-transparent;
+      padding: pxToRem(16) pxToRem(8) pxToRem(16) pxToRem(24);
+    }
+    .btn-profile-copy-link{
+      border-radius: pxToRem(4)!important;
+      padding: pxToRem(3) pxToRem(20);
+      right: pxToRem(8);
+      top:pxToRem(8);
+      outline: none;
+      height: pxToRem(32);
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: $transparent;
+      box-shadow: none;
+      padding-top: 0;
+    }
+    .accordion-button{
+      border-top: 1px solid $light-color;
+      &::after{
+        background-image: url('../src/assets/icons/auth/accordion-down.svg')!important;
       }
     }
-
-    .heading-reward-summary {
-      color: $light-color;
+    .accordion-body{
+      padding-top: 0;
+    }
+    .accordion-button:focus{
+      box-shadow: none;
     }
 
-  }
-
-  .btn-dark {
-    background-color: #4b0082 !important;
-    border-color: #4b0082 !important;
-  }
-
-  .form-check-input:checked {
-    background-color: $light-color
-  }
-
-  .addprofile-plus-icon {
-    position: absolute;
-    top: 65%;
-    right: pxToRem(10);
-    height: pxToRem(32.5);
-    width: pxToRem(32.5);
-  }
-
-  .profile-pic {
-    width: pxToRem(100);
-    height: pxToRem(100);
-    // background-color: #d9d9d9;
-    border-radius: 50%;
-
-    .user-profile-icon {}
-
-  }
-
-  .border-l-r-b-0 {
-    border-bottom: 0;
-    border-right: 0;
-    border-left: 0;
-    border-radius: 0;
-  }
-
-  .light-border-top {
-    border-top: 1px solid $light-color;
-  }
-
-  .input-profile-copy-link {
-    height: 48px;
-    border-radius: 6px;
-    background: $light-purple-transparent;
-    padding: pxToRem(16) pxToRem(8) pxToRem(16) pxToRem(24);
-  }
-
-  .btn-profile-copy-link {
-    border-radius: pxToRem(4) !important;
-    padding: pxToRem(3) pxToRem(20);
-    right: pxToRem(8);
-    top: pxToRem(8);
-    outline: none;
-    height: pxToRem(32);
-  }
-
-  .accordion-button:not(.collapsed) {
-    background-color: $transparent;
-    box-shadow: none;
-    padding-top: 0;
-  }
-
-  .accordion-button {
-    border-top: 1px solid $light-color;
-
-    &::after {
-      background-image: url('../src/assets/icons/auth/accordion-down.svg') !important;
-    }
-  }
-
-  .accordion-body {
-    padding-top: 0;
-  }
-
-  .accordion-button:focus {
-    box-shadow: none;
-  }
-
-  li {
-    cursor: pointer;
-
-    & .anchor-link {
-      text-decoration: none;
-      color: $primary-color !important;
-    }
-
-    &:hover {
-      text-decoration: none;
+    li {
+      cursor: pointer;
+      & .anchor-link{
+        text-decoration: none;
+        color: $primary-color!important;
+      }
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }
-
 .edit-modal {
   position: fixed;
   top: 0;
@@ -3405,8 +3411,8 @@ body::-webkit-scrollbar {
 
     .btn_close {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: pxToRem(20);
+      right: pxToRem(20);
       border: none;
 
       .close-icon {
@@ -3437,9 +3443,9 @@ body::-webkit-scrollbar {
     background-color: $light-purple-transparent !important;
     border-radius: pxToRem(6);
     border: none;
-    padding: pxToRem(12) pxToRem(16) !important;
-
-    &:focus {
+    font-size: pxToRem(12)!important;
+    padding: pxToRem(12) pxToRem(16)!important;
+    &:focus{
       box-shadow: none;
       border: none;
       outline: none;
@@ -3469,9 +3475,8 @@ body::-webkit-scrollbar {
   .modal-content {
     width: 500px;
     max-width: 100%;
-    height: 389px;
-    right: 35%;
-    // left: 50%;
+    height: pxToRem(389);
+    margin: auto;
     overflow-y: auto;
     border-radius: pxToRem(16);
     position: relative;
@@ -3484,8 +3489,8 @@ body::-webkit-scrollbar {
 
     .btn_close {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: pxToRem(8);
+      right: pxToRem(6);
       border: none;
 
       .close-icon {
@@ -3511,30 +3516,32 @@ body::-webkit-scrollbar {
     list-style: none;
     padding-left: 0;
 
-    li {
-      font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #f5f5f5;
-      padding: 6px 10px;
-      border-radius: 4px;
-
-      button {
-        background-color: #ff4d4f;
-        border: none;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 12px;
-
-        &:hover {
-          background-color: #e60000;
-        }
+  .uploaded-files-list {
+    font-size: pxToRem(14);
+    background: $transparent;
+    padding: pxToRem(6) pxToRem(10);
+    .flie-icon{
+      border-radius: pxToRem(4);
+       width: pxToRem(50);
+       height: pxToRem(50);
+       object-fit: cover;
+       margin-right: pxToRem(8);
+    }
+    .btn-delete-file {
+      background-color: $transparent;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      cursor: pointer;
+      top: pxToRem(-8);
+      right: 16%;
+      .remove-icon{
+        height: pxToRem(20);
+        width: pxToRem(20);
       }
     }
   }
+}
 
   .custom-upload-btn {
     display: inline-flex;
@@ -3569,11 +3576,9 @@ body::-webkit-scrollbar {
   #banner-sec-heading-desk {
     display: none !important;
   }
-
   #banner-sec-heading-mob {
     display: flex;
   }
-
   .login-img img {
     max-width: 459px;
     max-height: 272px;
@@ -3587,24 +3592,19 @@ body::-webkit-scrollbar {
   .image-container {
     width: 20%;
   }
-
   .bg-planet-ring {
     top: 50%;
     width: 70%;
   }
-
   .second-scrn-bottom {
     margin-top: 0 !important;
   }
-
   .second-scrn-padding {
     padding: 0 !important;
   }
-
   .second-screen-xl {
     margin-top: 0.5rem !important;
   }
-
   .till-ship-img {
     left: -16.7% !important;
   }
@@ -3616,19 +3616,16 @@ body::-webkit-scrollbar {
     top: 42%;
     width: 85%;
   }
-
   .image-container {
     width: 45%;
     bottom: 17.5%;
   }
-
   .navitag-left {
     position: absolute;
     left: -2%;
     width: 20%;
     bottom: 45%;
-  }
-
+  } 
   .navitag-right {
     position: absolute;
     right: -2%;
@@ -3647,7 +3644,7 @@ body::-webkit-scrollbar {
     bottom: 50%;
     left: 20%;
   }
-}
+} 
 
 /* Extra Large Screens */
 @media only screen and (min-width: 1600px) and (max-width: 1920px) {
