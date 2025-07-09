@@ -122,41 +122,41 @@ const SliderCard = ({RefralDataAPI}) => {
         <>
             <div className='d-flex align-items-center justify-content-between'>
                 <p className='font-32 space-grotesk-bold text-blue mt-5'>My Referrals</p>
-                <div className='referral-toggle-btn text-center d-flex align-items-center justify-content-center'
+                <div className='referral-toggle-btn text-center d-flex align-items-center justify-content-center cursor-pointer'
                     onClick={() => setShowTable(!showTable)}
                 >
-                    <FaList className='fs-5 text-blue' />
+                    <FaList className='fs-5 text-blue cursor-pointer' />
                 </div>
             </div>
 
             {!showTable ? (
                 <div className="slider-container">
                     <Slider {...settings}>
-                        {referralUsers.map((user, index) => (
+                        {(RefralDataAPI?.part4||referralUsers)?.map((user, index) => (
                             <div key={index} className={`referral-user-card ${user?.cardColor}`}>
                                 <div className='row p-3 mb-3'>
                                     <div className='col-lg-9 d-flex'>
                                         <div className='rounded-circle bg-white user-icon'></div>
                                         <div className='text-white ms-3'>
-                                            <p className='font-24 montserrat-semibold mb-0'>{user?.name}</p>
+                                            <p className='font-24 montserrat-semibold mb-0'>{user?.username}</p>
                                             <p className='montserrat-regular font-14'>{user?.email}</p>
                                         </div>
                                     </div>
                                     <div className='col-lg-3'>
                                         <div className='status d-flex justify-content-center align-items-center py-1'>
                                             <span className='rounded-circle bg-white small-white-circle me-2'></span>
-                                            <p className='text-white font-size-10 montserrat-regular mb-0'>{user?.status}</p>
+                                            <p className='text-white font-size-10 montserrat-regular mb-0'>{user?.referral_status}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='user-card-bottom d-flex justify-content-between align-items-center p-3'>
                                     <div className='text-white'>
                                         <p className='mb-0 font-size-12 montserrat-regular'>Referred on</p>
-                                        <p className='mb-0 font-size-16 montserrat-medium'>09th April 2025</p>
+                                        <p className='mb-0 font-size-16 montserrat-medium'>{user?.date}</p>
                                     </div>
                                     <div className='text-white'>
                                         <p className='mb-0 font-size-12 montserrat-regular'>Earned Points</p>
-                                        <p className='mb-0 font-size-16 montserrat-medium text-end'>1234</p>
+                                        <p className='mb-0 font-size-16 montserrat-medium text-end'>{user?.earned_meteors}</p>
                                     </div>
                                 </div>
                             </div>

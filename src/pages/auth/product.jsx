@@ -6,14 +6,16 @@ import OrangePLanet from '../../assets/icons/subscription/Orange-Planet.svg';
 import GreenPlanet from '../../assets/icons/subscription/Green Planet 3.svg';
 import Plane from '../../assets/icons/subscription/Plane.svg';
 import Fram from "../../assets/icons/subscription/product-frame.svg"
+import stargroup from '../../assets/icons/auth/stargroup.svg'
 
 // React Icons
 import { IoIosArrowForward } from 'react-icons/io';
 
 // React Slick for carousel
 import Slider from 'react-slick';
-
+import { useNavigate } from 'react-router-dom';
 const Product = () => {
+  const navigate = useNavigate();
   const settings = {
     dots: false,
     arrows: false,
@@ -133,6 +135,9 @@ const Product = () => {
       btnClass: 'product-btn-green',
     },
   ];
+  const HandleClick = () =>{
+    navigate("/")
+  }
 
   return (
     <>
@@ -188,6 +193,7 @@ const Product = () => {
                   </p>
                   <button
                     className={`product-btn w-100 text-white ${card.btnClass} px-3 py-2 border-0 mt-3`}
+                    onClick={HandleClick}
                   >
                     {card.btnText}
                   </button>
@@ -202,7 +208,7 @@ const Product = () => {
             <div className="row align-items-center justify-content-center">
               <div className="col-lg-9">
                 <div className="footer-star">
-                  {/* <img src={Star} className='mb-0' alt="Loading" /> */}
+                  <img src={stargroup} className='mb-0' alt="Loading" />
                   <p className="text-blue ms-4 pt-5 montserrat-semibold fotnt-size-18 text-uppercase">
                     Shop with us and get a chance to join our exclusive Rewards
                     & Referral Program & keep earning even more points and
