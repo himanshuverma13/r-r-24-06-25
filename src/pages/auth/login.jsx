@@ -45,12 +45,15 @@ const Login = () => {
         });
         let Decrpty = await DecryptFunction(enyptData);
         setContextHomeDataAPI(Decrpty);
-        toastSuccess(response?.message)
+        toastSuccess(response?.message);
         navigate('/home');
       }
     } catch (error) {
-      toastError(error?.error);
-      toastError(error?.message);
+      if (error?.error) {
+        toastError(error?.error);
+      } else {
+        toastError(error?.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -213,7 +216,9 @@ const Login = () => {
                       })}
                     />
                     {errors.password && (
-                      <div className="text-danger">{errors.password.message}</div>
+                      <div className="text-danger">
+                        {errors.password.message}
+                      </div>
                     )}
                   </div>
                   <div className="pb-4 text-end">
@@ -241,8 +246,14 @@ const Login = () => {
                     </button>
                   </div>
                   <p className="font-12 montserrat-regular text-center mt-3 text-light-gray mb-0">
-                    Not an existing user? <span>
-                      <NavLink to={"/registration"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
+                    Not an existing user?{' '}
+                    <span>
+                      <NavLink
+                        to={'/registration'}
+                        className={
+                          'text-blue font-14 montserrat-medium text-decoration-none'
+                        }
+                      >
                         Register Now
                       </NavLink>
                     </span>

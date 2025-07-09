@@ -3780,9 +3780,9 @@ body::-webkit-scrollbar {
 
 @media (max-height: 700px) {
   .reward-section{
-    &.height-100vh{
-      height: 150vh!important;
-    }
+    // &.height-100vh{
+    //   height: 150vh!important;
+    // }
     &.overflow-hidden{
       // overflow: auto!important;
     }
