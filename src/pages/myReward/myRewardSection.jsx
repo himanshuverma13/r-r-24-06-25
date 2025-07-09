@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 // import component
 import Navbar from '../../components/navbar';
 
@@ -250,6 +250,32 @@ const MyRewardFirstScreen = () => {
       },
     ],
   };
+// Footer Planet animation
+const footerRef = useRef(null);
+const [showFooterPlanet, setShowFooterPlanet] = useState(false);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        // add delay before showing
+        setTimeout(() => setShowFooterPlanet(true), 500);
+      } else {
+        setShowFooterPlanet(false);
+      }
+    },
+    {
+      root: null,
+      threshold: 0.3,
+    }
+  );
+
+  if (footerRef.current) observer.observe(footerRef.current);
+  return () => {
+    if (footerRef.current) observer.unobserve(footerRef.current);
+  };
+}, []);
+
   // =============
   // States
   // ==============
@@ -787,16 +813,14 @@ const MyRewardFirstScreen = () => {
         {/* FAQ SECTION */}
         <FAQ items={FaqData} />
         {/* FOOTER SECTION */}
-        <div className="offer-footer position-relative overflow-hidden mt-5">
+        <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
           <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
             <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
               The more you refer, the brighter your rewards shine!
             </p>
           </div>
           <div
-            className="position-absolute footer-semi-planet"
-          // data-aos="fade-up"
-          // data-aos-delay="200"
+            className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
           ></div>
         </div>
       </section>
