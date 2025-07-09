@@ -207,7 +207,7 @@ const MyRewardFirstScreen = () => {
     arrow: false,
     // className: 'center',
     infinite: true,
-     centerMode: true,
+    centerMode: true,
     centerPadding: '40px',
     slidesToShow: 3.1,
     swipeToSlide: true,
@@ -339,13 +339,23 @@ useEffect(() => {
 
   const codeRef = useRef();
   const linkRef = useRef();
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
   const inviteCode = "ABC123XYZ";
   const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
-  const handleCopy = (ref, label) => {
+  const handleCopy = (ref, type) => {
     if (ref.current) {
       const value = ref.current.value;
       navigator.clipboard.writeText(value);
-      alert(`Copied ${label}: ${value}`);
+
+      // Set state to show "Copied!" text
+      if (type === "code") {
+        setCopiedCode(true);
+        setTimeout(() => setCopiedCode(false), 2000); // Reset after 2 seconds
+      } else {
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2000);
+      }
     }
   };
   return (
@@ -517,9 +527,9 @@ useEffect(() => {
                         <button
                           type="button"
                           className="reward-copy-button rounded-1 text-white font-14 montserrat-regular py-1 background-text-blue"
-                          onClick={() => handleCopy(codeRef, "Code")}
+                          onClick={() => handleCopy(codeRef, "code")}
                         >
-                          Copy Code
+                          {copiedCode ? "Copied!" : "Copy Code"}
                         </button>
                       </div>
                       <label
@@ -541,9 +551,9 @@ useEffect(() => {
                         <button
                           type="button"
                           className="reward-copy-button text-white rounded-1 font-14 montserrat-regular py-1 background-text-blue"
-                          onClick={() => handleCopy(linkRef, "Link")}
+                          onClick={() => handleCopy(linkRef, "link")}
                         >
-                          Copy Link
+                          {copiedLink ? "Copied!" : "Copy Link"}
                         </button>
                       </div>
                       <div className="d-flex justify-content-between mt-4">
