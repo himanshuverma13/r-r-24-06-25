@@ -372,7 +372,7 @@ useEffect(() => {
         ) : (
           <div className="reward-inner-section">
             <div
-              className={`reward-nav-animt ${RwdAnimate ? 'reward-nav-animt-move-up' : ''}`}
+              className={`reward-nav-animt ${RwdAnimate ? 'reward-nav-animt-move-up_' : 'reward-nav-animt-move-down'}`}
             >
               <Navbar />
             </div>
@@ -381,13 +381,11 @@ useEffect(() => {
             {/* Content inside container */}
             <div className="container-fluid mb-4">
               <div
-                className={`px-0 position-fixed d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
-                style={{
-                  height: '95px',
-                }}
+                className={`px-0 position-fixed d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'redeem-claim' : 'bg-transparent'}`}
+                
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} z-3 px-3 mt-lg-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg &&RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} z-3 px-3 mt-lg-3`}
                 >
                   <div className="col-lg-4 d-flex justify-content-start px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
@@ -438,7 +436,7 @@ useEffect(() => {
                         Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                       </p>
                       <div className="row justify-content-around">
-                        <div className="col-lg-7">
+                        <div className="col-lg-7 col-md-7">
                           <div className="rounded-4 background-light-white-1 position-relative px-2 pb-1 pt-2 mt-4">
                             <span className="font-46 montserrat-semibold text-blue ms-1">
                               {MyRewardDataAPI?.part1}
@@ -483,7 +481,7 @@ useEffect(() => {
                     />
                   </div> */}
 
-                        <div className="col-lg-4 rounded-4 background-light-white-1 px-2 pb-1 pt-4 mt-4 position-relative">
+                        <div className="col-lg-4 col-md-4 rounded-4 background-light-white-1 px-2 pb-1 pt-4 mt-4 position-relative">
                           <img
                             src={Label}
                             className="position-absolute myreward-voucher"
@@ -713,7 +711,7 @@ useEffect(() => {
                       <Slider {...settings}>
                         {ExclusiveCardData.map((item, index) => (
                           <div key={index}>
-                            <div className="discount-card w-100 background-text-blue row gx-0 p-3">
+                            <div className="discount-card exclusive-cards w-100 background-text-blue row gx-0 p-3">
                               <div className="col-8 text-white">
                                 <p className="font-size-16 mb-0 text-uppercase montserrat-medium">
                                   {item.title}

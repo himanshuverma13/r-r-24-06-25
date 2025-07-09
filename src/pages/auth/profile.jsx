@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import ProfileIcon from '../../assets/icons/auth/add-profile.svg';
 import AddIcon from '../../assets/icons/auth/profile-pluse-icon.svg';
@@ -81,8 +82,8 @@ const Profile = () => {
   const [profileImage, setProfileImage] = useState(null);
 
   // Invite links
-  const [inviteLink] = useState('Invite Link');
-  const [inviteCode] = useState('Invite Code');
+  // const [inviteLink] = useState('Invite Link');
+  // const [inviteCode] = useState('Invite Code');
 
   // Accordion toggle
   const toggleSection = (section) => {
@@ -90,11 +91,33 @@ const Profile = () => {
   };
 
   // Copy to clipboard
-  const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => alert('Copied to clipboard!'))
-      .catch((err) => console.error('Could not copy text: ', err));
+  // const copyToClipboard = (text) => {
+  //   navigator.clipboard
+  //     .writeText(text)
+  //     .then(() => alert('Copied to clipboard!'))
+  //     .catch((err) => console.error('Could not copy text: ', err));
+  // };
+
+  const codeRef = useRef();
+  const linkRef = useRef();
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
+  const inviteCode = "ABC123XYZ";
+  const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
+
+  const handleCopy = (ref, type) => {
+    if (ref.current) {
+      const value = ref.current.value;
+      navigator.clipboard.writeText(value);
+      // Set state to show "Copied!" text
+      if (type === "code") {
+        setCopiedCode(true);
+        setTimeout(() => setCopiedCode(false), 2000); // Reset after 2 seconds
+      } else {
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2000);
+      }
+    }
   };
 
   // Handle profile image change
@@ -368,32 +391,41 @@ const Profile = () => {
           <div className="col-md-6 mt-0">
             <div className="position-relative">
               <input
+               ref={linkRef}
                 type="text"
                 className="w-100 text-light-color montserrat-medium font-14 input-profile-copy-link bg-light-purple-transparent border-0"
-                value={UserDataAPI?.part7}
+                // value={UserDataAPI?.part7}
+                value={inviteLink}
                 readOnly
               />
               <button
                 className="btn position-absolute btn-profile-copy-link font-14 text-white montserrat-regular bg-primary-color"
-                onClick={() => copyToClipboard(inviteLink)}
+                // onClick={() => copyToClipboard(inviteLink)}
+                onClick={() => handleCopy(linkRef, "link")}
               >
-                Copy Link
+                {/* Copy Link */}
+                {copiedLink ? "Copied!" : "Copy Link"}
               </button>
             </div>
           </div>
           <div className="col-md-6 mt-0">
             <div className="position-relative">
               <input
+                ref={codeRef}
                 type="text"
                 className="w-100 text-light-color montserrat-medium font-14 input-profile-copy-link bg-light-purple-transparent border-0"
-                value={UserDataAPI?.part8}
+                // value={UserDataAPI?.part8}
+                value={inviteCode}
+
                 readOnly
               />
               <button
                 className="btn position-absolute btn-profile-copy-link font-14 text-white montserrat-regular bg-primary-color"
-                onClick={() => copyToClipboard(inviteCode)}
+                // onClick={() => copyToClipboard(inviteCode)}
+                onClick={() => handleCopy(codeRef, "code")}
               >
-                Copy Code
+                {/* Copy Code */}
+                {copiedCode ? "Copied!" : "Copy Code"}
               </button>
             </div>
           </div>

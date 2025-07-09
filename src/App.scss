@@ -2283,13 +2283,16 @@ body::-webkit-scrollbar {
       #0b1e44 0%,
       $primary-color 50%,
       #1b4965 100%);
+      height: 95px;
+      top: 0;
 }
+
 
 // ==================== MY REWARDS ANIMATIONS CSS ---------------------------------
 .ufo-fixed {
   position: fixed;
   // right: 7.5%;
-  top: 12%;
+  top: 3%;
 }
 
 .ufo-fixed-active {
@@ -2325,6 +2328,24 @@ body::-webkit-scrollbar {
     transform: translateY(-100px);
     max-height: 0;
     // margin-bottom: 7%;
+  }
+}
+.reward-nav-animt-move-down {
+  animation: moveDownFadeInResize 1s forwards;
+}
+
+@keyframes moveDownFadeInResize {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+    max-height: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    // max-height can be adjusted depending on content height
+    max-height: 1000px; // Example large enough height
   }
 }
 
@@ -3020,7 +3041,7 @@ body::-webkit-scrollbar {
   background-size: cover;
   background-position: center;
   border-radius: 16px;
-  height: 321px;
+  height: 350px;
 }
 
 .astronauts {
@@ -3083,6 +3104,9 @@ body::-webkit-scrollbar {
 .my-refral-inner-content {
   z-index: 99;
   position: relative;
+}
+.exclusive-cards{
+  height: 150px;
 }
 
 // ========================================================================
@@ -3785,6 +3809,9 @@ body::-webkit-scrollbar {
     // }
     &.overflow-hidden{
       // overflow: auto!important;
+    }
+    .redeem-claim{
+      // background: $transparent;
     }
   }
   .cloud-img{
