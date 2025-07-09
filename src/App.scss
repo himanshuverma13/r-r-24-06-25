@@ -1988,6 +1988,16 @@ body::-webkit-scrollbar {
   overflow: hidden;
 }
 
+.reward-copy-button {
+  position: absolute;
+  right: 1%;
+  top: 50%;
+  transform: translateY(-50%);
+  // color: white;
+  border: none;
+  width: 109px;
+  cursor: pointer;
+}
 .reward-inner-section {
   overflow-x: hidden;
 }
@@ -2916,16 +2926,17 @@ body::-webkit-scrollbar {
   transform-origin: bottom;
   cursor: pointer;
   z-index: 1;
-  height: 400px;
+  height: 450px;
 }
 
 .referral-card:hover {
   background:
     url(./assets/images/home/MyReferral/ufo-light.svg),
     linear-gradient(180deg, rgba(77, 60, 155, 0) 0%, #4d3c9b 94.59%);
+    height: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; 
+  background-size: cover; 
   box-shadow: 0px 4px 16px 0px rgba(255, 255, 255, 0.25);
   animation: moveUp 0.5s ease both;
 }
