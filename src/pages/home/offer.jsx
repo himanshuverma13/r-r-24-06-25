@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -21,11 +21,11 @@ import plus from '../../assets/icons/home/offer/plus.svg';
 import minus from '../../assets/icons/home/offer/minus.svg';
 // import semiplnt from '../../assets/icons/home/offer/semiplanet.svg';
 
-
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import { postData } from '../../services/api';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 const Offer = ({ isActive }) => {
   const cards = [
@@ -59,7 +59,7 @@ const Offer = ({ isActive }) => {
     },
   ];
 
-     const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const settings = {
     dots: false,
     infinite: true,
@@ -75,55 +75,35 @@ const Offer = ({ isActive }) => {
   const [SemiPlntRaise, setSemiPlntRaise] = useState(true);
   const [FaqDataAPI, setFaqDataAPI] = useState();
 
+  const { ContextFaqsDataAPI } = useContext(UserContext);
+
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const items = [
-    {
-      title: '1. What is Wealth Elite’s Reward & Referral Program?',
-      content:
-        'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
-    },
-    {
-      title: '2. How can I track my referrals?',
-      content:
-        'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
-    },
-    {
-      title: '3. What does a successful referral mean?',
-      content:
-        'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
-    },
-    {
-      title: '4. What does a successful referral mean?',
-      content:
-        'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.',
-    },
-  ];
 
-    // =================================
-    //       API FUNCTIONALITY
-    // =================================
-  
-    const HandleAPI = async () => {
-      try {
-        const enyptData = await postData('/home', {
-          user_id: Auth?.user_id,
-          log_alt: Auth?.log_alt,
-          mode: Auth?.mode,
-        });
-        const Decrpty = await DecryptFunction(enyptData);
-        setFaqDataAPI()
-        // console.log('Decrpty: ', Decrpty);
-      } catch (error) {
-        console.log('error: ', error);
-      }
-    };
+  // =================================
+  //       API FUNCTIONALITY
+  // =================================
+
+  const HandleAPI = async () => {
+    try {
+      const enyptData = await postData('/home', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      const Decrpty = await DecryptFunction(enyptData);
+      setFaqDataAPI();
+      // console.log('Decrpty: ', Decrpty);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
 
   // Initialize AOS on component mount
   useEffect(() => {
-    HandleAPI()
+    HandleAPI();
     AOS.init({
       duration: 1500,
       once: false,
@@ -135,11 +115,12 @@ const Offer = ({ isActive }) => {
   }, []);
 
   return (
-    <section id='Offer_Section' className="offer-section">
+    <section id="Offer_Section" className="offer-section">
       <div className="offer-sect-content top-0 start-0 bottom-0 end-0">
         <div className="container-fluid px-5 pt-5 overflow-hidden">
           <div
-            className={`row offer-slider-fade-left ${isActive ? 'aos-animate' : ''} `}>
+            className={`row offer-slider-fade-left ${isActive ? 'aos-animate' : ''} `}
+          >
             <Slider className="offer-slider" {...settings}>
               {cards?.map((card, index) => (
                 <div
@@ -173,7 +154,9 @@ const Offer = ({ isActive }) => {
             </Slider>
           </div>
           {/*  Exclusive Offers SECTION */}
-          <h1 className="text-dark-blue font-40 space-grotesk-bold mt-120 mb-4 pb-4 ">Exclusive Offers</h1>
+          <h1 className="text-dark-blue font-40 space-grotesk-bold mt-120 mb-4 pb-4 ">
+            Exclusive Offers
+          </h1>
           <div className="pt-5 d-grid price-exclusive gap-3">
             <div className="mt-5 rounded-4 shadow-lg bg-white px-0">
               <div className="head-sec position-relative">
@@ -263,10 +246,10 @@ const Offer = ({ isActive }) => {
               <div className="col-lg-8 pt-5 ps-5 d-grid">
                 <div className="head-content ">
                   <h2 className="font-24 montserrat-medium text-white mb-2">
-                    Exciting Chance to Win a Trolley Bag!!
+                    {ContextFaqsDataAPI?.exciting_prizes?.[0]?.prizes[0]?.title}
                   </h2>
                   <p className="font-14 montserrat-light text-white mb-5 pb-5">
-                    *Terms & Conditions Applied*
+                    {ContextFaqsDataAPI?.exciting_prizes?.[0]?.prizes[0]?.term_conditions}
                   </p>
                 </div>
                 <div className="section-offer align-self-end mb-3 pb-1">
@@ -275,9 +258,9 @@ const Offer = ({ isActive }) => {
                   </h4>
                   <div className="d-flex align-items-center">
                     <span className="font-24 montserrat-semibold text-light-yellow">
-                      1500
+                      {ContextFaqsDataAPI?.exciting_prizes?.[0]?.prizes[0]?.required_meteors}
                     </span>
-                    <img className="mx-3" src={metero} alt="" />
+                    <img className="mx-3" src={ContextFaqsDataAPI?.exciting_prizes?.[0]?.prizes[0]?.image_url||metero} alt="" />
                     <span className="font-28 montserrat-medium text-white">
                       Total Meteors
                     </span>
@@ -343,7 +326,7 @@ const Offer = ({ isActive }) => {
             </h2>
             <div className="row">
               <div className="accordion">
-                {items.map((item, index) => (
+                {ContextFaqsDataAPI?.home_faqs?.map((item, index) => (
                   <div className="mt-4 pt-3" key={index}>
                     <div
                       className="purple-border-bottom pb-4 pt-1"
@@ -356,7 +339,7 @@ const Offer = ({ isActive }) => {
                           aria-expanded={openIndex === index}
                           aria-controls={`collapse${index}`}
                         >
-                          {item.title}
+                          {item?.question}
                           <span className="">
                             <img
                               src={openIndex === index ? minus : plus}
@@ -374,7 +357,7 @@ const Offer = ({ isActive }) => {
                     >
                       <div className="card-body p-3">
                         <p className="mb-0 font-16 text-dark-blue montserrat-regular">
-                          {item.content}
+                          {item?.answer}
                         </p>
                       </div>
                     </div>

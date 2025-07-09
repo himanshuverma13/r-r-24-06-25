@@ -166,7 +166,7 @@
 
 
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -177,6 +177,7 @@ import Planet3 from '../../assets/icons/home/HowItWorks/HIW-planet-3.svg';
 import Rocketgif from '../../assets/icons/home/HowItWorks/racketgif.gif';
 import { postData } from "../../services/api";
 import { DecryptFunction } from "../../utils/decryptFunction";
+import { UserContext } from "../../utils/UseContext/useContext";
 
 const Howitworks = ({ isActive, isExiting }) => {
     const sectionRef = useRef(null);
@@ -186,6 +187,8 @@ const Howitworks = ({ isActive, isExiting }) => {
     const [showExit, setShowExit] = useState(false);
     const [scrollDir, setScrollDir] = useState('down'); // Local scroll direction
     const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+      const { ContextFaqsDataAPI } = useContext(UserContext);
+      console.log('ContextFaqsDataAPI: ', ContextFaqsDataAPI?.how_it_works);
 
       // =================================
       //       API FUNCTIONALITY
@@ -306,10 +309,9 @@ const Howitworks = ({ isActive, isExiting }) => {
                         <img src={Rocketgif} alt="Rocket" className="rocket-gif mb-4" />
                         <div className="row text-center position-relative inner-row-index">
                             <div className={`col-4 howitworks-step ${step >= 1 ? 'visible' : ''}`}>
-                                <h6 className="montserrat-bold font-20 mb-22">Launch Your Cosmic Journey</h6>
+                                <h6 className="montserrat-bold font-20 mb-22">{ContextFaqsDataAPI?.how_it_works?.[0]?.title1}</h6>
                                 <p className="montserrat-regular font-18">
-                                    Start your adventure by signing up and setting course for your first galaxy.
-                                    Every star you navigate brings you closer to exciting rewards. Ready to explore?
+                                    {ContextFaqsDataAPI?.how_it_works?.[0]?.desc1}
                                 </p>
                             </div>
 
@@ -318,10 +320,9 @@ const Howitworks = ({ isActive, isExiting }) => {
                             </div>
 
                             <div className={`col-4 howitworks-step ${step >= 5 ? 'visible' : ''}`}>
-                                <h6 className="montserrat-bold font-20 mb-22">Discover New Worlds & Unlock Rewards</h6>
+                                <h6 className="montserrat-bold font-20 mb-22">{ContextFaqsDataAPI?.how_it_works?.[0]?.title3}</h6>
                                 <p className="montserrat-regular font-18">
-                                    Every galaxy you explore holds new treasures!
-                                    Collect points along the way and redeem them for exclusive rewards.
+                                    {ContextFaqsDataAPI?.how_it_works?.[0]?.desc3}
                                 </p>
                             </div>
 
@@ -337,9 +338,9 @@ const Howitworks = ({ isActive, isExiting }) => {
                             </div>
 
                             <div className={`col-4 howitworks-step ${step >= 4 ? 'visible' : ''}`}>
-                                <h6 className="montserrat-bold font-20 mb-22">Invite a Friend & Travel Together</h6>
+                                <h6 className="montserrat-bold font-20 mb-22">{ContextFaqsDataAPI?.how_it_works?.[0]?.title2}</h6>
                                 <p className="montserrat-regular font-18">
-                                    Space expeditions are better with a co-pilot! Invite friends and earn points together.
+                                    {ContextFaqsDataAPI?.how_it_works?.[0]?.desc2}
                                 </p>
                             </div>
 

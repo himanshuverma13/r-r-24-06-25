@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import ProfileIcon from '../../assets/icons/auth/add-profile.svg';
 import AddIcon from '../../assets/icons/auth/profile-pluse-icon.svg';
 import Balance from '../../assets/icons/auth/profile-balance.svg';
@@ -11,7 +12,31 @@ import UploadIcon from '../../assets/icons/auth/upload-icon.svg';
 import { postData } from '../../services/api';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { DecryptFunction } from '../../utils/decryptFunction';
+
+// import images
+import star from '../../assets/icons/home/profile/starGroup.svg';
+import coin from '../../assets/icons/home/profile/coinGroup.svg';
+import meteor from '../../assets/icons/home/profile/meteorGroup.svg';
+import { toastError, toastSuccess } from '../../utils/toster';
+import { Link } from 'react-router-dom';
+
 const Profile = () => {
+  // Profile form
+  const {
+    register: registerProfile,
+    handleSubmit: handleSubmitProfile,
+    formState: { errors: errorsProfile },
+  } = useForm();
+
+  // Meteor conversion form
+  const {
+    register: registerMeteor,
+    handleSubmit: handleSubmitMeteor,
+    formState: { errors: errorsMeteor },
+    watch: watchMeteor,
+  } = useForm();
+
+
   // Profile data state
   const [profileData, setProfileData] = useState({
     name: 'Areeba Mujeeb',
@@ -22,8 +47,14 @@ const Profile = () => {
   // Modal states
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
+  const [ismeteroModalOpen, setIsmeteroModalOpen] = useState(false);
+  const [contratsModal, setcontratsModal] = useState(false);
   const [UserDataAPI, setUserDataAPI] = useState();
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  // Add state to track the calculated value
+  const [calculatedStars, setCalculatedStars] = useState(0);
+
+
 
   // Message form state
   const [messageForm, setMessageForm] = useState({
@@ -69,8 +100,12 @@ const Profile = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setProfileImage(imageUrl);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result;
+        setProfileImage(base64String);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -93,17 +128,32 @@ const Profile = () => {
   };
 
   // Handle message form submit
-  const handleMessageSubmit = (e) => {
+  const handleMessageSubmit = async (e) => {
     e.preventDefault();
-    alert('Message sent successfully!');
-    setIsMessageModalOpen(false);
-    // Reset form
-    setMessageForm({
-      name: profileData.name,
-      email: profileData.email,
-      message: '',
-      files: [],
-    });
+    try {
+      setIsMessageModalOpen(false);
+      // Reset form
+      setMessageForm({
+        name: profileData.name,
+        email: profileData.email,
+        message: '',
+        files: [],
+      });
+      // messageForm
+      const enyptData = await postData('/contact', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+        username: UserDataAPI?.part1,
+        email: UserDataAPI?.part2,
+        message: messageForm?.message,
+      });
+      setIsMessageModalOpen(false);
+      toastSuccess(enyptData?.message);
+    } catch (error) {
+      toastError(error?.error);
+      console.log('error: ', error);
+    }
   };
 
   // =================================
@@ -128,6 +178,43 @@ const Profile = () => {
   useEffect(() => {
     HandleAPI();
   }, []);
+
+  //   --------------
+
+  const [passwords, setPasswords] = useState({
+    newPassword: '',
+    rePassword: '',
+  });
+  const handlePasswordChange = (e) => {
+    setPasswords({ ...passwords, [e.target.name]: e.target.value });
+  };
+
+  const onFormSubmit = async (data) => {
+    try {
+      const enyptData = await postData('/update-profile', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+        username: data?.name,
+        email: data?.email,
+        mobile_number: data?.mobile,
+        image: profileImage,
+        password: data?.currentPassword,
+        new_password: data?.newPassword,
+      });
+      console.log('enyptData: ', enyptData);
+      const Decrpty = await DecryptFunction(enyptData);
+      console.log('Decrpty: ', Decrpty);
+      // setUserDataAPI(Decrpty);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
+  const onMeteorConvert = (data) => {
+    console.log('data: ', data);
+    setcontratsModal(true);
+  };
 
   return (
     <section className="profile-section" id="Profile_Section">
@@ -173,7 +260,7 @@ const Profile = () => {
                   {UserDataAPI?.part1}
                 </h4>
                 <small className="user-contact montserrat-medium font-16">
-                  {profileData.mobile} <span>|</span> {UserDataAPI?.part2}
+                  {UserDataAPI?.part3} <span>|</span> {UserDataAPI?.part2}
                 </small>
               </div>
             </div>
@@ -204,14 +291,26 @@ const Profile = () => {
               Reward Summary
             </h3>
             {[
-              { value: 12, label: 'Total Rewards', RewardIcons: Reward },
+              {
+                value: UserDataAPI?.part4,
+                label: 'Total Rewards',
+                RewardIcons: Reward,
+              },
               {
                 value: 12,
                 label: 'Current Reward Balance',
                 RewardIcons: Balance,
               },
-              { value: 12, label: 'Total Redeemed', RewardIcons: Redeemed },
-              { value: 123, label: 'Pending Rewards', RewardIcons: Pending },
+              {
+                value: UserDataAPI?.part5,
+                label: 'Total Redeemed',
+                RewardIcons: Redeemed,
+              },
+              {
+                value: UserDataAPI?.part6,
+                label: 'Pending Rewards',
+                RewardIcons: Pending,
+              },
             ].map((item, idx) => (
               <div className="col-6 col-md-3 mt-0" key={idx}>
                 <div className="d-flex flex-column justify-content-between bg-light-purple-transparent p-3 rounded">
@@ -242,7 +341,7 @@ const Profile = () => {
               <input
                 type="text"
                 className="w-100 text-light-color montserrat-medium font-14 input-profile-copy-link bg-light-purple-transparent border-0"
-                value={inviteLink}
+                value={UserDataAPI?.part7}
                 readOnly
               />
               <button
@@ -258,7 +357,7 @@ const Profile = () => {
               <input
                 type="text"
                 className="w-100 text-light-color montserrat-medium font-14 input-profile-copy-link bg-light-purple-transparent border-0"
-                value={inviteCode}
+                value={UserDataAPI?.part8}
                 readOnly
               />
               <button
@@ -319,7 +418,10 @@ const Profile = () => {
                   </span>
                 </div>
                 <div className="d-flex gap-3 mb-24">
-                  <button className="btn btn-primaryColor font-14 text-white montserrat-semibold">
+                  <button
+                    onClick={() => setIsmeteroModalOpen(true)}
+                    className="btn btn-primaryColor font-14 text-white montserrat-semibold"
+                  >
                     Convert meteors into stars
                   </button>
                   <button className="btn btn-outlineDark font-14 text-primary-color montserrat-semibold">
@@ -490,9 +592,9 @@ const Profile = () => {
                     className="montserrat-medium font-14 text-primary-color"
                     role="button"
                   >
-                    <a href="#" className="anchor-link">
+                    <Link className='text-decoration-none text-blue' to={"/profile-faqs"}>
                       Frequently Asked Questions
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -505,7 +607,7 @@ const Profile = () => {
 
         {/* Edit Profile Modal */}
         {isEditModalOpen && (
-          <div className="edit-modal">
+          <div className="edit-modal overflow-scroll">
             <div className={`modal-content bg-light-gray-blue slide-in p-4`}>
               <button
                 className="btn_close border-0 bg-transparent"
@@ -516,7 +618,8 @@ const Profile = () => {
               <h5 className="font-24 text-primary-color mb-42 montserrat-semibold">
                 Edit Profile
               </h5>
-              <form onSubmit={handleFormSubmit}>
+              <form onSubmit={handleSubmitProfile(onFormSubmit)}>
+                {/* Profile Image Section */}
                 <div className="position-relative mb-48">
                   <div className="rounded-circle bg-light profile-pic d-flex align-items-center justify-content-center overflow-hidden">
                     {profileImage ? (
@@ -530,7 +633,7 @@ const Profile = () => {
                         <img
                           className="h-100 w-100 user-profile-icon"
                           src={ProfileIcon}
-                          alt=""
+                          alt="Default Profile"
                         />
                       </span>
                     )}
@@ -549,6 +652,8 @@ const Profile = () => {
                     />
                   </label>
                 </div>
+
+                {/* Name Input */}
                 <div className="mb-32">
                   <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
                     Your Name
@@ -556,23 +661,17 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control font-14 text-primary-color montserrat-medium"
-                    name="name"
-                    value={UserDataAPI?.part1}
-                    onChange={handleInputChange}
+                    {...registerProfile('name', {
+                      required: 'Name is required',
+                    })}
+                    defaultValue={UserDataAPI?.part1}
                   />
+                  {errorsProfile.name && (
+                    <p className="text-danger">{errorsProfile.name.message}</p>
+                  )}
                 </div>
-                {/* <div className="mb-32">
-                                    <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
-                                        Your Mobile No
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control font-14 text-primary-color montserrat-medium"
-                                        name="mobile"
-                                        value={profileData.mobile}
-                                        onChange={handleInputChange}
-                                    />
-                                </div> */}
+
+                {/* Mobile No Input */}
                 <div className="mb-32">
                   <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
                     Your Mobile No
@@ -580,20 +679,30 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control font-14 text-primary-color montserrat-medium"
-                    name="mobile"
-                    value={profileData.mobile}
-                    onChange={handleInputChange}
+                    {...registerProfile('mobile', {
+                      required: 'Mobile number is required',
+                      maxLength: { value: 10, message: 'Max length is 10' },
+                      pattern: {
+                        value: /^\d{10}$/,
+                        message: 'Enter a valid 10-digit number',
+                      },
+                    })}
                     maxLength={10}
-                    pattern="\d{10}"
                     onKeyPress={(e) => {
                       if (!/[0-9]/.test(e.key)) {
                         e.preventDefault();
                       }
                     }}
-                    required
+                    defaultValue={UserDataAPI?.part3}
                   />
+                  {errorsProfile.mobile && (
+                    <p className="text-danger">
+                      {errorsProfile.mobile.message}
+                    </p>
+                  )}
                 </div>
 
+                {/* Email Input */}
                 <div className="mb-32">
                   <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
                     Your Email
@@ -601,27 +710,78 @@ const Profile = () => {
                   <input
                     type="email"
                     className="form-control font-14 text-primary-color montserrat-medium"
-                    name="email"
-                    value={profileData.email}
-                    onChange={handleInputChange}
+                    {...registerProfile('email', {
+                      required: 'Email is required',
+                    })}
+                    defaultValue={UserDataAPI?.part2}
                   />
+                  {errorsProfile.email && (
+                    <p className="text-danger">{errorsProfile.email.message}</p>
+                  )}
                 </div>
+
                 <hr />
+
+                <div className="">
+                  <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
+                    Existing Password
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="Current Password"
+                    className="form-control font-14 text-primary-color montserrat-medium mb-32"
+                    {...registerProfile('currentPassword')}
+                  />
+                  {errorsProfile.currentPassword && (
+                    <p className="text-danger">
+                      {errorsProfile.currentPassword.message}
+                    </p>
+                  )}
+                </div>
+
+                {/* Change Password Section */}
                 <div className="mb-32">
                   <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
                     Change Password
                   </label>
                   <input
                     type="password"
-                    className="form-control form-control font-14 text-primary-color montserrat-medium mb-32"
                     placeholder="New Password"
+                    className="form-control font-14 text-primary-color montserrat-medium mb-32"
+                    {...registerProfile('newPassword', {
+                      minLength: { value: 6, message: 'Minimum 6 characters' },
+                    })}
+                    value={passwords.newPassword}
+                    onChange={handlePasswordChange}
                   />
+                  {errorsProfile.newPassword && (
+                    <p className="text-danger">
+                      {errorsProfile.newPassword.message}
+                    </p>
+                  )}
+                  <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
+                    Re-enter Password
+                  </label>
                   <input
                     type="password"
-                    className="form-control form-control font-14 text-primary-color montserrat-medium"
                     placeholder="Re-enter Password"
+                    className="form-control font-14 text-primary-color montserrat-medium"
+                    {...registerProfile('rePassword', {
+                      validate: (value) =>
+                        value === passwords.newPassword ||
+                        'Passwords do not match',
+                    })}
+                    value={passwords.rePassword}
+                    onChange={handlePasswordChange}
                   />
+                  {errorsProfile.rePassword && (
+                    <p className="text-danger">
+                      {errorsProfile.rePassword.message}
+                    </p>
+                  )}
                 </div>
+
+                {/* Submit Button */}
                 <button
                   type="submit"
                   className="btn btn-primaryColor montserrat-medium text-white font-14 w-100"
@@ -661,7 +821,7 @@ const Profile = () => {
                     <input
                       type="text"
                       className="form-control font-12 text-primary-color montserrat-medium mb-20"
-                      value={messageForm.name}
+                      value={UserDataAPI?.part1}
                       readOnly
                     />
                   </div>
@@ -672,7 +832,7 @@ const Profile = () => {
                     <input
                       type="email"
                       className="form-control font-12 text-primary-color montserrat-medium mb-20"
-                      value={messageForm.email}
+                      value={UserDataAPI?.part2}
                       readOnly
                     />
                   </div>
@@ -773,6 +933,159 @@ const Profile = () => {
                   </div>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+        {/* My Wallet Modal */}
+        {ismeteroModalOpen && (
+          <div className="message-modal">
+            <div
+              className={`modal-content h-auto bg-light-gray-blue slide-in p-4`}
+            >
+              <button
+                className="btn_close border-0 bg-transparent"
+                onClick={() => setIsmeteroModalOpen(false)}
+              >
+                <img className="close-icon" src={Close} alt="Close icon" />
+              </button>
+              <h5 className="font-18 montserrat-semibold text-light-color mb-8">
+                My Wallet
+              </h5>
+              <p className="font-12 text-primary-color montserrat-medium mb-20">
+                Convert your meteors and stars below
+              </p>
+
+              <form onSubmit={handleSubmitMeteor(onMeteorConvert)}>
+                <div className="row">
+                  <div className="col-lg-12">
+                    <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
+                      Your available meteors
+                    </label>
+                    <input
+                      type="text"
+                      {...registerMeteor('meteors', {
+                        required: 'This field is required',
+                        valueAsNumber: true,
+                        validate: (value) =>
+                          value >= 0 || 'Must be a non-negative number',
+                      })}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value) || 0;
+                        setCalculatedStars(value + 7);
+                      }}
+                      className="form-control font-12 text-primary-color montserrat-medium mb-20"
+                      placeholder="Enter number of meteors"
+                    />
+                    {errorsMeteor.meteors && (
+                      <p className="text-danger font-12">
+                        {errorsMeteor.meteors.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="col-lg-12">
+                    <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
+                      Stars you’ll get after conversion
+                    </label>
+                    <input
+                      className="form-control meterStarConvrt font-12  montserrat-medium mb-20"
+                      type="text"
+                      value={calculatedStars}
+                      readOnly
+                      {...registerMeteor('stars')}
+                    />
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between align-items-center mt-3">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      {...registerMeteor('terms', { required: true })}
+                      id="flexCheckChecked"
+                    />
+                    <label
+                      className="form-check-label montserrat-medium font-12 text-light-gray"
+                      htmlFor="flexCheckChecked"
+                    >
+                      I agree to the conversion terms
+                    </label>
+                    {errorsMeteor.terms && (
+                      <p className="text-danger font-12">
+                        You must agree to the terms
+                      </p>
+                    )}
+                  </div>
+                  <span className="text-blue montserrat-medium font-12">
+                    T&C applied
+                  </span>
+                </div>
+                <button
+                  type="submit"
+                  className="w-100 mt-3 background-text-blue text-white py-2 border-0 rounded-5"
+                >
+                  Convert
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+        {/* contratulation Modal */}
+        {contratsModal && (
+          <div className="message-modal">
+            <div
+              className={`modal-content h-auto bg-light-gray-blue slide-in p-4`}
+            >
+              <button
+                className="btn_close border-0 bg-transparent"
+                onClick={() => setcontratsModal(false)}
+              >
+                <img className="close-icon" src={Close} alt="Close icon" />
+              </button>
+
+              <h5 className="font-18 montserrat-semibold text-blue mt-4 mb-8 text-center">
+                Congratulations!!
+              </h5>
+              <p className="font-12 text-center text-blue montserrat-medium mb-20">
+                You have successfully converted XX Meteors into YY Stars
+              </p>
+              <div className="row justify-content-around my-4">
+                <div className="col-lg-3 background-light-purple rounded-3 px-3 py-2 text-center position-relative">
+                  <img
+                    className="position-absolute profile-congrt-img"
+                    src={meteor}
+                    alt=""
+                  />
+                  <h2 className="font-16 montserrat-semibold text-blue">X</h2>
+                  <h2 className="font-12 montserrat-semibold text-blue">
+                    Meteors
+                  </h2>
+                </div>
+                <div className="col-lg-3 background-light-purple rounded-3 px-3 py-2 text-center position-relative">
+                  <img
+                    className="position-absolute profile-congrt-img"
+                    src={star}
+                    alt=""
+                  />
+                  <h2 className="font-16 montserrat-semibold text-blue">Y</h2>
+                  <h2 className="font-12 montserrat-semibold text-blue">
+                    Stars
+                  </h2>
+                </div>
+                <div className="col-lg-3 background-light-purple rounded-3 px-3 py-2 text-center position-relative">
+                  <img
+                    className="position-absolute profile-congrt-img"
+                    src={coin}
+                    alt=""
+                  />
+                  <h2 className="font-16 montserrat-semibold text-blue">Z</h2>
+                  <h2 className="font-12 montserrat-semibold text-blue">
+                    Points
+                  </h2>
+                </div>{' '}
+              </div>
+              <button className="font-14 montserrat-medium text-blue rounded-5 py-2 bg-white border-blue mb-2">
+                Convert stars into cash
+              </button>
             </div>
           </div>
         )}

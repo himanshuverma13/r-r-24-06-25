@@ -48,7 +48,7 @@ const MyReferralScreen = () => {
   const [RefralDataAPI, setRefralDataAPI] = useState();
 
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
-  const { ContextHomeDataAPI } =
+  const { ContextHomeDataAPI ,ContextFaqsDataAPI} =
   useContext(UserContext);
 
   const handleCopy = async () => {
@@ -195,7 +195,7 @@ const MyReferralScreen = () => {
               </div>
               {/* FAQ Section Start here */}
               <div className="mb-5">
-                <FAQ items={faqData} />
+                <FAQ items={ContextFaqsDataAPI?.referrals_faqs} />
               </div>
             </div>
           </div>

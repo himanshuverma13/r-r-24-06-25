@@ -161,7 +161,7 @@ const FaqData = [
 
 const MyRewardFirstScreen = () => {
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
-  const { ContextHomeDataAPI } = useContext(UserContext);
+  const { ContextHomeDataAPI,ContextFaqsDataAPI } = useContext(UserContext);
 
   const rewardSliderSetting = {
     dots: false,
@@ -215,9 +215,7 @@ const MyRewardFirstScreen = () => {
     autoplaySpeed: 3000,
     speed: 500,
     afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      );
+
     },
     responsive: [
       {
@@ -757,7 +755,7 @@ const MyRewardFirstScreen = () => {
           </div>
         </div>
         {/* FAQ SECTION */}
-        <FAQ items={FaqData} />
+        <FAQ items={ContextFaqsDataAPI?.rewards_faqs} />
         {/* FOOTER SECTION */}
         <div className="offer-footer position-relative overflow-hidden mt-5">
           <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
