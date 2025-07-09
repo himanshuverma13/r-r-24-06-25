@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import Logo from '../../assets/icons/logo/logo.svg';
 import { postData } from '../../services/api';
 import { toastError, toastSuccess } from '../../utils/toster';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Registration = () => {
   const {
@@ -31,7 +31,7 @@ const Registration = () => {
         tag_id: '',
       });
       toastSuccess(response?.message);
-      navigate('/login');
+      navigate('/subscription');
     } catch (error) {
       toastError(error?.error);
     } finally {
@@ -41,7 +41,7 @@ const Registration = () => {
 
   return (
     <>
-      <div className="login-bg-img vh-100">
+      <div className="login-bg-img vh-100 overflow-hidden">
         <div className="nav-logo text-center mt-0">
           <img className="header-center-img width-13" src={Logo} alt="logo" />
         </div>
@@ -168,8 +168,12 @@ const Registration = () => {
                     {/* Sign Up */}
                     {loading ? 'Loading...' : 'Sign Up'}
                   </button>
-                  <p className="font-size-16 montserrat-medium text-center mt-3 text-light-gray">
-                    Powered by Red Vision Technologies
+                  <p className="font-size-12 montserrat-regular text-center mt-3 text-light-gray">
+                     Already a user? <span>
+                      <NavLink to={"/"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
+                        Login Now
+                      </NavLink>
+                    </span>
                   </p>
                 </div>
               </form>

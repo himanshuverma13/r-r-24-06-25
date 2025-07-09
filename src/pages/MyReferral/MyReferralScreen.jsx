@@ -60,6 +60,30 @@ const MyReferralScreen = () => {
       console.error('Failed to copy: ', err);
     }
   };
+  const footerRef = useRef(null);
+const [showFooterPlanet, setShowFooterPlanet] = useState(false);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        // add delay before showing
+        setTimeout(() => setShowFooterPlanet(true), 500);
+      } else {
+        setShowFooterPlanet(false);
+      }
+    },
+    {
+      root: null,
+      threshold: 0.3,
+    }
+  );
+
+  if (footerRef.current) observer.observe(footerRef.current);
+  return () => {
+    if (footerRef.current) observer.unobserve(footerRef.current);
+  };
+}, []);
 
   // =================================
   //       API FUNCTIONALITY
@@ -93,9 +117,9 @@ const MyReferralScreen = () => {
         <ReferralCards />
           </div>
         </div> */}
-        <div className="overflow-scroll h-100">
+        <div className="overflow-scroll h-100 z-3">
           <Navbar />
-          <div className="container">
+          <div className="container pt-36">
             <div className="mb-5">
               <ReferralCards RefralDataAPI={RefralDataAPI} />
             </div>
@@ -200,17 +224,15 @@ const MyReferralScreen = () => {
             </div>
           </div>
           {/* FOOTER SECTION */}
-          <div className="offer-footer position-relative overflow-hidden mt-5">
+          <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
             <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
               <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
                 The more you refer, the brighter your rewards shine!
               </p>
             </div>
-            <div
-              className="position-absolute footer-semi-planet z-3"
-            //   data-aos="fade-up"
-            //   data-aos-delay="200"
-            ></div>
+             <div
+            className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
+          ></div>
           </div>
         </div>
         <div className="cloud-img position-absolute w-100 z-2"></div>

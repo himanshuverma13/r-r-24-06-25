@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -80,6 +80,32 @@ const Offer = ({ isActive }) => {
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+
+  const footerRef = useRef(null);
+const [showFooterPlanet, setShowFooterPlanet] = useState(false);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        // add delay before showing
+        setTimeout(() => setShowFooterPlanet(true), 500);
+      } else {
+        setShowFooterPlanet(false);
+      }
+    },
+    {
+      root: null,
+      threshold: 0.3,
+    }
+  );
+
+  if (footerRef.current) observer.observe(footerRef.current);
+  return () => {
+    if (footerRef.current) observer.unobserve(footerRef.current);
+  };
+}, []);
 
 
   // =================================
@@ -317,8 +343,6 @@ const Offer = ({ isActive }) => {
         {/* FAQ SECTION */}
         <div
           className={`faq-section ${isActive ? 'planet-slide-up' : ''}`}
-          onMouseEnter={() => setSemiPlntRaise(true)}
-          onMouseLeave={() => setSemiPlntRaise(false)}
         >
           <div className="container-fluid px-5 pb-5">
             <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-1 pb-1 ">
@@ -368,7 +392,7 @@ const Offer = ({ isActive }) => {
           </div>
         </div>
         {/* FOOTER SECTION */}
-        <div
+        <div ref={footerRef}
           className="offer-footer position-relative overflow-hidden"
           onMouseEnter={() => setSemiPlntRaise(true)}
           onMouseLeave={() => setSemiPlntRaise(false)}
@@ -379,10 +403,9 @@ const Offer = ({ isActive }) => {
             </p>
           </div>
           <div
-            className={`position-absolute footer-semi-planet hoverRaiseSemiPlnt ${SemiPlntRaise ? 'active' : ''} `}
-            // data-aos="fade-up"
-            // data-aos-delay="100"
+            className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
           ></div>
+
         </div>
       </div>
     </section>

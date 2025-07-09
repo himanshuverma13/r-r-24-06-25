@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 // import component
 import Navbar from '../../components/navbar';
 
@@ -207,9 +207,9 @@ const MyRewardFirstScreen = () => {
     arrow: false,
     // className: 'center',
     infinite: true,
-    centerMode: false,
-    // centerPadding: '40px',
-    slidesToShow: 3.5,
+    centerMode: true,
+    centerPadding: '40px',
+    slidesToShow: 3.1,
     swipeToSlide: true,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -248,6 +248,32 @@ const MyRewardFirstScreen = () => {
       },
     ],
   };
+// Footer Planet animation
+const footerRef = useRef(null);
+const [showFooterPlanet, setShowFooterPlanet] = useState(false);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        // add delay before showing
+        setTimeout(() => setShowFooterPlanet(true), 500);
+      } else {
+        setShowFooterPlanet(false);
+      }
+    },
+    {
+      root: null,
+      threshold: 0.3,
+    }
+  );
+
+  if (footerRef.current) observer.observe(footerRef.current);
+  return () => {
+    if (footerRef.current) observer.unobserve(footerRef.current);
+  };
+}, []);
+
   // =============
   // States
   // ==============
@@ -309,6 +335,27 @@ const MyRewardFirstScreen = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const codeRef = useRef();
+  const linkRef = useRef();
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
+  const inviteCode = "ABC123XYZ";
+  const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
+  const handleCopy = (ref, type) => {
+    if (ref.current) {
+      const value = ref.current.value;
+      navigator.clipboard.writeText(value);
+
+      // Set state to show "Copied!" text
+      if (type === "code") {
+        setCopiedCode(true);
+        setTimeout(() => setCopiedCode(false), 2000); // Reset after 2 seconds
+      } else {
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2000);
+      }
+    }
+  };
   return (
     <>
       <section
@@ -330,54 +377,50 @@ const MyRewardFirstScreen = () => {
             </div>
 
             {/* UFO SHIP SIDE NAV */}
-            <div
-              className={`position-fixed top-0 left-0 z-1  ${UfoBg ? 'redeem-claim' : ''}`}
-              style={{ height: '95px' }}
-            ></div>
-
             {/* Content inside container */}
-            <div className="container-fluid pb-2">
+            <div className="container-fluid mb-4">
               <div
-                className={`px-0 position-fixed z-1 w-100 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
+                className={`px-0 position-fixed d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
                 style={{
                   height: '95px',
                 }}
-              ></div>
-              <div
-                className={`row justify-content-between ${RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} w-100 z-3 px-3 mt-lg-3`}
               >
-                <div className="col-lg-4 d-flex justify-content-end px-0">
-                  <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
-                    <img
-                      className="position-absolute till-ship-img"
-                      src={tiltship}
-                      alt="tiltship"
-                    />
-                    <div className="py-2 offset-2 text-white d-flex justify-content-evenly align-items-center">
-                      <span className="montserrat-bold font-14 montserrat-bold till-ship-border-color pe-3 z-1 position-relative">
-                        {ContextHomeDataAPI?.part2}
-                        <img className="my-1 mx-2" src={metero} alt="metero" />
-                        <span className="font-14 montserrat-medium">
-                          Meteors
+                <div
+                  className={`row container justify-content-between align-items-center ${RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} z-3 px-3 mt-lg-3`}
+                >
+                  <div className="col-lg-4 d-flex justify-content-start px-0">
+                    <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
+                      <img
+                        className="position-absolute till-ship-img"
+                        src={tiltship}
+                        alt="tiltship"
+                      />
+                      <div className="py-2 offset-2 text-white d-flex justify-content-evenly align-items-center">
+                        <span className="montserrat-bold font-14 montserrat-bold till-ship-border-color pe-3 z-1 position-relative">
+                          {ContextHomeDataAPI?.part2}
+                          <img className="my-1 mx-2" src={metero} alt="metero" />
+                          <span className="font-14 montserrat-medium">
+                            Meteors
+                          </span>
                         </span>
-                      </span>
-                      <span className="font-14 montserrat-semibold">
-                        {ContextHomeDataAPI?.part1}
-                        <img className="mx-1" src={star} alt="star" />
-                        <span className="space-grotesk-medium">star</span>
-                      </span>
+                        <span className="font-14 montserrat-semibold">
+                          {ContextHomeDataAPI?.part1}
+                          <img className="mx-1" src={star} alt="star" />
+                          <span className="space-grotesk-medium">star</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-3 text-center">
-                  <button
-                    onClick={() => setshowRwrdHstry(true)}
-                    className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg ? 'text-white border-white' : 'text-blue reward-history'}`}
-                  >
-                    Reward History
-                    <GiBackwardTime className={`ms-2 font-18 montserrat-semibold ${UfoBg ? 'text-white' : 'text-blue'}`} />
+                  <div className="col-lg-3 text-end">
+                    <button
+                      onClick={() => setshowRwrdHstry(true)}
+                      className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg ? 'text-white border-white' : 'text-blue reward-history'}`}
+                    >
+                      Reward History
+                      <GiBackwardTime className={`ms-2 font-18 montserrat-semibold ${UfoBg ? 'text-white' : 'text-blue'}`} />
 
-                  </button>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -470,26 +513,47 @@ const MyRewardFirstScreen = () => {
                       >
                         Invite Code
                       </label>
-                      <input
-                        className="background-light-white-2 border-0 rounded-3 w-100 p-2"
-                        type="text"
-                        defaultValue={MyRewardDataAPI?.part4}
-                        name=""
-                        id=""
-                      />
+                      <div className="position-relative">
+                        <input
+                          ref={codeRef}
+                          className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
+                          type="text"
+                          // defaultValue={MyRewardDataAPI?.part4}
+                          value={inviteCode}
+                          id="inviteCode"
+                        />
+                        <button
+                          type="button"
+                          className="reward-copy-button rounded-1 text-white font-14 montserrat-regular py-1 background-text-blue"
+                          onClick={() => handleCopy(codeRef, "code")}
+                        >
+                          {copiedCode ? "Copied!" : "Copy Code"}
+                        </button>
+                      </div>
                       <label
                         className="d-block font-14 montserrat-medium text-white mt-4 mb-1"
                         htmlFor="Invite Link"
                       >
                         Invite Link
                       </label>
-                      <input
-                        className="background-light-white-2 border-0 rounded-3 w-100 p-2"
-                        type="text"
-                        defaultValue={MyRewardDataAPI?.part6}
-                        name=""
-                        id=""
-                      />
+                      <div className="position-relative">
+                        <input
+                          ref={linkRef}
+                          className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
+                          type="text"
+                          value={inviteLink}
+                          // defaultValue={MyRewardDataAPI?.part6}
+                          id="inviteLink"
+                        // readOnly
+                        />
+                        <button
+                          type="button"
+                          className="reward-copy-button text-white rounded-1 font-14 montserrat-regular py-1 background-text-blue"
+                          onClick={() => handleCopy(linkRef, "link")}
+                        >
+                          {copiedLink ? "Copied!" : "Copy Link"}
+                        </button>
+                      </div>
                       <div className="d-flex justify-content-between mt-4">
                         <button className="px-4 font-16 montserrat-semibold width-48 py-2 bg-white text-blue border-blue rounded-3">
                           Play & Earn
@@ -757,16 +821,14 @@ const MyRewardFirstScreen = () => {
         {/* FAQ SECTION */}
         <FAQ items={ContextFaqsDataAPI?.rewards_faqs} />
         {/* FOOTER SECTION */}
-        <div className="offer-footer position-relative overflow-hidden mt-5">
+        <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
           <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
             <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
               The more you refer, the brighter your rewards shine!
             </p>
           </div>
           <div
-            className="position-absolute footer-semi-planet"
-          // data-aos="fade-up"
-          // data-aos-delay="200"
+            className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
           ></div>
         </div>
       </section>

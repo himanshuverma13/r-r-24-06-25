@@ -13,8 +13,9 @@ import { IoIosArrowForward } from 'react-icons/io';
 
 // React Slick for carousel
 import Slider from 'react-slick';
-
+import { useNavigate } from 'react-router-dom';
 const Product = () => {
+  const navigate = useNavigate();
   const settings = {
     dots: false,
     arrows: false,
@@ -134,6 +135,9 @@ const Product = () => {
       btnClass: 'product-btn-green',
     },
   ];
+  const HandleClick = () =>{
+    navigate("/")
+  }
 
   return (
     <>
@@ -189,6 +193,7 @@ const Product = () => {
                   </p>
                   <button
                     className={`product-btn w-100 text-white ${card.btnClass} px-3 py-2 border-0 mt-3`}
+                    onClick={HandleClick}
                   >
                     {card.btnText}
                   </button>
