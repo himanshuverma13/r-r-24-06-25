@@ -186,7 +186,7 @@ const Login = () => {
                   <img src={Loginimg} alt="Laoding" className="img-fluid" />
                 </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-12 d-flex align-items-center justify-content-center flex-column">
+              <div className="col-lg-6 col-md-6 col-12">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div class="mb-4">
                     <input
