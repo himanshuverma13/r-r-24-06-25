@@ -186,7 +186,7 @@ const Login = () => {
                   <img src={Loginimg} alt="Laoding" className="img-fluid" />
                 </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-12">
+              <div className="col-lg-6 col-md-6 col-12 d-flex align-items-center justify-content-center flex-column">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div class="mb-4">
                     <input
@@ -202,7 +202,7 @@ const Login = () => {
                       <div className="text-danger">{errors.email.message}</div>
                     )}
                   </div>
-                  <div class="mb-4">
+                  <div class="mb-1">
                     <input
                       type="password"
                       class="form-control login-form py-2"
@@ -216,12 +216,12 @@ const Login = () => {
                       <div className="text-danger">{errors.password.message}</div>
                     )}
                   </div>
-                  <div className="my-2">
+                  <div className="pb-4 text-end">
                     <button
-                      className="text-blue border-0 bg-transparent"
+                      className="text-blue font-12 montserrat-regular border-0 bg-transparent"
                       onClick={() => navigate('/forgotpassword')}
                     >
-                      Forgot Password ?
+                      Forgot Password?
                     </button>
                   </div>
                   <div className="d-flex ">
@@ -240,8 +240,12 @@ const Login = () => {
                       {loading ? 'Loging...' : 'Login'}
                     </button>
                   </div>
-                  <p className="font-size-16 montserrat-medium text-center mt-3 text-light-gray">
-                    Powered by Red Vision Technologies
+                  <p className="font-size-12 montserrat-regular text-center mt-3 text-light-gray">
+                    Not an existing user? <span>
+                      <NavLink to={"/registration"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
+                        Register Now
+                      </NavLink>
+                    </span>
                   </p>
                 </form>
               </div>
