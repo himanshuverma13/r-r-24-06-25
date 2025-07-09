@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 // Assets icons
@@ -13,6 +13,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { postData } from '../../services/api';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { DecryptFunction } from '../../utils/decryptFunction';
+import { toastError, toastSuccess } from '../../utils/toster';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const {
@@ -23,8 +25,10 @@ const Login = () => {
 
   const { setAuthLocal, setContextHomeDataAPI } = useContext(UserContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
+    setLoading(true);
     try {
       const response = await postData('/login/email-login', {
         password: data?.password,
@@ -40,12 +44,15 @@ const Login = () => {
           mode: response?.mode,
         });
         let Decrpty = await DecryptFunction(enyptData);
-        console.log('Decrpty: ', Decrpty);
         setContextHomeDataAPI(Decrpty);
-        navigate('/');
+        toastSuccess(response?.message)
+        navigate('/home');
       }
     } catch (error) {
-      console.log('error: ', error);
+      toastError(error?.error);
+      toastError(error?.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -205,8 +212,8 @@ const Login = () => {
                         required: 'Password is required',
                       })}
                     />
-                    {errors.name && (
-                      <div className="text-danger">{errors.name.message}</div>
+                    {errors.password && (
+                      <div className="text-danger">{errors.password.message}</div>
                     )}
                   </div>
                   <div className="my-2">
@@ -227,9 +234,10 @@ const Login = () => {
                     </button>
                     <button
                       type="submit"
+                      disabled={loading}
                       className="montserrat-semibold w-50 mx-1 font-16 py-2 rounded-3 border-0 background-text-blue text-white"
                     >
-                      Login
+                      {loading ? 'Loging...' : 'Login'}
                     </button>
                   </div>
                   <p className="font-size-16 montserrat-medium text-center mt-3 text-light-gray">

@@ -34,13 +34,14 @@ import Stratergy from '../../assets/icons/home/MyRewards/strategry-consultant.sv
 import Report from '../../assets/icons/home/MyRewards/report.svg';
 import refalien from '../../assets/icons/home/MyRewards/refalien.svg';
 import StartFour from '../../assets/icons/home/MyRewards/StarFour.svg';
-import revClock from '../../assets/icons/home/MyRewards/clock.svg';
+// import revClock from '../../assets/icons/home/MyRewards/clock.svg';
 import FAQ from '../../components/faq';
 import PlayAndEarnCard from '../../components/playAndEarnCard';
 import RewardHistory from './rewardHistory';
 import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import { UserContext } from '../../utils/UseContext/useContext';
+import { GiBackwardTime } from "react-icons/gi";
 
 const RewardSliderJson = [
   { num: 'A', img: gifplnt1, lock: false },
@@ -69,6 +70,20 @@ const discountData = [
     mainText: '',
     highlight: '₹ 2000 Off',
     subText: 'on Robo Advisory',
+    badgeText: '7 d',
+    badgeClass: 'background-light-cream',
+  },
+  {
+    mainText: 'Flat ',
+    highlight: '10% Off',
+    subText: 'on Sales Ninja',
+    badgeText: '7 d',
+    badgeClass: 'background-light-cream',
+  },
+  {
+    mainText: 'Flat ',
+    highlight: '10% Off',
+    subText: 'on Sales Ninja',
     badgeText: '7 d',
     badgeClass: 'background-light-cream',
   },
@@ -191,11 +206,14 @@ const MyRewardFirstScreen = () => {
   const settings = {
     arrow: false,
     // className: 'center',
-    infinite: false,
-    // centerMode: false,
+    infinite: true,
+    centerMode: false,
     // centerPadding: '40px',
     slidesToShow: 3.5,
     swipeToSlide: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
     afterChange: function (index) {
       console.log(
         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
@@ -265,7 +283,6 @@ const MyRewardFirstScreen = () => {
         mode: Auth?.mode,
       });
       const Decrpty = await DecryptFunction(enyptData);
-      console.log('Decrpty: ', Decrpty);
       setMyRewardDataAPI(Decrpty);
     } catch (error) {
       console.log('error: ', error);
@@ -315,9 +332,15 @@ const MyRewardFirstScreen = () => {
             </div>
 
             {/* UFO SHIP SIDE NAV */}
-            <div className="container-fluid pb-2">
+            <div
+              className={`position-fixed top-0 left-0 z-1  ${UfoBg ? 'redeem-claim' : ''}`}
+              style={{ height: '95px' }}
+            ></div>
+
+            {/* Content inside container */}
+            <div className="container-fluid pb-4">
               <div
-                className={`px-0 position-fixed z-1 w-100 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
+                className={`px-0 position-fixed w-100 z-1 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
                 style={{
                   height: '95px',
                 }}
@@ -353,7 +376,9 @@ const MyRewardFirstScreen = () => {
                     onClick={() => setshowRwrdHstry(true)}
                     className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg ? 'text-white border-white' : 'text-blue reward-history'}`}
                   >
-                    Reward History <img className="" src={revClock} alt="Loading" />
+                    Reward History
+                    <GiBackwardTime className={`ms-2 font-18 montserrat-semibold ${UfoBg ? 'text-white' : 'text-blue'}`} />
+
                   </button>
                 </div>
               </div>
@@ -581,11 +606,11 @@ const MyRewardFirstScreen = () => {
                     <p className="text-blue font-size-14 montserrat-medium mb-1">
                       Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                     </p>
-                    <div className="slider-container discount-slider pb-4 px-2">
+                    <div className="slider-container discount-slider pb-4">
                       <Slider className="" {...settings}>
                         {discountData.map((item, index) => (
                           <div key={index} className="px-2">
-                            <div className="discount-card w-100 background-text-blue row ps-2 gx-0 position-relative">
+                            <div className="discount-card background-text-blue row p-2 gx-0 position-relative">
                               <div className="col-8 text-white d-flex align-items-center my-2 justify-content-center">
                                 <div className="discount-white-box"></div>
                                 <p className="font-size-14 montserrat-medium ps-2 mt-2 lh-sm">
@@ -625,7 +650,7 @@ const MyRewardFirstScreen = () => {
                       <Slider {...settings}>
                         {ExclusiveCardData.map((item, index) => (
                           <div key={index}>
-                            <div className="discount-card w-100 background-text-blue row gx-0 p-3 mx-2">
+                            <div className="discount-card w-100 background-text-blue row gx-0 p-3">
                               <div className="col-8 text-white">
                                 <p className="font-size-16 mb-0 text-uppercase montserrat-medium">
                                   {item.title}

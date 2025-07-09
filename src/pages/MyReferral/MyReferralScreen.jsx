@@ -50,7 +50,6 @@ const MyReferralScreen = () => {
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const { ContextHomeDataAPI } =
   useContext(UserContext);
-  console.log('ContextHomeDataAPI: ', ContextHomeDataAPI);
 
   const handleCopy = async () => {
     try {
@@ -94,9 +93,9 @@ const MyReferralScreen = () => {
         <ReferralCards />
           </div>
         </div> */}
-        <div className="overflow-scroll h-100">
+        <div className="overflow-scroll h-100 z-3">
           <Navbar />
-          <div className="container">
+          <div className="container pt-36">
             <div className="mb-5">
               <ReferralCards RefralDataAPI={RefralDataAPI} />
             </div>
@@ -123,10 +122,10 @@ const MyReferralScreen = () => {
                         className="copy-input input-invite-friend bg-white mb-16"
                       />
                       <button
-                        className="copy-button montserrat-regular"
+                        className="copy-button font-14 montserrat-regular"
                         onClick={handleCopy}
                       >
-                        {copied ? 'Copied!' : 'Copy Link'}
+                        {copied ? 'Copied!' : 'Copy Code'}
                       </button>
                     </div>
                   </div>
@@ -142,7 +141,7 @@ const MyReferralScreen = () => {
                         className="copy-input input-invite-friend bg-white mb-16"
                       />
                       <button
-                        className="copy-button  montserrat-medium"
+                        className="copy-button font-14 montserrat-regular"
                         onClick={handleCopy}
                       >
                         {copied ? 'Copied!' : 'Copy Link'}
@@ -161,7 +160,7 @@ const MyReferralScreen = () => {
             </div>
             <div className="my-refral-inner-content">
               {/* Referral Cards */}
-            <SliderCard RefralDataAPI={RefralDataAPI} />
+              <SliderCard RefralDataAPI={RefralDataAPI} />
               {/* INVITING, TRACKING CARD SECTION */}
               <div className="container">
                 <div className="font-32 space-grotesk-bold text-blue mt-120 mb-4 pb-4 ">
@@ -209,8 +208,8 @@ const MyReferralScreen = () => {
             </div>
             <div
               className="position-absolute footer-semi-planet z-3"
-              //   data-aos="fade-up"
-              //   data-aos-delay="200"
+            //   data-aos="fade-up"
+            //   data-aos-delay="200"
             ></div>
           </div>
         </div>

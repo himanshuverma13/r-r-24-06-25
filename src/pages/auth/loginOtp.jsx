@@ -10,6 +10,7 @@ import { Clock, AlertCircle } from 'lucide-react';
 import { postData } from '../../services/api';
 import checkCircle from '../../assets/icons/auth/CheckCircle.svg';
 import { useNavigate } from 'react-router-dom';
+import { toastError, toastInfo, toastSuccess } from '../../utils/toster';
 
 const LoginOtp = () => {
   const {
@@ -84,8 +85,11 @@ const LoginOtp = () => {
 
       setTimeout(() => {
         setOtpStatus('sent');
+        toastInfo(response)
+        console.log('response: ', response);
         if (response?.success) {
-          alert('OTP Verified Successfully');
+          toastSuccess(response?.message)
+          // alert('OTP Verified Successfully');
           navigate("/")
           setOtpStatus('sent');
           setError('');
@@ -106,7 +110,8 @@ const LoginOtp = () => {
     setError('');
     setTimer(60);
     inputRefs.current[0].focus();
-    alert('OTP Resent');
+    // alert('OTP Resent');
+    toastInfo("OTP Resent")
   };
 
   const formatTime = (seconds) => {
@@ -127,23 +132,23 @@ const LoginOtp = () => {
         const response = await postData('/login/mobile-send-otp', {
           mobile_number: value,
         });
-        console.log('response: ', response);
         if (response?.success) {
+          toastSuccess(response?.message)
           setMobileValid(true);
         } else {
-          alert(response?.message);
+          // alert(response?.message);
+          toastError(error?.message)
         }
       } else {
         setMobileValid(false);
       }
     } catch (error) {
-      console.log('error: ', error);
+      toastError(error?.message)
     }
   };
   
 
   const onSubmit = (data) => {
-    console.log('Form Submitted:', data);
   };
 
   return (
