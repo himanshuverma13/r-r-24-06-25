@@ -16,11 +16,13 @@ import Profile from '../../pages/auth/profile';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
+import UserFaqs from '../../pages/auth/userFaqs';
 
 // import ProtectedRoute from "./ProtectedRoute";
 
 const AppRoutes = () => {
-    const { setContextHomeDataAPI } = useContext(UserContext);
+  const { setContextHomeDataAPI, setContextFaqsDataAPI } =
+    useContext(UserContext);
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const HandleAPI = async () => {
     try {
@@ -31,6 +33,15 @@ const AppRoutes = () => {
       });
       const Decrpty = await DecryptFunction(enyptData);
       setContextHomeDataAPI(Decrpty);
+
+      // fetch-custom-data API for ALL FAQs
+      const FaqsData = await postData('/admin/fetch-custom-data', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      console.log('FaqsData: ', FaqsData);
+      setContextFaqsDataAPI(FaqsData);
     } catch (error) {
       console.log('error: ', error);
     }
@@ -45,14 +56,18 @@ const AppRoutes = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<Login />} />
         <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
-        <Route path="/confirmforgotPasswordotp" element={<ConfirmForgotPasswordOtp />} />
+        <Route
+          path="/confirmforgotPasswordotp"
+          element={<ConfirmForgotPasswordOtp />}
+        />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/loginOtp" element={<LoginOtp />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/subscription" element={<Product />} />
         <Route path="/reward" element={<MyRewardFirstScreen />} />
         <Route path="/referral" element={<MyReferralScreen />} />
-        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile-faqs" element={<UserFaqs />} />
         {/* <Route
           path="/dashboard"
           element={

@@ -48,7 +48,7 @@ const MyReferralScreen = () => {
   const [RefralDataAPI, setRefralDataAPI] = useState();
 
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
-  const { ContextHomeDataAPI } =
+  const { ContextHomeDataAPI ,ContextFaqsDataAPI} =
   useContext(UserContext);
 
   const handleCopy = async () => {
@@ -117,8 +117,8 @@ useEffect(() => {
         <ReferralCards />
           </div>
         </div> */}
-        <div className="overflow-scroll h-100 z-3">
           <Navbar />
+        <div className="overflow-scroll h-100 z-3">
           <div className="container pt-36">
             <div className="mb-5">
               <ReferralCards RefralDataAPI={RefralDataAPI} />
@@ -219,7 +219,7 @@ useEffect(() => {
               </div>
               {/* FAQ Section Start here */}
               <div className="mb-5">
-                <FAQ items={faqData} />
+                <FAQ items={ContextFaqsDataAPI?.referrals_faqs} />
               </div>
             </div>
           </div>
