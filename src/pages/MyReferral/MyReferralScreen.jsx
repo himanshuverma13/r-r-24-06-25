@@ -48,8 +48,8 @@ const MyReferralScreen = () => {
   const [RefralDataAPI, setRefralDataAPI] = useState();
 
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
-  const { ContextHomeDataAPI ,ContextFaqsDataAPI} =
-  useContext(UserContext);
+  const { ContextHomeDataAPI, ContextFaqsDataAPI } =
+    useContext(UserContext);
 
   const handleCopy = async () => {
     try {
@@ -61,29 +61,29 @@ const MyReferralScreen = () => {
     }
   };
   const footerRef = useRef(null);
-const [showFooterPlanet, setShowFooterPlanet] = useState(false);
+  const [showFooterPlanet, setShowFooterPlanet] = useState(false);
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        // add delay before showing
-        setTimeout(() => setShowFooterPlanet(true), 500);
-      } else {
-        setShowFooterPlanet(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // add delay before showing
+          setTimeout(() => setShowFooterPlanet(true), 500);
+        } else {
+          setShowFooterPlanet(false);
+        }
+      },
+      {
+        root: null,
+        threshold: 0.3,
       }
-    },
-    {
-      root: null,
-      threshold: 0.3,
-    }
-  );
+    );
 
-  if (footerRef.current) observer.observe(footerRef.current);
-  return () => {
-    if (footerRef.current) observer.unobserve(footerRef.current);
-  };
-}, []);
+    if (footerRef.current) observer.observe(footerRef.current);
+    return () => {
+      if (footerRef.current) observer.unobserve(footerRef.current);
+    };
+  }, []);
 
   // =================================
   //       API FUNCTIONALITY
@@ -117,7 +117,7 @@ useEffect(() => {
         <ReferralCards />
           </div>
         </div> */}
-          <Navbar />
+        <Navbar />
         <div className="overflow-scroll h-100 z-3">
           <div className="container pt-36">
             <div className="mb-5">
@@ -230,9 +230,9 @@ useEffect(() => {
                 The more you refer, the brighter your rewards shine!
               </p>
             </div>
-             <div
-            className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
-          ></div>
+            <div
+              className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
+            ></div>
           </div>
         </div>
         <div className="cloud-img position-absolute w-100 z-2"></div>
