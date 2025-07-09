@@ -168,7 +168,7 @@ const Registration = () => {
                     {/* Sign Up */}
                     {loading ? 'Loading...' : 'Sign Up'}
                   </button>
-                  <p className="font-size-12 montserrat-regular text-center mt-3 text-light-gray">
+                  <p className="font-12 montserrat-regular text-center mt-3 text-light-gray">
                      Already a user? <span>
                       <NavLink to={"/"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
                         Login Now

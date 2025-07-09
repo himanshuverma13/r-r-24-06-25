@@ -341,11 +341,11 @@ useEffect(() => {
   const [copiedLink, setCopiedLink] = useState(false);
   const inviteCode = "ABC123XYZ";
   const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
+  
   const handleCopy = (ref, type) => {
     if (ref.current) {
       const value = ref.current.value;
       navigator.clipboard.writeText(value);
-
       // Set state to show "Copied!" text
       if (type === "code") {
         setCopiedCode(true);
