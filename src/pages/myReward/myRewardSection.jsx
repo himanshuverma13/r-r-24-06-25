@@ -371,7 +371,7 @@ useEffect(() => {
         ) : (
           <div className="reward-inner-section">
             <div
-              className={`reward-nav-animt ${RwdAnimate ? 'reward-nav-animt-move-up' : ''}`}
+              className={`reward-nav-animt ${RwdAnimate ? 'reward-nav-animt-move-up_' : 'reward-nav-animt-move-down'}`}
             >
               <Navbar />
             </div>
@@ -380,13 +380,11 @@ useEffect(() => {
             {/* Content inside container */}
             <div className="container-fluid mb-4">
               <div
-                className={`px-0 position-fixed d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg ? 'redeem-claim' : ''}`}
-                style={{
-                  height: '95px',
-                }}
+                className={`px-0 position-fixed d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'redeem-claim' : 'bg-transparent'}`}
+                
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} z-3 px-3 mt-lg-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg &&RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} z-3 px-3 mt-lg-3`}
                 >
                   <div className="col-lg-4 d-flex justify-content-start px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
