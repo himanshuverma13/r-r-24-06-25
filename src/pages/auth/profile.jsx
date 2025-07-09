@@ -8,6 +8,7 @@ import Reward from '../../assets/icons/auth/profile-reward.svg';
 import Edit from '../../assets/icons/auth/profile-edit.svg';
 import Close from '../../assets/icons/auth/modal-close.svg';
 import UploadIcon from '../../assets/icons/auth/upload-icon.svg';
+import UploadFile from '../../assets/icons/auth/uploaded-file.svg'
 const Profile = () => {
     // Profile data state
     const [profileData, setProfileData] = useState({
@@ -249,7 +250,7 @@ const Profile = () => {
                     <div className="accordion-item bg-transparent border-0 border-radius-0">
                         <h2 className="accordion-header bg-transparent">
                             <button
-                                className={`accordion-button text-light-color bg-transparent font-18 montserrat-semibold pt-4 pb-4 ${activeSection === 'wallet' ? '' : 'collapsed'}`}
+                                className={`accordion-button text-light-color bg-transparent font-18 montserrat-semibold pt-4 pb-4 border-radius-0 ${activeSection === 'wallet' ? '' : 'collapsed'}`}
                                 type="button"
                                 onClick={() => toggleSection('wallet')}
                             >
@@ -470,9 +471,6 @@ const Profile = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* Other Accordion Sections - (Use your previous code, unchanged) */}
-                    {/* Notification Settings, Account Settings, Help & Support (already provided by you) */}
                 </div>
 
                 {/* Edit Profile Modal */}
@@ -533,18 +531,6 @@ const Profile = () => {
                                         onChange={handleInputChange}
                                     />
                                 </div>
-                                {/* <div className="mb-32">
-                                    <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
-                                        Your Mobile No
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control font-14 text-primary-color montserrat-medium"
-                                        name="mobile"
-                                        value={profileData.mobile}
-                                        onChange={handleInputChange}
-                                    />
-                                </div> */}
                                 <div className="mb-32">
                                     <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
                                         Your Mobile No
@@ -701,25 +687,51 @@ const Profile = () => {
 
                                         {/* Show File Names with Remove Option */}
                                         {messageForm.files.length > 0 && (
-                                            <ul className="mt-2 file-list">
-                                                {messageForm.files.map((file, index) => (
-                                                    <li key={index} className="d-flex justify-content-between align-items-center mb-2">
-                                                        <span>{file.name}</span>
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-sm btn-danger"
-                                                            onClick={() => {
-                                                                const updatedFiles = [...messageForm.files];
-                                                                updatedFiles.splice(index, 1);
-                                                                setMessageForm({ ...messageForm, files: updatedFiles });
-                                                            }}
-                                                        >
-                                                            Remove
-                                                        </button>
-                                                    </li>
-                                                ))}
+                                            <ul className="mt-2 file-list d-flex">
+                                                {messageForm.files.map((file, index) => {
+                                                    const ext = file.name.split('.').pop().toLowerCase();
+
+                                                    // Choose icon based on file type
+                                                    let fileIcon;
+                                                    if (['jpg', 'jpeg', 'png', 'gif'].includes(ext)) {
+                                                        fileIcon = URL.createObjectURL(file); // for previewing the image itself
+
+                                                        //   } else if (ext === 'pdf') {
+                                                        //     fileIcon = require('../../assets/icons/file/pdf-icon.svg'); // replace with your path
+                                                        //   } else if (['doc', 'docx'].includes(ext)) {
+                                                        //     fileIcon = require('../../assets/icons/file/word-icon.svg');
+                                                        //   } else if (['xls', 'xlsx'].includes(ext)) {
+                                                        //     fileIcon = require('../../assets/icons/file/excel-icon.svg');
+                                                          } else {
+                                                            fileIcon = UploadFile;
+                                                    }
+
+                                                    return (
+                                                        <li key={index} className="uploaded-files-list position-relative mb-2 mt-3">
+                                                            <div className="">
+                                                                <img className='flie-icon'
+                                                                    src={fileIcon}
+                                                                    alt={ext}
+                                                                />
+                                                                {/* <span className="text-truncate" style={{ maxWidth: '200px' }}>{file.name}</span> */}
+                                                            </div>
+                                                            <button
+                                                                type="button"
+                                                                className="btn position-absolute btn-delete-file"
+                                                                onClick={() => {
+                                                                    const updatedFiles = [...messageForm.files];
+                                                                    updatedFiles.splice(index, 1);
+                                                                    setMessageForm({ ...messageForm, files: updatedFiles });
+                                                                }}
+                                                            >
+                                                                <img className='remove-icon' src={Close} alt="Remove File Icon" />
+                                                            </button>
+                                                        </li>
+                                                    );
+                                                })}
                                             </ul>
                                         )}
+
                                     </div>
 
 
