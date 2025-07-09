@@ -37,7 +37,7 @@ const ReferralCards = ({RefralDataAPI}) => {
             <div className='row mt-5'>
                 {cardsData.map((card, index) => (
                     <div className='col-lg-4' key={card.id}>
-                        <div className='referral-card p-5 position-relative text-center'
+                        <div className='referral-card p-5 position-relative text-center ufo-light-img'
                             onMouseEnter={() => setIsHovered((card.id))}
                             onMouseLeave={() => setIsHovered(null)}>
                             <div>
