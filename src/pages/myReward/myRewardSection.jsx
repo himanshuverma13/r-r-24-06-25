@@ -380,7 +380,7 @@ useEffect(() => {
             {/* Content inside container */}
             <div className="container-fluid mb-4">
               <div
-                className={`px-0 position-fixed d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'redeem-claim' : 'bg-transparent'}`}
+                className={`px-0 position-fixed d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'redeem-claim animate-nav' : 'bg-transparent'}`}
                 
               >
                 <div
