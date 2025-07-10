@@ -17,6 +17,7 @@ import { UserContext } from '../../utils/UseContext/useContext';
 import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import UserFaqs from '../../pages/auth/userFaqs';
+import Error from '../../pages/Errror/error';
 import ProtectedRoute from '../protectedRoute';
 
 

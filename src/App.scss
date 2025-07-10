@@ -149,7 +149,7 @@ $breakpoint-2xl: 2560px; // Ultra-Wide
 $breakpoint-4k: 3840px; // 4K Display
 
 // Font and spacing values
-$font-sizes: 8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 44, 46, 48, 52, 56, 60, 64, 68, 72;
+$font-sizes: 8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 34, 36, 40, 44, 46, 48, 52, 56, 60, 64, 68, 72;
 $spacing-values: 0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52, 56, 58, 60, 62,
   68, 72, 78, 80, 88, 90, 92, 120;
 
@@ -2295,8 +2295,7 @@ body::-webkit-scrollbar {
 
 // ==================== MY REWARDS ANIMATIONS CSS ---------------------------------
 .ufo-fixed {
-  position: fixed;
-  // right: 7.5%;
+  // position: fixed;
   top: 3%;
 }
 
@@ -2310,7 +2309,7 @@ body::-webkit-scrollbar {
 }
 
 .ufo-fixed-active {
-  position: fixed;
+  // position: fixed;
   // right: 5%;
   top: 12%;
   animation: moveUpRewUfo 0.7s ease forwards;
@@ -2322,7 +2321,7 @@ body::-webkit-scrollbar {
   }
 
   to {
-    top: 3%;
+    top: 6%;
   }
 }
 
@@ -2960,7 +2959,7 @@ body::-webkit-scrollbar {
 
 // Ufo top Fixed Css
 .ufo-fixed {
-  position: fixed;
+  // position: fixed;
   top: 90px;
   // right: 7.5%;
 }

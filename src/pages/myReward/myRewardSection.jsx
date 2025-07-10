@@ -381,11 +381,11 @@ const MyRewardFirstScreen = () => {
             {/* Content inside container */}
             <div className="container-fluid mb-4">
               <div
-                className={`px-0 position-fixed d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg' : 'bg-transparent'}`}
-
+                className={`px-0  d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg position-fixed' : 'bg-transparent '}`}
+                
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed'} z-3 px-3 mt-lg-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg &&RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed mt-5'} mt-4 z-3`}
                 >
                   <div className="col-lg-4 d-flex justify-content-start px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
@@ -410,7 +410,7 @@ const MyRewardFirstScreen = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-3 text-end">
+                  <div className="col-lg-3 text-end px-0">
                     <button
                       onClick={() => setshowRwrdHstry(true)}
                       className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg ? 'text-white border-white' : 'text-blue reward-history'}`}
@@ -426,8 +426,8 @@ const MyRewardFirstScreen = () => {
             {/* MY REWARDS FIRST SCREEN */}
             {ShowSecScr && (
               <>
-                <div className="container pt-5 sdfsdfd">
-                  <div className={`d-flex my-reward-cards gap-4 mt-5 px-0 `}>
+                <div className="container pt-2 sdfsdfd">
+                  <div className={`d-flex my-reward-cards gap-4 px-0 `}>
                     <div className="w-50 myreward-card-1 px-4 pb-4 rounded-4">
                       <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
                         My Collections

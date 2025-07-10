@@ -48,10 +48,10 @@ const Registration = () => {
         <div className="row p-lg-3 p-2 d-flex justify-content-center">
           <div className="col-lg-7">
             <div className="text-center mt-2">
-              <p className="font-size-44 text-blue montserrat-bold mb-2">
+              <p className="font-44 text-blue montserrat-bold mb-2">
                 You have been Invited
               </p>
-              <p className="text-blue montserrat-semibold font-size-20 pb-2">
+              <p className="text-blue montserrat-semibold font-20 pb-2">
                 Riya invited you! Sign up now to get your reward and start your
                 journey <br /> to more exclusive perks
               </p>
