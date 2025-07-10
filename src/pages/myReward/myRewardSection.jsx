@@ -380,11 +380,11 @@ const MyRewardFirstScreen = () => {
             {/* Content inside container */}
             <div className="container-fluid mb-4">
               <div
-                className={`px-0  d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'redeem-claim animate-nav position-fixed' : 'bg-transparent '}`}
+                className={`px-0  d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg position-fixed' : 'bg-transparent '}`}
                 
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${UfoBg &&RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed mt-5'} z-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg &&RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed mt-5'} mt-4 z-3`}
                 >
                   <div className="col-lg-4 d-flex justify-content-start px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
