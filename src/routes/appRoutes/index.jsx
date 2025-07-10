@@ -40,7 +40,6 @@ const AppRoutes = () => {
         log_alt: Auth?.log_alt,
         mode: Auth?.mode,
       });
-      console.log('FaqsData: ', FaqsData);
       setContextFaqsDataAPI(FaqsData);
     } catch (error) {
       console.log('error: ', error);
@@ -63,6 +62,7 @@ const AppRoutes = () => {
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/loginOtp" element={<LoginOtp />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/subscription" element={<Product />} />
 
         {/* Protected Routes */}
         <Route

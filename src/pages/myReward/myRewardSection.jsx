@@ -26,6 +26,9 @@ import gifplnt1 from '../../assets/icons/home/HomePlanets/purple.svg';
 import gifplnt2 from '../../assets/icons/home/HomePlanets/yellow.svg';
 import gifplnt3 from '../../assets/icons/home/HomePlanets/green.svg';
 import gifplnt4 from '../../assets/icons/home/HomePlanets/blue.svg';
+import TicTac from "../../assets/images/home/MyRewards/Tic Tak Toe.svg";
+import Quiz from "../../assets/images/home/MyRewards/Quiz.svg";
+import Spin from "../../assets/images/home/MyRewards/Spin The Bottle.svg";
 // import MyRewardSecondScreen from './myRewardScreen2';
 // import MyRewardThirdScreen from './myRewardScreen3';
 import Voucher from '../../assets/icons/home/MyRewards/Label.svg';
@@ -177,14 +180,14 @@ const MyRewardFirstScreen = () => {
         breakpoint: 1200, // screens ≤ 1200px
         settings: {
           slidesToShow: 3,
-          centerPadding: '30px',
+          centerPadding: '20px',
         },
       },
       {
         breakpoint: 992, // screens ≤ 992px
         settings: {
-          slidesToShow: 2.2,
-          centerPadding: '25px',
+          slidesToShow: 2,
+          centerPadding: '0px',
         },
       },
       {
@@ -222,28 +225,21 @@ const MyRewardFirstScreen = () => {
         breakpoint: 1200, // screens ≤ 1200px
         settings: {
           slidesToShow: 3,
-          centerPadding: '30px',
+          centerPadding: '0px',
         },
       },
       {
         breakpoint: 992, // screens ≤ 992px
         settings: {
-          slidesToShow: 2.2,
-          centerPadding: '25px',
+          slidesToShow: 2,
+          centerPadding: '0px',
         },
       },
       {
         breakpoint: 768, // screens ≤ 768px (tablet)
         settings: {
           slidesToShow: 2,
-          centerPadding: '20px',
-        },
-      },
-      {
-        breakpoint: 576, // screens ≤ 576px (mobile)
-        settings: {
-          slidesToShow: 1,
-          centerPadding: '15px',
+          centerPadding: '0px',
         },
       },
     ],
@@ -283,6 +279,7 @@ const MyRewardFirstScreen = () => {
   const [leftScrolAnimt, setleftScrolAnimt] = useState(true);
   const [UfoBg, setUfoBg] = useState(false);
   const [MyRewardDataAPI, setMyRewardDataAPI] = useState();
+  const [showGameCard, setShowGameCard] = useState("invite")
 
   // =============
   // Functions
@@ -381,13 +378,13 @@ const MyRewardFirstScreen = () => {
             {/* Content inside container */}
             <div className="container-fluid mb-4">
               <div
-                className={`px-0  d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg position-fixed' : 'bg-transparent '}`}
-                
+                className={`px-0 d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg position-fixed' : 'bg-transparent '}`}
+
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${UfoBg &&RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed mt-5'} mt-4 z-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} z-3`}
                 >
-                  <div className="col-lg-4 d-flex justify-content-start px-0">
+                  <div className="col-lg-5 col-md-8 d-flex justify-content-start align-items-center px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
                       <img
                         className="position-absolute till-ship-img"
@@ -410,7 +407,7 @@ const MyRewardFirstScreen = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-3 text-end px-0">
+                  <div className="col-lg-6 col-md-4 text-end px-0">
                     <button
                       onClick={() => setshowRwrdHstry(true)}
                       className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg ? 'text-white border-white' : 'text-blue reward-history'}`}
@@ -426,140 +423,154 @@ const MyRewardFirstScreen = () => {
             {/* MY REWARDS FIRST SCREEN */}
             {ShowSecScr && (
               <>
-                <div className="container pt-2 sdfsdfd">
-                  <div className={`d-flex my-reward-cards gap-4 px-0 `}>
-                    <div className="w-50 myreward-card-1 px-4 pb-4 rounded-4">
-                      <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
-                        My Collections
-                      </h2>
-                      <p className="font-14 montserrat-medium text-white">
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                      </p>
-                      <div className="row justify-content-around">
-                        <div className="col-lg-7 col-md-7">
-                          <div className="rounded-4 background-light-white-1 position-relative px-2 pb-1 pt-2 mt-4">
-                            <span className="font-46 montserrat-semibold text-blue ms-1">
-                              {MyRewardDataAPI?.part1}
-                            </span>{' '}
-                            <span className="text-blue font-16 montserrat-semibold ms-1">
-                              Stars
-                            </span>{' '}
-                            <img
-                              className="position-absolute w-50 myreward-star"
-                              src={star}
-                              alt="star"
-                            />
-                          </div>
-
-                          <div className="d-flex position-relative justify-content-between rounded-4 background-light-white-1 px-2 pb-1 pt-5 mt-4">
-                            <div className="d-inline">
+                <div className="container pt-2">
+                  <div className={`row my-reward-cards g-4`}>
+                    <div className="col-lg-6 col-12">
+                      <div className='myreward-card-1 px-4 pb-4 rounded-4'>
+                        <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
+                          My Collections
+                        </h2>
+                        <p className="font-14 montserrat-medium text-white">
+                          Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                        </p>
+                        <div className="row justify-content-around">
+                          <div className="col-lg-7 col-md-7">
+                            <div className="rounded-4 background-light-white-1 position-relative px-2 pb-1 pt-2 mt-4">
                               <span className="font-46 montserrat-semibold text-blue ms-1">
-                                {MyRewardDataAPI?.part2}
+                                {MyRewardDataAPI?.part1}
                               </span>{' '}
                               <span className="text-blue font-16 montserrat-semibold ms-1">
-                                Meteors
+                                Stars
+                              </span>{' '}
+                              <img
+                                className="position-absolute w-50 myreward-star"
+                                src={star}
+                                alt="star"
+                              />
+                            </div>
+
+                            <div className="d-flex position-relative justify-content-between rounded-4 background-light-white-1 px-2 pb-1 pt-5 mt-4">
+                              <div className="d-inline">
+                                <span className="font-46 montserrat-semibold text-blue ms-1">
+                                  {MyRewardDataAPI?.part2}
+                                </span>{' '}
+                                <span className="text-blue font-16 montserrat-semibold ms-1">
+                                  Meteors
+                                </span>{' '}
+                              </div>
+                              <img
+                                className="w-25 position-absolute myreward-shotingmeteor"
+                                src={shootingmeteor}
+                                alt="star"
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-4 col-md-4 rounded-4 background-light-white-1 px-2 pb-1 pt-4 mt-4 position-relative">
+                            <img
+                              src={Label}
+                              className="position-absolute myreward-voucher"
+                              alt="Laoding"
+                            />
+
+                            <div className="position-absolute bottom-0">
+                              <span className="font-46 montserrat-semibold text-blue ms-1">
+                                {MyRewardDataAPI?.part3}
+                              </span>{' '}
+                              <span className="text-blue font-16 montserrat-semibold ms-1">
+                                Vouchers
                               </span>{' '}
                             </div>
-                            <img
-                              className="w-25 position-absolute myreward-shotingmeteor"
-                              src={shootingmeteor}
-                              alt="star"
-                            />
-                          </div>
-                        </div>
-                        {/* <div className="rounded-4 background-light-white position-relative px-2 pb-1 pt-2 mt-4">
-                    <span className="font-46 montserrat-semibold text-blue ms-1">
-                      X
-                    </span>{' '}
-                    <span className="text-blue font-16 montserrat-semibold ms-1">
-                      Cashbacks
-                    </span>{' '}
-                    <img
-                      className="position-absolute w-25 myreward-pocket"
-                      src={moneypocket}
-                      alt="moneypocket"
-                    />
-                  </div> */}
-
-                        <div className="col-lg-4 col-md-4 rounded-4 background-light-white-1 px-2 pb-1 pt-4 mt-4 position-relative">
-                          <img
-                            src={Label}
-                            className="position-absolute myreward-voucher"
-                            alt="Laoding"
-                          />
-
-                          <div className="position-absolute bottom-0">
-                            <span className="font-46 montserrat-semibold text-blue ms-1">
-                              {MyRewardDataAPI?.part3}
-                            </span>{' '}
-                            <span className="text-blue font-16 montserrat-semibold ms-1">
-                              Vouchers
-                            </span>{' '}
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="w-50 myreward-card-2 px-4 pb-4 rounded-4">
-                      <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
-                        Earn More
-                      </h2>
-                      <p className="font-14 montserrat-medium text-white">
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                      </p>
-                      <label
-                        className="d-block font-14 montserrat-medium text-white mb-1"
-                        htmlFor="Invite Code"
-                      >
-                        Invite Code
-                      </label>
-                      <div className="position-relative">
-                        <input
-                          ref={codeRef}
-                          className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
-                          type="text"
-                          // defaultValue={MyRewardDataAPI?.part4}
-                          value={inviteCode}
-                          id="inviteCode"
-                        />
-                        <button
-                          type="button"
-                          className="reward-copy-button rounded-1 text-white font-14 montserrat-regular py-1 background-text-blue"
-                          onClick={() => handleCopy(codeRef, "code")}
-                        >
-                          {copiedCode ? "Copied!" : "Copy Code"}
-                        </button>
-                      </div>
-                      <label
-                        className="d-block font-14 montserrat-medium text-white mt-4 mb-1"
-                        htmlFor="Invite Link"
-                      >
-                        Invite Link
-                      </label>
-                      <div className="position-relative">
-                        <input
-                          ref={linkRef}
-                          className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
-                          type="text"
-                          value={inviteLink}
-                          // defaultValue={MyRewardDataAPI?.part6}
-                          id="inviteLink"
-                        // readOnly
-                        />
-                        <button
-                          type="button"
-                          className="reward-copy-button text-white rounded-1 font-14 montserrat-regular py-1 background-text-blue"
-                          onClick={() => handleCopy(linkRef, "link")}
-                        >
-                          {copiedLink ? "Copied!" : "Copy Link"}
-                        </button>
-                      </div>
-                      <div className="d-flex justify-content-between mt-4">
-                        <button className="px-4 font-16 montserrat-semibold width-48 py-2 bg-white text-blue border-blue rounded-3">
-                          Play & Earn
-                        </button>
-                        <button className="px-4 font-16 montserrat-semibold width-48 py-2 text-white background-text-blue rounded-3">
-                          Invite a Friend
-                        </button>
+                    <div className="col-lg-6 col-12">
+                      <div className='myreward-card-2 px-4 pb-4 rounded-4'>
+                        <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
+                          Earn More
+                        </h2>
+                        <p className="font-14 montserrat-medium text-white">
+                          Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                        </p>
+                        {showGameCard === "cards" ? (
+                          <>
+                            <div className='row'>
+                              {[TicTac, Quiz, Spin].map((items, index) => (
+                                <div className='col-4' key={index}>
+                                  <div>
+                                    <img src={items} className='game-img' alt="Lodaing" />
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className='mb-3'>
+                              <label
+                                className="d-block font-14 montserrat-medium text-white mb-1"
+                                htmlFor="Invite Code"
+                              >
+                                Invite Code
+                              </label>
+                              <div className="position-relative">
+                                <input
+                                  ref={codeRef}
+                                  className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
+                                  type="text"
+                                  // defaultValue={MyRewardDataAPI?.part4}
+                                  value={inviteCode}
+                                  id="inviteCode"
+                                />
+                                <button
+                                  type="button"
+                                  className="reward-copy-button rounded-1 text-white font-14 montserrat-regular py-1 background-text-blue"
+                                  onClick={() => handleCopy(codeRef, "code")}
+                                >
+                                  {copiedCode ? "Copied!" : "Copy Code"}
+                                </button>
+                              </div>
+                            </div>
+                            <div className='mb-5'>
+                              <label
+                                className="d-block font-14 montserrat-medium text-white mt-4 mb-1"
+                                htmlFor="Invite Link"
+                              >
+                                Invite Link
+                              </label>
+                              <div className="position-relative">
+                                <input
+                                  ref={linkRef}
+                                  className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
+                                  type="text"
+                                  value={inviteLink}
+                                  // defaultValue={MyRewardDataAPI?.part6}
+                                  id="inviteLink"
+                                // readOnly
+                                />
+                                <button
+                                  type="button"
+                                  className="reward-copy-button text-white rounded-1 font-14 montserrat-regular py-1 background-text-blue"
+                                  onClick={() => handleCopy(linkRef, "link")}
+                                >
+                                  {copiedLink ? "Copied!" : "Copy Link"}
+                                </button>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                        <div className="d-flex justify-content-between mt-4">
+                          <button className="px-4 font-16 montserrat-semibold width-48 py-2 bg-white text-blue border-blue rounded-3"
+                            onClick={() => setShowGameCard("cards")}
+                          >
+                            Play & Earn
+                          </button>
+                          <button className="px-4 font-16 montserrat-semibold width-48 py-2 text-white background-text-blue rounded-3"
+                            onClick={() => setShowGameCard("invite")}
+                          >
+                            Invite a Friend
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -754,13 +765,14 @@ const MyRewardFirstScreen = () => {
         {/* REFERRED TO SECTION */}
         <div className="referred-banner position-relative">
           <div className="container">
-            <div className="row py-5 my-4">
-              <div className="col-lg-6">
+            <div className="row py-5 py-3 my-4 align-items-center">
+              <div className="col-lg-6 col-md-12 mb-5 mb-lg-0">
                 <h2 className="text-white font-32 montserrat-semibold">
                   You Have Referred To 5 Friends
                 </h2>
                 <p className="text-white font-24 space-grotesk-medium">
                   Keep Referring To Earn Even More !!
+
                 </p>
                 <div className="d-flex justify-content-between gap-4">
                   <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border border-0 background-text-blue text-white">
@@ -771,9 +783,9 @@ const MyRewardFirstScreen = () => {
                   </button>
                 </div>
               </div>
-              <div className="col-lg-6">
+              <div className="col-lg-6 mt-lg-0 mt-5 col-md-12">
                 <img
-                  className="position-absolute bottom-0"
+                  className="position-absolute bottom-0 img-fluid"
                   src={refalien}
                   alt="refalien"
                 />
@@ -802,16 +814,16 @@ const MyRewardFirstScreen = () => {
 
             <div className="text-light-yellow font-32 space-grotesk-bold d-flex justify-content-center my-4 ls-4">
               Collect meteors
-              <img className="mx-4" src={StartFour} alt="" />
+              <img className="mx-4" src={StartFour} alt="Loading" />
               Unlock Planets
-              <img className="mx-4" src={StartFour} alt="" />
+              <img className="mx-4" src={StartFour} alt="Loading" />
               Redeem Stars
             </div>
-            <div className="pt-3 ">
-              <button className="py-2 mx-3 width-18 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+            <div className="pt-3 d-flex flex-wrap align-items-center justify-content-center">
+              <button className="py-2 mx-3 px-4 w-25 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
                 Invite a Friend
               </button>
-              <button className="py-2 mx-3 width-18 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+              <button className="py-2 mx-3 px-5 w-25 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
                 Redeem
               </button>
             </div>

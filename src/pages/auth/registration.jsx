@@ -30,6 +30,7 @@ const Registration = () => {
         referral_code: data?.referralCode,
         tag_id: '',
       });
+      localStorage.setItem("uid",response?.user_id)
       toastSuccess(response?.message);
       navigate('/subscription');
     } catch (error) {

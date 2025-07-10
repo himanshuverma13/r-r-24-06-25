@@ -76,6 +76,7 @@ const Offer = ({ isActive }) => {
   const [FaqDataAPI, setFaqDataAPI] = useState();
 
   const { ContextFaqsDataAPI } = useContext(UserContext);
+  console.log('ContextFaqsDataAPI: ', ContextFaqsDataAPI);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
