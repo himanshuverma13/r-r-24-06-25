@@ -20,7 +20,6 @@ import UserFaqs from '../../pages/auth/userFaqs';
 import Error from '../../pages/Errror/error';
 import ProtectedRoute from '../protectedRoute';
 
-
 const AppRoutes = () => {
   const { setContextHomeDataAPI, setContextFaqsDataAPI } =
     useContext(UserContext);
@@ -52,97 +51,15 @@ const AppRoutes = () => {
     HandleAPI();
   }, []);
   return (
-    // <Router>
-    //   <Routes>
-    //     <Route path="/home" element={<Home />} />
-    //     <Route path="/" element={<Login />} />
-    //     <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
-    //     <Route
-    //       path="/confirmforgotPasswordotp"
-    //       element={<ConfirmForgotPasswordOtp />}
-    //     />
-    //     <Route path="/resetpassword" element={<ResetPassword />} />
-    //     <Route path="/loginOtp" element={<LoginOtp />} />
-    //     <Route path="/registration" element={<Registration />} />
-    //     <Route path="/subscription" element={<Product />} />
-    //     <Route path="/reward" element={<MyRewardFirstScreen />} />
-    //     <Route path="/referral" element={<MyReferralScreen />} />
-    //     <Route path="/profile" element={<Profile />} />
-    //     <Route path="/profile-faqs" element={<UserFaqs />} />
-
-
-
-    //     {/* Protected Routes */}
-    //     <Route
-    //       path="/home"
-    //       element={
-    //         <ProtectedRoute>
-    //           <Home />
-    //         </ProtectedRoute>
-    //       }
-    //     />
-    //     <Route
-    //       path="/subscription"
-    //       element={
-    //         <ProtectedRoute>
-    //           <Product />
-    //         </ProtectedRoute>
-    //       }
-    //     />
-    //     <Route
-    //       path="/reward"
-    //       element={
-    //         <ProtectedRoute>
-    //           <MyRewardFirstScreen />
-    //         </ProtectedRoute>
-    //       }
-    //     />
-    //     <Route
-    //       path="/referral"
-    //       element={
-    //         <ProtectedRoute>
-    //           <MyReferralScreen />
-    //         </ProtectedRoute>
-    //       }
-    //     />
-    //     <Route
-    //       path="/profile"
-    //       element={
-    //         <ProtectedRoute>
-    //           <Profile />
-    //         </ProtectedRoute>
-    //       }
-    //     />
-    //     <Route
-    //       path="/profile-faqs"
-    //       element={
-    //         <ProtectedRoute>
-    //           <UserFaqs />
-    //         </ProtectedRoute>
-    //       }
-    //     />
-
-    //     {/* 404 */}
-    //     <Route path="*" element={<NotFound />} />
-        
-    //     {/* <Route
-    //       path="/dashboard"
-    //       element={
-    //         <ProtectedRoute>
-    //           <Dashboard />
-    //         </ProtectedRoute>
-    //       }
-    //     /> */}
-    //     {/* <Route path="*" element={<NotFound />} /> */}
-    //   </Routes>
-    // </Router>
-
     <Router>
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Login />} />
         <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
-        <Route path="/confirmforgotPasswordotp" element={<ConfirmForgotPasswordOtp />} />
+        <Route
+          path="/confirmforgotPasswordotp"
+          element={<ConfirmForgotPasswordOtp />}
+        />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/loginOtp" element={<LoginOtp />} />
         <Route path="/registration" element={<Registration />} />
@@ -198,7 +115,7 @@ const AppRoutes = () => {
         />
 
         {/* 404 */}
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );
