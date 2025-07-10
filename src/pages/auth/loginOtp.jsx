@@ -85,12 +85,12 @@ const LoginOtp = () => {
 
       setTimeout(() => {
         setOtpStatus('sent');
-        toastInfo(response)
+        toastInfo(response);
         console.log('response: ', response);
         if (response?.success) {
-          toastSuccess(response?.message)
+          toastSuccess(response?.message);
           // alert('OTP Verified Successfully');
-          navigate("/")
+          navigate('/');
           setOtpStatus('sent');
           setError('');
         } else {
@@ -100,6 +100,7 @@ const LoginOtp = () => {
         }
       }, 1000);
     } catch (error) {
+      setOtpStatus('sent');
       console.log('error: ', error);
     }
   };
@@ -111,7 +112,7 @@ const LoginOtp = () => {
     setTimer(60);
     inputRefs.current[0].focus();
     // alert('OTP Resent');
-    toastInfo("OTP Resent")
+    toastInfo('OTP Resent');
   };
 
   const formatTime = (seconds) => {
@@ -133,23 +134,21 @@ const LoginOtp = () => {
           mobile_number: value,
         });
         if (response?.success) {
-          toastSuccess(response?.message)
+          toastSuccess(response?.message);
           setMobileValid(true);
         } else {
           // alert(response?.message);
-          toastError(error?.message)
+          toastError(error?.message);
         }
       } else {
         setMobileValid(false);
       }
     } catch (error) {
-      toastError(error?.message)
+      toastError(error?.message);
     }
   };
-  
 
-  const onSubmit = (data) => {
-  };
+  const onSubmit = (data) => {};
 
   return (
     <div className="login-bg-img vh-100 overflow-hidden">
@@ -281,9 +280,6 @@ const LoginOtp = () => {
               }
                       `}
                     >
-                      {/* {otpStatus === 'verifying'
-                        ? 'Verifying...'
-                        : 'Verify OTP'} */}
                       Verify OTP
                     </button>
                   </div>

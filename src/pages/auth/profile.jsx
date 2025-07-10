@@ -10,7 +10,7 @@ import Edit from '../../assets/icons/auth/profile-edit.svg';
 import Close from '../../assets/icons/auth/modal-close.svg';
 import UploadIcon from '../../assets/icons/auth/upload-icon.svg';
 import UploadFile from '../../assets/icons/auth/uploaded-file.svg';
-import { postData } from '../../services/api';
+import { postData, ProfileContactAPI } from '../../services/api';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { DecryptFunction } from '../../utils/decryptFunction';
 
@@ -64,6 +64,7 @@ const Profile = () => {
     message: '',
     files: [],
   });
+  console.log('messageForm: ', messageForm);
 
   // Sync profileData with messageForm
   useEffect(() => {
@@ -101,15 +102,15 @@ const Profile = () => {
   const linkRef = useRef();
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
-  const inviteCode = "ABC123XYZ";
-  const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
+  const inviteCode = 'ABC123XYZ';
+  const inviteLink = 'https://yourapp.com/invite/ABC123XYZ';
 
   const handleCopy = (ref, type) => {
     if (ref.current) {
       const value = ref.current.value;
       navigator.clipboard.writeText(value);
       // Set state to show "Copied!" text
-      if (type === "code") {
+      if (type === 'code') {
         setCopiedCode(true);
         setTimeout(() => setCopiedCode(false), 2000); // Reset after 2 seconds
       } else {
@@ -122,11 +123,23 @@ const Profile = () => {
   // Handle profile image change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    console.log('file: ', file);
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result;
         setProfileImage(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  // Handle profile image change
+  const handleSendImage = (e) => {
+    const file = e.target.files;
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result;
       };
       reader.readAsDataURL(file);
     }
@@ -170,7 +183,9 @@ const Profile = () => {
         username: UserDataAPI?.part1,
         email: UserDataAPI?.part2,
         message: messageForm?.message,
+        files:messageForm?.files,
       });
+      console.log('enyptData: ', enyptData);
       setIsMessageModalOpen(false);
       toastSuccess(enyptData?.message);
     } catch (error) {
@@ -191,7 +206,6 @@ const Profile = () => {
         mode: Auth?.mode,
       });
       const Decrpty = await DecryptFunction(enyptData);
-      console.log('Decrpty: ', Decrpty);
       setUserDataAPI(Decrpty);
     } catch (error) {
       console.log('error: ', error);
@@ -262,7 +276,7 @@ const Profile = () => {
 
   // ------Logout Functionailty
   const HandleLogout = () => {
-    localStorage.removeItem("Auth")
+    localStorage.removeItem('Auth');
     navigate('/');
   };
 
@@ -320,7 +334,9 @@ const Profile = () => {
                 <span className="text-ref-code montserrat-medium">
                   Ref Code
                 </span>{' '}
-                <span className="digit-ref-code montserrat-semibold">1234</span>
+                <span className="digit-ref-code montserrat-semibold">
+                  {UserDataAPI?.part8}
+                </span>
               </span>
               <button
                 className="btn btn-dark btn-sm btn-edit-profile position-relative pe-3"
@@ -390,7 +406,7 @@ const Profile = () => {
           <div className="col-md-6 mt-0">
             <div className="position-relative">
               <input
-               ref={linkRef}
+                ref={linkRef}
                 type="text"
                 className="w-100 text-light-color montserrat-medium font-14 input-profile-copy-link bg-light-purple-transparent border-0"
                 // value={UserDataAPI?.part7}
@@ -400,10 +416,10 @@ const Profile = () => {
               <button
                 className="btn position-absolute btn-profile-copy-link font-14 text-white montserrat-regular bg-primary-color"
                 // onClick={() => copyToClipboard(inviteLink)}
-                onClick={() => handleCopy(linkRef, "link")}
+                onClick={() => handleCopy(linkRef, 'link')}
               >
                 {/* Copy Link */}
-                {copiedLink ? "Copied!" : "Copy Link"}
+                {copiedLink ? 'Copied!' : 'Copy Link'}
               </button>
             </div>
           </div>
@@ -415,16 +431,15 @@ const Profile = () => {
                 className="w-100 text-light-color montserrat-medium font-14 input-profile-copy-link bg-light-purple-transparent border-0"
                 // value={UserDataAPI?.part8}
                 value={inviteCode}
-
                 readOnly
               />
               <button
                 className="btn position-absolute btn-profile-copy-link font-14 text-white montserrat-regular bg-primary-color"
                 // onClick={() => copyToClipboard(inviteCode)}
-                onClick={() => handleCopy(codeRef, "code")}
+                onClick={() => handleCopy(codeRef, 'code')}
               >
                 {/* Copy Code */}
-                {copiedCode ? "Copied!" : "Copy Code"}
+                {copiedCode ? 'Copied!' : 'Copy Code'}
               </button>
             </div>
           </div>
@@ -923,47 +938,77 @@ const Profile = () => {
 
                   <div className="col-8">
                     {/* Custom File Upload Button */}
-                    <label className="custom-upload-btn w-100 text-light-color font-12">
-                      <img
-                        src={UploadIcon}
-                        alt="Upload File Icon"
-                        className="me-2"
-                      />
-                      Attachments (up to 5 files)
-                      <input
-                        type="file"
-                        multiple
-                        hidden
-                        onChange={(e) => {
-                          const selectedFiles = Array.from(e.target.files);
-                          const totalFiles =
-                            messageForm.files.length + selectedFiles.length;
+                   <label className="custom-upload-btn w-100 text-light-color font-12">
+  <img src={UploadIcon} alt="Upload File Icon" className="me-2" />
+  Attachments (up to 5 files)
+  <input
+    type="file"
+    multiple
+    hidden
+    accept="image/*" // Optional: restrict to images
+    onChange={(e) => {
+      const files = Array.from(e.target.files);
+      
+      if (files.length > 5) {
+        alert(`You can only upload up to 5 files. You selected ${files.length} files.`);
+        return;
+      }
 
-                          if (totalFiles > 5) {
-                            alert(
-                              `You can only upload up to 5 files. You already selected ${messageForm.files.length} file(s).`,
-                            );
-                            return;
-                          }
+      // Convert each file to base64
+      Promise.all(
+        files.map((file) => {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              resolve({ file: reader.result });
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+        })
+      )
+      .then((base64Files) => {
+        // Assuming your messageForm has a 'files' array
+        setMessageForm((prev) => ({
+          ...prev,
+          files: base64Files,
+        }));
+      })
+      .catch((error) => {
+        console.error('Error reading files:', error);
+      });
+    }}
+  />
+</label>
+                        {/* // onChange={(e) => {
+                        //   const selectedFiles = Array.from(e.target.files);
+                        //   const totalFiles =
+                        //     messageForm.files.length + selectedFiles.length;
 
-                          setMessageForm({
-                            ...messageForm,
-                            files: [...messageForm.files, ...selectedFiles],
-                          });
-                        }}
-                      />
-                    </label>
+                        //   if (totalFiles > 5) {
+                        //     alert(
+                        //       `You can only upload up to 5 files. You already selected ${messageForm.files.length} file(s).`,
+                        //     );
+                        //     return;
+                        //   }
+
+                        //   setMessageForm({
+                          //     files: [...messageForm.files, ...selectedFiles],
+                          //     ...messageForm,
+                        //   });
+                        // }
+                        // } */}
 
                     {/* Show File Names with Remove Option */}
                     {messageForm.files.length > 0 && (
                       <ul className="mt-2 file-list d-flex">
                         {messageForm.files.map((file, index) => {
-                          const ext = file.name.split('.').pop().toLowerCase();
+                          const ext = file?.file?.split('.')?.pop()?.toLowerCase();
 
                           // Choose icon based on file type
                           let fileIcon;
-                          if (['jpg', 'jpeg', 'png', 'gif'].includes(ext)) {
-                            fileIcon = URL.createObjectURL(file); // for previewing the image itself
+                          if (['jpg', 'jpeg', 'png', 'gif']?.includes(ext)) {
+                            fileIcon = URL?.createObjectURL(file); // for previewing the image itself
 
                             //   } else if (ext === 'pdf') {
                             //     fileIcon = require('../../assets/icons/file/pdf-icon.svg'); // replace with your path

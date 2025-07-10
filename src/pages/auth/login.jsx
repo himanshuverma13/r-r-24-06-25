@@ -23,7 +23,8 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { setAuthLocal, setContextHomeDataAPI } = useContext(UserContext);
+  const { setAuthLocal, setContextHomeDataAPI, setContextFaqsDataAPI } =
+    useContext(UserContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -43,6 +44,15 @@ const Login = () => {
           log_alt: response?.log_alt,
           mode: response?.mode,
         });
+
+        // fetch-custom-data API for ALL FAQs
+        const FaqsData = await postData('/admin/fetch-custom-data', {
+          user_id: response?.user_id,
+          log_alt: response?.log_alt,
+          mode: response?.mode,
+        });
+        setContextFaqsDataAPI(FaqsData);
+
         let Decrpty = await DecryptFunction(enyptData);
         setContextHomeDataAPI(Decrpty);
         toastSuccess(response?.message);
@@ -175,9 +185,7 @@ const Login = () => {
         <div className="row p-4 d-flex justify-content-center align-items-center">
           <div className="col-lg-7">
             <div className="text-center mt-5">
-              <p className="font-46 text-blue montserrat-bold mb-3">
-                Login
-              </p>
+              <p className="font-46 text-blue montserrat-bold mb-3">Login</p>
               <p className="text-blue montserrat-semibold font-20 pb-3">
                 Log in to continue enjoying the perks and stay engaged with our
                 exciting reward and referral program!

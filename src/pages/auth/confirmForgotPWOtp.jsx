@@ -197,7 +197,7 @@ const ConfirmForgotPasswordOtp = () => {
                       <div className="text-muted small d-flex justify-content-start align-items-center">
                         <Clock size={16} className="me-1" />
                         <span>Didn’t get the code? {'  '}</span>
-                        {'  '} Resend in {formatTime(timer)}
+                        {'  '} {" "}Resend in {formatTime(timer)}
                       </div>
                     ) : (
                       <>
