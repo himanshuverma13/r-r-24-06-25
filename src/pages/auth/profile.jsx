@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import ProfileIcon from '../../assets/icons/auth/add-profile.svg';
 import AddIcon from '../../assets/icons/auth/profile-pluse-icon.svg';
