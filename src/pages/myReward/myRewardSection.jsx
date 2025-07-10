@@ -161,7 +161,7 @@ const FaqData = [
 
 const MyRewardFirstScreen = () => {
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
-  const { ContextHomeDataAPI,ContextFaqsDataAPI } = useContext(UserContext);
+  const { ContextHomeDataAPI, ContextFaqsDataAPI } = useContext(UserContext);
 
   const rewardSliderSetting = {
     dots: false,
@@ -248,31 +248,31 @@ const MyRewardFirstScreen = () => {
       },
     ],
   };
-// Footer Planet animation
-const footerRef = useRef(null);
-const [showFooterPlanet, setShowFooterPlanet] = useState(false);
+  // Footer Planet animation
+  const footerRef = useRef(null);
+  const [showFooterPlanet, setShowFooterPlanet] = useState(false);
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        // add delay before showing
-        setTimeout(() => setShowFooterPlanet(true), 500);
-      } else {
-        setShowFooterPlanet(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // add delay before showing
+          setTimeout(() => setShowFooterPlanet(true), 500);
+        } else {
+          setShowFooterPlanet(false);
+        }
+      },
+      {
+        root: null,
+        threshold: 0.3,
       }
-    },
-    {
-      root: null,
-      threshold: 0.3,
-    }
-  );
+    );
 
-  if (footerRef.current) observer.observe(footerRef.current);
-  return () => {
-    if (footerRef.current) observer.unobserve(footerRef.current);
-  };
-}, []);
+    if (footerRef.current) observer.observe(footerRef.current);
+    return () => {
+      if (footerRef.current) observer.unobserve(footerRef.current);
+    };
+  }, []);
 
   // =============
   // States
@@ -341,7 +341,7 @@ useEffect(() => {
   const [copiedLink, setCopiedLink] = useState(false);
   const inviteCode = "ABC123XYZ";
   const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
-  
+
   const handleCopy = (ref, type) => {
     if (ref.current) {
       const value = ref.current.value;
@@ -380,11 +380,11 @@ useEffect(() => {
             {/* Content inside container */}
             <div className="container-fluid mb-4">
               <div
-                className={`px-0  d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'redeem-claim animate-nav position-fixed' : 'bg-transparent '}`}
+                className={`px-0  d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg position-fixed' : 'bg-transparent '}`}
                 
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${UfoBg &&RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed mt-5'} z-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg &&RwdAnimate ? 'ufo-fixed-active' : 'ufo-fixed mt-5'} mt-4 z-3`}
                 >
                   <div className="col-lg-4 d-flex justify-content-start px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
