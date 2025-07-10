@@ -200,20 +200,24 @@ const MyReferralScreen = () => {
                     grow
                   </p>
 
-                  <div className="text-light-yellow font-32 space-grotesk-bold d-flex justify-content-center my-5 ls-4">
+                  <div className="text-light-yellow font-32 flex-column flex-lg-row space-grotesk-bold d-flex justify-content-center align-items-center my-5 ls-4">
                     Invite
                     <img className="mx-4" src={StartFour} alt="Loading" />
                     Friend Invests
                     <img className="mx-4" src={StartFour} alt="Loading" />
                     You Earn
                   </div>
-                  <div className="pt-3 ">
-                    <button className="py-2 mx-3 width-18 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                  <div className="mt-3 row justify-content-center">
+                    <div className='col-12 col-lg-4'>
+                        <button className="py-2 mx-3 mb-4 mb-0 width-50 width-lg-18 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
                       Invite a Friend
                     </button>
-                    <button className="py-2 mx-3 width-18 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+                    </div>
+                    <div className='col-12 col-lg-4'>
+                      <button className="py-2 mx-3 width-50 width-lg-18 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
                       Track
                     </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -226,7 +230,7 @@ const MyReferralScreen = () => {
           {/* FOOTER SECTION */}
           <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
             <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
-              <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
+              <p className="width-lg-36 width-80 font-32 space-grotesk-medium mb-5 text-white align-self-end">
                 The more you refer, the brighter your rewards shine!
               </p>
             </div>

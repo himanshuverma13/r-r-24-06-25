@@ -88,7 +88,7 @@ const SliderCard = ({RefralDataAPI}) => {
         slidesToShow: 3,
         slidesToScroll: 1,
         // initialSlide: 0,
-        autoplay: true,
+        autoplay: false,
         speed: 2000,
         autoplaySpeed: 3000,
         responsive: [
@@ -102,7 +102,7 @@ const SliderCard = ({RefralDataAPI}) => {
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 960,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
@@ -135,17 +135,18 @@ const SliderCard = ({RefralDataAPI}) => {
                         {(RefralDataAPI?.part4||referralUsers)?.map((user, index) => (
                             <div key={index} className={`referral-user-card ${user?.cardColor}`}>
                                 <div className='row p-3 mb-3'>
-                                    <div className='col-lg-9 d-flex'>
+                                    <div className='col-9 col-lg-9 d-flex'>
                                         <div className='rounded-circle bg-white user-icon'></div>
                                         <div className='text-white ms-3'>
-                                            <p className='font-24 montserrat-semibold mb-0'>{user?.username}</p>
+                                            <p className='font-24 montserrat-semibold mb-0'>{user?.name}</p>
                                             <p className='montserrat-regular font-14'>{user?.email}</p>
                                         </div>
                                     </div>
-                                    <div className='col-lg-3'>
+                                    <div className='col-3 col-lg-3'>
                                         <div className='status d-flex justify-content-center align-items-center py-1'>
                                             <span className='rounded-circle bg-white small-white-circle me-2'></span>
-                                            <p className='text-white font-10 montserrat-regular mb-0'>{user?.referral_status}</p>
+                                            {/* <p className='text-white font-10 montserrat-regular mb-0'>{user?.referral_status}</p> */}
+                                            <p className='text-white font-10 montserrat-regular mb-0'>{user?.status}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -182,12 +183,14 @@ const SliderCard = ({RefralDataAPI}) => {
                                     <td scope="row" className='text-start ps-5 d-flex'>
                                         <span className='referral-table-user rounded-circle me-3'></span>
                                         <div>
-                                            <p className='font-size-16 montserrat-semibold mb-0'>{item?.username}</p>
+                                            {/* <p className='font-size-16 montserrat-semibold mb-0'>{item?.username}</p> */}
+                                            <p className='font-size-16 montserrat-semibold mb-0'>{item?.name}</p>
                                             <p className='font-size-14 montserrat-medium mb-0'>{item?.email || "abc@gmail.com"}</p>
                                         </div>
                                     </td>
                                     <td className='font-size-16 montserrat-semibold'>{item?.date}</td>
-                                    <td className='font-size-16 montserrat-semibold'>{item?.referral_status}</td>
+                                    {/* <td className='font-size-16 montserrat-semibold'>{item?.referral_status}</td> */}
+                                    <td className='font-size-16 montserrat-semibold'>{item?.status}</td>
                                     <td className='font-size-16 montserrat-semibold'>{item?.earned_meteors}</td>
                                     <td className='font-size-24 montserrat-medium'>
                                         {item?.referral_status !== "completed" ? (

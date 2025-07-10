@@ -147,7 +147,7 @@ const Invitefriend = ({ isActive , isExiting }) => {
       {/* Center Section */}
       <div className={`container center-section transition-all duration-1000 ${isExiting ? 'form-fade-down' : ''}`}>
         <div className="row text-center justify-content-center align-items-start h-100">
-          <div className="col-12 col-md-6 content-z-index">
+          <div className="col-12 col-lg-6 content-z-index">
             <h2 className="text-white font-40 mb-58 space-grotesk-bold">Invite a friend</h2>
 
             <div className="copy-input-container">
