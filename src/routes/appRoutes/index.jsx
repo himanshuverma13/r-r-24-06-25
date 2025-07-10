@@ -68,9 +68,9 @@ const AppRoutes = () => {
         <Route
           path="/home"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Home />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
@@ -84,25 +84,25 @@ const AppRoutes = () => {
         <Route
           path="/reward"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <MyRewardFirstScreen />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/referral"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <MyReferralScreen />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/profile"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Profile />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
