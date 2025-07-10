@@ -74,6 +74,14 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path="/subscription"
+          element={
+            <ProtectedRoute>
+              <Product />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/reward"
           element={
             // <ProtectedRoute>

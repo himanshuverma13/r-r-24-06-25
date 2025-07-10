@@ -2012,6 +2012,11 @@ body::-webkit-scrollbar {
   background-size: cover;
   overflow: hidden;
 }
+.game-img{
+  max-height: 180px;
+  height: auto;
+  width: 100%;
+}
 
 .reward-copy-button {
   position: absolute;
@@ -2082,7 +2087,7 @@ body::-webkit-scrollbar {
 }
 
 .my-reward-cards {
-  grid-template-columns: auto auto;
+  // grid-template-columns: auto auto;
 }
 
 .reward-slider .slick-slide {

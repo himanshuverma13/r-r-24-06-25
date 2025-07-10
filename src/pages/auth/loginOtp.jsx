@@ -151,12 +151,12 @@ const LoginOtp = () => {
   const onSubmit = (data) => {};
 
   return (
-    <div className="login-bg-img vh-100">
+    <div className="login-bg-img vh-100 overflow-hidden">
       <div className="nav-logo text-center">
         <img className="header-center-img width-13" src={Logo} alt="logo" />
       </div>
       <div className="row p-4 d-flex justify-content-center">
-        <div className="col-lg-7">
+        <div className="col-lg-7 mt-5">
           <div className="text-center mt-3">
             <p className="font-size-46 text-blue montserrat-bold mb-3">Login</p>
             <p className="text-blue montserrat-semibold font-size-20 pb-3">
@@ -165,12 +165,12 @@ const LoginOtp = () => {
             </p>
           </div>
           <div className="login-form-section row py-2 px-3 d-flex align-items-center justify-content-between">
-            <div className="col-lg-6 col-md-6 col-12">
-              <div className="login-img">
+            <div className="col-lg-6 col-12">
+              <div className="login-img text-center">
                 <img src={Loginimg} alt="Login Visual" />
               </div>
             </div>
-            <div className="col-lg-6 col-md-6 col-12">
+            <div className="col-lg-6 col-12">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="my-3 position-relative">
                   <input
