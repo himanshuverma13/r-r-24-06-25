@@ -40,7 +40,6 @@ const AppRoutes = () => {
         log_alt: Auth?.log_alt,
         mode: Auth?.mode,
       });
-      console.log('FaqsData: ', FaqsData);
       setContextFaqsDataAPI(FaqsData);
     } catch (error) {
       console.log('error: ', error);
@@ -63,46 +62,39 @@ const AppRoutes = () => {
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/loginOtp" element={<LoginOtp />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/subscription" element={<Product />} />
 
         {/* Protected Routes */}
         <Route
           path="/home"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/subscription"
-          element={
-            <ProtectedRoute>
-              <Product />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/reward"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <MyRewardFirstScreen />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/referral"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <MyReferralScreen />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/profile"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Profile />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route

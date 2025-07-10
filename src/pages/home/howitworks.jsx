@@ -186,7 +186,6 @@ const Howitworks = ({ isActive, isExiting }) => {
   const [scrollDir, setScrollDir] = useState('down'); // Local scroll direction
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   const { ContextFaqsDataAPI } = useContext(UserContext);
-  console.log('ContextFaqsDataAPI: ', ContextFaqsDataAPI?.how_it_works);
 
   // =================================
   //       API FUNCTIONALITY
@@ -313,7 +312,7 @@ const Howitworks = ({ isActive, isExiting }) => {
             className="howitwork-second h-100 d-flex align-items-center justify-content-center"
             data-aos="zoom-in-up"
           >
-            <img src={Rocketgif} alt="Rocket" className="rocket-gif mb-4" />
+            <img src={Rocketgif} alt="Rocket" className="rocket-gif" />
             <div className="row text-center position-relative inner-row-index">
               <div
                 className={`col-4 howitworks-step ${step >= 1 ? 'visible' : ''}`}
