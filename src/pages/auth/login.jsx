@@ -231,12 +231,12 @@ const Login = () => {
                     </button>
                   </div>
                   <div className="d-flex ">
-                      <NavLink
-                        to={'/loginOtp'}
-                        className="montserrat-semibold w-50 text-center mx-1 text-decoration-none font-16 py-2 rounded-3 bg-transparent border-blue  text-blue"
-                      >
-                        Login with OTP
-                      </NavLink>
+                    <NavLink
+                      to={'/loginOtp'}
+                      className="montserrat-semibold w-50 text-center mx-1 text-decoration-none font-16 py-2 rounded-3 bg-transparent border-blue  text-blue"
+                    >
+                      Login with OTP
+                    </NavLink>
                     <button
                       type="submit"
                       disabled={loading}

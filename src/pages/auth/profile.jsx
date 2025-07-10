@@ -363,7 +363,7 @@ const Profile = () => {
                 RewardIcons: Pending,
               },
             ].map((item, idx) => (
-              <div className="col-6 col-md-3 mt-0" key={idx}>
+              <div className="col-6 col-lg-3 mt-0 mb-3 mb-lg-0" key={idx}>
                 <div className="d-flex flex-column justify-content-between bg-light-purple-transparent p-3 rounded">
                   <div className="d-flex  justify-content-between">
                     <div className="reward-icons-div">
