@@ -312,7 +312,6 @@ const Howitworks = ({ isActive, isExiting }) => {
             className="howitwork-second h-100 d-flex align-items-center justify-content-center"
             data-aos="zoom-in-up"
           >
-            <img src={Rocketgif} alt="Rocket" className="rocket-gif" />
             <div className="row text-center position-relative inner-row-index">
               <div
                 className={`col-4 howitworks-step ${step >= 1 ? 'visible' : ''}`}
@@ -346,11 +345,13 @@ const Howitworks = ({ isActive, isExiting }) => {
                 </p>
               </div>
 
-              <div className="col-12 my-4">
+              <div className="col-12 my-4 position-relative">
                 <div className={`timeline-dot ${step >= 1 ? 'visible' : ''}`} />
                 <div className={`timeline-dot ${step >= 3 ? 'visible' : ''}`} />
                 <div className={`timeline-dot ${step >= 4 ? 'visible' : ''}`} />
                 <div className="timeline-border" />
+            <img src={Rocketgif} alt="Rocket" className="rocket-gif" />
+
               </div>
 
               <div

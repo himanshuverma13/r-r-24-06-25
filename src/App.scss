@@ -1693,7 +1693,8 @@ body::-webkit-scrollbar {
     position: absolute;
     left: 0;
     top: 33%;
-    width: 15%;
+    width: 30%;
+    margin-top: -15%;
     z-index: 2;
     animation: moveRocket 5s linear forwards;
   }
