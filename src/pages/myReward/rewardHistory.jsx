@@ -190,8 +190,8 @@ const RewardHistory = ({ showHistory, MyRewardDataAPI }) => {
   );
 
   return (
-    <section className="hero-section">
-      <div className="">
+    <section className="hero-section mb-5">
+      <div className="inner-div">
         <div className="container-fluid px-5">
           <div onClick={HandleToggle} className="back text-white my-3 d-flex align-items-center font-14 montserrat-medium">
             <IoIosArrowBack /> Back

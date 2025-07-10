@@ -2295,8 +2295,7 @@ body::-webkit-scrollbar {
 
 // ==================== MY REWARDS ANIMATIONS CSS ---------------------------------
 .ufo-fixed {
-  position: fixed;
-  // right: 7.5%;
+  // position: fixed;
   top: 3%;
 }
 
@@ -2310,7 +2309,7 @@ body::-webkit-scrollbar {
 }
 
 .ufo-fixed-active {
-  position: fixed;
+  // position: fixed;
   // right: 5%;
   top: 12%;
   animation: moveUpRewUfo 0.7s ease forwards;
@@ -2322,7 +2321,7 @@ body::-webkit-scrollbar {
   }
 
   to {
-    top: 3%;
+    top: 6%;
   }
 }
 
@@ -2960,7 +2959,7 @@ body::-webkit-scrollbar {
 
 // Ufo top Fixed Css
 .ufo-fixed {
-  position: fixed;
+  // position: fixed;
   top: 90px;
   // right: 7.5%;
 }
