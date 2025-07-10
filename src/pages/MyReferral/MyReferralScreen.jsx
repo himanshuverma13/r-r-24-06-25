@@ -208,13 +208,13 @@ const MyReferralScreen = () => {
                     You Earn
                   </div>
                   <div className="mt-3 row justify-content-center">
-                    <div className='col-12 col-lg-4'>
-                        <button className="py-2 mx-3 mb-4 mb-0 width-50 width-lg-18 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                    <div className='col-12 col-lg-3'>
+                        <button className="py-2 mx-3 mb-4 mb-0 width-50 width-lg-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
                       Invite a Friend
                     </button>
                     </div>
-                    <div className='col-12 col-lg-4'>
-                      <button className="py-2 mx-3 width-50 width-lg-18 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+                    <div className='col-12 col-lg-3'>
+                      <button className="py-2 mx-3 width-50 width-lg-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
                       Track
                     </button>
                     </div>
