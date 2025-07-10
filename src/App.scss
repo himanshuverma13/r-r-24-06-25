@@ -232,11 +232,9 @@ $spacing-values: 0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52
 // =========================
 // SPACING CLASSES
 // =========================
-
 @each $value in $spacing-values {
-
-  @each $prefix,
-  $property in (m: margin,
+  @each $prefix, $property in (
+    m: margin,
     mt: margin-top,
     mr: margin-right,
     mb: margin-bottom,
@@ -245,26 +243,52 @@ $spacing-values: 0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52
     pt: padding-top,
     pr: padding-right,
     pb: padding-bottom,
-    pl: padding-left) {
+    pl: padding-left
+  ) {
+    // Default utility (applies without breakpoint)
     .#{$prefix}-#{$value} {
       #{$property}: pxToRem($value);
+    }
 
+    // Responsive classes for each breakpoint
+
+    // sm
+    .#{$prefix}-sm-#{$value} {
+      @media (max-width: $breakpoint-sm) {
+        #{$property}: pxToRem(responsive-scale($value, 0.66));
+      }
+    }
+
+    // md
+    .#{$prefix}-md-#{$value} {
       @media (max-width: $breakpoint-md) {
         #{$property}: pxToRem(responsive-scale($value, 0.66));
       }
+    }
 
+    // lg
+    .#{$prefix}-lg-#{$value} {
       @media (min-width: $breakpoint-lg) {
         #{$property}: pxToRem(responsive-scale($value, 1.25));
       }
+    }
 
+    // xl
+    .#{$prefix}-xl-#{$value} {
       @media (min-width: $breakpoint-xl) {
         #{$property}: pxToRem(responsive-scale($value, 1.5));
       }
+    }
 
+    // 2xl
+    .#{$prefix}-2xl-#{$value} {
       @media (min-width: $breakpoint-2xl) {
         #{$property}: pxToRem(responsive-scale($value, 1.75));
       }
+    }
 
+    // 4k
+    .#{$prefix}-4k-#{$value} {
       @media (min-width: $breakpoint-4k) {
         #{$property}: pxToRem(responsive-scale($value, 2));
       }
@@ -277,46 +301,49 @@ $spacing-values: 0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52
 // =========================
 
 @for $i from 1 through 100 {
+  // Default width class
   .width-#{$i} {
-    width: ($i * 1%);
+    width: $i * 1%;
   }
 
+  // Responsive width classes
   @media (max-width: $breakpoint-sm) {
     .width-sm-#{$i} {
-      width: ($i * 1%);
+      width: $i * 1%;
     }
   }
 
   @media (max-width: $breakpoint-md) {
     .width-md-#{$i} {
-      width: ($i * 1%);
+      width: $i * 1%;
     }
   }
 
   @media (min-width: $breakpoint-lg) {
     .width-lg-#{$i} {
-      width: ($i * 1%);
+      width: $i * 1%;
     }
   }
 
   @media (min-width: $breakpoint-xl) {
     .width-xl-#{$i} {
-      width: ($i * 1%);
+      width: $i * 1%;
     }
   }
 
   @media (min-width: $breakpoint-2xl) {
     .width-2xl-#{$i} {
-      width: ($i * 1%);
+      width: $i * 1%;
     }
   }
 
   @media (min-width: $breakpoint-4k) {
     .width-4k-#{$i} {
-      width: ($i * 1%);
+      width: $i * 1%;
     }
   }
 }
+
 
 // Generate border-radius classes from 4px to 100px in steps of 4px
 @each $value in $spacing-values {
@@ -991,12 +1018,16 @@ body::-webkit-scrollbar {
 // =====================
 // Navbar Effect SCSS
 // =====================
-.nav-indicator {
-  bottom: pxToRem(65);
-  height: pxToRem(3);
-  transition: all 0.3s ease;
-  z-index: 0;
-}
+// .nav-indicator {
+//   bottom: pxToRem(65);
+//   height: pxToRem(3);
+//   // transition: all 0.3s ease;
+//   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+//   will-change: transform;
+//   z-index: 0;
+// }
+
+
 
 .active-blur-shadow {
   height: 100%;
@@ -1009,6 +1040,187 @@ body::-webkit-scrollbar {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+// Hamburger Toggle Button
+.nav-indicator {
+  bottom: 65px;
+  height: 3px;
+  background-color: white;
+  position: absolute;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  will-change: transform;
+  z-index: 0;
+}
+
+.nav-indicator[data-direction='left-to-right'] {
+  transition: all 0.4s ease-in-out;
+}
+
+.nav-indicator[data-direction='right-to-left'] {
+  transition: all 0.25s ease-in-out;
+}
+
+.active-blur-shadow {
+  bottom: 35px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  filter: blur(30px);
+  border-radius: 50%;
+  z-index: 0;
+  display: none;
+}
+
+// Sidebar styles
+.mobile-menu-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  z-index: 1051;
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 4px 0;
+  }
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  width: 350px;
+  background: $primary-color;
+  color: $white;
+  transition: right 0.3s ease;
+  z-index: 1052;
+  padding-top: 60px;
+}
+.mobile-sidebar.open {
+  right: 0;
+}
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 1051;
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+}
+.list-unstyled{
+  list-style: none;
+  a{
+    text-decoration: none;
+  }
+}
+// .mobile-menu-toggle {
+//   position: absolute;
+//   top: 1.5rem;
+//   right: 1.5rem;
+//   background: none;
+//   border: none;
+//   z-index: 1001;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+//   height: 24px;
+//   width: 30px;
+//   padding: 0;
+//   .bar {
+//     width: 100%;
+//     height: 3px;
+//     background-color: white;
+//     transition: all 0.3s;
+//   }
+// }
+
+// // Overlay Backdrop
+// .mobile-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   backdrop-filter: blur(6px);
+//   background-color: rgba(0, 0, 0, 0.5);
+//   z-index: 1000;
+// }
+
+// // Sidebar Panel
+// .mobile-sidebar {
+//   position: fixed;
+//   top: 0;
+//   right: -250px;
+//   width: 220px;
+//   height: 100vh;
+//   background-color: #0b1e44;
+//   transition: right 0.3s ease-in-out;
+//   z-index: 1001;
+//   padding-top: 60px;
+//   animation: slideOut 0.3s forwards;
+
+//   &.open {
+//     right: 0;
+//     animation: slideIn 0.3s forwards;
+//   }
+
+//   .close-btn {
+//     position: absolute;
+//     top: 10px;
+//     right: 14px;
+//     font-size: 2rem;
+//     color: white;
+//     background: none;
+//     border: none;
+//     z-index: 1002;
+//   }
+
+//   .mobile-nav-list {
+//     list-style: none;
+
+//     .nav-link {
+//       font-size: 18px;
+//       color: white;
+//       text-decoration: none;
+//       &.active {
+//         font-weight: bold;
+//         color: #ffcc00;
+//       }
+//     }
+//   }
+// }
+
+// Slide Keyframes
+@keyframes slideIn {
+  0% {
+    right: -250px;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -250px;
+  }
 }
 
 /* ======================================================================= */
@@ -3668,8 +3880,26 @@ body::-webkit-scrollbar {
     width: 100%;
     height: auto;
   }
+  .invite-card{
+    height: auto;
+  }
 }
-
+@media only screen and (max-width: 990px){
+  .earnmore-circle-sect{
+    left: -16%;
+    bottom: -70%;
+  }
+}
+@media only screen and (max-width: 900px){
+  .earnmore-circle-sect{
+    left:-10%;
+    bottom: -93%;
+  }
+  .redeem-circle-sect{
+    left: 70%;
+    bottom: 73%;
+  }
+}
 /* Large Tablet and Small Desktop */
 @media only screen and (min-width: 1024px) and (max-width: 1535px) {
   .image-container {
@@ -3734,6 +3964,16 @@ body::-webkit-scrollbar {
     position: absolute;
     bottom: 50%;
     left: 20%;
+  }
+  .footer-semi-planet{
+    width: 100%;
+    left: 0;
+  }
+  .offer-section{
+  .price-exclusive{
+    grid-template-columns: auto;
+
+    }
   }
 }
 

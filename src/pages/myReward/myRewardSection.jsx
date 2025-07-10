@@ -369,7 +369,7 @@ const MyRewardFirstScreen = () => {
         ) : (
           <div className="reward-inner-section">
             <div
-              className={`reward-nav-animt ${RwdAnimate ? 'reward-nav-animt-move-up_' : 'reward-nav-animt-move-down'}`}
+              className={`reward-nav-animt ${RwdAnimate ? 'reward-nav-animt-move-up_' : 'reward-nav-animt-move-down_'}`}
             >
               <Navbar />
             </div>

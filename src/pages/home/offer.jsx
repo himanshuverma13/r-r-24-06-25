@@ -269,7 +269,7 @@ useEffect(() => {
             Win Exciting Prizes
           </h2>
           <div className="row justify-content-between">
-            <div className="col-lg-6 shadow-lg d-flex justify-content-between px-0 price-trolley">
+            <div className="col-lg-6 mb-24 mb-lg-0 shadow-lg d-flex justify-content-between px-0 price-trolley">
               <div className="col-lg-8 pt-5 ps-5 d-grid">
                 <div className="head-content ">
                   <h2 className="font-24 montserrat-medium text-white mb-2">
@@ -298,8 +298,8 @@ useEffect(() => {
                 <img className="align-self-end mb-1" src={suitcase} alt="" />
               </div>
             </div>
-            <div className="col-lg-6 px-4 d-grid">
-              <div className="col-lg-12 shadow-lg py-3 d-flex price-watch align-self-start">
+            <div className="col-lg-6 px-lg-4 px-0 d-flex flex-column gap-4">
+              <div className="col-lg-12 shadow-lg py-3 d-flex price-watch justify-content-between align-self-lg-start">
                 <div className="col-lg-8  ms-4 ps-4 align-self-end mb-1">
                   <h4 className="font-40 space-grotesk-medium text-white mb-0">
                     Collect
@@ -318,7 +318,7 @@ useEffect(() => {
                   <img src={smartwatch} alt="smartwatch" />
                 </div>
               </div>
-              <div className="col-lg-12 py-3 shadow-lg d-flex price-headphone align-self-end">
+              <div className="col-lg-12 py-3 shadow-lg d-flex price-headphone justify-content-between align-self-lg-end">
                 <div className="col-lg-8  ms-4 ps-4 align-self-end mb-1">
                   <h4 className="font-40 space-grotesk-medium text-white mb-0">
                     Collect
