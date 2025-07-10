@@ -45,12 +45,15 @@ const Login = () => {
         });
         let Decrpty = await DecryptFunction(enyptData);
         setContextHomeDataAPI(Decrpty);
-        toastSuccess(response?.message)
+        toastSuccess(response?.message);
         navigate('/home');
       }
     } catch (error) {
-      toastError(error?.error);
-      toastError(error?.message);
+      if (error?.error) {
+        toastError(error?.error);
+      } else {
+        toastError(error?.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -213,11 +216,14 @@ const Login = () => {
                       })}
                     />
                     {errors.password && (
-                      <div className="text-danger">{errors.password.message}</div>
+                      <div className="text-danger">
+                        {errors.password.message}
+                      </div>
                     )}
                   </div>
                   <div className="pb-4 text-end">
                     <button
+                      type="button"
                       className="text-blue font-12 montserrat-regular border-0 bg-transparent"
                       onClick={() => navigate('/forgotpassword')}
                     >
@@ -225,13 +231,12 @@ const Login = () => {
                     </button>
                   </div>
                   <div className="d-flex ">
-                    <button
-                      type="button"
-                      onClick={() => navigate('/loginOtp')}
-                      className="montserrat-semibold w-50 mx-1 font-16 py-2 rounded-3 bg-transparent border-blue  text-blue"
-                    >
-                      Login with OTP
-                    </button>
+                      <NavLink
+                        to={'/loginOtp'}
+                        className="montserrat-semibold w-50 text-center mx-1 text-decoration-none font-16 py-2 rounded-3 bg-transparent border-blue  text-blue"
+                      >
+                        Login with OTP
+                      </NavLink>
                     <button
                       type="submit"
                       disabled={loading}
@@ -241,8 +246,14 @@ const Login = () => {
                     </button>
                   </div>
                   <p className="font-12 montserrat-regular text-center mt-3 text-light-gray mb-0">
-                    Not an existing user? <span>
-                      <NavLink to={"/registration"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
+                    Not an existing user?{' '}
+                    <span>
+                      <NavLink
+                        to={'/registration'}
+                        className={
+                          'text-blue font-14 montserrat-medium text-decoration-none'
+                        }
+                      >
                         Register Now
                       </NavLink>
                     </span>

@@ -3,7 +3,7 @@ import navCenterImg from '../assets/images/home/navCenterImg.svg';
 import { Link, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const navItems = [
-    { label: 'Home',to:"/", color: 'orange' },
+    { label: 'Home',to:"/home", color: 'orange' },
     { label: 'My Rewards',to:"/reward", color: 'green' },
     { img: navCenterImg },
     { label: 'My Referrals', to:"/referral", color: 'blue' },

@@ -355,12 +355,13 @@ const Index = ({ isExiting, isActive }) => {
                           className={`d-flex pt-2 mt-2 ${ContextHomeDataAPI?.part2 <= 1000 ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
+                            
                             <img
                               className="w-50 mx-auto"
                               src={prgicon}
                               alt="prgicon"
                             />
-                            {ContextHomeDataAPI?.part2 >= 1000 && (
+                            {ContextHomeDataAPI?.part2 <= 1000 && (
                               <hr className="opacity-100 progress-side-hr" />
                             )}
                           </div>

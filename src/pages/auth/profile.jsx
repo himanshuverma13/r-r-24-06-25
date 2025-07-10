@@ -9,7 +9,7 @@ import Reward from '../../assets/icons/auth/profile-reward.svg';
 import Edit from '../../assets/icons/auth/profile-edit.svg';
 import Close from '../../assets/icons/auth/modal-close.svg';
 import UploadIcon from '../../assets/icons/auth/upload-icon.svg';
-import UploadFile from '../../assets/icons/auth/uploaded-file.svg'
+import UploadFile from '../../assets/icons/auth/uploaded-file.svg';
 import { postData } from '../../services/api';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { DecryptFunction } from '../../utils/decryptFunction';
@@ -19,7 +19,8 @@ import star from '../../assets/icons/home/profile/starGroup.svg';
 import coin from '../../assets/icons/home/profile/coinGroup.svg';
 import meteor from '../../assets/icons/home/profile/meteorGroup.svg';
 import { toastError, toastSuccess } from '../../utils/toster';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../../components/navbar';
 
 const Profile = () => {
   // Profile form
@@ -37,6 +38,7 @@ const Profile = () => {
     watch: watchMeteor,
   } = useForm();
 
+  const navigate = useNavigate();
 
   // Profile data state
   const [profileData, setProfileData] = useState({
@@ -54,8 +56,6 @@ const Profile = () => {
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   // Add state to track the calculated value
   const [calculatedStars, setCalculatedStars] = useState(0);
-
-
 
   // Message form state
   const [messageForm, setMessageForm] = useState({
@@ -239,11 +239,39 @@ const Profile = () => {
     setcontratsModal(true);
   };
 
+  const modalRef = useRef(null); // Reference to modal content
+
+  // Effect to handle outside click for edit modal
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isEditModalOpen &&
+        modalRef.current &&
+        !modalRef.current.contains(event.target)
+      ) {
+        setIsEditModalOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isEditModalOpen]);
+
+  // ------Logout Functionailty
+  const HandleLogout = () => {
+    localStorage.removeItem("Auth")
+    navigate('/');
+  };
+
   return (
     <section className="profile-section" id="Profile_Section">
+      <Navbar />
       <div className="container py-4 profile-container">
         {/* Header */}
-        <div className="bg-profile-detail rounded mb-32 p-4">
+        <div className="bg-profile-detail rounded-4 mb-32 p-4">
           <div className="d-flex justify-content-between  mb-36">
             <div className="d-flex align-items-center">
               <div className="position-relative me-3">
@@ -288,14 +316,14 @@ const Profile = () => {
               </div>
             </div>
             <div className="d-flex h-max-content">
-              <span className="ref-code-div font-14 montserrat-medium me-3">
+              <span className="ref-code-div font-14 montserrat-medium me-4 px-3">
                 <span className="text-ref-code montserrat-medium">
                   Ref Code
                 </span>{' '}
                 <span className="digit-ref-code montserrat-semibold">1234</span>
               </span>
               <button
-                className="btn btn-dark btn-sm btn-edit-profile position-relative"
+                className="btn btn-dark btn-sm btn-edit-profile position-relative pe-3"
                 onClick={() => setIsEditModalOpen(true)}
               >
                 <img
@@ -556,17 +584,9 @@ const Profile = () => {
                     className="montserrat-medium font-14 text-primary-color mb-20"
                     role="button"
                   >
-                    <a className="anchor-link" href="#">
-                      Linked social media accounts
-                    </a>
-                  </li>
-                  <li
-                    className="montserrat-medium font-14 text-primary-color mb-20"
-                    role="button"
-                  >
-                    <a className="anchor-link" href="#">
+                    <span className="text-blue" onClick={() => HandleLogout()}>
                       Logout
-                    </a>
+                    </span>
                   </li>
                   <li
                     className="montserrat-medium font-14 text-primary-color"
@@ -624,7 +644,10 @@ const Profile = () => {
                     className="montserrat-medium font-14 text-primary-color"
                     role="button"
                   >
-                    <Link className='text-decoration-none text-blue' to={"/profile-faqs"}>
+                    <Link
+                      className="text-decoration-none text-blue"
+                      to={'/profile-faqs'}
+                    >
                       Frequently Asked Questions
                     </Link>
                   </li>
@@ -640,7 +663,10 @@ const Profile = () => {
         {/* Edit Profile Modal */}
         {isEditModalOpen && (
           <div className="edit-modal overflow-scroll">
-            <div className={`modal-content bg-light-gray-blue slide-in p-4`}>
+            <div
+              className={`modal-content bg-light-gray-blue slide-in p-4`}
+              ref={modalRef}
+            >
               <button
                 className="btn_close border-0 bg-transparent"
                 onClick={() => setIsEditModalOpen(false)}
@@ -828,7 +854,9 @@ const Profile = () => {
         {/* Send Message Modal */}
         {isMessageModalOpen && (
           <div className="message-modal">
-            <div className={`modal-content bg-light-gray-blue slide-in p-4`}>
+            <div
+              className={`modal-content bg-light-gray-blue slide-in p-4 h-auto`}
+            >
               <button
                 className="btn_close border-0 bg-transparent"
                 onClick={() => setIsMessageModalOpen(false)}
@@ -948,9 +976,13 @@ const Profile = () => {
                           }
 
                           return (
-                            <li key={index} className="uploaded-files-list position-relative mb-2 mt-3">
+                            <li
+                              key={index}
+                              className="uploaded-files-list position-relative mb-2 mt-3"
+                            >
                               <div className="">
-                                <img className='flie-icon'
+                                <img
+                                  className="flie-icon"
                                   src={fileIcon}
                                   alt={ext}
                                 />
@@ -962,19 +994,24 @@ const Profile = () => {
                                 onClick={() => {
                                   const updatedFiles = [...messageForm.files];
                                   updatedFiles.splice(index, 1);
-                                  setMessageForm({ ...messageForm, files: updatedFiles });
+                                  setMessageForm({
+                                    ...messageForm,
+                                    files: updatedFiles,
+                                  });
                                 }}
                               >
-                                <img className='remove-icon' src={Close} alt="Remove File Icon" />
+                                <img
+                                  className="remove-icon"
+                                  src={Close}
+                                  alt="Remove File Icon"
+                                />
                               </button>
                             </li>
                           );
                         })}
                       </ul>
                     )}
-
                   </div>
-
 
                   <div className="col-4">
                     <button
