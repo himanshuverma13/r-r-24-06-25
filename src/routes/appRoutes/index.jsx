@@ -17,6 +17,7 @@ import { UserContext } from '../../utils/UseContext/useContext';
 import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import UserFaqs from '../../pages/auth/userFaqs';
+import Error from '../../pages/Errror/error';
 
 // import ProtectedRoute from "./ProtectedRoute";
 
@@ -68,6 +69,8 @@ const AppRoutes = () => {
         <Route path="/referral" element={<MyReferralScreen />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile-faqs" element={<UserFaqs />} />
+        <Route path="/error" element={<Error />}/>
+
         {/* <Route
           path="/dashboard"
           element={
