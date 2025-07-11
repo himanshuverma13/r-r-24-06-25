@@ -170,7 +170,7 @@ const MyRewardFirstScreen = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2000,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -641,7 +641,7 @@ const MyRewardFirstScreen = () => {
                         {...rewardSliderSetting}
                       >
                         {RewardSliderJson?.map((slide, index) => (
-                          <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 ">
+                          <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 px-2">
                             <h4 className="font-14 space-grotesk-bold montserrat-semibold text-blue">
                               Planet {slide?.num}
                             </h4>
@@ -660,7 +660,7 @@ const MyRewardFirstScreen = () => {
 
                             {/* <h4 className="font-14 montserrat-regular">1000 Meteors</h4> */}
                             {index >= ContextHomeDataAPI?.part3?.length ? (
-                              <button className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
+                              <button className="background-text-blue w-100 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
                                 1000 Meteors{' '}
                                 <img
                                   className="ms-2"
@@ -671,7 +671,7 @@ const MyRewardFirstScreen = () => {
                             ) : (
                               <button
                                 onClick={handleNextScrAnimt}
-                                className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12  py-2 mx-3 montserrat-semibold text-white"
+                                className="background-text-blue w-100 mt-4 mx-auto border-0 border-radius-8 font-size-12  py-2 mx-3 montserrat-semibold text-white"
                               >
                                 <span className="">1000 Meteors</span>
                               </button>
@@ -819,7 +819,7 @@ const MyRewardFirstScreen = () => {
             Here's How You Unlock Every Reward
           </h2>
 
-          <div className="redeem-claim text-center rounded-4 py-4">
+          <div className="redeem-claim text-center rounded-4 p-4">
             <h2 className="font-24 montserrat-semibold text-white mb-3 ls-4">
               Redeem, Claim Or Level Up
             </h2>
@@ -834,14 +834,14 @@ const MyRewardFirstScreen = () => {
               <img className="mx-4" src={StartFour} alt="Loading" />
               Redeem Stars
             </div>
-            <div className="pt-3 row justify-content-center">
-              <div className='col-12 col-lg-3'>
-                <button className="py-2 mx-3 mb-4 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+            <div className="pt-3 row justify-content-between justify-content-lg-center align-items-center">
+              <div className='col-6 col-lg-3'>
+                <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
                   Invite a Friend
                 </button>
               </div>
-              <div className='col-12 col-lg-3'>
-                <button className="py-2 mx-3 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+              <div className='col-6 col-lg-3'>
+                <button className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
                   Redeem
                 </button>
               </div>

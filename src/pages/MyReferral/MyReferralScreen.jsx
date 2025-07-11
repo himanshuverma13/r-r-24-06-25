@@ -242,7 +242,7 @@ const MyReferralScreen = () => {
                   Here's How You Earn with Every Referral
                 </div>
 
-                <div className="redeem-claim text-center py-5  rounded-4">
+                <div className="redeem-claim text-center p-4 rounded-4">
                   <div className="font-24 montserrat-semibold text-white mb-3 ls-4">
                     Inviting, Tracking, And Earning From Referrals
                   </div>
@@ -258,15 +258,15 @@ const MyReferralScreen = () => {
                     <img className="mx-4" src={StartFour} alt="Loading" />
                     You Earn
                   </div>
-                  <div className="mt-3 row justify-content-center">
-                    <div className='col-12 col-lg-3'>
-                      <button className="py-2 mx-3 mb-4 mb-0 w-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                  <div className="mt-3 row justify-content-between justify-content-lg-center align-items-center">
+                    <div className='col-6 col-lg-3'>
+                      <button className="py-2 mb-0 w-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
                         Invite a Friend
                       </button>
 
                     </div>
-                    <div className='col-12 col-lg-3'>
-                      <button className="py-2 mx-3 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+                    <div className='col-6 col-lg-3'>
+                      <button className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
                         Track
                       </button>
                     </div>
