@@ -198,7 +198,7 @@ const MyReferralScreen = () => {
                     <label className="font-size-12 text-white montserrat-medium mb-2">
                       Invite Link
                     </label>
-                    <div className="copy-input-container">z
+                    <div className="copy-input-container">
                       <input
                         ref={linkRef}
                         // value={inviteLink}
