@@ -51,13 +51,25 @@ const MyReferralScreen = () => {
   const { ContextHomeDataAPI, ContextFaqsDataAPI } =
     useContext(UserContext);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(inputRef.current.value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch (err) {
-      console.error('Failed to copy: ', err);
+  const codeRef = useRef();
+  const linkRef = useRef();
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
+  const inviteCode = "ABC123XYZ";
+  const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
+
+  const handleCopy = (ref, type) => {
+    if (ref.current) {
+      const value = ref.current.value;
+      navigator.clipboard.writeText(value);
+      // Set state to show "Copied!" text
+      if (type === "code") {
+        setCopiedCode(true);
+        setTimeout(() => setCopiedCode(false), 2000); // Reset after 2 seconds
+      } else {
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2000);
+      }
     }
   };
   const footerRef = useRef(null);
@@ -107,6 +119,34 @@ const MyReferralScreen = () => {
     HandleAPI();
   }, []);
 
+  const handleWhatsappClick = async () => {
+    try {
+      const response = await postData('/send-whatsapp-invite', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      if (response?.success) {
+        window.open(response?.link, '_blank');
+      }
+    } catch (error) { }
+  };
+
+  const handleIconLink = async (icon) => {
+    try {
+      const response = await postData(`/send-${icon}-invite`, {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+      });
+      if (response?.success && response?.link) {
+        window.open(response?.link, '_blank');
+      }
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
   return (
     <>
       <section className="hero-section position-relative">
@@ -139,16 +179,18 @@ const MyReferralScreen = () => {
                     </label>
                     <div className="copy-input-container">
                       <input
-                        ref={inputRef}
+                        ref={codeRef}
+                        // value={inviteCode}
+                        id="inviteCode"
                         type="text"
                         defaultValue={RefralDataAPI?.part6}
                         className="copy-input input-invite-friend bg-white mb-16"
                       />
                       <button
                         className="copy-button font-14 montserrat-regular"
-                        onClick={handleCopy}
+                        onClick={() => handleCopy(codeRef, "code")}
                       >
-                        {copied ? 'Copied!' : 'Copy Code'}
+                        {copiedCode ? 'Copied!' : 'Copy Code'}
                       </button>
                     </div>
                   </div>
@@ -156,28 +198,38 @@ const MyReferralScreen = () => {
                     <label className="font-size-12 text-white montserrat-medium mb-2">
                       Invite Link
                     </label>
-                    <div className="copy-input-container">
+                    <div className="copy-input-container">z
                       <input
-                        ref={inputRef}
+                        ref={linkRef}
+                        // value={inviteLink}
+                        id="inviteLink"
                         type="text"
                         defaultValue={RefralDataAPI?.part5}
                         className="copy-input input-invite-friend bg-white mb-16"
                       />
                       <button
                         className="copy-button font-14 montserrat-regular"
-                        onClick={handleCopy}
+                        onClick={() => handleCopy(linkRef, "link")}
                       >
-                        {copied ? 'Copied!' : 'Copy Link'}
+                        {copiedLink ? 'Copied!' : 'Copy Link'}
                       </button>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-12 pb-4 pt-5 text-center">
-                  <img className="mx-3 w-auto" src={whtpImg} alt="" />
-                  <img className="mx-3 w-auto" src={fbImg} alt="" />
-                  <img className="mx-3 w-auto" src={instaImg} alt="" />
-                  <img className="mx-3 w-auto" src={ytImg} alt="" />
-                  <img className="mx-3 w-auto" src={twitImg} alt="" />
+                  <img className="mx-3 w-auto" src={whtpImg} alt=""
+                    onClick={handleWhatsappClick}
+                  />
+                  <img className="mx-3 w-auto" src={fbImg} alt=""
+                    onClick={() => handleIconLink('facebook')}
+                  />
+                  <img className="mx-3 w-auto" src={instaImg} alt=""
+                    onClick={() => handleIconLink('insta')}
+                  />
+                  {/* <img className="mx-3 w-auto" src={ytImg} alt="" /> */}
+                  <img className="mx-3 w-auto" src={twitImg} alt=""
+                    onClick={() => handleIconLink('twitter')}
+                  />
                 </div>
               </div>
             </div>
@@ -208,15 +260,15 @@ const MyReferralScreen = () => {
                   </div>
                   <div className="mt-3 row justify-content-center">
                     <div className='col-12 col-lg-3'>
-                        <button className="py-2 mx-3 mb-4 mb-0 w-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
-                      Invite a Friend
-                    </button>
-                    
+                      <button className="py-2 mx-3 mb-4 mb-0 w-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                        Invite a Friend
+                      </button>
+
                     </div>
                     <div className='col-12 col-lg-3'>
                       <button className="py-2 mx-3 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
-                      Track
-                    </button>
+                        Track
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -230,7 +282,7 @@ const MyReferralScreen = () => {
           {/* FOOTER SECTION */}
           <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
             <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
-              <p className="width-lg-36 width-80 font-32 space-grotesk-medium mb-5 text-white align-self-end">
+              <p className="width-lg-26 width-80 font-32 space-grotesk-medium mb-5 text-white align-self-end">
                 The more you refer, the brighter your rewards shine!
               </p>
             </div>

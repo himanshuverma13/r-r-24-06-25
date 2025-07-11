@@ -178,12 +178,12 @@ const MyRewardFirstScreen = () => {
     initialSlide: 0,
     centerPadding: '0px',
     responsive: [
-        {
-      breakpoint: 1400, 
-      settings: {
-        slidesToShow: 3,
-      },
-    },
+      // {
+      //   breakpoint: 1400,
+      //   settings: {
+      //     slidesToShow: 3,
+      //   },
+      // },
       {
         breakpoint: 1200, // screens ≤ 1200px
         settings: {
@@ -389,7 +389,7 @@ const MyRewardFirstScreen = () => {
 
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} mt-lg-0 mt-5 z-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} mt-lg-4 mt-5 z-3`}
                 >
                   <div className="col-lg-5 col-md-8 d-flex justify-content-start align-items-center px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
@@ -525,8 +525,8 @@ const MyRewardFirstScreen = () => {
                                   ref={codeRef}
                                   className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
                                   type="text"
-                                  // defaultValue={MyRewardDataAPI?.part4}
-                                  value={inviteCode}
+                                  defaultValue={MyRewardDataAPI?.part4}
+                                  // value={inviteCode}
                                   id="inviteCode"
                                 />
                                 <button
@@ -550,8 +550,8 @@ const MyRewardFirstScreen = () => {
                                   ref={linkRef}
                                   className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
                                   type="text"
-                                  value={inviteLink}
-                                  // defaultValue={MyRewardDataAPI?.part6}
+                                  // value={inviteLink}
+                                  defaultValue={MyRewardDataAPI?.part6}
                                   id="inviteLink"
                                 // readOnly
                                 />
@@ -567,12 +567,18 @@ const MyRewardFirstScreen = () => {
                           </>
                         )}
                         <div className="d-flex justify-content-between mt-4">
-                          <button className="px-4 font-16 montserrat-semibold width-48 py-2 bg-white text-blue border-blue rounded-3"
+                          <button className={`px-4 font-16 montserrat-semibold width-48 py-2 rounded-3 ${showGameCard === "cards"
+                            ? "text-white background-text-blue" // Active style
+                            : "bg-white text-blue border-blue" // Inactive style
+                            }`}
                             onClick={() => setShowGameCard("cards")}
                           >
                             Play & Earn
                           </button>
-                          <button className="px-4 font-16 montserrat-semibold width-48 py-2 text-white background-text-blue rounded-3"
+                          <button className={`px-4 font-16 montserrat-semibold width-48 py-2 rounded-3 ${showGameCard === "invite"
+                            ? "text-white background-text-blue"
+                            : "bg-white text-blue border-blue"
+                            }`}
                             onClick={() => setShowGameCard("invite")}
                           >
                             Invite a Friend
@@ -657,7 +663,7 @@ const MyRewardFirstScreen = () => {
                               <button className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
                                 1000 Meteors{' '}
                                 <img
-                                  className=" ms-3"
+                                  className="ms-2"
                                   src={lock}
                                   alt="Loading"
                                 />
@@ -729,27 +735,29 @@ const MyRewardFirstScreen = () => {
                       <Slider {...settings}>
                         {ExclusiveCardData.map((item, index) => (
                           <div key={index}>
-                            <div className="discount-card exclusive-cards w-100 background-text-blue row gx-0 p-3">
-                              <div className="col-8 text-white">
-                                <p className="font-size-16 mb-0 text-uppercase montserrat-medium">
-                                  {item.title}
-                                </p>
-                                <p className="font-size-14 montserrat-semibold exclusive-card-yellow-text">
-                                  {item.subtitle}
-                                </p>
+                            <div className="discount-card exclusive-cards w-100 background-text-blue p-3">
+                              <div className='row gx-0 mb-3'>
+                                <div className="col-8 text-white">
+                                  <p className="font-16 mb-0 text-uppercase montserrat-medium lh-1">
+                                    {item.title}
+                                  </p>
+                                  <p className="font-14 montserrat-semibold exclusive-card-yellow-text">
+                                    {item.subtitle}
+                                  </p>
+                                </div>
+                                <div className="col-4 d-flex justify-content-end">
+                                  <img
+                                    src={item.image}
+                                    className={`${item.imgClass}`}
+                                    alt="Loading"
+                                  />
+                                </div>
                               </div>
-                              <div className="col-4 d-flex justify-content-end">
-                                <img
-                                  src={item.image}
-                                  className={`${item.imgClass}`}
-                                  alt="Loading"
-                                />
-                              </div>
-                              <div className="col-12 d-flex justify-content-between align-items-center mt-3">
-                                <p className="font-size-14 space-grotesk-medium text-white mb-0">
+                              <div className="col-12 d-flex justify-content-between align-items-center">
+                                <p className="font-14 space-grotesk-medium text-white mb-0">
                                   {item.pointsText}
                                 </p>
-                                <p className="exclusive-card-blue-text font-size-12 montserrat-medium mb-0">
+                                <p className="exclusive-card-blue-text font-12 montserrat-medium mb-0">
                                   T&C Applied
                                 </p>
                               </div>
@@ -833,9 +841,9 @@ const MyRewardFirstScreen = () => {
                 </button>
               </div>
               <div className='col-12 col-lg-3'>
-              <button className="py-2 mx-3 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
-                Redeem
-              </button>
+                <button className="py-2 mx-3 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+                  Redeem
+                </button>
               </div>
             </div>
           </div>
