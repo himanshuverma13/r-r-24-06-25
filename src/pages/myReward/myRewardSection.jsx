@@ -170,31 +170,39 @@ const MyRewardFirstScreen = () => {
     dots: false,
     infinite: true,
     speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
     slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: false,
     initialSlide: 0,
     centerPadding: '0px',
     responsive: [
+        {
+      breakpoint: 1400, 
+      settings: {
+        slidesToShow: 3,
+      },
+    },
       {
         breakpoint: 1200, // screens ≤ 1200px
         settings: {
           slidesToShow: 3,
-          centerPadding: '20px',
+          // centerPadding: '20px',
         },
       },
       {
         breakpoint: 992, // screens ≤ 992px
         settings: {
           slidesToShow: 2,
-          centerPadding: '0px',
+          // centerPadding: '0px',
         },
       },
       {
         breakpoint: 768, // screens ≤ 768px (tablet)
         settings: {
           slidesToShow: 2,
-          centerPadding: '20px',
+          // centerPadding: '20px',
         },
       },
       {
@@ -215,7 +223,7 @@ const MyRewardFirstScreen = () => {
     slidesToShow: 3.1,
     swipeToSlide: true,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     speed: 500,
     afterChange: function (index) {
 
@@ -774,7 +782,7 @@ const MyRewardFirstScreen = () => {
                   Keep Referring To Earn Even More !!
 
                 </p>
-                <div className="d-flex justify-content-between gap-4">
+                <div className="d-flex justify-content-between gap-4 mb-5">
                   <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border border-0 background-text-blue text-white">
                     See my Referrals
                   </button>
@@ -812,20 +820,24 @@ const MyRewardFirstScreen = () => {
               You’ve earned it, Now it’s time to claim your perks and level up
             </p>
 
-            <div className="text-light-yellow font-32 space-grotesk-bold d-flex justify-content-center my-4 ls-4">
+            <div className="text-light-yellow font-32 flex-column flex-lg-row space-grotesk-bold d-flex justify-content-center align-items-center my-5 ls-4">
               Collect meteors
               <img className="mx-4" src={StartFour} alt="Loading" />
               Unlock Planets
               <img className="mx-4" src={StartFour} alt="Loading" />
               Redeem Stars
             </div>
-            <div className="pt-3 d-flex flex-wrap align-items-center justify-content-center">
-              <button className="py-2 mx-3 px-4 w-25 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
-                Invite a Friend
-              </button>
-              <button className="py-2 mx-3 px-5 w-25 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+            <div className="pt-3 row justify-content-center">
+              <div className='col-12 col-lg-3'>
+                <button className="py-2 mx-3 mb-4 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                  Invite a Friend
+                </button>
+              </div>
+              <div className='col-12 col-lg-3'>
+              <button className="py-2 mx-3 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
                 Redeem
               </button>
+              </div>
             </div>
           </div>
         </div>
