@@ -222,7 +222,7 @@ const MyRewardFirstScreen = () => {
     centerPadding: '40px',
     slidesToShow: 3.1,
     swipeToSlide: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2000,
     speed: 500,
     afterChange: function (index) {
@@ -670,7 +670,7 @@ const MyRewardFirstScreen = () => {
                               </button>
                             ) : (
                               <button
-                                onClick={handleNextScrAnimt}
+                                // onClick={handleNextScrAnimt}
                                 className="background-text-blue w-100 mt-4 mx-auto border-0 border-radius-8 font-size-12  py-2 mx-3 montserrat-semibold text-white"
                               >
                                 <span className="">1000 Meteors</span>
@@ -695,20 +695,22 @@ const MyRewardFirstScreen = () => {
                       <Slider className="" {...settings}>
                         {discountData.map((item, index) => (
                           <div key={index} className="px-2">
-                            <div className="discount-card background-text-blue row p-2 gx-0 position-relative">
-                              <div className="col-8 text-white d-flex align-items-center my-2 justify-content-center">
-                                <div className="discount-white-box"></div>
-                                <p className="font-size-14 montserrat-medium ps-2 mt-2 lh-sm">
-                                  {item.mainText}
-                                  <span className="montserrat-bold">
-                                    {item.highlight}
-                                  </span>{' '}
-                                  {item.subText}
-                                </p>
+                            <div className="discount-card background-text-blue p-2 position-relative">
+                              <div className='row gx-0'>
+                                <div className="col-8 text-white d-flex my-2 justify-content-center">
+                                  <div className="discount-white-box"></div>
+                                  <p className="font-14 montserrat-medium ps-2 mt-2 lh-sm">
+                                    {item.mainText}
+                                    <span className="font-16 montserrat-bold">
+                                      {item.highlight}
+                                    </span>{' '}
+                                    {item.subText}
+                                  </p>
+                                </div>
                               </div>
                               <div className="col-4">
                                 <div
-                                  className={`discount-deals montserrat-semibold font-size-12 ${item.badgeClass} px-3 py-1 text-blue me-0 position-absolute top-0 end-0`}
+                                  className={`discount-deals montserrat-semibold font-12 ${item.badgeClass} px-3 py-1 text-blue me-0 position-absolute top-0 end-0`}
                                 >
                                   {item.badgeText}
                                 </div>
