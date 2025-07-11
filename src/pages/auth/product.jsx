@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 // Assets icons and images
 import Logo from '../../assets/icons/logo/logo.svg';
@@ -17,10 +17,13 @@ import { useNavigate } from 'react-router-dom';
 import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import { toastError, toastSuccess } from '../../utils/toster';
+import { UserContext } from '../../utils/UseContext/useContext';
 const Product = () => {
   const navigate = useNavigate();
 
   const uid = localStorage.getItem('uid');
+    const { ContextInviteRefferAPI, setContextInviteRefferAPI } =
+      useContext(UserContext);
 
   const settings = {
     dots: false,
@@ -170,7 +173,7 @@ const Product = () => {
                   Congratulations
                 </p>
                 <p className="text-blue montserrat-semibold font-size-20 pb-2">
-                  Your friend Riya just helped you earn 200 Meteor Points!
+                  You have earned {ContextInviteRefferAPI} Meteor Points!
                   <br />
                   Use your points to unlock up to 20% off on your first purchase.
                 </p>
