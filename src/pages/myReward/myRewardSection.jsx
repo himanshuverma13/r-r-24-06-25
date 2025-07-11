@@ -697,7 +697,7 @@ const MyRewardFirstScreen = () => {
                           <div key={index} className="px-2">
                             <div className="discount-card background-text-blue p-2 position-relative">
                               <div className='row gx-0'>
-                                <div className="col-8 text-white d-flex my-2 justify-content-center">
+                                <div className="col-9 text-white d-flex my-2 justify-content-center">
                                   <div className="discount-white-box me-2"></div>
                                   <p className="font-14 montserrat-medium mt-2 lh-sm">
                                     {item.mainText}
@@ -708,7 +708,7 @@ const MyRewardFirstScreen = () => {
                                   </p>
                                 </div>
                               </div>
-                              <div className="col-4">
+                              <div className="col-3">
                                 <div
                                   className={`discount-deals montserrat-semibold font-12 ${item.badgeClass} px-3 py-1 text-blue me-0 position-absolute top-0 end-0`}
                                 >
