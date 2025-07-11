@@ -88,7 +88,7 @@ const SliderCard = ({RefralDataAPI}) => {
         slidesToShow: 3,
         slidesToScroll: 1,
         // initialSlide: 0,
-        autoplay: false,
+        autoplay: true,
         speed: 2000,
         autoplaySpeed: 3000,
         responsive: [
