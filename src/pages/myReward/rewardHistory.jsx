@@ -230,10 +230,10 @@ const RewardHistory = ({ showHistory, MyRewardDataAPI }) => {
             {/* Sidebar */}
             <div className="col-lg-3 col-md-4">
               <div className="sidebar">
-                <StatCard index="1" number="03" title="Total Rewards" />
-                <StatCard index="2" number="03" title="Total Redeemed" />
-                <StatCard index="3" number="03" title="Total Meteors" />
-                <StatCard index="4" number="03" title="Total Stars" />
+                <StatCard index="1" number={MyRewardDataAPI?.part3} title="Total Rewards" />
+                <StatCard index="2" number={MyRewardDataAPI?.part7} title="Total Redeemed" />
+                <StatCard index="3" number={MyRewardDataAPI?.part2} title="Total Meteors" />
+                <StatCard index="4" number={MyRewardDataAPI?.part1} title="Total Stars" />
               </div>
             </div>
 

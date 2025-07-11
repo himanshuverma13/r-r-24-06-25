@@ -34,6 +34,7 @@ const Index = ({ isExiting, isActive }) => {
   const [SecScrAnimt, setSecScrAnimt] = useState(false);
   const { AuthLocal, ContextHomeDataAPI, setContextHomeDataAPI } =
     useContext(UserContext);
+    console.log('ContextHomeDataAPI: ', ContextHomeDataAPI?.part2);
 
   // --------------------------------------------------
   const [currentIndex, setCurrentIndex] = useState(
@@ -287,9 +288,9 @@ const Index = ({ isExiting, isActive }) => {
                             />{' '}
                             <hr className="opacity-100 progress-side-hr " />
                           </div>{' '}
-                          {pnt <= 1000 ? (
+                          {ContextHomeDataAPI?.part2 <= 1000 ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
-                              {pnt} Meteors
+                              {ContextHomeDataAPI?.part2} Meteors
                             </span> 
                           ) : null}
                           {
@@ -300,10 +301,10 @@ const Index = ({ isExiting, isActive }) => {
                         </li>
                         
                         <li
-                          className={`d-flex ${pnt >= 1001 && pnt <= 2000 ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= 1001 && ContextHomeDataAPI?.part2 <= 2000 ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            { pnt <= 1000  ? (
+                            { ContextHomeDataAPI?.part2 <= 1000  ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -311,17 +312,17 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {pnt >= 1001 && pnt <= 3000    ? (
+                            {ContextHomeDataAPI?.part2 >= 1001 && ContextHomeDataAPI?.part2 <= 3000    ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) :  null}
                           </div>{' '}
-                          {pnt >= 1001 && pnt <= 2000 ? (
+                          {ContextHomeDataAPI?.part2 >= 1001 && ContextHomeDataAPI?.part2 <= 2000 ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
-                              {pnt} Meteors
+                              {ContextHomeDataAPI?.part2} Meteors
                             </span>
                           ) : null}
                           <span
-                            className={`${pnt >= 2000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                            className={`${ContextHomeDataAPI?.part2 >= 2000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
                           >
                             Planet B
                           </span>
@@ -329,10 +330,10 @@ const Index = ({ isExiting, isActive }) => {
 
 
                         <li
-                          className={`d-flex ${pnt >= 2001 && pnt <= 3000  ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= 2001 && ContextHomeDataAPI?.part2 <= 3000  ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            {pnt <= 2000 ? (
+                            {ContextHomeDataAPI?.part2 <= 2000 ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -340,17 +341,17 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {pnt >= 2001 && pnt <= 3000? (
+                            {ContextHomeDataAPI?.part2 >= 2001 && ContextHomeDataAPI?.part2 <= 3000? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {pnt >= 2001 && pnt <= 3000  ? (
+                          {ContextHomeDataAPI?.part2 >= 2001 && ContextHomeDataAPI?.part2 <= 3000  ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
-                              {pnt} Meteors
+                              {ContextHomeDataAPI?.part2} Meteors
                             </span>
                           ) : null}
                           <span
-                            className={`${pnt >=3000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                            className={`${ContextHomeDataAPI?.part2 >=3000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
                           >
                             Planet C
                           </span>
@@ -359,10 +360,10 @@ const Index = ({ isExiting, isActive }) => {
 
 
                         <li
-                          className={`d-flex ${pnt >= 3001 && pnt <= 4000 ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= 3001 && ContextHomeDataAPI?.part2 <= 4000 ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            {pnt <= 3000 ? (
+                            {ContextHomeDataAPI?.part2 <= 3000 ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -370,23 +371,23 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {pnt >= 3001 && pnt <= 4000 ? (
+                            {ContextHomeDataAPI?.part2 >= 3001 && ContextHomeDataAPI?.part2 <= 4000 ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {pnt >= 3001 && pnt <= 4000 ? (
+                          {ContextHomeDataAPI?.part2 >= 3001 && ContextHomeDataAPI?.part2 <= 4000 ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
-                              {pnt} Meteors
+                              {ContextHomeDataAPI?.part2} Meteors
                             </span>
                           ) : null}
                           <span
-                            className={`${pnt >=4000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                            className={`${ContextHomeDataAPI?.part2 >=4000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
                           >
                             Planet D
                           </span>
                         </li>{' '}
                         {/* <li
-                          className={`d-flex ${pnt >= 4000 ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= 4000 ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
                             {pnt <= 2000 ? (
