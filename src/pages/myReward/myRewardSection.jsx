@@ -698,8 +698,8 @@ const MyRewardFirstScreen = () => {
                             <div className="discount-card background-text-blue p-2 position-relative">
                               <div className='row gx-0'>
                                 <div className="col-8 text-white d-flex my-2 justify-content-center">
-                                  <div className="discount-white-box"></div>
-                                  <p className="font-14 montserrat-medium ps-2 mt-2 lh-sm">
+                                  <div className="discount-white-box me-2"></div>
+                                  <p className="font-14 montserrat-medium mt-2 lh-sm">
                                     {item.mainText}
                                     <span className="font-16 montserrat-bold">
                                       {item.highlight}
@@ -715,6 +715,10 @@ const MyRewardFirstScreen = () => {
                                   {item.badgeText}
                                 </div>
                               </div>
+                            <div className='discount-card-footer p-2 d-flex justify-content-between'>
+                              <p className='text-white mb-0 font-12 montserrat-regular'>Coupon code: <span className='text-uppercase font-14 montserrat-medium'>CB1234</span></p>
+                              <button className='border-0 bg-white text-blue font-10 montserrat-regular copy-btn px-2'>Copy Code</button>
+                            </div>
                             </div>
                           </div>
                         ))}
@@ -740,7 +744,7 @@ const MyRewardFirstScreen = () => {
                             <div className="discount-card exclusive-cards w-100 background-text-blue p-3">
                               <div className='row gx-0 mb-3'>
                                 <div className="col-8 text-white">
-                                  <p className="font-16 mb-0 text-uppercase montserrat-medium lh-1">
+                                  <p className="font-16 mb-0 text-uppercase montserrat-medium lh-sm">
                                     {item.title}
                                   </p>
                                   <p className="font-14 montserrat-semibold exclusive-card-yellow-text">
