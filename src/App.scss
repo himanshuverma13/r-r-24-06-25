@@ -233,8 +233,8 @@ $spacing-values: 0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52
 // SPACING CLASSES
 // =========================
 @each $value in $spacing-values {
-  @each $prefix, $property in (
-    m: margin,
+
+  @each $prefix, $property in (m: margin,
     mt: margin-top,
     mr: margin-right,
     mb: margin-bottom,
@@ -243,8 +243,8 @@ $spacing-values: 0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52
     pt: padding-top,
     pr: padding-right,
     pb: padding-bottom,
-    pl: padding-left
-  ) {
+    pl: padding-left) {
+
     // Default utility (applies without breakpoint)
     .#{$prefix}-#{$value} {
       #{$property}: pxToRem($value);
@@ -301,6 +301,7 @@ $spacing-values: 0, 4, 8, 10, 12, 14, 16, 20, 24, 32, 34, 36, 40, 44, 46, 48, 52
 // =========================
 
 @for $i from 1 through 100 {
+
   // Default width class
   .width-#{$i} {
     width: $i * 1%;
@@ -1041,6 +1042,7 @@ body::-webkit-scrollbar {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 // Hamburger Toggle Button
 .nav-indicator {
   bottom: 65px;
@@ -1078,6 +1080,7 @@ body::-webkit-scrollbar {
   background: none;
   border: none;
   z-index: 1051;
+
   .bar {
     display: block;
     width: 25px;
@@ -1099,9 +1102,11 @@ body::-webkit-scrollbar {
   z-index: 1052;
   padding-top: 60px;
 }
+
 .mobile-sidebar.open {
   right: 0;
 }
+
 .mobile-overlay {
   position: fixed;
   top: 0;
@@ -1112,6 +1117,7 @@ body::-webkit-scrollbar {
   backdrop-filter: blur(2px);
   z-index: 1051;
 }
+
 .close-btn {
   position: absolute;
   top: 15px;
@@ -1121,12 +1127,15 @@ body::-webkit-scrollbar {
   font-size: 2rem;
   color: white;
 }
-.list-unstyled{
+
+.list-unstyled {
   list-style: none;
-  a{
+
+  a {
     text-decoration: none;
   }
 }
+
 // .mobile-menu-toggle {
 //   position: absolute;
 //   top: 1.5rem;
@@ -1209,6 +1218,7 @@ body::-webkit-scrollbar {
   0% {
     right: -250px;
   }
+
   100% {
     right: 0;
   }
@@ -1218,6 +1228,7 @@ body::-webkit-scrollbar {
   0% {
     right: 0;
   }
+
   100% {
     right: -250px;
   }
@@ -1693,7 +1704,7 @@ body::-webkit-scrollbar {
     position: absolute;
     left: 0;
     top: 33%;
-    width: 30%;
+    width: 15%;
     margin-top: -15%;
     z-index: 2;
     animation: moveRocket 5s linear forwards;
@@ -2225,7 +2236,8 @@ body::-webkit-scrollbar {
   background-size: cover;
   overflow: hidden;
 }
-.game-img{
+
+.game-img {
   max-height: 180px;
   height: auto;
   width: 100%;
@@ -3185,6 +3197,33 @@ body::-webkit-scrollbar {
 // ========================================================================
 // My Referral Css start Here
 // ========================================================================
+.section-referral {
+  position: relative;
+
+  .referral-slider {
+    .referral-card {
+      height: 350px;
+      padding: 2rem !important;
+    }
+
+    .slick-track {
+      display: flex !important;
+      gap: 20px; // Adjust the gap as needed
+    }
+
+    .me-3 {
+      margin-top: 20%;
+
+      margin-right: 0 !important;
+    }
+
+    .slick-next {
+      display: block !important;
+    }
+
+  }
+
+}
 
 .referral-wrapper {
   position: relative;
@@ -3341,6 +3380,19 @@ body::-webkit-scrollbar {
 .exclusive-cards {
   height: 150px;
 }
+
+.custom-prev-arrow img,
+.custom-next-arrow img {
+  filter: drop-shadow(0px 0px 2px white);
+  transition: transform 0.2s ease;
+}
+
+.custom-prev-arrow:hover img,
+.custom-next-arrow:hover img {
+  transform: scale(1.1);
+}
+
+
 
 // ========================================================================
 // My Referral CSS END
@@ -3881,26 +3933,31 @@ body::-webkit-scrollbar {
     width: 100%;
     height: auto;
   }
-  .invite-card{
+
+  .invite-card {
     height: auto;
   }
 }
-@media only screen and (max-width: 990px){
-  .earnmore-circle-sect{
+
+@media only screen and (max-width: 990px) {
+  .earnmore-circle-sect {
     left: -16%;
     bottom: -70%;
   }
 }
-@media only screen and (max-width: 900px){
-  .earnmore-circle-sect{
-    left:-10%;
+
+@media only screen and (max-width: 900px) {
+  .earnmore-circle-sect {
+    left: -10%;
     bottom: -93%;
   }
-  .redeem-circle-sect{
+
+  .redeem-circle-sect {
     left: 70%;
     bottom: 73%;
   }
 }
+
 /* Large Tablet and Small Desktop */
 @media only screen and (min-width: 1024px) and (max-width: 1535px) {
   .image-container {
@@ -3966,13 +4023,15 @@ body::-webkit-scrollbar {
     bottom: 50%;
     left: 20%;
   }
-  .footer-semi-planet{
+
+  .footer-semi-planet {
     width: 100%;
     left: 0;
   }
-  .offer-section{
-  .price-exclusive{
-    grid-template-columns: auto;
+
+  .offer-section {
+    .price-exclusive {
+      grid-template-columns: auto;
 
     }
   }
@@ -3999,13 +4058,6 @@ body::-webkit-scrollbar {
       margin-top: 0.25rem;
     }
   }
-
-  .section-howitworks {
-    .rocket-gif {
-      top: 39%;
-    }
-  }
-
   .progress-side-hr,
   .progress-side-hr11,
   .progress-side-hr-2 {
@@ -4039,10 +4091,6 @@ body::-webkit-scrollbar {
 
   .footer-responsive {
     margin-top: 16%;
-  }
-
-  .rocket-gif {
-    top: 39% !important;
   }
 
   .footer-semi-planet {
@@ -4096,18 +4144,16 @@ body::-webkit-scrollbar {
   }
 }
 
+@media (max-height: 768px) {
+  .cloud-img {
+    top: 65%;
+  }
+}
+
 @media (max-height: 700px) {
   .reward-section {
     &.height-100vh {
       height: 150vh !important;
-    }
-
-    &.overflow-hidden {
-      // overflow: auto!important;
-    }
-
-    .redeem-claim {
-      // background: $transparent;
     }
   }
 

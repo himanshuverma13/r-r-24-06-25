@@ -43,7 +43,9 @@ const faqData = [
 ];
 
 const MyReferralScreen = () => {
-  const inputRef = useRef(null);
+  const codeRef = useRef(null);
+const linkRef = useRef(null);
+
   const [copied, setCopied] = useState(false);
   const [RefralDataAPI, setRefralDataAPI] = useState();
 
@@ -51,15 +53,25 @@ const MyReferralScreen = () => {
   const { ContextHomeDataAPI, ContextFaqsDataAPI } =
     useContext(UserContext);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(inputRef.current.value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch (err) {
-      console.error('Failed to copy: ', err);
-    }
-  };
+  // const handleCopy = async () => {
+  //   try {
+  //     await navigator.clipboard.writeText(inputRef.current.value);
+  //     setCopied(true);
+  //     setTimeout(() => setCopied(false), 1500);
+  //   } catch (err) {
+  //     console.error('Failed to copy: ', err);
+  //   }
+  // };
+  const handleCopy = async (ref) => {
+  try {
+    await navigator.clipboard.writeText(ref.current.value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  } catch (err) {
+    console.error('Failed to copy: ', err);
+  }
+};
+
   const footerRef = useRef(null);
   const [showFooterPlanet, setShowFooterPlanet] = useState(false);
 
@@ -110,17 +122,18 @@ const MyReferralScreen = () => {
 
   return (
     <>
-      <section className="hero-section position-relative">
+      <section className="hero-section position-relative section-referral">
         {/*
         <div className="referral-wrapper position-relative">
         <div className="container z-1 pt-5">
         <ReferralCards />
           </div>
         </div> */}
-        <Navbar />
         <div className="overflow-scroll h-100 z-3">
+
+        <Navbar />
           <div className="container pt-36">
-            <div className="mb-5">
+            <div className="mb-5-">
               <ReferralCards RefralDataAPI={RefralDataAPI} />
             </div>
             <div className="invite-card my-refral-inner-content overflow-hidden">
@@ -140,7 +153,7 @@ const MyReferralScreen = () => {
                     </label>
                     <div className="copy-input-container">
                       <input
-                        ref={inputRef}
+                        ref={codeRef}
                         type="text"
                         defaultValue={RefralDataAPI?.part6}
                         className="copy-input input-invite-friend bg-white mb-16"
@@ -159,7 +172,7 @@ const MyReferralScreen = () => {
                     </label>
                     <div className="copy-input-container">
                       <input
-                        ref={inputRef}
+                        ref={linkRef}
                         type="text"
                         defaultValue={RefralDataAPI?.part5}
                         className="copy-input input-invite-friend bg-white mb-16"
@@ -174,11 +187,11 @@ const MyReferralScreen = () => {
                   </div>
                 </div>
                 <div className="col-lg-12 pb-4 pt-5 text-center">
-                  <img className="mx-3 w-auto" src={whtpImg} alt="" />
-                  <img className="mx-3 w-auto" src={fbImg} alt="" />
-                  <img className="mx-3 w-auto" src={instaImg} alt="" />
-                  <img className="mx-3 w-auto" src={ytImg} alt="" />
-                  <img className="mx-3 w-auto" src={twitImg} alt="" />
+                  <img className="mx-3 w-auto" src={whtpImg} alt="share on whatsapp" />
+                  <img className="mx-3 w-auto" src={fbImg} alt="share on facebook" />
+                  <img className="mx-3 w-auto" src={instaImg} alt="share on Instagram" />
+                  <img className="mx-3 w-auto" src={ytImg} alt="share on youtube" />
+                  <img className="mx-3 w-auto" src={twitImg} alt="share on twitter" />
                 </div>
               </div>
             </div>
@@ -208,16 +221,16 @@ const MyReferralScreen = () => {
                     You Earn
                   </div>
                   <div className="mt-3 row justify-content-center">
-                    <div className='col-12 col-lg-3'>
-                        <button className="py-2 mx-3 mb-4 mb-0 width-50 width-lg-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
-                      Invite a Friend
-                    </button>
-                    
+                    <div className='col-8 col-lg-2'>
+                      <button className="py-2 mx-3 mb-4 mb-0 width-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                        Invite a Friend
+                      </button>
+
                     </div>
-                    <div className='col-12 col-lg-3'>
-                      <button className="py-2 mx-3 width-50 width-lg-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
-                      Track
-                    </button>
+                    <div className='col-8 col-lg-2'>
+                      <button className="py-2 mx-3 width-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+                        Track
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -230,17 +243,18 @@ const MyReferralScreen = () => {
           </div>
           {/* FOOTER SECTION */}
           <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
-            <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
-              <p className="width-lg-36 width-80 font-32 space-grotesk-medium mb-5 text-white align-self-end">
-                The more you refer, the brighter your rewards shine!
-              </p>
-            </div>
-            <div
-              className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
-            ></div>
+          <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
+            <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
+              The more you refer, the brighter your rewards shine!
+            </p>
           </div>
+          <div
+            className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
+          ></div>
         </div>
-        <div className="cloud-img position-absolute w-100 z-2"></div>
+          <div className="cloud-img position-absolute w-100 z-2"></div>
+        </div>
+
       </section>
     </>
   );
