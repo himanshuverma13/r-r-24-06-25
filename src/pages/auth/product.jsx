@@ -2,7 +2,7 @@ import React from 'react';
 
 // Assets icons and images
 import Logo from '../../assets/icons/logo/logo.svg';
-import OrangePLanet from '../../assets/icons/subscription/Orange-Planet.svg';
+import OrangePlanet from '../../assets/icons/subscription/Orange-Planet.svg';
 import GreenPlanet from '../../assets/icons/subscription/Green Planet 3.svg';
 import Plane from '../../assets/icons/subscription/Plane.svg';
 import Fram from '../../assets/icons/subscription/product-frame.svg';
@@ -71,7 +71,7 @@ const Product = () => {
     {
       discount: '20%',
       bgClass: 'card-bg-purple-color',
-      img: OrangePLanet,
+      img: OrangePlanet,
       title: 'Social Media',
       cardImg: 'orange-planet',
       price: '₹ 20,000/-',
@@ -107,7 +107,7 @@ const Product = () => {
     {
       discount: '10%',
       bgClass: 'card-bg-purple-color',
-      img: OrangePLanet,
+      img: OrangePlanet,
       cardImg: 'orange-planet',
       title: 'Social Media',
       price: '₹ 20,000/-',
@@ -158,83 +158,84 @@ const Product = () => {
 
   return (
     <>
-      <div className="login-bg-img vh-100">
-        <div className="nav-logo text-center mt-0">
-          <img className="header-center-img width-13" src={Logo} alt="logo" />
-        </div>
-        <div className="row p-lg-4 p-2 d-flex justify-content-center">
-          <div className="col-lg-7">
-            <div className="text-center mt-3">
-              <p className="font-size-44 text-blue montserrat-bold mb-2">
-                Congratulations
-              </p>
-              <p className="text-blue montserrat-semibold font-size-20 pb-2">
-                Your friend Riya just helped you earn 200 Meteor Points!
-                <br />
-                Use your points to unlock up to 20% off on your first purchase.
-              </p>
+      <div className="product-img-bg  d-flex flex-column min-vh-100 overflow-hidden">
+        <div className="flex-grow-1">
+          <div className="nav-logo text-center mt-0">
+            <img className="header-center-img width-13" src={Logo} alt="logo" />
+          </div>
+          <div className="row d-flex justify-content-center">
+            <div className="col-lg-7">
+              <div className="text-center mt-3">
+                <p className="font-44 text-blue montserrat-bold mb-2">
+                  Congratulations
+                </p>
+                <p className="text-blue montserrat-semibold font-size-20 pb-2">
+                  Your friend Riya just helped you earn 200 Meteor Points!
+                  <br />
+                  Use your points to unlock up to 20% off on your first purchase.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="slider-container product-slider my-5">
-          <Slider {...settings}>
-            {CardData.map((card, index) => (
-              <div
-                key={index}
-                className={`${card.bgClass} product-card d-flex flex-column justify-content-center align-items-center`}
-              >
-                <div className="discount-badge d-flex justify-content-center align-items-center text-center">
-                  {card.discount} <br />
-                  Discount
-                </div>
-                <div className="overflow-hidden">
-                  <img
-                    src={card.img}
-                    className={`rounded-start-3 ${card.cardImg}`}
-                    alt="Loading"
-                  />
-                </div>
-                <div className="text-center px-4 pb-4 z-3 pt-5">
-                  <p className="text-blue font-size-24 montserrat-semibold mb-0">
-                    {card.title}
-                  </p>
-                  {card.price && (
-                    <p className="text-blue font-size-20 montserrat-medium">
-                      {card.price}
+          <div className="slider-container product-slider my-5 z-3">
+            <Slider {...settings}>
+              {CardData.map((card, index) => (
+                <div
+                  key={index}
+                  className={`${card.bgClass} product-card d-flex flex-column justify-content-center align-items-center`}
+                >
+                  <div className="discount-badge d-flex justify-content-center align-items-center text-center">
+                    {card.discount} <br />
+                    Discount
+                  </div>
+                  <div className="overflow-hidden">
+                    <img
+                      src={card.img}
+                      className={`rounded-start-3 ${card.cardImg}`}
+                      alt="Loading"
+                    />
+                  </div>
+                  <div className="text-center px-4 pb-4 z-3 pt-5">
+                    <p className="text-blue font-size-24 montserrat-semibold mb-0">
+                      {card.title}
                     </p>
-                  )}
-                  <p className="text-blue font-size-14 montserrat-medium">
-                    {card.description}
-                    <span className="text-red"> learn more....</span>
-                  </p>
-                  <button
-                    className={`product-btn w-100 text-white ${card?.btnClass} px-3 py-2 border-0 mt-3`}
-                    onClick={card.btnText == 'Purchase' ? HandleClick : null}
-                  >
-                    {card.btnText}
-                  </button>
+                    {card.price && (
+                      <p className="text-blue font-size-20 montserrat-medium">
+                        {card.price}
+                      </p>
+                    )}
+                    <p className="text-blue font-size-14 montserrat-medium">
+                      {card.description}
+                      <span className="text-red"> learn more....</span>
+                    </p>
+                    <button
+                      className={`product-btn w-100 text-white ${card?.btnClass} px-3 py-2 border-0 mt-3`}
+                      onClick={card.btnText == 'Purchase' ? HandleClick : null}
+                    >
+                      {card.btnText}
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          </div>
         </div>
-
-        <footer className="product-footer fixed-bottom">
+        <footer className="product-footer z-2">
           <div className="container">
-            <div className="row align-items-center justify-content-center">
-              <div className="col-lg-9">
-                <div className="footer-star">
-                  <img src={stargroup} className="mb-0" alt="Loading" />
-                  <p className="text-blue ms-4 pt-5 montserrat-semibold fotnt-size-18 text-uppercase">
+            <div className="row align-items-center justify-content-between pt-4">
+              <div className="col-lg-9 position-relative">
+                <div className="footer-star-text ps-5">
+                  <img src={stargroup} className=" footer-star-icon" alt="Loading" />
+                  <p className="text-blue ms-4 montserrat-semibold fotnt-size-18 text-uppercase">
                     Shop with us and get a chance to join our exclusive Rewards
                     & Referral Program & keep earning even more points and
                     benefits
                   </p>
                 </div>
               </div>
-              <div className="col-lg-3 text-end">
-                <button className="montserrat-bold px-4 border-0 font-size-16 py-2 rounded-3 background-text-blue text-white">
+              <div className="col-lg-3 text-end  mt-3 mt-lg-0">
+                <button className="montserrat-semibold px-4 border-0 font-16 py-2 rounded-3 background-text-blue text-white">
                   Explore More Products <IoIosArrowForward />
                 </button>
               </div>
