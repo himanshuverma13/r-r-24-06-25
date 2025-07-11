@@ -1,11 +1,18 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React, { useContext, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem("token"); // or use Redux/store
+  const { AuthLocal, setAuthLocal } = useContext(UserContext);
+let isAuthenticated;
+isAuthenticated = JSON?.parse(localStorage.getItem('Auth')); // or use Redux/store
+console.log('isAuthenticated: ', isAuthenticated);
+  useEffect(() => {
 
-  if (!isAuthenticated) {
-    return <Navigate to="/" />;
+  }, [AuthLocal]);
+
+  if (!AuthLocal?.mode || !isAuthenticated?.mode ) {
+    return <Navigate to="/login" />;
   }
 
   return children;

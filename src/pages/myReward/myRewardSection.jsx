@@ -170,31 +170,39 @@ const MyRewardFirstScreen = () => {
     dots: false,
     infinite: true,
     speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
     slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: false,
     initialSlide: 0,
     centerPadding: '0px',
     responsive: [
+      // {
+      //   breakpoint: 1400,
+      //   settings: {
+      //     slidesToShow: 3,
+      //   },
+      // },
       {
         breakpoint: 1200, // screens ≤ 1200px
         settings: {
           slidesToShow: 3,
-          centerPadding: '20px',
+          // centerPadding: '20px',
         },
       },
       {
         breakpoint: 992, // screens ≤ 992px
         settings: {
           slidesToShow: 2,
-          centerPadding: '0px',
+          // centerPadding: '0px',
         },
       },
       {
         breakpoint: 768, // screens ≤ 768px (tablet)
         settings: {
           slidesToShow: 2,
-          centerPadding: '20px',
+          // centerPadding: '20px',
         },
       },
       {
@@ -215,7 +223,7 @@ const MyRewardFirstScreen = () => {
     slidesToShow: 3.1,
     swipeToSlide: true,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     speed: 500,
     afterChange: function (index) {
 
@@ -304,7 +312,6 @@ const MyRewardFirstScreen = () => {
         mode: Auth?.mode,
       });
       const Decrpty = await DecryptFunction(enyptData);
-      console.log('Decrpty: ', Decrpty);
       setMyRewardDataAPI(Decrpty);
     } catch (error) {
       console.log('error: ', error);
@@ -382,7 +389,7 @@ const MyRewardFirstScreen = () => {
 
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} z-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} mt-lg-4 mt-5 z-3`}
                 >
                   <div className="col-lg-5 col-md-8 d-flex justify-content-start align-items-center px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
@@ -518,8 +525,8 @@ const MyRewardFirstScreen = () => {
                                   ref={codeRef}
                                   className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
                                   type="text"
-                                  // defaultValue={MyRewardDataAPI?.part4}
-                                  value={inviteCode}
+                                  defaultValue={MyRewardDataAPI?.part4}
+                                  // value={inviteCode}
                                   id="inviteCode"
                                 />
                                 <button
@@ -543,8 +550,8 @@ const MyRewardFirstScreen = () => {
                                   ref={linkRef}
                                   className="background-light-white-2 text-blue border-0 rounded-3 w-100 p-2 pr-5"
                                   type="text"
-                                  value={inviteLink}
-                                  // defaultValue={MyRewardDataAPI?.part6}
+                                  // value={inviteLink}
+                                  defaultValue={MyRewardDataAPI?.part6}
                                   id="inviteLink"
                                 // readOnly
                                 />
@@ -560,12 +567,18 @@ const MyRewardFirstScreen = () => {
                           </>
                         )}
                         <div className="d-flex justify-content-between mt-4">
-                          <button className="px-4 font-16 montserrat-semibold width-48 py-2 bg-white text-blue border-blue rounded-3"
+                          <button className={`px-4 font-16 montserrat-semibold width-48 py-2 rounded-3 ${showGameCard === "cards"
+                            ? "text-white background-text-blue" // Active style
+                            : "bg-white text-blue border-blue" // Inactive style
+                            }`}
                             onClick={() => setShowGameCard("cards")}
                           >
                             Play & Earn
                           </button>
-                          <button className="px-4 font-16 montserrat-semibold width-48 py-2 text-white background-text-blue rounded-3"
+                          <button className={`px-4 font-16 montserrat-semibold width-48 py-2 rounded-3 ${showGameCard === "invite"
+                            ? "text-white background-text-blue"
+                            : "bg-white text-blue border-blue"
+                            }`}
                             onClick={() => setShowGameCard("invite")}
                           >
                             Invite a Friend
@@ -628,7 +641,7 @@ const MyRewardFirstScreen = () => {
                         {...rewardSliderSetting}
                       >
                         {RewardSliderJson?.map((slide, index) => (
-                          <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 ">
+                          <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 px-2">
                             <h4 className="font-14 space-grotesk-bold montserrat-semibold text-blue">
                               Planet {slide?.num}
                             </h4>
@@ -647,18 +660,18 @@ const MyRewardFirstScreen = () => {
 
                             {/* <h4 className="font-14 montserrat-regular">1000 Meteors</h4> */}
                             {index >= ContextHomeDataAPI?.part3?.length ? (
-                              <button className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
+                              <button className="background-text-blue w-100 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
                                 1000 Meteors{' '}
                                 <img
-                                  className=" ms-3"
+                                  className="ms-2"
                                   src={lock}
                                   alt="Loading"
                                 />
                               </button>
                             ) : (
                               <button
-                                onClick={handleNextScrAnimt}
-                                className="background-text-blue w-75 mt-4 mx-auto border-0 border-radius-8 font-size-12  py-2 mx-3 montserrat-semibold text-white"
+                                // onClick={handleNextScrAnimt}
+                                className="background-text-blue w-100 mt-4 mx-auto border-0 border-radius-8 font-size-12  py-2 mx-3 montserrat-semibold text-white"
                               >
                                 <span className="">1000 Meteors</span>
                               </button>
@@ -682,24 +695,30 @@ const MyRewardFirstScreen = () => {
                       <Slider className="" {...settings}>
                         {discountData.map((item, index) => (
                           <div key={index} className="px-2">
-                            <div className="discount-card background-text-blue row p-2 gx-0 position-relative">
-                              <div className="col-8 text-white d-flex align-items-center my-2 justify-content-center">
-                                <div className="discount-white-box"></div>
-                                <p className="font-size-14 montserrat-medium ps-2 mt-2 lh-sm">
-                                  {item.mainText}
-                                  <span className="montserrat-bold">
-                                    {item.highlight}
-                                  </span>{' '}
-                                  {item.subText}
-                                </p>
+                            <div className="discount-card background-text-blue p-2 position-relative">
+                              <div className='row gx-0'>
+                                <div className="col-9 text-white d-flex my-2 justify-content-center">
+                                  <div className="discount-white-box me-2"></div>
+                                  <p className="font-14 montserrat-medium mt-2 lh-sm">
+                                    {item.mainText}
+                                    <span className="font-16 montserrat-bold">
+                                      {item.highlight}
+                                    </span>{' '}
+                                    {item.subText}
+                                  </p>
+                                </div>
                               </div>
-                              <div className="col-4">
+                              <div className="col-3">
                                 <div
-                                  className={`discount-deals montserrat-semibold font-size-12 ${item.badgeClass} px-3 py-1 text-blue me-0 position-absolute top-0 end-0`}
+                                  className={`discount-deals montserrat-semibold font-12 ${item.badgeClass} px-3 py-1 text-blue me-0 position-absolute top-0 end-0`}
                                 >
                                   {item.badgeText}
                                 </div>
                               </div>
+                            <div className='discount-card-footer p-2 d-flex justify-content-between'>
+                              <p className='text-white mb-0 font-12 montserrat-regular'>Coupon code: <span className='text-uppercase font-14 montserrat-medium'>CB1234</span></p>
+                              <button className='border-0 bg-white text-blue font-10 montserrat-regular copy-btn px-2'>Copy Code</button>
+                            </div>
                             </div>
                           </div>
                         ))}
@@ -722,27 +741,29 @@ const MyRewardFirstScreen = () => {
                       <Slider {...settings}>
                         {ExclusiveCardData.map((item, index) => (
                           <div key={index}>
-                            <div className="discount-card exclusive-cards w-100 background-text-blue row gx-0 p-3">
-                              <div className="col-8 text-white">
-                                <p className="font-size-16 mb-0 text-uppercase montserrat-medium">
-                                  {item.title}
-                                </p>
-                                <p className="font-size-14 montserrat-semibold exclusive-card-yellow-text">
-                                  {item.subtitle}
-                                </p>
+                            <div className="discount-card exclusive-cards w-100 background-text-blue p-3">
+                              <div className='row gx-0 mb-3'>
+                                <div className="col-8 text-white">
+                                  <p className="font-16 mb-0 text-uppercase montserrat-medium lh-sm">
+                                    {item.title}
+                                  </p>
+                                  <p className="font-14 montserrat-semibold exclusive-card-yellow-text">
+                                    {item.subtitle}
+                                  </p>
+                                </div>
+                                <div className="col-4 d-flex justify-content-end">
+                                  <img
+                                    src={item.image}
+                                    className={`${item.imgClass}`}
+                                    alt="Loading"
+                                  />
+                                </div>
                               </div>
-                              <div className="col-4 d-flex justify-content-end">
-                                <img
-                                  src={item.image}
-                                  className={`${item.imgClass}`}
-                                  alt="Loading"
-                                />
-                              </div>
-                              <div className="col-12 d-flex justify-content-between align-items-center mt-3">
-                                <p className="font-size-14 space-grotesk-medium text-white mb-0">
+                              <div className="col-12 d-flex justify-content-between align-items-center">
+                                <p className="font-14 space-grotesk-medium text-white mb-0">
                                   {item.pointsText}
                                 </p>
-                                <p className="exclusive-card-blue-text font-size-12 montserrat-medium mb-0">
+                                <p className="exclusive-card-blue-text font-12 montserrat-medium mb-0">
                                   T&C Applied
                                 </p>
                               </div>
@@ -774,7 +795,7 @@ const MyRewardFirstScreen = () => {
                   Keep Referring To Earn Even More !!
 
                 </p>
-                <div className="d-flex justify-content-between gap-4">
+                <div className="d-flex justify-content-between gap-4 mb-5">
                   <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border border-0 background-text-blue text-white">
                     See my Referrals
                   </button>
@@ -804,7 +825,7 @@ const MyRewardFirstScreen = () => {
             Here's How You Unlock Every Reward
           </h2>
 
-          <div className="redeem-claim text-center rounded-4 py-4">
+          <div className="redeem-claim text-center rounded-4 p-4">
             <h2 className="font-24 montserrat-semibold text-white mb-3 ls-4">
               Redeem, Claim Or Level Up
             </h2>
@@ -812,20 +833,24 @@ const MyRewardFirstScreen = () => {
               You’ve earned it, Now it’s time to claim your perks and level up
             </p>
 
-            <div className="text-light-yellow font-32 space-grotesk-bold d-flex justify-content-center my-4 ls-4">
+            <div className="text-light-yellow font-32 flex-column flex-lg-row space-grotesk-bold d-flex justify-content-center align-items-center my-5 ls-4">
               Collect meteors
               <img className="mx-4" src={StartFour} alt="Loading" />
               Unlock Planets
               <img className="mx-4" src={StartFour} alt="Loading" />
               Redeem Stars
             </div>
-            <div className="pt-3 d-flex flex-wrap align-items-center justify-content-center">
-              <button className="py-2 mx-3 px-4 w-25 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
-                Invite a Friend
-              </button>
-              <button className="py-2 mx-3 px-5 w-25 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
-                Redeem
-              </button>
+            <div className="pt-3 row justify-content-between justify-content-lg-center align-items-center">
+              <div className='col-6 col-lg-3'>
+                <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                  Invite a Friend
+                </button>
+              </div>
+              <div className='col-6 col-lg-3'>
+                <button className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+                  Redeem
+                </button>
+              </div>
             </div>
           </div>
         </div>

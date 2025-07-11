@@ -79,7 +79,15 @@ const referralData = [
     }
 ];
 
+let ColorCode = ["user-green-card",
+"user-blue-card",
+"user-purple-card",
+"user-green-card",
+"user-blue-card",
+"user-purple-card",]
+
 const SliderCard = ({RefralDataAPI}) => {
+    console.log('RefralDataAPI: ', RefralDataAPI);
     const [showTable, setShowTable] = useState(false);
     var settings = {
         arrows: false,
@@ -88,7 +96,7 @@ const SliderCard = ({RefralDataAPI}) => {
         slidesToShow: 3,
         slidesToScroll: 1,
         // initialSlide: 0,
-        autoplay: false,
+        autoplay: true,
         speed: 2000,
         autoplaySpeed: 3000,
         responsive: [
@@ -132,21 +140,21 @@ const SliderCard = ({RefralDataAPI}) => {
             {!showTable ? (
                 <div className="slider-container">
                     <Slider {...settings}>
-                        {(RefralDataAPI?.part4||referralUsers)?.map((user, index) => (
-                            <div key={index} className={`referral-user-card ${user?.cardColor}`}>
+                        {RefralDataAPI?.part4?.map((user, index) => (
+                            <div key={index} className={`referral-user-card ${ColorCode[index % ColorCode.length]}`}>
                                 <div className='row p-3 mb-3'>
                                     <div className='col-9 col-lg-9 d-flex'>
                                         <div className='rounded-circle bg-white user-icon'></div>
                                         <div className='text-white ms-3'>
-                                            <p className='font-24 montserrat-semibold mb-0'>{user?.name}</p>
-                                            <p className='montserrat-regular font-14'>{user?.email}</p>
+                                            <p className='font-24 montserrat-semibold mb-0'>{user?.username}</p>
+                                            <p className='montserrat-regular font-14'>{user?.email || "abc@gmail.com"}</p>
                                         </div>
                                     </div>
                                     <div className='col-3 col-lg-3'>
                                         <div className='status d-flex justify-content-center align-items-center py-1'>
                                             <span className='rounded-circle bg-white small-white-circle me-2'></span>
                                             {/* <p className='text-white font-10 montserrat-regular mb-0'>{user?.referral_status}</p> */}
-                                            <p className='text-white font-10 montserrat-regular mb-0'>{user?.status}</p>
+                                            <p className='text-white font-10 montserrat-regular mb-0'>{user?.referral_status}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +192,7 @@ const SliderCard = ({RefralDataAPI}) => {
                                         <span className='referral-table-user rounded-circle me-3'></span>
                                         <div>
                                             {/* <p className='font-size-16 montserrat-semibold mb-0'>{item?.username}</p> */}
-                                            <p className='font-size-16 montserrat-semibold mb-0'>{item?.name}</p>
+                                            <p className='font-size-16 montserrat-semibold mb-0'>{item?.username}</p>
                                             <p className='font-size-14 montserrat-medium mb-0'>{item?.email || "abc@gmail.com"}</p>
                                         </div>
                                     </td>
