@@ -31,7 +31,7 @@ const Product = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
     speed: 500,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     responsive: [
       {
