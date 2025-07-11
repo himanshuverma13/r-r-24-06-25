@@ -32,9 +32,13 @@ const Index = ({ isExiting, isActive }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [showSecScr, setShowSecScr] = useState(true);
   const [SecScrAnimt, setSecScrAnimt] = useState(false);
-  const { AuthLocal, ContextHomeDataAPI, setContextHomeDataAPI } =
-    useContext(UserContext);
-    console.log('ContextHomeDataAPI: ', ContextHomeDataAPI?.part2);
+  const {
+    AuthLocal,
+    ContextFaqsDataAPI,
+    ContextHomeDataAPI,
+    setContextHomeDataAPI,
+  } = useContext(UserContext);
+
 
   // --------------------------------------------------
   const [currentIndex, setCurrentIndex] = useState(
@@ -63,8 +67,6 @@ const Index = ({ isExiting, isActive }) => {
 
   const handleClose = () => setShowModal(false);
   // const handleOpen = () => setShowModal(true);
-
-
 
   //  Animation Functionality Code
   const leftBoxRef = useRef(null);
@@ -246,39 +248,8 @@ const Index = ({ isExiting, isActive }) => {
                       Your Progress So far
                     </p>
                     <div className="progress-sect rounded-4">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                       {/* Progress bar */}
                       <ul className="list-unstyled mb-0 ps-4 pt-1">
-                     
                         <li className="d-flex pt-2 mt-2 position-relative">
                           <div className="d-grid progress-side-sec">
                             <img
@@ -288,10 +259,10 @@ const Index = ({ isExiting, isActive }) => {
                             />{' '}
                             <hr className="opacity-100 progress-side-hr " />
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 <= 1000 ? (
+                          {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
-                            </span> 
+                            </span>
                           ) : null}
                           {
                             <span className="ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2">
@@ -299,12 +270,11 @@ const Index = ({ isExiting, isActive }) => {
                             </span>
                           }
                         </li>
-                        
                         <li
-                          className={`d-flex ${ContextHomeDataAPI?.part2 >= 1001 && ContextHomeDataAPI?.part2 <= 2000 ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock+1 && ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            { ContextHomeDataAPI?.part2 <= 1000  ? (
+                            {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -312,28 +282,28 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= 1001 && ContextHomeDataAPI?.part2 <= 3000    ? (
+                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock+1 &&
+                            ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr " />
-                            ) :  null}
+                            ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= 1001 && ContextHomeDataAPI?.part2 <= 2000 ? (
+                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock+1 &&
+                          ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
                           ) : null}
                           <span
-                            className={`${ContextHomeDataAPI?.part2 >= 2000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                            className={`${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
                           >
                             Planet B
                           </span>
                         </li>
-
-
                         <li
-                          className={`d-flex ${ContextHomeDataAPI?.part2 >= 2001 && ContextHomeDataAPI?.part2 <= 3000  ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock+1 && ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            {ContextHomeDataAPI?.part2 <= 2000 ? (
+                            {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -341,29 +311,28 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= 2001 && ContextHomeDataAPI?.part2 <= 3000? (
+                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock+1 &&
+                            ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= 2001 && ContextHomeDataAPI?.part2 <= 3000  ? (
+                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock+1 &&
+                          ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
                           ) : null}
                           <span
-                            className={`${ContextHomeDataAPI?.part2 >=3000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                            className={`${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
                           >
                             Planet C
                           </span>
                         </li>
-
-
-
                         <li
-                          className={`d-flex ${ContextHomeDataAPI?.part2 >= 3001 && ContextHomeDataAPI?.part2 <= 4000 ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock+1 && ContextHomeDataAPI?.part2 <= 4000 ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            {ContextHomeDataAPI?.part2 <= 3000 ? (
+                            {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -371,17 +340,19 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= 3001 && ContextHomeDataAPI?.part2 <= 4000 ? (
+                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock+1 &&
+                            ContextHomeDataAPI?.part2 <= 6000 ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= 3001 && ContextHomeDataAPI?.part2 <= 4000 ? (
+                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock+1 &&
+                          ContextHomeDataAPI?.part2 <= 6000 ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
                           ) : null}
                           <span
-                            className={`${ContextHomeDataAPI?.part2 >=4000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
+                            className={`${ContextHomeDataAPI?.part2 >= 6000 ? 'ms-2 progress-sect-name mt-1 space-grotesk-medium font-16 text-blue-2' : 'ms-2 progress-sect-name progress-test-mt d-flex align-items-end space-grotesk-medium font-16 text-blue-2'}`}
                           >
                             Planet D
                           </span>
@@ -421,25 +392,6 @@ const Index = ({ isExiting, isActive }) => {
                           </span>
                         </li> */}
                       </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                       <div className="text-center mt-34 pb-3">
                         <img
@@ -511,23 +463,47 @@ const Index = ({ isExiting, isActive }) => {
                     />
                     <div className="col-lg-3 text-center text-dark-blue mt-4 pt-4 px-0">
                       <h4 className="mb-2 space-grotesk-medium font-24">
-                        Planet A
+                        {
+                          ContextFaqsDataAPI?.galaxy_data?.milestones[0]
+                            ?.milestone_name
+                        }
                       </h4>
-                      <p className="space-grotesk-regular font-14 my-0">
-                        Complete the level and earn
-                      </p>
-                      <span className="space-grotesk-medium">1000 Meteors</span>
+
+                      {ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.milestone_description
+                        ?.split(/(\d+\s*meteors)/gi)
+                        ?.map((part, index) =>
+                          /(\d+\s*meteors)/i?.test(part) ? (
+                            <span className="space-grotesk-medium" key={index}>
+                              {part}
+                            </span>
+                          ) : (
+                            <p className="space-grotesk-regular font-14 my-0">
+                              {part}
+                            </p>
+                          ),
+                        )}
                     </div>
                     <div className="col-lg-3"></div>
                     <div className="col-lg-3 text-center text-dark-blue mt-4 pt-4 px-0">
                       <h4 className="mb-2 space-grotesk-medium font-24">
-                        Planet C
+                        {
+                          ContextFaqsDataAPI?.galaxy_data?.milestones[2]
+                            ?.milestone_name
+                        }
                       </h4>
-                      <p className="space-grotesk-regular font-14 my-0">
-                        Little more consistency and
-                      </p>
-                      you will earn{' '}
-                      <span className="space-grotesk-medium">2080 Meteors</span>
+                      {ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.milestone_description
+                        ?.split(/(\d+\s*meteors)/gi)
+                        ?.map((part, index) =>
+                          /(\d+\s*meteors)/i?.test(part) ? (
+                            <span className="space-grotesk-medium" key={index}>
+                              {part}
+                            </span>
+                          ) : (
+                            <p className="space-grotesk-regular font-14 my-0">
+                              {part}
+                            </p>
+                          ),
+                        )}
                     </div>
                     <div className="col-lg-3"></div>
                   </div>
@@ -541,15 +517,27 @@ const Index = ({ isExiting, isActive }) => {
                       />
                       <div className=" text-center text-dark-blue">
                         <h4 className="mb-2 space-grotesk-medium font-24">
-                          Planet B
+                          {
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[1]
+                              ?.milestone_name
+                          }
                         </h4>
-                        You are just{' '}
-                        <span className="space-grotesk-medium">
-                          1850 Meteors
-                        </span>
-                        <p className="space-grotesk-regular font-14 my-0">
-                          away to reach to this planet
-                        </p>
+                        {ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.milestone_description
+                          ?.split(/(\d+\s*meteors)/gi)
+                          ?.map((part, index) =>
+                            /(\d+\s*meteors)/i?.test(part) ? (
+                              <span
+                                className="space-grotesk-medium"
+                                key={index}
+                              >
+                                {part}
+                              </span>
+                            ) : (
+                              <p className="space-grotesk-regular font-14 my-0">
+                                {part}
+                              </p>
+                            ),
+                          )}
                       </div>
                     </div>
                     <div className="col-lg-3"></div>
@@ -561,15 +549,27 @@ const Index = ({ isExiting, isActive }) => {
                       />
                       <div className=" text-center text-dark-blue">
                         <h4 className="mb-2 space-grotesk-medium font-24">
-                          Planet D
+                          {
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[3]
+                              ?.milestone_name
+                          }
                         </h4>
-                        <span className="space-grotesk-medium">
-                          3080 Meteors
-                        </span>{' '}
-                        to go
-                        <p className="space-grotesk-regular font-14 my-0">
-                          and your exclusive reward awaits!!!
-                        </p>
+                        {ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.milestone_description
+                          ?.split(/(\d+\s*Star)/gi)
+                          ?.map((part, index) =>
+                            /(\d+\s*Star)/i?.test(part) ? (
+                              <span
+                                className="space-grotesk-medium"
+                                key={index}
+                              >
+                                {part}
+                              </span>
+                            ) : (
+                              <p className="space-grotesk-regular font-14 my-0">
+                                {part}
+                              </p>
+                            ),
+                          )}
                       </div>
                     </div>
                   </div>
@@ -665,9 +665,8 @@ const Index = ({ isExiting, isActive }) => {
                       alt="center-planet"
                       onClick={
                         currentIndex <= ContextHomeDataAPI?.part3?.length - 1
-                        ?
-                        toggleAnimtElements
-                        : null
+                          ? toggleAnimtElements
+                          : null
                       }
                       className={`img-fluid ${currentIndex <= ContextHomeDataAPI?.part3?.length - 1 ? 'cursor-pointer' : ''} rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${
                         isAnimating ? 'fade-down-shrink' : ''

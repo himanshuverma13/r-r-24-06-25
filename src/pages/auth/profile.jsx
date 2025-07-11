@@ -37,6 +37,13 @@ const Profile = () => {
     formState: { errors: errorsMeteor },
     watch: watchMeteor,
   } = useForm();
+  // Stars conversion form
+  const {
+    register: registerStar,
+    handleSubmit: handleSubmitStar,
+    formState: { errors: errorsStar },
+    watch: watchStar,
+  } = useForm();
 
   const navigate = useNavigate();
 
@@ -51,12 +58,18 @@ const Profile = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [ismeteroModalOpen, setIsmeteroModalOpen] = useState(false);
+  const [isStarModalOpen, setIsStarModalOpen] = useState(false);
   const [contratsModal, setcontratsModal] = useState(false);
   const [UserDataAPI, setUserDataAPI] = useState();
-  
+  console.log('UserDataAPI: ', UserDataAPI);
+
+  const { ContextFaqsDataAPI, ContextHomeDataAPI } = useContext(UserContext);
+  console.log('ContextHomeDataAPI: ', ContextHomeDataAPI);
+
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   // Add state to track the calculated value
   const [calculatedStars, setCalculatedStars] = useState(0);
+  const [calculatedCash, setCalculatedCash] = useState(0);
 
   // Message form state
   const [messageForm, setMessageForm] = useState({
@@ -65,7 +78,6 @@ const Profile = () => {
     message: '',
     files: [],
   });
-  
 
   // Sync profileData with messageForm
   useEffect(() => {
@@ -96,7 +108,7 @@ const Profile = () => {
   //   navigator.clipboard
   //     .writeText(text)
   //     .then(() => alert('Copied to clipboard!'))
-  //     .catch((err) => 
+  //     .catch((err) =>
   // };
 
   const codeRef = useRef();
@@ -124,7 +136,7 @@ const Profile = () => {
   // Handle profile image change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    
+
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -184,14 +196,13 @@ const Profile = () => {
         username: UserDataAPI?.part1,
         email: UserDataAPI?.part2,
         message: messageForm?.message,
-        files:messageForm?.files,
+        files: messageForm?.files,
       });
-      
+
       setIsMessageModalOpen(false);
       toastSuccess(enyptData?.message);
     } catch (error) {
       toastError(error?.error);
-      
     }
   };
 
@@ -208,9 +219,7 @@ const Profile = () => {
       });
       const Decrpty = await DecryptFunction(enyptData);
       setUserDataAPI(Decrpty);
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -240,18 +249,57 @@ const Profile = () => {
         password: data?.currentPassword,
         new_password: data?.newPassword,
       });
-      
-      const Decrpty = await DecryptFunction(enyptData);
-      
-      // setUserDataAPI(Decrpty);
+
+      toastSuccess(enyptData?.message);
+      if (enyptData?.success) {
+        const response = await postData('/profile', {
+          user_id: Auth?.user_id,
+          log_alt: Auth?.log_alt,
+          mode: Auth?.mode,
+        });
+        const Decrpty = await DecryptFunction(response);
+        setUserDataAPI(Decrpty);
+      }
     } catch (error) {
-      
+      toastError(error?.error);
     }
   };
 
-  const onMeteorConvert = (data) => {
-    
-    setcontratsModal(true);
+  const onMeteorConvert = async (data) => {
+    try {
+      const response = await postData('/meteors-to-stars', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+        meteors_to_debit: Number(data?.meteors),
+        stars_credited: calculatedStars,
+      });
+      console.log('response: ', response);
+      toastSuccess(response?.message);
+      setIsmeteroModalOpen(false);
+      setcontratsModal(true);
+    } catch (error) {
+      console.log('error: ', error);
+      toastError(error?.error);
+    }
+  };
+
+  const onStarConvert = async (data) => {
+    try {
+      const response = await postData('/stars-to-currency', {
+        user_id: Auth?.user_id,
+        log_alt: Auth?.log_alt,
+        mode: Auth?.mode,
+        stars_debited: Number(data?.stars),
+        currency_credited: calculatedCash,
+      });
+      toastSuccess(response?.message);
+      setIsStarModalOpen(false);
+      setcontratsModal(true);
+    } catch (error) {
+      console.log('error: ', error);
+      toastError(error?.error);
+    }
   };
 
   const modalRef = useRef(null); // Reference to modal content
@@ -471,7 +519,10 @@ const Profile = () => {
                     className="font-24 montserrat-bold text-primary-color"
                     role="button"
                   >
-                    X{' '}
+                    {
+                      ContextFaqsDataAPI?.conversion_data[0]?.conversion_rates
+                        ?.meteor_to_star
+                    }{' '}
                     <span className="font-16 montserrat-semibold">Meteors</span>
                   </span>
                   <span className="ml-60 mr-60 text-light-color">|</span>
@@ -479,14 +530,21 @@ const Profile = () => {
                     className="font-24 montserrat-bold text-primary-rr"
                     role="button"
                   >
-                    Y <span className="font-16 montserrat-semibold">Stars</span>
+                    {
+                      ContextFaqsDataAPI?.conversion_data[0]?.conversion_rates
+                        ?.star_to_meteor
+                    }{' '}
+                    <span className="font-16 montserrat-semibold">Stars</span>
                   </span>
                   <span className="ml-60 mr-60 text-light-color">|</span>
                   <span
                     className="font-24 montserrat-bold text-primary-color"
                     role="button"
                   >
-                    Z
+                    {
+                      ContextFaqsDataAPI?.conversion_data[0]?.conversion_rates
+                        ?.reward_to_currency
+                    }
                     <span className="font-16 montserrat-semibold">
                       {' '}
                       Cash/Points
@@ -500,7 +558,10 @@ const Profile = () => {
                   >
                     Convert meteors into stars
                   </button>
-                  <button className="btn btn-outlineDark font-14 text-primary-color montserrat-semibold">
+                  <button
+                    onClick={() => setIsStarModalOpen(true)}
+                    className="btn btn-outlineDark font-14 text-primary-color montserrat-semibold"
+                  >
                     Convert stars into cash/points
                   </button>
                 </div>
@@ -735,14 +796,12 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control font-14 text-primary-color montserrat-medium"
-                    {...registerProfile('name', {
-                      required: 'Name is required',
-                    })}
+                    {...registerProfile('name')}
                     defaultValue={UserDataAPI?.part1}
                   />
-                  {errorsProfile.name && (
+                  {/* {errorsProfile.name && (
                     <p className="text-danger">{errorsProfile.name.message}</p>
-                  )}
+                  )} */}
                 </div>
 
                 {/* Mobile No Input */}
@@ -754,7 +813,6 @@ const Profile = () => {
                     type="text"
                     className="form-control font-14 text-primary-color montserrat-medium"
                     {...registerProfile('mobile', {
-                      required: 'Mobile number is required',
                       maxLength: { value: 10, message: 'Max length is 10' },
                       pattern: {
                         value: /^\d{10}$/,
@@ -769,11 +827,11 @@ const Profile = () => {
                     }}
                     defaultValue={UserDataAPI?.part3}
                   />
-                  {errorsProfile.mobile && (
+                  {/* {errorsProfile.mobile && (
                     <p className="text-danger">
                       {errorsProfile.mobile.message}
                     </p>
-                  )}
+                  )} */}
                 </div>
 
                 {/* Email Input */}
@@ -939,49 +997,53 @@ const Profile = () => {
 
                   <div className="col-8">
                     {/* Custom File Upload Button */}
-                   <label className="custom-upload-btn w-100 text-light-color font-12">
-  <img src={UploadIcon} alt="Upload File Icon" className="me-2" />
-  Attachments (up to 5 files)
-  <input
-    type="file"
-    multiple
-    hidden
-    accept="image/*" // Optional: restrict to images
-    onChange={(e) => {
-      const files = Array.from(e.target.files);
-      
-      if (files.length > 5) {
-        alert(`You can only upload up to 5 files. You selected ${files.length} files.`);
-        return;
-      }
+                    <label className="custom-upload-btn w-100 text-light-color font-12">
+                      <img
+                        src={UploadIcon}
+                        alt="Upload File Icon"
+                        className="me-2"
+                      />
+                      Attachments (up to 5 files)
+                      <input
+                        type="file"
+                        multiple
+                        hidden
+                        accept="image/*" // Optional: restrict to images
+                        onChange={(e) => {
+                          const files = Array.from(e.target.files);
 
-      // Convert each file to base64
-      Promise.all(
-        files.map((file) => {
-          return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-              resolve({ file: reader.result });
-            };
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-          });
-        })
-      )
-      .then((base64Files) => {
-        // Assuming your messageForm has a 'files' array
-        setMessageForm((prev) => ({
-          ...prev,
-          files: base64Files,
-        }));
-      })
-      .catch((error) => {
-        
-      });
-    }}
-  />
-</label>
-                        {/* // onChange={(e) => {
+                          if (files.length > 5) {
+                            alert(
+                              `You can only upload up to 5 files. You selected ${files.length} files.`,
+                            );
+                            return;
+                          }
+
+                          // Convert each file to base64
+                          Promise.all(
+                            files.map((file) => {
+                              return new Promise((resolve, reject) => {
+                                const reader = new FileReader();
+                                reader.onloadend = () => {
+                                  resolve({ file: reader.result });
+                                };
+                                reader.onerror = reject;
+                                reader.readAsDataURL(file);
+                              });
+                            }),
+                          )
+                            .then((base64Files) => {
+                              // Assuming your messageForm has a 'files' array
+                              setMessageForm((prev) => ({
+                                ...prev,
+                                files: base64Files,
+                              }));
+                            })
+                            .catch((error) => {});
+                        }}
+                      />
+                    </label>
+                    {/* // onChange={(e) => {
                         //   const selectedFiles = Array.from(e.target.files);
                         //   const totalFiles =
                         //     messageForm.files.length + selectedFiles.length;
@@ -1004,7 +1066,10 @@ const Profile = () => {
                     {messageForm.files.length > 0 && (
                       <ul className="mt-2 file-list d-flex">
                         {messageForm.files.map((file, index) => {
-                          const ext = file?.file?.split('.')?.pop()?.toLowerCase();
+                          const ext = file?.file
+                            ?.split('.')
+                            ?.pop()
+                            ?.toLowerCase();
 
                           // Choose icon based on file type
                           let fileIcon;
@@ -1072,7 +1137,7 @@ const Profile = () => {
             </div>
           </div>
         )}
-        {/* My Wallet Modal */}
+        {/* Meteors Convert Modal */}
         {ismeteroModalOpen && (
           <div className="message-modal">
             <div
@@ -1097,20 +1162,32 @@ const Profile = () => {
                     <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
                       Your available meteors
                     </label>
+
                     <input
-                      type="text"
+                      type="number" // Changed to number for better number handling
                       {...registerMeteor('meteors', {
                         required: 'This field is required',
                         valueAsNumber: true,
                         validate: (value) =>
-                          value >= 0 || 'Must be a non-negative number',
+                          (value >= 0 && value <= ContextHomeDataAPI?.part2) ||
+                          `Must be a non-negative number and less than or equal to ${ContextHomeDataAPI?.part2}`,
                       })}
                       onChange={(e) => {
-                        const value = parseInt(e.target.value) || 0;
-                        setCalculatedStars(value + 7);
+                        const value = Math.min(
+                          parseInt(e.target.value) || 0,
+                          ContextHomeDataAPI?.part2,
+                        );
+                        setCalculatedStars(
+                          Math.floor(
+                            value /
+                              (ContextFaqsDataAPI?.conversion_data[0]
+                                ?.conversion_rates?.meteor_to_star || 1),
+                          ),
+                        );
                       }}
                       className="form-control font-12 text-primary-color montserrat-medium mb-20"
                       placeholder="Enter number of meteors"
+                      max={ContextHomeDataAPI?.part2} // Prevents user from entering more than 8000
                     />
                     {errorsMeteor.meteors && (
                       <p className="text-danger font-12">
@@ -1146,6 +1223,132 @@ const Profile = () => {
                       I agree to the conversion terms
                     </label>
                     {errorsMeteor.terms && (
+                      <p className="text-danger font-12">
+                        You must agree to the terms
+                      </p>
+                    )}
+                  </div>
+                  <span className="text-blue montserrat-medium font-12">
+                    T&C applied
+                  </span>
+                </div>
+                <button
+                  type="submit"
+                  className="w-100 mt-3 background-text-blue text-white py-2 border-0 rounded-5"
+                >
+                  Convert
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+        {/* Stars Convert Modal */}
+        {isStarModalOpen && (
+          <div className="message-modal">
+            <div
+              className={`modal-content h-auto bg-light-gray-blue slide-in p-4`}
+            >
+              <button
+                className="btn_close border-0 bg-transparent"
+                onClick={() => setIsStarModalOpen(false)}
+              >
+                <img className="close-icon" src={Close} alt="Close icon" />
+              </button>
+              <h5 className="font-18 montserrat-semibold text-light-color mb-8">
+                My Wallet
+              </h5>
+              <p className="font-12 text-primary-color montserrat-medium mb-20">
+                Convert your Stars and stars below
+              </p>
+
+              <form onSubmit={handleSubmitStar(onStarConvert)}>
+                <div className="row">
+                  <div className="col-lg-12">
+                    <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
+                      Your available Stars
+                    </label>
+                    {/* <input
+                      type="text"
+                      {...registerStar('stars', {
+                        required: 'This field is required',
+                        valueAsNumber: true,
+                        validate: (value) =>
+                          (value >= 0 && value <= ContextHomeDataAPI?.part1) ||
+                          'Must be a non-negative number',
+                      })}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value) || 0;
+                        setCalculatedCash(
+                          Math.floor(
+                            value /
+                              ContextFaqsDataAPI?.conversion_data[0]
+                                ?.conversion_rates?.reward_to_currency,
+                          ),
+                        );
+                      }}
+                      className="form-control font-12 text-primary-color montserrat-medium mb-20"
+                      placeholder="Enter number of stars"
+                    /> */}
+                    <input
+                      type="number" // Changed to number for better number handling
+                      {...registerMeteor('stars', {
+                        required: 'This field is required',
+                        valueAsNumber: true,
+                        validate: (value) =>
+                          (value >= 0 && value <= ContextHomeDataAPI?.part1) ||
+                          `Must be a non-negative number and less than or equal to ${ContextHomeDataAPI?.part1}`,
+                      })}
+                      onChange={(e) => {
+                        const value = Math.min(
+                          parseInt(e.target.value) || 0,
+                          ContextHomeDataAPI?.part1,
+                        );
+                        setCalculatedStars(
+                          Math.floor(
+                            value /
+                              (ContextFaqsDataAPI?.conversion_data[0]
+                                ?.conversion_rates?.meteor_to_star || 1),
+                          ),
+                        );
+                      }}
+                      className="form-control font-12 text-primary-color montserrat-medium mb-20"
+                      placeholder="Enter number of stars"
+                      max={ContextHomeDataAPI?.part1} // Prevents user from entering more than 8000
+                    />
+                    {errorsStar.stars && (
+                      <p className="text-danger font-12">
+                        {errorsStar.stars.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="col-lg-12">
+                    <label className="form-label mb-8 font-14 text-light-color montserrat-regular">
+                      Stars you’ll get after conversion
+                    </label>
+                    <input
+                      className="form-control meterStarConvrt font-12  montserrat-medium mb-20"
+                      type="text"
+                      value={calculatedCash}
+                      readOnly
+                      {...registerStar('cash')}
+                    />
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between align-items-center mt-3">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      {...registerStar('terms', { required: true })}
+                      id="flexCheckChecked"
+                    />
+                    <label
+                      className="form-check-label montserrat-medium font-12 text-light-gray"
+                      htmlFor="flexCheckChecked"
+                    >
+                      I agree to the conversion terms
+                    </label>
+                    {errorsStar.terms && (
                       <p className="text-danger font-12">
                         You must agree to the terms
                       </p>
