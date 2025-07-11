@@ -64,7 +64,6 @@ const Profile = () => {
   console.log('UserDataAPI: ', UserDataAPI);
 
   const { ContextFaqsDataAPI, ContextHomeDataAPI } = useContext(UserContext);
-  console.log('ContextHomeDataAPI: ', ContextHomeDataAPI);
 
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   // Add state to track the calculated value
