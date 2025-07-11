@@ -31,13 +31,13 @@ const Product = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
     speed: 500,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1400,
         settings: {
-          slidesToShow: 4.2,
+          slidesToShow: 4.4,
         },
       },
       {
@@ -234,9 +234,9 @@ const Product = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-3 text-end  mt-3 mt-lg-0">
-                <button className="montserrat-semibold px-4 border-0 font-16 py-2 rounded-3 background-text-blue text-white">
-                  Explore More Products <IoIosArrowForward />
+              <div className="col-lg-3 text-end mb-2">
+                <button className="montserrat-semibold px-4 border-0 font-16 py-2 rounded-3 background-text-blue text-white d-flex align-items-center justify-content-center">
+                  Explore More Products <IoIosArrowForward className='ms-2' />
                 </button>
               </div>
             </div>

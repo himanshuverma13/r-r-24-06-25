@@ -152,7 +152,7 @@ const ConfirmForgotPasswordOtp = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <h3 className="montserrat-medium font-14 text-blue mb-5">
                   Enter the verification code sent on{' '}
-                  <span className="text-uppercase">{`${UserEmailNum?.slice(0, 3)}XXXXXXXX`}</span>
+                  <span className="">{`${UserEmailNum?.slice(0, 3)}XXXXXXXX`}</span>
                 </h3>
                 {/* OTP Section */}
 
