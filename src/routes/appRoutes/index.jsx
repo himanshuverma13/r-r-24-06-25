@@ -19,6 +19,7 @@ import { DecryptFunction } from '../../utils/decryptFunction';
 import UserFaqs from '../../pages/auth/userFaqs';
 import Error from '../../pages/Errror/error';
 import ProtectedRoute from '../protectedRoute';
+import Invitefriend from '../../pages/home/invitefriend';
 
 const AppRoutes = () => {
   const { setContextHomeDataAPI, setContextFaqsDataAPI } =
@@ -110,6 +111,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <UserFaqs />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/invite-friend"
+          element={
+            <ProtectedRoute>
+              <Invitefriend />
             </ProtectedRoute>
           }
         />

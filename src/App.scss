@@ -1062,15 +1062,15 @@ body::-webkit-scrollbar {
   transition: all 0.25s ease-in-out;
 }
 
-.active-blur-shadow {
-  bottom: 35px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.2);
-  filter: blur(30px);
-  border-radius: 50%;
-  z-index: 0;
-  display: none;
-}
+// .active-blur-shadow {
+//   bottom: 35px;
+//   height: 50px;
+//   background: rgba(255, 255, 255, 0.2);
+//   filter: blur(30px);
+//   border-radius: 50%;
+//   z-index: 0;
+//   display: none;
+// }
 
 // Sidebar styles
 .mobile-menu-toggle {
