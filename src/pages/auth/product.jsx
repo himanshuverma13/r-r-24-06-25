@@ -31,7 +31,7 @@ const Product = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
     speed: 500,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     responsive: [
       {
@@ -148,7 +148,7 @@ const Product = () => {
       });
       if (response?.success) {
         toastSuccess(response?.message);
-        navigate("/")
+        navigate("/login")
         localStorage.removeItem('uid')
       }
     } catch (error) {

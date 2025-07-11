@@ -22,6 +22,7 @@ const ResetPassword = () => {
     formState: { errors },
   } = useForm();
   const GetEmail = localStorage.getItem('email');
+  const GetOtp = localStorage.getItem("otp")
 
   const { setAuthLocal } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -34,16 +35,18 @@ const ResetPassword = () => {
         new_password: data?.password,
         confirm_password: data?.confirmpassword,
         email: GetEmail,
+        verification_code:Number(GetOtp)
       });
 
       if (response.success) {
         toastSuccess(response?.message)
         localStorage.removeItem('email');
+        localStorage.removeItem('otp');
         navigate('/login');
       }
     } catch (error) {
       toastError(error?.message)
-      console.log('error: ', error);
+      
     } finally {
       setLoading(false);
     }
@@ -60,7 +63,7 @@ const ResetPassword = () => {
         <div className="col-lg-7">
           <div className="text-center mt-5">
             <p className="font-size-46 text-blue montserrat-bold mb-3">
-              Forget Password
+              Forgot Password
             </p>
             <p className="text-blue montserrat-semibold font-size-20 pb-3">
               Forgot your password? Don’t worry, we’ll help you reset it!

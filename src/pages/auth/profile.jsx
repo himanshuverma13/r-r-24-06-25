@@ -53,6 +53,7 @@ const Profile = () => {
   const [ismeteroModalOpen, setIsmeteroModalOpen] = useState(false);
   const [contratsModal, setcontratsModal] = useState(false);
   const [UserDataAPI, setUserDataAPI] = useState();
+  
   const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
   // Add state to track the calculated value
   const [calculatedStars, setCalculatedStars] = useState(0);
@@ -64,7 +65,7 @@ const Profile = () => {
     message: '',
     files: [],
   });
-  console.log('messageForm: ', messageForm);
+  
 
   // Sync profileData with messageForm
   useEffect(() => {
@@ -95,7 +96,7 @@ const Profile = () => {
   //   navigator.clipboard
   //     .writeText(text)
   //     .then(() => alert('Copied to clipboard!'))
-  //     .catch((err) => console.error('Could not copy text: ', err));
+  //     .catch((err) => 
   // };
 
   const codeRef = useRef();
@@ -123,7 +124,7 @@ const Profile = () => {
   // Handle profile image change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    console.log('file: ', file);
+    
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -185,12 +186,12 @@ const Profile = () => {
         message: messageForm?.message,
         files:messageForm?.files,
       });
-      console.log('enyptData: ', enyptData);
+      
       setIsMessageModalOpen(false);
       toastSuccess(enyptData?.message);
     } catch (error) {
       toastError(error?.error);
-      console.log('error: ', error);
+      
     }
   };
 
@@ -208,7 +209,7 @@ const Profile = () => {
       const Decrpty = await DecryptFunction(enyptData);
       setUserDataAPI(Decrpty);
     } catch (error) {
-      console.log('error: ', error);
+      
     }
   };
 
@@ -239,17 +240,17 @@ const Profile = () => {
         password: data?.currentPassword,
         new_password: data?.newPassword,
       });
-      console.log('enyptData: ', enyptData);
+      
       const Decrpty = await DecryptFunction(enyptData);
-      console.log('Decrpty: ', Decrpty);
+      
       // setUserDataAPI(Decrpty);
     } catch (error) {
-      console.log('error: ', error);
+      
     }
   };
 
   const onMeteorConvert = (data) => {
-    console.log('data: ', data);
+    
     setcontratsModal(true);
   };
 
@@ -277,7 +278,7 @@ const Profile = () => {
   // ------Logout Functionailty
   const HandleLogout = () => {
     localStorage.removeItem('Auth');
-    navigate('/');
+    navigate('/login');
   };
 
   return (
@@ -410,7 +411,7 @@ const Profile = () => {
                 type="text"
                 className="w-100 text-light-color montserrat-medium font-14 input-profile-copy-link bg-light-purple-transparent border-0"
                 // value={UserDataAPI?.part7}
-                value={inviteLink}
+                value={UserDataAPI?.part7}
                 readOnly
               />
               <button
@@ -430,7 +431,7 @@ const Profile = () => {
                 type="text"
                 className="w-100 text-light-color montserrat-medium font-14 input-profile-copy-link bg-light-purple-transparent border-0"
                 // value={UserDataAPI?.part8}
-                value={inviteCode}
+                value={UserDataAPI?.part8}
                 readOnly
               />
               <button
@@ -975,7 +976,7 @@ const Profile = () => {
         }));
       })
       .catch((error) => {
-        console.error('Error reading files:', error);
+        
       });
     }}
   />

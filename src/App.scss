@@ -1704,8 +1704,8 @@ body::-webkit-scrollbar {
     position: absolute;
     left: 0;
     top: 33%;
-    width: 30%;
-    margin-top: -15%;
+    width: 15%;
+    margin-top: -7.5%;
     z-index: 2;
     animation: moveRocket 5s linear forwards;
   }
@@ -3175,8 +3175,8 @@ body::-webkit-scrollbar {
 .orange-planet {
   position: absolute;
   top: 0px;
-  left: -30px;
-  width: 210.55px;
+  left: 0px;
+  width: 120px;
   height: 115.12px;
   // z-index: 1;
 }
@@ -3884,6 +3884,11 @@ body::-webkit-scrollbar {
   height: max-content !important;
 }
 
+.notify-cross{
+  font-size: 10px !important;
+}
+
+
 // ======================Profile Section END ======================
 /* =================== MEDIA QUERY ===============================*/
 
@@ -4175,6 +4180,16 @@ body::-webkit-scrollbar {
       }
     }
   }
+}
+
+// above 1920 screen css
+@media only screen and (min-width: 1920px){
+    .footer-responsive {
+        margin-top: 0% !important;
+    }
+        .play-earn-box {
+        margin-top: 0% !important;
+    }
 }
 
 /* =================== MEDIA QUERY END ========================== */

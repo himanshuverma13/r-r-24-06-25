@@ -4,7 +4,7 @@ import navCenterImg from '../assets/images/home/navCenterImg.svg';
 
 const Navbar = () => {
   const navItems = [
-    { label: 'Home', to: '/home', color: 'orange' },
+    { label: 'Home', to: '/', color: 'orange' },
     { label: 'My Rewards', to: '/reward', color: 'green' },
     { img: navCenterImg },
     { label: 'My Referrals', to: '/referral', color: 'blue' },

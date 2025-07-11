@@ -86,7 +86,6 @@ const LoginOtp = () => {
       setTimeout(() => {
         setOtpStatus('sent');
         toastInfo(response);
-        console.log('response: ', response);
         if (response?.success) {
           toastSuccess(response?.message);
           // alert('OTP Verified Successfully');
@@ -101,7 +100,6 @@ const LoginOtp = () => {
       }, 1000);
     } catch (error) {
       setOtpStatus('sent');
-      console.log('error: ', error);
     }
   };
 

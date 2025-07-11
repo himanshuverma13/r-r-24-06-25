@@ -171,7 +171,7 @@ const Registration = () => {
                   </button>
                   <p className="font-12 montserrat-regular text-center mt-3 text-light-gray">
                      Already a user? <span>
-                      <NavLink to={"/"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
+                      <NavLink to={"/login"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
                         Login Now
                       </NavLink>
                     </span>
