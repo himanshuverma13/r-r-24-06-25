@@ -170,7 +170,7 @@ const MyRewardFirstScreen = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 2000,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -222,7 +222,7 @@ const MyRewardFirstScreen = () => {
     centerPadding: '40px',
     slidesToShow: 3.1,
     swipeToSlide: true,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 2000,
     speed: 500,
     afterChange: function (index) {
