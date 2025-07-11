@@ -390,7 +390,7 @@ const MyRewardFirstScreen = () => {
 
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} z-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} mt-lg-0 mt-5 z-3`}
                 >
                   <div className="col-lg-5 col-md-8 d-flex justify-content-start align-items-center px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
