@@ -200,7 +200,6 @@ const Howitworks = ({ isActive, isExiting }) => {
       });
       const Decrpty = await DecryptFunction(enyptData);
     } catch (error) {
-      console.log('error: ', error);
     }
   };
 

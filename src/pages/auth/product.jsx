@@ -148,7 +148,7 @@ const Product = () => {
       });
       if (response?.success) {
         toastSuccess(response?.message);
-        navigate("/")
+        navigate("/login")
         localStorage.removeItem('uid')
       }
     } catch (error) {

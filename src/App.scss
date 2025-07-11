@@ -3862,6 +3862,11 @@ body::-webkit-scrollbar {
   height: max-content !important;
 }
 
+.notify-cross{
+  font-size: 10px !important;
+}
+
+
 // ======================Profile Section END ======================
 /* =================== MEDIA QUERY ===============================*/
 
@@ -4146,6 +4151,16 @@ body::-webkit-scrollbar {
       }
     }
   }
+}
+
+// above 1920 screen css
+@media only screen and (min-width: 1920px){
+    .footer-responsive {
+        margin-top: 0% !important;
+    }
+        .play-earn-box {
+        margin-top: 0% !important;
+    }
 }
 
 /* =================== MEDIA QUERY END ========================== */

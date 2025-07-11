@@ -53,7 +53,7 @@ const AppRoutes = () => {
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
         <Route
           path="/confirmforgotPasswordotp"
@@ -66,11 +66,11 @@ const AppRoutes = () => {
 
         {/* Protected Routes */}
         <Route
-          path="/home"
+          path="/"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <Home />
-            // </ProtectedRoute>
+             </ProtectedRoute>
           }
         />
         <Route
@@ -84,25 +84,25 @@ const AppRoutes = () => {
         <Route
           path="/reward"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <MyRewardFirstScreen />
-            // </ProtectedRoute>
+             </ProtectedRoute>
           }
         />
         <Route
           path="/referral"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <MyReferralScreen />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/profile"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <Profile />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
         <Route

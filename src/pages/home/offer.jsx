@@ -122,7 +122,6 @@ useEffect(() => {
       });
       const Decrpty = await DecryptFunction(enyptData);
       setFaqDataAPI();
-      // console.log('Decrpty: ', Decrpty);
     } catch (error) {
       console.log('error: ', error);
     }

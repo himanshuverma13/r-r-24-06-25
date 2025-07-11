@@ -50,7 +50,7 @@ const SendOtpForgotPassword = () => {
         <div className="col-lg-7">
           <div className="text-center mt-5">
             <p className="font-size-46 text-blue montserrat-bold mb-3">
-              Forget Password
+              Forgot Password
             </p>
             <p className="text-blue montserrat-semibold font-size-20 pb-3">
               Forgot your password? Don’t worry, we’ll help you reset it!
@@ -64,7 +64,7 @@ const SendOtpForgotPassword = () => {
             </div>
             <div className="col-lg-6 col-md-6 col-12">
               <h3 className="montserrat-medium font-14 text-blue mb-3">
-                Enter your Email/ Number and we will send you a verification code!
+                Enter your Email and we will send you a verification code!
               </h3>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-5">
@@ -72,9 +72,9 @@ const SendOtpForgotPassword = () => {
                     type="text"
                     className="form-control login-form py-2"
                     id="exampleFormControlInput1"
-                    placeholder="Your Email/ Mobile No"
+                    placeholder="Your Email"
                     {...register('contact', {
-                      required: 'Email / Number is required',
+                      required: 'Email is required',
                       validate: (value) => {
                         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                         const numberRegex = /^\d{10}$/;

@@ -132,7 +132,6 @@ const Index = ({ isExiting, isActive }) => {
         mode: Auth?.mode,
       });
       const Decrpty = await DecryptFunction(enyptData);
-      console.log('Decrpty: ', Decrpty);
       setHomeDataAPI(Decrpty);
       setContextHomeDataAPI(Decrpty);
       setCurrentIndex(Decrpty?.part4?.length - 1 || 0);
@@ -144,8 +143,6 @@ const Index = ({ isExiting, isActive }) => {
   useEffect(() => {
     HandleAPI();
   }, []);
-  
-   const pnt =3000
 
   return (
     <>
@@ -591,7 +588,7 @@ const Index = ({ isExiting, isActive }) => {
                           <div className="modal-header border-0">
                             <button
                               type="button"
-                              className="btn-close bg-light p-2 font-8 mb-2 rounded-circle cursor-pointer z-1"
+                              className="btn-close bg-light p-2 notify-cross mb-2 rounded-circle cursor-pointer z-1"
                               onClick={handleClose}
                               aria-label="Close"
                             ></button>

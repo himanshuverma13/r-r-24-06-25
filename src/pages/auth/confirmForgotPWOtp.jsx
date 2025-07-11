@@ -87,6 +87,7 @@ const ConfirmForgotPasswordOtp = () => {
       setOtpStatus('verifying');
       setTimeout(() => {
         if (response?.success) {
+          localStorage.setItem("otp",Number(otp?.join('')))
           toastSuccess(response?.message)
           navigate('/resetpassword');
           setOtpStatus('sent');
@@ -135,7 +136,7 @@ const ConfirmForgotPasswordOtp = () => {
         <div className="col-lg-7">
           <div className="text-center mt-3">
             <p className="font-size-46 text-blue montserrat-bold mb-3">
-              Forget Password
+              Forgot Password
             </p>
             <p className="text-blue montserrat-semibold font-size-20 pb-3">
               Forgot your password? Don’t worry, we’ll help you reset it!
