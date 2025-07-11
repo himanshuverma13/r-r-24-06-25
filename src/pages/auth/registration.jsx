@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 // Assets icons
@@ -6,6 +6,7 @@ import Logo from '../../assets/icons/logo/logo.svg';
 import { postData } from '../../services/api';
 import { toastError, toastSuccess } from '../../utils/toster';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 const Registration = () => {
   const {
@@ -16,6 +17,8 @@ const Registration = () => {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { ContextInviteRefferAPI, setContextInviteRefferAPI } =
+    useContext(UserContext);
 
   const password = watch('password');
   const onSubmit = async (data) => {
@@ -30,7 +33,11 @@ const Registration = () => {
         referral_code: data?.referralCode,
         tag_id: '',
       });
-      localStorage.setItem("uid",response?.user_id)
+      console.log('response: ', response);
+      // if(response?.rewards){
+        // }
+        setContextInviteRefferAPI(response?.rewards[0]?.signup_reward)
+      localStorage.setItem('uid', response?.user_id);
       toastSuccess(response?.message);
       navigate('/subscription');
     } catch (error) {
@@ -50,12 +57,14 @@ const Registration = () => {
           <div className="col-lg-7">
             <div className="text-center mt-2">
               <p className="font-44 text-blue montserrat-bold mb-2">
-                You have been Invited
+                {/* You have been Invited */}
+
+                Registration
               </p>
-              <p className="text-blue montserrat-semibold font-20 pb-2">
+              {/* <p className="text-blue montserrat-semibold font-20 pb-2">
                 Riya invited you! Sign up now to get your reward and start your
                 journey <br /> to more exclusive perks
-              </p>
+              </p> */}
             </div>
             <div className="login-form-section register-form">
               <form
@@ -170,8 +179,14 @@ const Registration = () => {
                     {loading ? 'Loading...' : 'Sign Up'}
                   </button>
                   <p className="font-12 montserrat-regular text-center mt-3 text-light-gray">
-                     Already a user? <span>
-                      <NavLink to={"/login"} className={"text-blue font-14 montserrat-medium text-decoration-none"}>
+                    Already a user?{' '}
+                    <span>
+                      <NavLink
+                        to={'/login'}
+                        className={
+                          'text-blue font-14 montserrat-medium text-decoration-none'
+                        }
+                      >
                         Login Now
                       </NavLink>
                     </span>
