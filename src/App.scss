@@ -2351,10 +2351,12 @@ body::-webkit-scrollbar {
   border-bottom-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-.discount-card-footer{
+
+.discount-card-footer {
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.1);
-  .copy-btn{
+
+  .copy-btn {
     border-radius: 2px;
   }
 }
@@ -2534,6 +2536,8 @@ body::-webkit-scrollbar {
 .ufo-fixed {
   // position: fixed;
   top: 3%;
+  transition: all 0.4s ease;
+  transform: translateY(-20px);
 }
 
 .ufo-nav-bg {
@@ -2549,16 +2553,19 @@ body::-webkit-scrollbar {
   // position: fixed;
   // right: 5%;
   top: 12%;
+  transform: translateY(0);
   animation: moveUpRewUfo 0.7s ease forwards;
 }
 
 @keyframes moveUpRewUfo {
   from {
     top: 12%;
+     transform: translateY(-10px);
   }
 
   to {
     top: 6%;
+     transform: translateY(0);
   }
 }
 
@@ -3211,6 +3218,7 @@ body::-webkit-scrollbar {
   top: 90px;
   // right: 7.5%;
 }
+
 .button:active {
   background-color: var(--text-blue) !important;
   color: white !important;
@@ -3936,7 +3944,7 @@ body::-webkit-scrollbar {
   height: max-content !important;
 }
 
-.notify-cross{
+.notify-cross {
   font-size: 10px !important;
 }
 
@@ -4085,6 +4093,7 @@ body::-webkit-scrollbar {
       margin-top: 0.25rem;
     }
   }
+
   .progress-side-hr,
   .progress-side-hr11,
   .progress-side-hr-2 {
@@ -4222,13 +4231,25 @@ body::-webkit-scrollbar {
 }
 
 // above 1920 screen css
-@media only screen and (min-width: 1920px){
-    .footer-responsive {
-        margin-top: 0% !important;
-    }
-        .play-earn-box {
-        margin-top: 0% !important;
-    }
+@media only screen and (min-width: 1920px) {
+  .footer-responsive {
+    margin-top: 0% !important;
+  }
+
+  .play-earn-box {
+    margin-top: 0% !important;
+  }
 }
 
 /* =================== MEDIA QUERY END ========================== */
+
+
+.login-bg{
+  background: url(./assets/icons/auth/login-side.svg);
+  background-size: contain;
+  // object-fit: cover;
+  height: 272px;
+  width: 100%;
+  background-position:center;
+  background-repeat: no-repeat;
+}

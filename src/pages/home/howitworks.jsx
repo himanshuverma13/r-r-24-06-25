@@ -284,9 +284,8 @@ const Howitworks = ({ isActive, isExiting }) => {
     <section
       id="HowItWorks_Section"
       ref={sectionRef}
-      className={`section-howitworks text-center ${
-        showExit ? (scrollDir === 'down' ? 'zoom-down-out' : 'fade-out') : ''
-      } ${isActive ? 'aos-animate zoom-in-up-custom start-animation' : 'zoom-down'}`}
+      className={`section-howitworks text-center ${showExit ? (scrollDir === 'down' ? 'zoom-down-out' : 'fade-out') : ''
+        } ${isActive ? 'aos-animate zoom-in-up-custom start-animation' : 'zoom-down'}`}
     >
       <div className="container position-relative h-100">
         <h2 className="space-grotesk-bold section-heading font-40 text-black-secondry">
@@ -324,7 +323,7 @@ const Howitworks = ({ isActive, isExiting }) => {
               </div>
 
               <div
-                className={`col-4 howitworks-step ${step >= 3 ? 'visible' : ''}`}
+                className={`col-4 d-flex align-items-end justify-content-center howitworks-step ${step >= 3 ? 'visible' : ''}`}
               >
                 <img
                   src={Planet2}
@@ -349,7 +348,7 @@ const Howitworks = ({ isActive, isExiting }) => {
                 <div className={`timeline-dot ${step >= 3 ? 'visible' : ''}`} />
                 <div className={`timeline-dot ${step >= 4 ? 'visible' : ''}`} />
                 <div className="timeline-border" />
-            <img src={Rocketgif} alt="Rocket" className="rocket-gif" />
+                <img src={Rocketgif} alt="Rocket" className="rocket-gif" />
 
               </div>
 

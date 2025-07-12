@@ -378,7 +378,7 @@ const Profile = () => {
               </div>
             </div>
             <div className="d-flex h-max-content">
-              <span className="ref-code-div font-14 montserrat-medium me-4 px-3">
+              <span className="ref-code-div font-14 montserrat-medium me-4 px-3 rounded-2 d-flex align-items-center justify-content-center">
                 <span className="text-ref-code montserrat-medium">
                   Ref Code
                 </span>{' '}
@@ -387,7 +387,7 @@ const Profile = () => {
                 </span>
               </span>
               <button
-                className="btn btn-dark btn-sm btn-edit-profile position-relative pe-3"
+                className="btn background-text-blue  btn-sm btn-edit-profile position-relative pe-3"
                 onClick={() => setIsEditModalOpen(true)}
               >
                 <img

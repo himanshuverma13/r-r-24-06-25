@@ -184,7 +184,7 @@ const Login = () => {
         </div>
         <div className="row p-4 d-flex justify-content-center align-items-center">
           <div className="col-lg-7">
-            <div className="text-center mt-5">
+            <div className="text-center mt-lg-0 mt-5">
               <p className="font-46 text-blue montserrat-bold mb-3">Login</p>
               <p className="text-blue montserrat-semibold font-20 pb-3">
                 Log in to continue enjoying the perks and stay engaged with our
@@ -192,9 +192,9 @@ const Login = () => {
               </p>
             </div>
             <div className="login-form-section row py-3 px-3 d-flex justify-content-center align-items-center">
-              <div className="col-lg-6 col-md-12 col-12 d-flex justify-content-center align-items-center">
-                <div className="login-img">
-                  <img src={Loginimg} alt="Laoding" className="img-fluid" />
+              <div className="col-lg-6 col-md-12 col-12">
+                <div className="login-img login-bg">
+                  {/* <img src={Loginimg} alt="Laoding" className="img-fluid" /> */}
                 </div>
               </div>
               <div className="col-lg-6 col-md-12 col-12 pt-3">
@@ -210,7 +210,7 @@ const Login = () => {
                       })}
                     />
                     {errors.email && (
-                      <div className="text-danger">{errors.email.message}</div>
+                      <div className="text-danger font-14">{errors.email.message}</div>
                     )}
                   </div>
                   <div class="mb-1">
@@ -224,7 +224,7 @@ const Login = () => {
                       })}
                     />
                     {errors.password && (
-                      <div className="text-danger">
+                      <div className="text-danger font-14">
                         {errors.password.message}
                       </div>
                     )}
