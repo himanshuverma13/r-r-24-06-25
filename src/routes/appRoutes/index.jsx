@@ -94,12 +94,13 @@ const AppRoutes = () => {
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/loginOtp" element={<LoginOtp />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/subscription" element={<Product />} />
 
         {/* Protected Routes */}
-        <Route
+        {/* <Route
           path="/subscription"
           element={AuthLocal ? <Product /> : <Navigate to="/login" replace />}
-        />
+        /> */}
         <Route
           path="/reward"
           element={

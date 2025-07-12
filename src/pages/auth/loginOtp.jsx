@@ -27,6 +27,7 @@ const LoginOtp = () => {
   const mobileNumber = watch('mobile');
   const [otp, setOtp] = useState(new Array(6).fill(''));
   const [activeIndex, setActiveIndex] = useState(0);
+  const [getNumber, setgetNumber] = useState();
   const inputRefs = useRef([]);
   const [otpStatus, setOtpStatus] = useState('sent'); // 'sent', 'verifying', 'error'
   const [error, setError] = useState('');
@@ -88,7 +89,7 @@ const LoginOtp = () => {
 
       setTimeout(async () => {
         setOtpStatus('sent');
-        toastInfo(response);
+        // toastInfo(response?.message);
         if (response?.mode) {
           toastSuccess(response?.message);
           // Save AUTHENTICATOION in localstorage
@@ -120,18 +121,23 @@ const LoginOtp = () => {
         }
       }, 1000);
     } catch (error) {
+      toastError(error?.message);
       setOtpStatus('sent');
     }
   };
 
-  const handleResend = () => {
+  const handleResend = async () => {
     setOtp(new Array(6).fill(''));
     setOtpStatus('sent');
     setError('');
     setTimer(60);
     inputRefs.current[0].focus();
-    // alert('OTP Resent');
-    toastInfo('OTP Resent');
+    const response = await postData('/login/mobile-send-otp', {
+      mobile_number: getNumber,
+    });
+    if (response?.success) {
+      toastInfo('OTP Resent');
+    }
   };
 
   const formatTime = (seconds) => {
@@ -143,6 +149,7 @@ const LoginOtp = () => {
   const HandleNumber = async (e) => {
     try {
       const value = e.target.value;
+      setgetNumber(value);
       if (!/^\d*$/.test(value)) {
         return;
       }

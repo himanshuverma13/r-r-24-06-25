@@ -87,7 +87,6 @@ let ColorCode = ["user-green-card",
 "user-purple-card",]
 
 const SliderCard = ({RefralDataAPI}) => {
-    console.log('RefralDataAPI: ', RefralDataAPI);
     const [showTable, setShowTable] = useState(false);
     var settings = {
         arrows: false,
