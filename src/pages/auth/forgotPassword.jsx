@@ -31,7 +31,7 @@ const SendOtpForgotPassword = () => {
 
       if (response?.success) {
         toastSuccess(response?.message)
-        localStorage.setItem("email",data?.contact)
+        sessionStorage.setItem("email",data?.contact)
         navigate('/confirmforgotPasswordotp');
       }
     } catch (error) {

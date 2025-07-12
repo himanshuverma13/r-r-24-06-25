@@ -61,11 +61,11 @@ const Profile = () => {
   const [isStarModalOpen, setIsStarModalOpen] = useState(false);
   const [contratsModal, setcontratsModal] = useState(false);
   const [UserDataAPI, setUserDataAPI] = useState();
-  console.log('UserDataAPI: ', UserDataAPI);
+  
 
   const { ContextFaqsDataAPI, ContextHomeDataAPI } = useContext(UserContext);
 
-  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
   // Add state to track the calculated value
   const [calculatedStars, setCalculatedStars] = useState(0);
   const [calculatedCash, setCalculatedCash] = useState(0);
@@ -114,8 +114,7 @@ const Profile = () => {
   const linkRef = useRef();
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
-  const inviteCode = 'ABC123XYZ';
-  const inviteLink = 'https://yourapp.com/invite/ABC123XYZ';
+
 
   const handleCopy = (ref, type) => {
     if (ref.current) {
@@ -324,7 +323,7 @@ const Profile = () => {
 
   // ------Logout Functionailty
   const HandleLogout = () => {
-    localStorage.removeItem('Auth');
+    sessionStorage.removeItem('Auth');
     navigate('/login');
   };
 
@@ -354,7 +353,7 @@ const Profile = () => {
                     </span>
                   )}
                 </div>
-                <label className="add-photo-icon d-flex align-items-center justify-content-center">
+                {/* <label className="add-photo-icon d-flex align-items-center justify-content-center">
                   <input
                     type="file"
                     accept="image/*"
@@ -366,10 +365,10 @@ const Profile = () => {
                     src={AddIcon}
                     alt="Add"
                   />
-                </label>
+                </label> */}
               </div>
               <div className="user-details">
-                <h4 className="mb-3 user-name montserrat-semibold font-24 text-primary-color">
+                <h4 className="mb-3 user-name montserrat-semibold font-24 text-uppercase text-primary-color">
                   {UserDataAPI?.part1}
                 </h4>
                 <small className="user-contact montserrat-medium font-16">

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
 // Assets icons
@@ -11,6 +11,8 @@ import { postData } from '../../services/api';
 import checkCircle from '../../assets/icons/auth/CheckCircle.svg';
 import { useNavigate } from 'react-router-dom';
 import { toastError, toastInfo, toastSuccess } from '../../utils/toster';
+import { UserContext } from '../../utils/UseContext/useContext';
+import { DecryptFunction } from '../../utils/decryptFunction';
 
 const LoginOtp = () => {
   const {
@@ -19,6 +21,8 @@ const LoginOtp = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const { setAuthLocal, setContextHomeDataAPI, setContextFaqsDataAPI } =
+    useContext(UserContext);
 
   const mobileNumber = watch('mobile');
   const [otp, setOtp] = useState(new Array(6).fill(''));
@@ -77,18 +81,35 @@ const LoginOtp = () => {
   const handleVerify = async () => {
     setOtpStatus('verifying');
     try {
-      console.clear();
       const response = await postData('/login/mobile-verify-otp', {
         mobile_number: mobileNumber,
         otp_input: otp?.join(''),
       });
 
-      setTimeout(() => {
+      setTimeout(async () => {
         setOtpStatus('sent');
         toastInfo(response);
-        if (response?.success) {
+        if (response?.mode) {
           toastSuccess(response?.message);
-          // alert('OTP Verified Successfully');
+          // Save AUTHENTICATOION in localstorage
+          sessionStorage.setItem('Auth', JSON?.stringify(response));
+          setAuthLocal(response);
+          const enyptData = await postData('/home', {
+            user_id: response?.user_id,
+            log_alt: response?.log_alt,
+            mode: response?.mode,
+          });
+
+          // fetch-custom-data API for ALL FAQs
+          const FaqsData = await postData('/admin/fetch-custom-data', {
+            user_id: response?.user_id,
+            log_alt: response?.log_alt,
+            mode: response?.mode,
+          });
+          setContextFaqsDataAPI(FaqsData);
+
+          let Decrpty = await DecryptFunction(enyptData);
+          setContextHomeDataAPI(Decrpty);
           navigate('/');
           setOtpStatus('sent');
           setError('');
@@ -175,6 +196,7 @@ const LoginOtp = () => {
                     type="text"
                     className="form-control py-2 text-blue montserrat-bold"
                     maxLength="10"
+                    placeholder="Enter Register Number"
                     inputMode="numeric"
                     {...register('mobile', {
                       required: true,
