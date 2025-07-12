@@ -715,10 +715,10 @@ const MyRewardFirstScreen = () => {
                                   {item.badgeText}
                                 </div>
                               </div>
-                            <div className='discount-card-footer p-2 d-flex justify-content-between'>
-                              <p className='text-white mb-0 font-12 montserrat-regular'>Coupon code: <span className='text-uppercase font-14 montserrat-medium'>CB1234</span></p>
-                              <button className='border-0 bg-white text-blue font-10 montserrat-regular copy-btn px-2'>Copy Code</button>
-                            </div>
+                              <div className='discount-card-footer p-2 d-flex justify-content-between'>
+                                <p className='text-white mb-0 font-12 montserrat-regular'>Coupon code: <span className='text-uppercase font-14 montserrat-medium'>CB1234</span></p>
+                                <button className='border-0 bg-white text-blue font-10 montserrat-regular copy-btn px-2'>Copy Code</button>
+                              </div>
                             </div>
                           </div>
                         ))}

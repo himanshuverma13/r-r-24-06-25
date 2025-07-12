@@ -44,7 +44,7 @@ const faqData = [
 ];
 
 const MyReferralScreen = () => {
-
+  const inputRef = useRef(null);
   const [copied, setCopied] = useState(false);
   const [RefralDataAPI, setRefralDataAPI] = useState();
 
@@ -150,18 +150,17 @@ const MyReferralScreen = () => {
 
   return (
     <>
-      <section className="hero-section position-relative section-referral">
+      <section className="hero-section position-relative">
         {/*
         <div className="referral-wrapper position-relative">
         <div className="container z-1 pt-5">
         <ReferralCards />
           </div>
         </div> */}
-        <div className="overflow-scroll h-100 z-3">
-
         <Navbar />
+        <div className="overflow-scroll h-100 z-3">
           <div className="container pt-36">
-            <div className="mb-5-">
+            <div className="mb-5">
               <ReferralCards RefralDataAPI={RefralDataAPI} />
             </div>
             <div className="invite-card my-refral-inner-content overflow-hidden">
@@ -219,17 +218,17 @@ const MyReferralScreen = () => {
                   </div>
                 </div>
                 <div className="col-lg-12 pb-4 pt-5 text-center">
-                  <img className="mx-3 w-auto" src={whtpImg} alt="share on whatsapp"
+                  <img className="mx-3 w-auto" src={whtpImg} alt=""
                     onClick={handleWhatsappClick}
                   />
-                  <img className="mx-3 w-auto" src={fbImg} alt="share on facebook"
+                  <img className="mx-3 w-auto" src={fbImg} alt=""
                     onClick={() => handleIconLink('facebook')}
                   />
-                  <img className="mx-3 w-auto" src={instaImg} alt="share on Instagram"
+                  <img className="mx-3 w-auto" src={instaImg} alt=""
                     onClick={() => handleIconLink('insta')}
                   />
-                  {/* <img className="mx-3 w-auto" src={ytImg} alt="share on youtube" /> */}
-                  <img className="mx-3 w-auto" src={twitImg} alt="share on twitter"
+                  {/* <img className="mx-3 w-auto" src={ytImg} alt="" /> */}
+                  <img className="mx-3 w-auto" src={twitImg} alt=""
                     onClick={() => handleIconLink('twitter')}
                   />
                 </div>
@@ -260,15 +259,15 @@ const MyReferralScreen = () => {
                     <img className="mx-4" src={StartFour} alt="Loading" />
                     You Earn
                   </div>
-                  <div className="mt-3 row justify-content-center align-items-center">
-                    <div className='col-8 col-lg-2'>
+                  <div className="mt-3 row justify-content-between justify-content-lg-center align-items-center">
+                    <div className='col-6 col-lg-3'>
                      <NavLink to={"/invite-friend"}>
-                       <button className="py-2 mb-4 mb-lg-0 w-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                       <button className="py-2 mb-0 w-100 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
                         Invite a Friend
                       </button>
                      </NavLink>
                     </div>
-                    <div className='col-8 col-lg-2'>
+                    <div className='col-6 col-lg-3'>
                       <button className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
                         Track
                       </button>
@@ -284,18 +283,17 @@ const MyReferralScreen = () => {
           </div>
           {/* FOOTER SECTION */}
           <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
-          <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
-            <p className="width-lg-26 width-50 font-32 space-grotesk-medium mb-5 text-white align-self-end">
-              The more you refer, the brighter your rewards shine!
-            </p>
+            <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
+              <p className="width-lg-26 width-80 font-32 space-grotesk-medium mb-5 text-white align-self-end">
+                The more you refer, the brighter your rewards shine!
+              </p>
+            </div>
+            <div
+              className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
+            ></div>
           </div>
-          <div
-            className={`position-absolute footer-semi-planet ${showFooterPlanet ? 'fade-in-up' : 'invisible'}`}
-          ></div>
         </div>
-          <div className="cloud-img position-absolute w-100 z-2"></div>
-        </div>
-
+        <div className="cloud-img position-absolute w-100 z-2"></div>
       </section>
     </>
   );
