@@ -192,7 +192,7 @@ const Invitefriend = ({ isActive , isExiting }) => {
                 </span>
               </li>
               <li
-                onClick={() => handleIconLink('insta')}
+                onClick={() => handleIconLink('linkedin')}
                 className="social-list cursor-pointer"
               >
                 <span
