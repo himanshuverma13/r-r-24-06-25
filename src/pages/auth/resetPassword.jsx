@@ -21,8 +21,8 @@ const ResetPassword = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const GetEmail = localStorage.getItem('email');
-  const GetOtp = localStorage.getItem("otp")
+  const GetEmail = sessionStorage.getItem('email');
+  const GetOtp = sessionStorage.getItem("otp")
 
   const { setAuthLocal } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -40,8 +40,8 @@ const ResetPassword = () => {
 
       if (response.success) {
         toastSuccess(response?.message)
-        localStorage.removeItem('email');
-        localStorage.removeItem('otp');
+        sessionStorage.removeItem('email');
+        sessionStorage.removeItem('otp');
         navigate('/login');
       }
     } catch (error) {

@@ -163,7 +163,7 @@ const FaqData = [
 ];
 
 const MyRewardFirstScreen = () => {
-  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
   const { ContextHomeDataAPI, ContextFaqsDataAPI } = useContext(UserContext);
 
   const rewardSliderSetting = {
@@ -659,7 +659,7 @@ const MyRewardFirstScreen = () => {
                             </div>
 
                             {/* <h4 className="font-14 montserrat-regular">1000 Meteors</h4> */}
-                            {index >= ContextHomeDataAPI?.part3?.length ? (
+                            {index >= ContextHomeDataAPI?.part4?.length ? (
                               <button className="background-text-blue w-100 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
                                 1000 Meteors{' '}
                                 <img

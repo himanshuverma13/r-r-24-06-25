@@ -29,7 +29,7 @@ const ConfirmForgotPasswordOtp = () => {
   const [timer, setTimer] = useState(60);
       const [loading, setLoading] = useState(false);
 
-  const UserEmailNum = localStorage.getItem('email');
+  const UserEmailNum = sessionStorage.getItem('email');
   // Timer countdown
   useEffect(() => {
     let interval;
@@ -87,7 +87,7 @@ const ConfirmForgotPasswordOtp = () => {
       setOtpStatus('verifying');
       setTimeout(() => {
         if (response?.success) {
-          localStorage.setItem("otp",Number(otp?.join('')))
+          sessionStorage.setItem("otp",Number(otp?.join('')))
           toastSuccess(response?.message)
           navigate('/resetpassword');
           setOtpStatus('sent');

@@ -59,7 +59,7 @@ const Offer = ({ isActive }) => {
     },
   ];
 
-  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
   const settings = {
     dots: false,
     infinite: true,
@@ -76,7 +76,6 @@ const Offer = ({ isActive }) => {
   const [FaqDataAPI, setFaqDataAPI] = useState();
 
   const { ContextFaqsDataAPI } = useContext(UserContext);
-  console.log('ContextFaqsDataAPI: ', ContextFaqsDataAPI);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
