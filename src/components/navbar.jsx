@@ -108,7 +108,7 @@ const Navbar = () => {
                     )
                   )}
                   <span
-                    className="nav-indicator position-absolute"
+                    className="nav-indicator rounded-pill position-absolute"
                     ref={indicatorRef}
                   ></span>
                   <span
