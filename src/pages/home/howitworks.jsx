@@ -184,7 +184,7 @@ const Howitworks = ({ isActive, isExiting }) => {
   const [showSteps, setShowSteps] = useState(false);
   const [showExit, setShowExit] = useState(false);
   const [scrollDir, setScrollDir] = useState('down'); // Local scroll direction
-  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
   const { ContextFaqsDataAPI } = useContext(UserContext);
 
   // =================================

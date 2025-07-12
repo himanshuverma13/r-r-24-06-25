@@ -5,7 +5,7 @@ import { UserContext } from '../../utils/UseContext/useContext';
 const ProtectedRoute = ({ children }) => {
   const { AuthLocal, setAuthLocal } = useContext(UserContext);
 let isAuthenticated;
-isAuthenticated = JSON?.parse(localStorage.getItem('Auth')); // or use Redux/store
+isAuthenticated = JSON?.parse(sessionStorage.getItem('Auth')); // or use Redux/store
 console.log('isAuthenticated: ', isAuthenticated);
   useEffect(() => {
 

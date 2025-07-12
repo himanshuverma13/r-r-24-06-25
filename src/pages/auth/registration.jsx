@@ -35,9 +35,9 @@ const Registration = () => {
       });
       console.log('response: ', response);
       // if(response?.rewards){
-        // }
-        setContextInviteRefferAPI(response?.rewards[0]?.signup_reward)
-      localStorage.setItem('uid', response?.user_id);
+      // }
+      setContextInviteRefferAPI(response?.rewards[0]?.signup_reward);
+      sessionStorage.setItem('uid', response?.user_id);
       toastSuccess(response?.message);
       navigate('/subscription');
     } catch (error) {
@@ -58,7 +58,6 @@ const Registration = () => {
             <div className="text-center mt-2">
               <p className="font-44 text-blue montserrat-bold mb-2">
                 {/* You have been Invited */}
-
                 Registration
               </p>
               {/* <p className="text-blue montserrat-semibold font-20 pb-2">
@@ -78,7 +77,13 @@ const Registration = () => {
                       class="form-control py-2"
                       id="exampleFormControlInput1"
                       placeholder="Your Name"
-                      {...register('name', { required: 'Name is required' })}
+                      {...register('name', {
+                        required: 'Name is required',
+                        minLength: {
+                          value: 4,
+                          message: 'Name must be at least 4 characters long',
+                        },
+                      })}
                     />
                     {errors.name && (
                       <div className="text-danger">{errors.name.message}</div>

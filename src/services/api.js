@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 // Get Auth From LocalStorage
-const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
 
 // 🔧 Base URL setup
-const ApiURL =  'https://d4bc3f2709e2.ngrok-free.app'; // Replace with your actual API base URL
+const ApiURL = 'https://d4bc3f2709e2.ngrok-free.app'; // Replace with your actual API base URL
 
 // 🌐 Axios instance
 const api = axios.create({
@@ -30,6 +30,11 @@ export const postData = async (endpoint, payload = {}) => {
     const response = await api.post(endpoint, payload);
     return response.data;
   } catch (error) {
+    if (error?.response?.data?.message == 'Access token has expired') {
+      sessionStorage.removeItem("Auth");
+      window.location.href = '/login'; 
+       throw error.response?.data || error.message;
+    }
     throw error.response?.data || error.message;
   }
 };
@@ -54,15 +59,15 @@ export const deleteData = async (endpoint, params = {}) => {
   }
 };
 
-// POST API TO SEND FILE UPLOAD 
+// POST API TO SEND FILE UPLOAD
 // ✅ POST Request: with payload (body)
 export const ProfileContactAPI = async (endpoint, payload = {}) => {
   try {
     const response = await axios.post(`${ApiURL}${endpoint}`, payload, {
-        headers: {
-            'Content-Type': 'multipart/form-data' 
-        }
-    })
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return response.data;
   } catch (error) {
     throw error.response?.data || error.message;

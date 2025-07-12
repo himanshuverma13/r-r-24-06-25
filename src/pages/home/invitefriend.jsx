@@ -20,7 +20,7 @@ const Invitefriend = ({ isActive , isExiting }) => {
   // const [animateMiddle, setAnimateMiddle] = useState(false);
   const [copied, setCopied] = useState(false);
   const { ContextHomeDataAPI } = useContext(UserContext);
-  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
 
   // Disable scroll outside while active
   // useEffect(() => {

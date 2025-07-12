@@ -1,5 +1,10 @@
-import React, { useContext, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 
 import Login from '../../pages/auth/login';
 // import NotFound from "../pages/NotFound";
@@ -27,7 +32,7 @@ const AppRoutes = () => {
     setContextFaqsDataAPI,
     setAuthLocal,
   } = useContext(UserContext);
-  const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+  const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
   const HandleAPI = async () => {
     try {
       const enyptData = await postData('/home', {
@@ -55,38 +60,74 @@ const AppRoutes = () => {
   }, []);
 
   // check if login or not functionality
+  // useEffect(() => {
+  //   let getvalue = JSON.parse(sessionStorage.getItem('Auth') ?? '[]');
+  //   setAuthLocal(getvalue?.mode);
+  // }, [AuthLocal]);
+
+    const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    let getvalue = JSON.parse(localStorage.getItem('Auth') ?? '[]');
-    setAuthLocal(getvalue?.mode);
-  }, [AuthLocal]);
+    const getValue = JSON.parse(sessionStorage.getItem('Auth') ?? 'null');
+    setAuthLocal(getValue?.mode ?? null);
+    setLoading(false);
+  }, []);
+
+  if (loading) return null; // or a loading spinner
 
   return (
     <Router>
       <Routes>
-        {!AuthLocal ? (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
-            <Route
-              path="/confirmforgotPasswordotp"
-              element={<ConfirmForgotPasswordOtp />}
-            />
-            <Route path="/resetpassword" element={<ResetPassword />} />
-            <Route path="/loginOtp" element={<LoginOtp />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/subscription" element={<Product />} />
-          </>
-        ) : (
-          <>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/subscription" element={<Product />} /> */}
-            <Route path="/reward" element={<MyRewardFirstScreen />} />
-            <Route path="/referral" element={<MyReferralScreen />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/profile-faqs" element={<UserFaqs />} />
-          </>
+        {/* Redirect unauthenticated access to root (/) to /login */}
+        {!AuthLocal && (
+          <Route path="/" element={<Navigate to="/login" replace />} />
         )}
-        <Route path="*" element={<Login />} />
+        {AuthLocal && <Route path="/" element={<Home />} />}
+
+        {/* Public Routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
+        <Route
+          path="/confirmforgotPasswordotp"
+          element={<ConfirmForgotPasswordOtp />}
+        />
+        <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/loginOtp" element={<LoginOtp />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/subscription" element={<Product />} />
+
+        {/* Protected Routes */}
+        {/* <Route
+          path="/subscription"
+          element={AuthLocal ? <Product /> : <Navigate to="/login" replace />}
+        /> */}
+        <Route
+          path="/reward"
+          element={
+            AuthLocal ? (
+              <MyRewardFirstScreen />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/referral"
+          element={
+            AuthLocal ? <MyReferralScreen /> : <Navigate to="/login" replace />
+          }
+        />
+        <Route
+          path="/profile"
+          element={AuthLocal ? <Profile /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/profile-faqs"
+          element={AuthLocal ? <UserFaqs /> : <Navigate to="/login" replace />}
+        />
+
+        {/* Catch-all route */}
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );

@@ -21,7 +21,7 @@ import { UserContext } from '../../utils/UseContext/useContext';
 const Product = () => {
   const navigate = useNavigate();
 
-  const uid = localStorage.getItem('uid');
+  const uid = sessionStorage.getItem('uid');
     const { ContextInviteRefferAPI, setContextInviteRefferAPI } =
       useContext(UserContext);
 
@@ -152,7 +152,7 @@ const Product = () => {
       if (response?.success) {
         toastSuccess(response?.message);
         navigate("/login")
-        localStorage.removeItem('uid')
+        sessionStorage.removeItem('uid')
       }
     } catch (error) {
       toastError(error?.message);

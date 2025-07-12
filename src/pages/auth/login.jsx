@@ -37,7 +37,7 @@ const Login = () => {
       });
       if (response?.mode) {
         // Save AUTHENTICATOION in localstorage
-        localStorage.setItem('Auth', JSON?.stringify(response));
+        sessionStorage.setItem('Auth', JSON?.stringify(response));
         setAuthLocal(response);
         const enyptData = await postData('/home', {
           user_id: response?.user_id,
@@ -204,9 +204,9 @@ const Login = () => {
                       type="text"
                       class="form-control login-form py-2"
                       id="exampleFormControlInput1"
-                      placeholder="Your Email/ Mobile No"
+                      placeholder="Your Email"
                       {...register('email', {
-                        required: 'Email / Number is required',
+                        required: 'Email is required',
                       })}
                     />
                     {errors.email && (
