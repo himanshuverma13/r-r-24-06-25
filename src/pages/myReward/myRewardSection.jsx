@@ -45,6 +45,7 @@ import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { GiBackwardTime } from "react-icons/gi";
+import { NavLink } from 'react-router-dom';
 
 const RewardSliderJson = [
   { num: 'A', img: gifplnt1, lock: false },
@@ -842,9 +843,11 @@ const MyRewardFirstScreen = () => {
             </div>
             <div className="pt-3 row justify-content-between justify-content-lg-center align-items-center">
               <div className='col-6 col-lg-3'>
-                <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+               <NavLink to={"/invitefriend"}>
+                 <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
                   Invite a Friend
                 </button>
+               </NavLink>
               </div>
               <div className='col-6 col-lg-3'>
                 <button className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
