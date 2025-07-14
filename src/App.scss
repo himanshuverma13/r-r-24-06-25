@@ -2551,6 +2551,44 @@ body::-webkit-scrollbar {
       #1b4965 100%);
   height: 95px;
   top: 0;
+   animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes slideDownNav {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpNav {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+
+
+.ufo-nav-bg-animation {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.slide-down {
+  animation-name: slideDownNav;
+}
+
+.slide-up {
+  animation-name: slideUpNav;
 }
 
 .ufo-fixed-active {
@@ -3276,6 +3314,7 @@ body::-webkit-scrollbar {
   cursor: pointer;
   z-index: 1;
   height: 450px;
+  padding: 2.5rem 0;
 }
 
 .referral-card:hover {
@@ -4186,22 +4225,26 @@ body::-webkit-scrollbar {
     padding-top: 2%;
   }
 }
-
+@media (max-height: 900px) {
+  .cloud-img {
+    top: 60%!important;
+  }
+}
 @media (max-height: 768px) {
   .cloud-img {
-    top: 65%;
+    top: 65%!important;
   }
 }
 
 @media (max-height: 700px) {
   .reward-section {
     &.height-100vh {
-      height: 150vh !important;
+      height: 130vh !important;
     }
   }
 
   .cloud-img {
-    width: 60%;
+    width: 60%!important;
   }
 
   .invitefriend-wrapper {
@@ -4249,3 +4292,32 @@ body::-webkit-scrollbar {
 }
 
 /* =================== MEDIA QUERY END ========================== */
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.8s ease, opacity 0.8s ease, transform 0.8s ease;
+
+  &.open {
+    max-height: 500px; // or large enough to fit content
+    opacity: 1;
+    transform: translateY(0);
+  }
+  & .card-body{
+    padding: pxToRem(24) pxToRem(16) pxToRem(38) pxToRem(8); 
+    border-bottom: 1px solid $push-notification;
+  }
+}
+
+
+.login-bg{
+  background: url(./assets/icons/auth/login-side.svg);
+  background-size: contain;
+  // object-fit: cover;
+  height: 272px;
+  width: 100%;
+  background-position:center;
+  background-repeat: no-repeat;
+}
