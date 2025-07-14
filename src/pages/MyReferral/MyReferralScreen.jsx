@@ -288,7 +288,7 @@ const MyReferralScreen = () => {
           {/* FOOTER SECTION */}
           <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
             <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
-              <p className="width-lg-26 width-80 width-lg-26 font-32 space-grotesk-medium mb-5 text-white align-self-end">
+              <p className="width-lg-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
                 The more you refer, the brighter your rewards shine!
               </p>
             </div>
