@@ -816,7 +816,7 @@ const MyRewardFirstScreen = () => {
           </div>
         </div>
         {/* PLAY AND EARN CARDS */}
-        <div className="container">
+        <div className="container" id="play-and-earn" >
           <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-4 pb-4 ">Play & Earn</h2>
           <PlayAndEarnCard />
         </div>
@@ -843,11 +843,11 @@ const MyRewardFirstScreen = () => {
             </div>
             <div className="pt-3 row justify-content-between justify-content-lg-center align-items-center">
               <div className='col-6 col-lg-3'>
-               <NavLink to={"/invitefriend"}>
-                 <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
-                  Invite a Friend
-                </button>
-               </NavLink>
+                <NavLink to={"/invitefriend"}>
+                  <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                    Invite a Friend
+                  </button>
+                </NavLink>
               </div>
               <div className='col-6 col-lg-3'>
                 <button className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">

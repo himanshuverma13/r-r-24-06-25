@@ -14,7 +14,7 @@ const Error = () => {
                         <img src={ErrorImg} className='error-img' alt="Loading" />
                     </div>
 
-                    <NavLink to={"/home"}>
+                    <NavLink to={"/"}>
                         <button className='font-18 mt-4 montserrat-semibold text-blue bg-white border-0 px-5 py-2 rounded-pill'>Go Back</button>
                     </NavLink>
                 </div>
