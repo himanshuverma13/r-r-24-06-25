@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../../utils/UseContext/useContext';
 
 const Herosection = ({ currentPlnt, HomeDataAPI }) => {
-  const { ContextFaqsDataAPI,ContextHomeDataAPI } = useContext(UserContext);
+  const { ContextFaqsDataAPI,ContextHomeDataAPI,MeterUpdateData } = useContext(UserContext);
 
   let LtrToNum = currentPlnt?.charCodeAt(0) - 64;
   // console.log(LtrToNum - 1 , ContextHomeDataAPI?.part3?.length - 1);
@@ -28,7 +28,7 @@ const Herosection = ({ currentPlnt, HomeDataAPI }) => {
             <span className="d-block font-16 space-grotesk-regular text-white mb-1">
               Meteors Gained
             </span>
-            {HomeDataAPI?.part2 || 0} Meteors
+            {MeterUpdateData?.meteors || 0} Meteors
           </li>
           <li className="list-unstyled text-dark-blue  montserrat-semibold font-24">
             <span className="d-block font-16 space-grotesk-regular text-white mb-1">
@@ -66,7 +66,7 @@ const Herosection = ({ currentPlnt, HomeDataAPI }) => {
               <span className="d-block font-16 space-grotesk-regular text-white mb-1">
                 Meteors Gained
               </span>
-              {HomeDataAPI?.part2 || 0} Meteors
+              {MeterUpdateData?.meteors || 0} Meteors
             </div>
             <div className="list-unstyled text-dark-blue montserrat-semibold font-24">
               <span className="d-block font-16 space-grotesk-regular text-white mb-1">

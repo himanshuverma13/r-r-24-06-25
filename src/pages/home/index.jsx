@@ -38,8 +38,9 @@ const Index = ({ isExiting, isActive }) => {
     ContextFaqsDataAPI,
     ContextHomeDataAPI,
     setContextHomeDataAPI,
+    MeterUpdateData,
+    setMeterUpdateData,
   } = useContext(UserContext);
-
 
   // --------------------------------------------------
   const [currentIndex, setCurrentIndex] = useState(
@@ -144,6 +145,37 @@ const Index = ({ isExiting, isActive }) => {
     }
   };
 
+  const UpdMtrData = async () => {
+    try {
+      const enyptData = await postData(
+        `/update-user-rewards/${Auth?.user_id}`,
+        {
+          user_id: Auth?.user_id,
+          log_alt: Auth?.log_alt,
+          mode: Auth?.mode,
+        },
+      );
+      setMeterUpdateData(enyptData);
+      // const Decrpty = await DecryptFunction(enyptData);
+      // console.log('Decrpty: ', Decrpty);
+      // setHomeDataAPI(Decrpty);
+      // setContextHomeDataAPI(Decrpty);
+      // setCurrentIndex(Decrpty?.part4?.length - 1 || 0);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
+  useEffect(() => {
+    const updateMeteors = setInterval(() => {
+      UpdMtrData();
+    }, 7000);
+
+    return () => {
+      clearInterval(updateMeteors);
+    };
+  }, []);
+
   useEffect(() => {
     HandleAPI();
   }, []);
@@ -233,12 +265,14 @@ const Index = ({ isExiting, isActive }) => {
             ) : (
               // second page middle section sidepanel and 4 plnts
               <div
-                className={`row justify-content-between second-screen-xl ${isExiting ? 'hidden-second-sect' : 'visible-second-sect'} ${isActive ? 'default-position' : 'hidden-second-sect'} ${!SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
-                  }`}
+                className={`row justify-content-between second-screen-xl ${isExiting ? 'hidden-second-sect' : 'visible-second-sect'} ${isActive ? 'default-position' : 'hidden-second-sect'} ${
+                  !SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
+                }`}
               >
                 <div
-                  className={`col-lg-2 px-0 d-flex flex-column justify-content-between ${!SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
-                    }`}
+                  className={`col-lg-2 px-0 d-flex flex-column justify-content-between ${
+                    !SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
+                  }`}
                 >
                   <div
                     className={`left-sidebar-main-div ${isExiting ? 'hidden-second-sect' : 'visible-second-sect'} ${isActive ? 'default-position' : 'hidden-second-sect'} `}
@@ -258,7 +292,9 @@ const Index = ({ isExiting, isActive }) => {
                             />{' '}
                             <hr className="opacity-100 progress-side-hr " />
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock ? (
+                          {ContextHomeDataAPI?.part2 <=
+                          ContextFaqsDataAPI?.galaxy_data?.milestones[0]
+                            ?.meteors_required_to_unlock ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
@@ -273,7 +309,9 @@ const Index = ({ isExiting, isActive }) => {
                           className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock + 1 && ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock ? (
+                            {ContextHomeDataAPI?.part2 <=
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[0]
+                              ?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -281,13 +319,23 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock + 1 &&
-                              ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
+                            {ContextHomeDataAPI?.part2 >=
+                              ContextFaqsDataAPI?.galaxy_data?.milestones[0]
+                                ?.meteors_required_to_unlock +
+                                1 &&
+                            ContextHomeDataAPI?.part2 <=
+                              ContextFaqsDataAPI?.galaxy_data?.milestones[2]
+                                ?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock + 1 &&
-                            ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? (
+                          {ContextHomeDataAPI?.part2 >=
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[0]
+                              ?.meteors_required_to_unlock +
+                              1 &&
+                          ContextHomeDataAPI?.part2 <=
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[1]
+                              ?.meteors_required_to_unlock ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
@@ -302,7 +350,9 @@ const Index = ({ isExiting, isActive }) => {
                           className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock + 1 && ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? (
+                            {ContextHomeDataAPI?.part2 <=
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[1]
+                              ?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -310,13 +360,23 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock + 1 &&
-                              ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
+                            {ContextHomeDataAPI?.part2 >=
+                              ContextFaqsDataAPI?.galaxy_data?.milestones[1]
+                                ?.meteors_required_to_unlock +
+                                1 &&
+                            ContextHomeDataAPI?.part2 <=
+                              ContextFaqsDataAPI?.galaxy_data?.milestones[2]
+                                ?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock + 1 &&
-                            ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
+                          {ContextHomeDataAPI?.part2 >=
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[1]
+                              ?.meteors_required_to_unlock +
+                              1 &&
+                          ContextHomeDataAPI?.part2 <=
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[2]
+                              ?.meteors_required_to_unlock ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
@@ -331,7 +391,9 @@ const Index = ({ isExiting, isActive }) => {
                           className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock + 1 && ContextHomeDataAPI?.part2 <= 4000 ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
-                            {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock ? (
+                            {ContextHomeDataAPI?.part2 <=
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[3]
+                              ?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr11" />
                             ) : null}
                             <img
@@ -339,13 +401,17 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock + 1 &&
-                              ContextHomeDataAPI?.part2 <= 6000 ? (
+                            {ContextHomeDataAPI?.part2 >=
+                              ContextFaqsDataAPI?.galaxy_data?.milestones[3]
+                                ?.meteors_required_to_unlock +
+                                1 && ContextHomeDataAPI?.part2 <= 6000 ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock + 1 &&
-                            ContextHomeDataAPI?.part2 <= 6000 ? (
+                          {ContextHomeDataAPI?.part2 >=
+                            ContextFaqsDataAPI?.galaxy_data?.milestones[3]
+                              ?.meteors_required_to_unlock +
+                              1 && ContextHomeDataAPI?.part2 <= 6000 ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
@@ -404,7 +470,7 @@ const Index = ({ isExiting, isActive }) => {
                       </div>
                     </div>
                   </div>
-                  <NavLink to={"/reward"} className={"text-decoration-none"}>
+                  <NavLink to={'/reward'} className={'text-decoration-none'}>
                     <div
                       className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box play-earn-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'}`}
                       ref={leftBoxRef}
@@ -421,7 +487,10 @@ const Index = ({ isExiting, isActive }) => {
                       <img src={longarrow} alt="longarrow" />
                     </div>
                   </NavLink>
-                  <NavLink to={"/invitefriend"} className={"text-decoration-none"}>
+                  <NavLink
+                    to={'/invitefriend'}
+                    className={'text-decoration-none'}
+                  >
                     <div
                       className={`d-flex justify-content-evenly background-dark-pink mt-0 rounded-2 position-relative py-2 left-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'} `}
                       ref={leftBoxRef}
@@ -671,8 +740,9 @@ const Index = ({ isExiting, isActive }) => {
                           ? toggleAnimtElements
                           : null
                       }
-                      className={`img-fluid ${currentIndex <= ContextHomeDataAPI?.part4?.length - 1 ? 'cursor-pointer' : ''} rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${isAnimating ? 'fade-down-shrink' : ''
-                        }`}
+                      className={`img-fluid ${currentIndex <= ContextHomeDataAPI?.part4?.length - 1 ? 'cursor-pointer' : ''} rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${
+                        isAnimating ? 'fade-down-shrink' : ''
+                      }`}
                     />
                   </div>
                 </div>
