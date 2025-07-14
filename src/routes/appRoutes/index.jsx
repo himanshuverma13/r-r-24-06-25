@@ -65,7 +65,7 @@ const AppRoutes = () => {
   //   setAuthLocal(getvalue?.mode);
   // }, [AuthLocal]);
 
-    const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getValue = JSON.parse(sessionStorage.getItem('Auth') ?? 'null');
@@ -85,7 +85,7 @@ const AppRoutes = () => {
         {AuthLocal && <Route path="/" element={<Home />} />}
 
         {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} />
         <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
         <Route
           path="/confirmforgotPasswordotp"
@@ -94,13 +94,51 @@ const AppRoutes = () => {
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/loginOtp" element={<LoginOtp />} />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/subscription" element={<Product />} />
+        <Route path="/invite-link/:id" element={<Registration />} />
+        <Route path="/subscription" element={<Product />} /> */}
+
+        <Route
+          path="/login"
+          element={AuthLocal ? <Navigate to="/" replace /> : <Login />}
+        />
+        <Route
+          path="/forgotpassword"
+          element={
+            AuthLocal ? <Navigate to="/" replace /> : <SendOtpForgotPassword />
+          }
+        />
+        <Route
+          path="/confirmforgotPasswordotp"
+          element={
+            AuthLocal ? (
+              <Navigate to="/" replace />
+            ) : (
+              <ConfirmForgotPasswordOtp />
+            )
+          }
+        />
+        <Route
+          path="/resetpassword"
+          element={AuthLocal ? <Navigate to="/" replace /> : <ResetPassword />}
+        />
+        <Route
+          path="/loginOtp"
+          element={AuthLocal ? <Navigate to="/" replace /> : <LoginOtp />}
+        />
+        <Route
+          path="/registration"
+          element={AuthLocal ? <Navigate to="/" replace /> : <Registration />}
+        />
+        <Route
+          path="/invite-link/:id"
+          element={AuthLocal ? <Navigate to="/" replace /> : <Registration />}
+        />
+        <Route
+          path="/subscription"
+          element={AuthLocal ? <Navigate to="/" replace /> : <Product />}
+        />
 
         {/* Protected Routes */}
-        {/* <Route
-          path="/subscription"
-          element={AuthLocal ? <Product /> : <Navigate to="/login" replace />}
-        /> */}
         <Route
           path="/reward"
           element={

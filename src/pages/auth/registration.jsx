@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import Logo from '../../assets/icons/logo/logo.svg';
 import { postData } from '../../services/api';
 import { toastError, toastSuccess } from '../../utils/toster';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../../utils/UseContext/useContext';
 
 const Registration = () => {
@@ -20,6 +20,10 @@ const Registration = () => {
   const { ContextInviteRefferAPI, setContextInviteRefferAPI } =
     useContext(UserContext);
 
+    const GetParams = useParams()
+    console.log('GetParams: ', GetParams?.id);
+
+
   const password = watch('password');
   const onSubmit = async (data) => {
     setLoading(true);
@@ -31,7 +35,7 @@ const Registration = () => {
         username: data?.name,
         password: data?.password,
         referral_code: data?.referralCode,
-        tag_id: '',
+        tag_id: GetParams?.id,
       });
       console.log('response: ', response);
       // if(response?.rewards){
