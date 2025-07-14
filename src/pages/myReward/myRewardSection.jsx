@@ -45,6 +45,8 @@ import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { GiBackwardTime } from "react-icons/gi";
+import { NavLink } from 'react-router-dom';
+import { toastInfo } from '../../utils/toster';
 
 const RewardSliderJson = [
   { num: 'A', img: gifplnt1, lock: false },
@@ -342,6 +344,7 @@ const MyRewardFirstScreen = () => {
 
   const codeRef = useRef();
   const linkRef = useRef();
+  const couponRef = useRef();
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const inviteCode = "ABC123XYZ";
@@ -716,8 +719,22 @@ const MyRewardFirstScreen = () => {
                                 </div>
                               </div>
                               <div className='discount-card-footer p-2 d-flex justify-content-between'>
-                                <p className='text-white mb-0 font-12 montserrat-regular'>Coupon code: <span className='text-uppercase font-14 montserrat-medium'>CB1234</span></p>
-                                <button className='border-0 bg-white text-blue font-10 montserrat-regular copy-btn px-2'>Copy Code</button>
+                                <p className='text-white mb-0 font-12 montserrat-regular'>Coupon code: 
+                                  <span className='text-uppercase font-14 montserrat-medium'>CB1234</span></p>
+                                {/* <p className='text-white mb-0 font-12 montserrat-regular d-flex'>
+                                  Coupon code:
+                                  <input
+                                    ref={couponRef}
+                                    value="CB1234"
+                                    readOnly
+                                    className='border-0 bg-transparent text-uppercase font-14 montserrat-medium text-white'
+                                  />
+                                </p> */}
+                                <button className='border-0 bg-white text-blue font-10 montserrat-regular copy-btn px-2'
+                                  onClick={() => handleCopy(couponRef, 'coupon')}
+                                >
+                                  Copy Code
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -796,12 +813,16 @@ const MyRewardFirstScreen = () => {
 
                 </p>
                 <div className="d-flex justify-content-between gap-4 mb-5">
-                  <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border border-0 background-text-blue text-white">
-                    See my Referrals
-                  </button>
-                  <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border-blue text-blue">
-                    Refer more & Earn
-                  </button>
+                  <NavLink to={"/referral"} className={"w-100"}>
+                    <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border border-0 background-text-blue text-white">
+                      See my Referrals
+                    </button>
+                  </NavLink>
+                  <NavLink className={"w-100"} to={"/invitefriend"}>
+                    <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border-blue text-blue">
+                      Refer more & Earn
+                    </button>
+                  </NavLink>
                 </div>
               </div>
               <div className="col-lg-6 mt-lg-0 mt-5 col-md-12">
@@ -815,7 +836,7 @@ const MyRewardFirstScreen = () => {
           </div>
         </div>
         {/* PLAY AND EARN CARDS */}
-        <div className="container">
+        <div className="container" id="play-and-earn" >
           <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-4 pb-4 ">Play & Earn</h2>
           <PlayAndEarnCard />
         </div>
@@ -842,12 +863,14 @@ const MyRewardFirstScreen = () => {
             </div>
             <div className="pt-3 row justify-content-between justify-content-lg-center align-items-center">
               <div className='col-6 col-lg-3'>
-                <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
-                  Invite a Friend
-                </button>
+                <NavLink to={"/invitefriend"}>
+                  <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
+                    Invite a Friend
+                  </button>
+                </NavLink>
               </div>
               <div className='col-6 col-lg-3'>
-                <button className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+                <button onClick={()=>toastInfo("Comming Soon")} className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
                   Redeem
                 </button>
               </div>

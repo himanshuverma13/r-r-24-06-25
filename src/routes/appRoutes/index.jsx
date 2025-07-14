@@ -23,6 +23,7 @@ import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import UserFaqs from '../../pages/auth/userFaqs';
 import Error from '../../pages/Errror/error';
+import Invitefriend from '../../pages/InviteFriend/inviteFriend';
 // import ProtectedRoute from '../protectedRoute';
 
 const AppRoutes = () => {
@@ -162,6 +163,10 @@ const AppRoutes = () => {
         <Route
           path="/profile-faqs"
           element={AuthLocal ? <UserFaqs /> : <Navigate to="/login" replace />}
+        />
+          <Route
+          path="/invitefriend"
+          element={AuthLocal ? <Invitefriend /> : <Navigate to="/login" replace />}
         />
 
         {/* Catch-all route */}
