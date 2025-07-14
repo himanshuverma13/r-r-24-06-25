@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
 // Images
-import plus from '../../../assets/offer/plus.svg';
-import minus from '../../../assets/offer/minus.svg';
+import plus from '../../src/assets/icons/home/offer/plus.svg';
+import minus from '../../src/assets/icons/home/offer/minus.svg';
 
-const FAQ = ({ items }) => {
+const FAQ = ({ items,classes }) => {
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggle = (index) => {
@@ -14,15 +14,15 @@ const FAQ = ({ items }) => {
     return (
         <>
             <div className="container">
-                <h2 className="text-dark-blue mt-120 mb-1 pb-1">
+                <h2 className={`text-dark-blue space-grotesk-bold ${classes} mt-120 mb-1 pb-1`}>
                     Frequently Asked Questions
                 </h2>
                 <div className="row">
                     <div className="accordion">
-                        {items.map((item, index) => (
-                            <div className="mt-4 pt-3" key={index}>
+                        {items?.map((item, index) => (
+                            <div className="mt-3 pt-3" key={index}>
                                 <div
-                                    className="purple-border-bottom pb-4 pt-1"
+                                    className="purple-border-bottom mb-0 pt-1 d-block pb-4"
                                     id={`heading${index}`}
                                 >
                                     <h6 className="mb-0 font-16 text-dark-blue montserrat-medium">
@@ -32,7 +32,7 @@ const FAQ = ({ items }) => {
                                             aria-expanded={openIndex === index}
                                             aria-controls={`collapse${index}`}
                                         >
-                                            {item.title}
+                                            {item?.question}
                                             <span>
                                                 <img src={openIndex === index ? minus : plus} alt="" />
                                             </span>
@@ -47,7 +47,7 @@ const FAQ = ({ items }) => {
                                 >
                                     <div className="card-body p-3">
                                         <p className="mb-0 font-16 text-dark-blue montserrat-regular">
-                                            {item.content}
+                                            {item?.answer}
                                         </p>
                                     </div>
                                 </div>

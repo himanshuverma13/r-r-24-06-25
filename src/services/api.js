@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// Get Auth From LocalStorage
+const Auth = JSON?.parse(localStorage.getItem('Auth') ?? '{}');
+
 // 🔧 Base URL setup
-const ApiURL = 'https://your-api-url.com/api'; // Replace with your actual API base URL
+const ApiURL =  'https://389a94ab8c62.ngrok-free.app'; // Replace with your actual API base URL
 
 // 🌐 Axios instance
 const api = axios.create({
@@ -45,6 +48,21 @@ export const putData = async (endpoint, payload = {}) => {
 export const deleteData = async (endpoint, params = {}) => {
   try {
     const response = await api.delete(endpoint, { params });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
+
+// POST API TO SEND FILE UPLOAD 
+// ✅ POST Request: with payload (body)
+export const ProfileContactAPI = async (endpoint, payload = {}) => {
+  try {
+    const response = await axios.post(`${ApiURL}${endpoint}`, payload, {
+        headers: {
+            'Content-Type': 'multipart/form-data' 
+        }
+    })
     return response.data;
   } catch (error) {
     throw error.response?.data || error.message;

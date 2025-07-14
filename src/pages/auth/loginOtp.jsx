@@ -7,21 +7,27 @@ import Logo from '../../assets/icons/logo/logo.svg';
 
 // Assuming you're using Lucide icons
 import { Clock, AlertCircle } from 'lucide-react';
+import { postData } from '../../services/api';
+import checkCircle from '../../assets/icons/auth/CheckCircle.svg';
+import { useNavigate } from 'react-router-dom';
+import { toastError, toastInfo, toastSuccess } from '../../utils/toster';
 
 const LoginOtp = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
+  const mobileNumber = watch('mobile');
   const [otp, setOtp] = useState(new Array(6).fill(''));
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRefs = useRef([]);
   const [otpStatus, setOtpStatus] = useState('sent'); // 'sent', 'verifying', 'error'
   const [error, setError] = useState('');
   const [timer, setTimer] = useState(60);
-
+  const navigate = useNavigate();
   // Timer countdown
   useEffect(() => {
     let interval;
@@ -68,18 +74,33 @@ const LoginOtp = () => {
     inputRefs.current[nextIndex === -1 ? 5 : nextIndex].focus();
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     setOtpStatus('verifying');
-    setTimeout(() => {
-      if (otp.join('') === '123456') {
-        alert('OTP Verified Successfully');
+    try {
+      console.clear();
+      const response = await postData('/login/mobile-verify-otp', {
+        mobile_number: mobileNumber,
+        otp_input: otp?.join(''),
+      });
+
+      setTimeout(() => {
         setOtpStatus('sent');
-        setError('');
-      } else {
-        setOtpStatus('error');
-        setError('Invalid OTP');
-      }
-    }, 1000);
+        toastInfo(response);
+        if (response?.success) {
+          toastSuccess(response?.message);
+          // alert('OTP Verified Successfully');
+          navigate('/');
+          setOtpStatus('sent');
+          setError('');
+        } else {
+          setOtpStatus('error');
+          setOtpStatus('sent');
+          setError('Invalid OTP');
+        }
+      }, 1000);
+    } catch (error) {
+      setOtpStatus('sent');
+    }
   };
 
   const handleResend = () => {
@@ -88,7 +109,8 @@ const LoginOtp = () => {
     setError('');
     setTimer(60);
     inputRefs.current[0].focus();
-    alert('OTP Resent');
+    // alert('OTP Resent');
+    toastInfo('OTP Resent');
   };
 
   const formatTime = (seconds) => {
@@ -96,18 +118,43 @@ const LoginOtp = () => {
     const s = seconds % 60;
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
-
-  const onSubmit = (data) => {
-    console.log('Form Submitted:', data);
+  const [mobileValid, setMobileValid] = useState(false);
+  const HandleNumber = async (e) => {
+    try {
+      const value = e.target.value;
+      if (!/^\d*$/.test(value)) {
+        return;
+      }
+      const number = value.slice(0, 10);
+      e.target.value = number;
+      if (value.length === 10) {
+        const response = await postData('/login/mobile-send-otp', {
+          mobile_number: value,
+        });
+        if (response?.success) {
+          toastSuccess(response?.message);
+          setMobileValid(true);
+        } else {
+          // alert(response?.message);
+          toastError(error?.message);
+        }
+      } else {
+        setMobileValid(false);
+      }
+    } catch (error) {
+      toastError(error?.message);
+    }
   };
 
+  const onSubmit = (data) => {};
+
   return (
-    <div className="login-bg-img vh-100">
+    <div className="login-bg-img vh-100 overflow-hidden">
       <div className="nav-logo text-center">
         <img className="header-center-img width-13" src={Logo} alt="logo" />
       </div>
       <div className="row p-4 d-flex justify-content-center">
-        <div className="col-lg-7">
+        <div className="col-lg-7 mt-5">
           <div className="text-center mt-3">
             <p className="font-size-46 text-blue montserrat-bold mb-3">Login</p>
             <p className="text-blue montserrat-semibold font-size-20 pb-3">
@@ -116,22 +163,42 @@ const LoginOtp = () => {
             </p>
           </div>
           <div className="login-form-section row py-2 px-3 d-flex align-items-center justify-content-between">
-            <div className="col-lg-6 col-md-6 col-12">
-              <div className="login-img">
+            <div className="col-lg-6 col-12">
+              <div className="login-img text-center">
                 <img src={Loginimg} alt="Login Visual" />
               </div>
             </div>
-            <div className="col-lg-6 col-md-6 col-12">
+            <div className="col-lg-6 col-12">
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="my-3">
+                <div className="my-3 position-relative">
                   <input
                     type="text"
                     className="form-control py-2 text-blue montserrat-bold"
-                    defaultValue="7224851233"
-                    {...register('mobile')}
+                    maxLength="10"
+                    inputMode="numeric"
+                    {...register('mobile', {
+                      required: true,
+                      pattern: /^\d{10}$/,
+                      onChange: HandleNumber,
+                    })}
                     style={{ fontWeight: '600', color: '#1A2A6C' }}
                   />
+                  {mobileValid && (
+                    <img
+                      className="login-check position-absolute"
+                      src={checkCircle}
+                      alt=""
+                    />
+                  )}
                 </div>
+                {errors.mobile?.type === 'required' && (
+                  <span className="text-danger">Mobile number is required</span>
+                )}
+                {errors.mobile?.type === 'pattern' && (
+                  <span className="text-danger">
+                    Please enter a valid 10-digit mobile number
+                  </span>
+                )}
                 {/* OTP Section */}
 
                 {(otpStatus === 'sent' ||
@@ -171,40 +238,48 @@ const LoginOtp = () => {
                         {error}
                       </div>
                     )}
+                    {mobileValid && (
+                      <div
+                        className="small mb-2 montserrat-medium font-size-14"
+                        style={{ color: '#388E3C' }}
+                      >
+                        OTP has been sent to the registered mobile number
+                      </div>
+                    )}
 
+                    {mobileValid && (
+                      <>
+                        {timer > 0 ? (
+                          <div className="text-muted small d-flex justify-content-center align-items-center">
+                            <Clock size={16} className="me-1" />
+                            Resend in {formatTime(timer)}
+                          </div>
+                        ) : (
+                          <button
+                            onClick={handleResend}
+                            className=" p-0 border-0 text-blue text-decoration-underline font-16 montserrat-medium"
+                          >
+                            Resend OTP
+                          </button>
+                        )}
+                      </>
+                    )}
                     <button
                       onClick={handleVerify}
                       disabled={
                         otp.some((digit) => digit === '') ||
                         otpStatus === 'verifying'
                       }
-                      className="btn btn-success w-100 mb-3"
+                      className={`montserrat-semibold w-100 mx-1 mt-3 font-16 py-2 rounded-3 border-0 text-white
+              ${
+                otp.some((digit) => digit === '') || otpStatus === 'verifying'
+                  ? 'bg-secondary'
+                  : 'background-text-blue'
+              }
+                      `}
                     >
-                      {otpStatus === 'verifying'
-                        ? 'Verifying...'
-                        : 'Verify OTP'}
+                      Verify OTP
                     </button>
-
-                    <div
-                      className="small mb-2 montserrat-medium font-size-14"
-                      style={{ color: '#388E3C' }}
-                    >
-                      OTP has been sent to the registered mobile number
-                    </div>
-
-                    {timer > 0 ? (
-                      <div className="text-muted small d-flex justify-content-center align-items-center">
-                        <Clock size={16} className="me-1" />
-                        Resend in {formatTime(timer)}
-                      </div>
-                    ) : (
-                      <button
-                        onClick={handleResend}
-                        className="btn btn-link p-0 text-decoration-underline text-primary"
-                      >
-                        Resend OTP
-                      </button>
-                    )}
                   </div>
                 )}
 

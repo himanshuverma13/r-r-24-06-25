@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 // Assets icons
 import Logo from '../../assets/icons/logo/logo.svg';
+import { postData } from '../../services/api';
+import { toastError, toastSuccess } from '../../utils/toster';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../utils/UseContext/useContext';
 
 const Registration = () => {
   const {
@@ -11,29 +15,56 @@ const Registration = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { ContextInviteRefferAPI, setContextInviteRefferAPI } =
+    useContext(UserContext);
 
   const password = watch('password');
-
-  const onSubmit = (data) => {
-    console.log('Form Submitted:', data);
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const response = await postData('/register', {
+        confirm_password: data?.confirmPassword,
+        email: data?.email,
+        mobile_number: data?.mobile,
+        username: data?.name,
+        password: data?.password,
+        referral_code: data?.referralCode,
+        tag_id: '',
+      });
+      console.log('response: ', response);
+      // if(response?.rewards){
+        // }
+        setContextInviteRefferAPI(response?.rewards[0]?.signup_reward)
+      localStorage.setItem('uid', response?.user_id);
+      toastSuccess(response?.message);
+      navigate('/subscription');
+    } catch (error) {
+      toastError(error?.error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
-      <div className="login-bg-img vh-100">
+      <div className="login-bg-img vh-100 overflow-hidden">
         <div className="nav-logo text-center mt-0">
           <img className="header-center-img width-13" src={Logo} alt="logo" />
         </div>
         <div className="row p-lg-3 p-2 d-flex justify-content-center">
           <div className="col-lg-7">
             <div className="text-center mt-2">
-              <p className="font-size-44 text-blue montserrat-bold mb-2">
-                You have been Invited
+              <p className="font-44 text-blue montserrat-bold mb-2">
+                {/* You have been Invited */}
+
+                Registration
               </p>
-              <p className="text-blue montserrat-semibold font-size-20 pb-2">
+              {/* <p className="text-blue montserrat-semibold font-20 pb-2">
                 Riya invited you! Sign up now to get your reward and start your
-                 journey <br /> to more exclusive perks
-              </p>
+                journey <br /> to more exclusive perks
+              </p> */}
             </div>
             <div className="login-form-section register-form">
               <form
@@ -94,15 +125,8 @@ const Registration = () => {
                       class="form-control py-2"
                       id="exampleFormControlInput1"
                       placeholder="Your Referral Code"
-                      {...register('referralCode', {
-                        required: 'Referral Code No. is required',
-                      })}
+                      {...register('referralCode')}
                     />
-                    {errors.referralCode && (
-                      <div className="text-danger">
-                        {errors.referralCode.message}
-                      </div>
-                    )}
                   </div>
                 </div>
 
@@ -148,12 +172,24 @@ const Registration = () => {
                 <div className="col-lg-10 mb-3">
                   <button
                     type="submit"
-                    className="montserrat-bold w-100 font-size-16 py-2 rounded-3 background-text-blue text-white"
+                    disabled={loading}
+                    className="montserrat-bold w-100 font-size-16 py-2 border-0 rounded-3 background-text-blue text-white"
                   >
-                    Sign Up
+                    {/* Sign Up */}
+                    {loading ? 'Loading...' : 'Sign Up'}
                   </button>
-                  <p className="font-size-16 montserrat-medium text-center mt-3 text-light-gray">
-                    Powered by Red Vision Technologies
+                  <p className="font-12 montserrat-regular text-center mt-3 text-light-gray">
+                    Already a user?{' '}
+                    <span>
+                      <NavLink
+                        to={'/login'}
+                        className={
+                          'text-blue font-14 montserrat-medium text-decoration-none'
+                        }
+                      >
+                        Login Now
+                      </NavLink>
+                    </span>
                   </p>
                 </div>
               </form>
