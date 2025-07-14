@@ -86,7 +86,7 @@ const Registration = () => {
                       })}
                     />
                     {errors.name && (
-                      <div className="text-danger">{errors.name.message}</div>
+                      <div className="text-danger font-14">{errors.name.message}</div>
                     )}
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const Registration = () => {
                       })}
                     />
                     {errors.email && (
-                      <div className="text-danger">{errors.email.message}</div>
+                      <div className="text-danger font-14">{errors.email.message}</div>
                     )}
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const Registration = () => {
                       })}
                     />
                     {errors.mobile && (
-                      <div className="text-danger">{errors.mobile.message}</div>
+                      <div className="text-danger font-14">{errors.mobile.message}</div>
                     )}
                   </div>
                 </div>
@@ -147,7 +147,7 @@ const Registration = () => {
                       })}
                     />
                     {errors.password && (
-                      <div className="text-danger">
+                      <div className="text-danger font-14">
                         {errors.password.message}
                       </div>
                     )}
@@ -168,7 +168,7 @@ const Registration = () => {
                       })}
                     />
                     {errors.confirmPassword && (
-                      <div className="text-danger">
+                      <div className="text-danger font-14">
                         {errors.confirmPassword.message}
                       </div>
                     )}

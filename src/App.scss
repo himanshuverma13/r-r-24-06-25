@@ -2536,8 +2536,6 @@ body::-webkit-scrollbar {
 .ufo-fixed {
   // position: fixed;
   top: 3%;
-  transition: all 0.4s ease;
-  transform: translateY(-20px);
 }
 
 .ufo-nav-bg {
@@ -2553,19 +2551,15 @@ body::-webkit-scrollbar {
   // position: fixed;
   // right: 5%;
   top: 12%;
-  transform: translateY(0);
-  animation: moveUpRewUfo 0.7s ease forwards;
 }
 
 @keyframes moveUpRewUfo {
   from {
     top: 12%;
-     transform: translateY(-10px);
   }
 
   to {
     top: 6%;
-     transform: translateY(0);
   }
 }
 
@@ -3026,6 +3020,13 @@ body::-webkit-scrollbar {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+}
+
+.side-login-bg {
+  background: url(./assets/icons/auth/login-side.svg) no-repeat center center;
+  background-size: contain;
+  height: 272px;
+  width: 100%;
 }
 
 .login-img img {
@@ -4242,14 +4243,3 @@ body::-webkit-scrollbar {
 }
 
 /* =================== MEDIA QUERY END ========================== */
-
-
-.login-bg{
-  background: url(./assets/icons/auth/login-side.svg);
-  background-size: contain;
-  // object-fit: cover;
-  height: 272px;
-  width: 100%;
-  background-position:center;
-  background-repeat: no-repeat;
-}
