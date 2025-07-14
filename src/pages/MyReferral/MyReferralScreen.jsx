@@ -8,7 +8,7 @@ import StartFour from '../../assets/icons/home/MyRewards/StarFour.svg';
 
 import fbImg from '../../assets/icons/home/MyReferral/fb.svg';
 import twitImg from '../../assets/icons/home/MyReferral/twit.svg';
-import ytImg from '../../assets/icons/home/MyReferral/yt.svg';
+// import ytImg from '../../assets/icons/home/MyReferral/yt.svg';
 import instaImg from '../../assets/icons/home/MyReferral/insta.svg';
 import whtpImg from '../../assets/icons/home/MyReferral/whatsapp.svg';
 
@@ -23,29 +23,29 @@ import { UserContext } from '../../utils/UseContext/useContext';
 import { NavLink } from 'react-router-dom';
 
 // Import Json
-const faqData = [
-  {
-    title: '1. What is wealth Elites Reward & Program?',
-    content: 'You can return any item within 30 days of purchase.',
-  },
-  {
-    title: '2. How do I track my referrals?',
-    content:
-      'You can track your order from the “My Orders” section after login.',
-  },
-  {
-    title: '3. What does a successfull referral mean?',
-    content: 'Yes, we offer 24/7 customer support via chat and email.',
-  },
-  {
-    title: '3. What does a successfull referral mean?',
-    content: 'Yes, we offer 24/7 customer support via chat and email.',
-  },
-];
+// const faqData = [
+//   {
+//     title: '1. What is wealth Elites Reward & Program?',
+//     content: 'You can return any item within 30 days of purchase.',
+//   },
+//   {
+//     title: '2. How do I track my referrals?',
+//     content:
+//       'You can track your order from the “My Orders” section after login.',
+//   },
+//   {
+//     title: '3. What does a successfull referral mean?',
+//     content: 'Yes, we offer 24/7 customer support via chat and email.',
+//   },
+//   {
+//     title: '3. What does a successfull referral mean?',
+//     content: 'Yes, we offer 24/7 customer support via chat and email.',
+//   },
+// ];
 
 const MyReferralScreen = () => {
-  const inputRef = useRef(null);
-  const [copied, setCopied] = useState(false);
+  // const inputRef = useRef(null);
+  // const [copied, setCopied] = useState(false);
   const [RefralDataAPI, setRefralDataAPI] = useState();
 
   const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
@@ -56,8 +56,8 @@ const MyReferralScreen = () => {
   const linkRef = useRef();
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
-  const inviteCode = "ABC123XYZ";
-  const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
+  // const inviteCode = "ABC123XYZ";
+  // const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
 
   const handleCopy = (ref, type) => {
     if (ref.current) {
@@ -157,8 +157,8 @@ const MyReferralScreen = () => {
         <ReferralCards />
           </div>
         </div> */}
-        <Navbar />
         <div className="overflow-scroll h-100 z-3">
+        <Navbar />
           <div className="container pt-36">
             <div className="mb-5">
               <ReferralCards RefralDataAPI={RefralDataAPI} />

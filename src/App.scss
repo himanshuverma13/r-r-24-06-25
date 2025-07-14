@@ -4179,10 +4179,14 @@ body::-webkit-scrollbar {
     padding-top: 2%;
   }
 }
-
+@media (max-height: 900px) {
+  .cloud-img {
+    top: 55%!important;
+  }
+}
 @media (max-height: 768px) {
   .cloud-img {
-    top: 65%;
+    top: 65%!important;
   }
 }
 
@@ -4194,7 +4198,7 @@ body::-webkit-scrollbar {
   }
 
   .cloud-img {
-    width: 60%;
+    width: 60%!important;
   }
 
   .invitefriend-wrapper {
@@ -4242,6 +4246,20 @@ body::-webkit-scrollbar {
 }
 
 /* =================== MEDIA QUERY END ========================== */
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.8s ease, opacity 0.8s ease, transform 0.8s ease;
+
+  &.open {
+    max-height: 500px; // or large enough to fit content
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 .login-bg{
