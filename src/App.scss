@@ -3270,6 +3270,7 @@ body::-webkit-scrollbar {
   cursor: pointer;
   z-index: 1;
   height: 450px;
+  padding: 2.5rem;
 }
 
 .referral-card:hover {
@@ -4182,7 +4183,7 @@ body::-webkit-scrollbar {
 }
 @media (max-height: 900px) {
   .cloud-img {
-    top: 55%!important;
+    top: 60%!important;
   }
 }
 @media (max-height: 768px) {
@@ -4259,6 +4260,10 @@ body::-webkit-scrollbar {
     max-height: 500px; // or large enough to fit content
     opacity: 1;
     transform: translateY(0);
+  }
+  & .card-body{
+    padding: pxToRem(24) pxToRem(16) pxToRem(38) pxToRem(8); 
+    border-bottom: 1px solid $push-notification;
   }
 }
 

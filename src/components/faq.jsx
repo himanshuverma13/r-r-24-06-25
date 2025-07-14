@@ -19,8 +19,8 @@ const FAQ = ({ items, classes }) => {
       <div className="row">
         <div className="accordion w-100">
           {items?.map((item, index) => (
-            <div className="mt-3 pt-3 w-100" key={index}>
-              <div className="purple-border-bottom mb-0 pt-1 d-block pb-4" id={`heading${index}`}>
+            <div className="w-100" key={index}>
+              <div className="purple-border-bottom mb-0 pt-1 d-block pt-4 pb-4" id={`heading${index}`}>
                 <h6 className="mb-0 font-16 text-dark-blue montserrat-medium">
                   <button
                     className="border-0 bg-transparent d-flex justify-content-between align-items-center w-100"
@@ -36,7 +36,7 @@ const FAQ = ({ items, classes }) => {
               </div>
 
               <div className={`faq-answer ${openIndex === index ? 'open' : ''}`}>
-                <div className="card-body p-3">
+                <div className="card-body pt-16 pl-16 pb-16">
                   <p className="mb-0 font-16 text-dark-blue montserrat-regular">
                     {item?.answer}
                   </p>
