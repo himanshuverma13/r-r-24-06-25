@@ -5,7 +5,7 @@ import stars from '../../assets/icons/home/redeemEarn/starts.svg';
 import footer from '../../assets/images/home/Invitefriend/Bottom-invite.svg';
 import FacebookIcon from '../../assets/icons/home/Invitefriend/fb-invite.svg';
 import TwitterIcon from '../../assets/icons/home/Invitefriend/twitter-invite.svg';
-import InstaIcon from '../../assets/icons/home/Invitefriend/insta-invite.svg';
+import Linkedin from '../../assets/icons/home/Invitefriend/linkedin.svg';
 import telegram from '../../assets/icons/home/Invitefriend/telegram.svg';
 import { postData } from '../../services/api';
 import { UserContext } from '../../utils/UseContext/useContext';
@@ -203,7 +203,7 @@ const Invitefriend = ({ isActive , isExiting }) => {
                 >
                   <img
                     className="social-icon"
-                    src={InstaIcon}
+                    src={Linkedin}
                     alt="Instagram"
                   />
                 </span>

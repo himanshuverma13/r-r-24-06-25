@@ -9,7 +9,7 @@ import StartFour from '../../assets/icons/home/MyRewards/StarFour.svg';
 import fbImg from '../../assets/icons/home/MyReferral/fb.svg';
 import twitImg from '../../assets/icons/home/MyReferral/twit.svg';
 import ytImg from '../../assets/icons/home/MyReferral/yt.svg';
-import instaImg from '../../assets/icons/home/MyReferral/insta.svg';
+import linkedinImg from '../../assets/icons/home/MyReferral/linkedin.svg';
 import whtpImg from '../../assets/icons/home/MyReferral/whatsapp.svg';
 
 // Common Components
@@ -224,8 +224,8 @@ const MyReferralScreen = () => {
                   <img className="mx-3 w-auto" src={fbImg} alt=""
                     onClick={() => handleIconLink('facebook')}
                   />
-                  <img className="mx-3 w-auto" src={instaImg} alt=""
-                    onClick={() => handleIconLink('insta')}
+                  <img className="mx-3 w-auto" src={linkedinImg} alt=""
+                    onClick={() => handleIconLink('linkedin')}
                   />
                   {/* <img className="mx-3 w-auto" src={ytImg} alt="" /> */}
                   <img className="mx-3 w-auto" src={twitImg} alt=""

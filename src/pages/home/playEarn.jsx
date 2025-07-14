@@ -3,6 +3,7 @@ import bottle from '../../assets/images/home/playEarn/bottle.svg';
 import astro from '../../assets/images/home/playEarn/astronaut.svg';
 import ticTac from '../../assets/images/home/playEarn/tic-tac.svg';
 import SideModal from './sideModal';
+import { toast } from 'react-toastify';
 
 const PlayEarn = ({ isActive }) => {
   const [hoveredCard, setHoveredCard] = useState();
@@ -81,7 +82,10 @@ const PlayEarn = ({ isActive }) => {
                     {cardId.description}
                   </p>
                   <div className='mt-1'>
-                  <button className="btn background-text-blue text-white font-size-16 montserrat-medium rounded-5 mb-4 px-4">
+                  <button className="btn background-text-blue text-white font-size-16 montserrat-medium rounded-5 mb-4 px-4"
+                  //  onClick={() => alert('Coming Soon')}
+                  onClick={() => toast.info('Coming Soon 🚀')}
+                  >
                     {cardId.buttonText}
                   </button>
                   </div>
