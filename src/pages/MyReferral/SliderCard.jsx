@@ -136,7 +136,7 @@ const SliderCard = ({ RefralDataAPI }) => {
                 </div>
             </div>
 
-            {RefralDataAPI?.length > 0 ? (
+            {RefralDataAPI?.part4?.length > 0 ? (
                 <>
                     {!showTable ? (
                         <div className="slider-container">
