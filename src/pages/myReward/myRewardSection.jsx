@@ -26,9 +26,9 @@ import gifplnt1 from '../../assets/icons/home/HomePlanets/purple.svg';
 import gifplnt2 from '../../assets/icons/home/HomePlanets/yellow.svg';
 import gifplnt3 from '../../assets/icons/home/HomePlanets/green.svg';
 import gifplnt4 from '../../assets/icons/home/HomePlanets/blue.svg';
-import TicTac from "../../assets/images/home/MyRewards/Tic Tak Toe.svg";
-import Quiz from "../../assets/images/home/MyRewards/Quiz.svg";
-import Spin from "../../assets/images/home/MyRewards/Spin The Bottle.svg";
+import TicTac from '../../assets/images/home/MyRewards/Tic Tak Toe.svg';
+import Quiz from '../../assets/images/home/MyRewards/Quiz.svg';
+import Spin from '../../assets/images/home/MyRewards/Spin The Bottle.svg';
 // import MyRewardSecondScreen from './myRewardScreen2';
 // import MyRewardThirdScreen from './myRewardScreen3';
 import Voucher from '../../assets/icons/home/MyRewards/Label.svg';
@@ -44,17 +44,10 @@ import RewardHistory from './rewardHistory';
 import { postData } from '../../services/api';
 import { DecryptFunction } from '../../utils/decryptFunction';
 import { UserContext } from '../../utils/UseContext/useContext';
-import { GiBackwardTime } from "react-icons/gi";
+import { GiBackwardTime } from 'react-icons/gi';
 import { NavLink } from 'react-router-dom';
 import { toastInfo } from '../../utils/toster';
 
-const RewardSliderJson = [
-  { num: 'A', img: gifplnt1, lock: false },
-  { num: 'B', img: gifplnt2, lock: false },
-  { num: 'C', img: gifplnt3, lock: true },
-  { num: 'D', img: gifplnt4, lock: true },
-  // { num: "E", img: gifplnt5, lock: true },
-];
 // Discont card Json
 const discountData = [
   {
@@ -166,7 +159,47 @@ const FaqData = [
 
 const MyRewardFirstScreen = () => {
   const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
-  const { ContextHomeDataAPI, ContextFaqsDataAPI } = useContext(UserContext);
+  const { ContextHomeDataAPI, ContextFaqsDataAPI ,MeterUpdateData} = useContext(UserContext);
+
+  const RewardSliderJson = [
+    {
+      num: `${ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.milestone_name}`,
+      point: `${
+        ContextFaqsDataAPI?.galaxy_data?.milestones[0]
+          ?.meteors_required_to_unlock
+      }`,
+      img: gifplnt1,
+      lock: false,
+    },
+    {
+      num: `${ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.milestone_name}`,
+      point: `${
+        ContextFaqsDataAPI?.galaxy_data?.milestones[1]
+          ?.meteors_required_to_unlock
+      }`,
+      img: gifplnt2,
+      lock: false,
+    },
+    {
+      num: `${ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.milestone_name}`,
+      point: `${
+        ContextFaqsDataAPI?.galaxy_data?.milestones[2]
+          ?.meteors_required_to_unlock
+      }`,
+      img: gifplnt3,
+      lock: true,
+    },
+    {
+      num: `${ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.milestone_name}`,
+      point: `${
+        ContextFaqsDataAPI?.galaxy_data?.milestones[3]
+          ?.meteors_required_to_unlock
+      }`,
+      img: gifplnt4,
+      lock: true,
+    },
+    // { num: "E", img: gifplnt5, lock: true },
+  ];
 
   const rewardSliderSetting = {
     dots: false,
@@ -227,9 +260,7 @@ const MyRewardFirstScreen = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     speed: 500,
-    afterChange: function (index) {
-
-    },
+    afterChange: function (index) {},
     responsive: [
       {
         breakpoint: 1200, // screens ≤ 1200px
@@ -271,7 +302,7 @@ const MyRewardFirstScreen = () => {
       {
         root: null,
         threshold: 0.3,
-      }
+      },
     );
 
     if (footerRef.current) observer.observe(footerRef.current);
@@ -289,7 +320,7 @@ const MyRewardFirstScreen = () => {
   const [leftScrolAnimt, setleftScrolAnimt] = useState(true);
   const [UfoBg, setUfoBg] = useState(false);
   const [MyRewardDataAPI, setMyRewardDataAPI] = useState();
-  const [showGameCard, setShowGameCard] = useState("invite")
+  const [showGameCard, setShowGameCard] = useState('invite');
 
   // =============
   // Functions
@@ -347,15 +378,15 @@ const MyRewardFirstScreen = () => {
   const couponRef = useRef();
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
-  const inviteCode = "ABC123XYZ";
-  const inviteLink = "https://yourapp.com/invite/ABC123XYZ";
+  const inviteCode = 'ABC123XYZ';
+  const inviteLink = 'https://yourapp.com/invite/ABC123XYZ';
 
   const handleCopy = (ref, type) => {
     if (ref.current) {
       const value = ref.current.value;
       navigator.clipboard.writeText(value);
       // Set state to show "Copied!" text
-      if (type === "code") {
+      if (type === 'code') {
         setCopiedCode(true);
         setTimeout(() => setCopiedCode(false), 2000); // Reset after 2 seconds
       } else {
@@ -364,6 +395,9 @@ const MyRewardFirstScreen = () => {
       }
     }
   };
+
+ 
+  console.log('ContextHomeDataAPI?.part2: ', ContextHomeDataAPI?.part2);
   return (
     <>
       <section
@@ -389,7 +423,6 @@ const MyRewardFirstScreen = () => {
             <div className="container-fluid mb-4">
               <div
                 className={`px-0 d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg position-fixed' : 'bg-transparent '}`}
-
               >
                 <div
                   className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} mt-lg-4 mt-5 z-3`}
@@ -404,7 +437,11 @@ const MyRewardFirstScreen = () => {
                       <div className="py-2 offset-2 text-white d-flex justify-content-evenly align-items-center">
                         <span className="montserrat-bold font-14 montserrat-bold till-ship-border-color pe-3 z-1 position-relative">
                           {ContextHomeDataAPI?.part2}
-                          <img className="my-1 mx-2" src={metero} alt="metero" />
+                          <img
+                            className="my-1 mx-2"
+                            src={metero}
+                            alt="metero"
+                          />
                           <span className="font-14 montserrat-medium">
                             Meteors
                           </span>
@@ -423,8 +460,9 @@ const MyRewardFirstScreen = () => {
                       className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg ? 'text-white border-white' : 'text-blue reward-history'}`}
                     >
                       Reward History
-                      <GiBackwardTime className={`ms-2 font-18 montserrat-semibold ${UfoBg ? 'text-white' : 'text-blue'}`} />
-
+                      <GiBackwardTime
+                        className={`ms-2 font-18 montserrat-semibold ${UfoBg ? 'text-white' : 'text-blue'}`}
+                      />
                     </button>
                   </div>
                 </div>
@@ -436,7 +474,7 @@ const MyRewardFirstScreen = () => {
                 <div className="container pt-2">
                   <div className={`row my-reward-cards g-4`}>
                     <div className="col-lg-6 col-12">
-                      <div className='myreward-card-1 px-4 pb-4 rounded-4'>
+                      <div className="myreward-card-1 px-4 pb-4 rounded-4">
                         <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
                           My Collections
                         </h2>
@@ -495,20 +533,24 @@ const MyRewardFirstScreen = () => {
                       </div>
                     </div>
                     <div className="col-lg-6 col-12">
-                      <div className='myreward-card-2 px-4 pb-4 rounded-4'>
+                      <div className="myreward-card-2 px-4 pb-4 rounded-4">
                         <h2 className="font-24 montserrat-bold text-white mb-1 mt-3 pt-3">
                           Earn More
                         </h2>
                         <p className="font-14 montserrat-medium text-white">
                           Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                         </p>
-                        {showGameCard === "cards" ? (
+                        {showGameCard === 'cards' ? (
                           <>
-                            <div className='row'>
+                            <div className="row">
                               {[TicTac, Quiz, Spin].map((items, index) => (
-                                <div className='col-4' key={index}>
+                                <div className="col-4" key={index}>
                                   <div>
-                                    <img src={items} className='game-img' alt="Lodaing" />
+                                    <img
+                                      src={items}
+                                      className="game-img"
+                                      alt="Lodaing"
+                                    />
                                   </div>
                                 </div>
                               ))}
@@ -516,7 +558,7 @@ const MyRewardFirstScreen = () => {
                           </>
                         ) : (
                           <>
-                            <div className='mb-3'>
+                            <div className="mb-3">
                               <label
                                 className="d-block font-14 montserrat-medium text-white mb-1"
                                 htmlFor="Invite Code"
@@ -535,13 +577,13 @@ const MyRewardFirstScreen = () => {
                                 <button
                                   type="button"
                                   className="reward-copy-button rounded-1 text-white font-14 montserrat-regular py-1 background-text-blue"
-                                  onClick={() => handleCopy(codeRef, "code")}
+                                  onClick={() => handleCopy(codeRef, 'code')}
                                 >
-                                  {copiedCode ? "Copied!" : "Copy Code"}
+                                  {copiedCode ? 'Copied!' : 'Copy Code'}
                                 </button>
                               </div>
                             </div>
-                            <div className='mb-5'>
+                            <div className="mb-5">
                               <label
                                 className="d-block font-14 montserrat-medium text-white mt-4 mb-1"
                                 htmlFor="Invite Link"
@@ -556,33 +598,37 @@ const MyRewardFirstScreen = () => {
                                   // value={inviteLink}
                                   defaultValue={MyRewardDataAPI?.part6}
                                   id="inviteLink"
-                                // readOnly
+                                  // readOnly
                                 />
                                 <button
                                   type="button"
                                   className="reward-copy-button text-white rounded-1 font-14 montserrat-regular py-1 background-text-blue"
-                                  onClick={() => handleCopy(linkRef, "link")}
+                                  onClick={() => handleCopy(linkRef, 'link')}
                                 >
-                                  {copiedLink ? "Copied!" : "Copy Link"}
+                                  {copiedLink ? 'Copied!' : 'Copy Link'}
                                 </button>
                               </div>
                             </div>
                           </>
                         )}
                         <div className="d-flex justify-content-between mt-4">
-                          <button className={`px-4 font-16 montserrat-semibold width-48 py-2 rounded-3 ${showGameCard === "cards"
-                            ? "text-white background-text-blue" // Active style
-                            : "bg-white text-blue border-blue" // Inactive style
+                          <button
+                            className={`px-4 font-16 montserrat-semibold width-48 py-2 rounded-3 ${
+                              showGameCard === 'cards'
+                                ? 'text-white background-text-blue' // Active style
+                                : 'bg-white text-blue border-blue' // Inactive style
                             }`}
-                            onClick={() => setShowGameCard("cards")}
+                            onClick={() => setShowGameCard('cards')}
                           >
                             Play & Earn
                           </button>
-                          <button className={`px-4 font-16 montserrat-semibold width-48 py-2 rounded-3 ${showGameCard === "invite"
-                            ? "text-white background-text-blue"
-                            : "bg-white text-blue border-blue"
+                          <button
+                            className={`px-4 font-16 montserrat-semibold width-48 py-2 rounded-3 ${
+                              showGameCard === 'invite'
+                                ? 'text-white background-text-blue'
+                                : 'bg-white text-blue border-blue'
                             }`}
-                            onClick={() => setShowGameCard("invite")}
+                            onClick={() => setShowGameCard('invite')}
                           >
                             Invite a Friend
                           </button>
@@ -646,7 +692,7 @@ const MyRewardFirstScreen = () => {
                         {RewardSliderJson?.map((slide, index) => (
                           <div className="background-light-white-2 reward-slides border-radius-12 text-center pt-2 pb-3 px-2">
                             <h4 className="font-14 space-grotesk-bold montserrat-semibold text-blue">
-                              Planet {slide?.num}
+                              {slide?.num}
                             </h4>
                             <div className="position-relative d-flex justify-content-center">
                               <img
@@ -662,9 +708,9 @@ const MyRewardFirstScreen = () => {
                             </div>
 
                             {/* <h4 className="font-14 montserrat-regular">1000 Meteors</h4> */}
-                            {index >= ContextHomeDataAPI?.part4?.length ? (
+                            {Number(slide?.point) >= Number(ContextHomeDataAPI?.part2) ? (
                               <button className="background-text-blue w-100 mt-4 mx-auto border-0 border-radius-8 font-size-12 d-flex justify-content-center align-items-center py-2 mx-3 opacity-25 montserrat-semibold text-white">
-                                1000 Meteors{' '}
+                                {slide?.point} Meteors{' '}
                                 <img
                                   className="ms-2"
                                   src={lock}
@@ -676,7 +722,7 @@ const MyRewardFirstScreen = () => {
                                 // onClick={handleNextScrAnimt}
                                 className="background-text-blue w-100 mt-4 mx-auto border-0 border-radius-8 font-size-12  py-2 mx-3 montserrat-semibold text-white"
                               >
-                                <span className="">1000 Meteors</span>
+                                <span className="">{slide?.point} Meteors</span>
                               </button>
                             )}
                           </div>
@@ -699,7 +745,7 @@ const MyRewardFirstScreen = () => {
                         {discountData.map((item, index) => (
                           <div key={index} className="px-2">
                             <div className="discount-card background-text-blue p-2 position-relative">
-                              <div className='row gx-0'>
+                              <div className="row gx-0">
                                 <div className="col-9 text-white d-flex my-2 justify-content-center">
                                   <div className="discount-white-box me-2"></div>
                                   <p className="font-14 montserrat-medium mt-2 lh-sm">
@@ -718,9 +764,13 @@ const MyRewardFirstScreen = () => {
                                   {item.badgeText}
                                 </div>
                               </div>
-                              <div className='discount-card-footer p-2 d-flex justify-content-between'>
-                                <p className='text-white mb-0 font-12 montserrat-regular'>Coupon code: 
-                                  <span className='text-uppercase font-14 montserrat-medium'>CB1234</span></p>
+                              <div className="discount-card-footer p-2 d-flex justify-content-between">
+                                <p className="text-white mb-0 font-12 montserrat-regular">
+                                  Coupon code:
+                                  <span className="text-uppercase font-14 montserrat-medium">
+                                    CB1234
+                                  </span>
+                                </p>
                                 {/* <p className='text-white mb-0 font-12 montserrat-regular d-flex'>
                                   Coupon code:
                                   <input
@@ -730,8 +780,11 @@ const MyRewardFirstScreen = () => {
                                     className='border-0 bg-transparent text-uppercase font-14 montserrat-medium text-white'
                                   />
                                 </p> */}
-                                <button className='border-0 bg-white text-blue font-10 montserrat-regular copy-btn px-2'
-                                  onClick={() => handleCopy(couponRef, 'coupon')}
+                                <button
+                                  className="border-0 bg-white text-blue font-10 montserrat-regular copy-btn px-2"
+                                  onClick={() =>
+                                    handleCopy(couponRef, 'coupon')
+                                  }
                                 >
                                   Copy Code
                                 </button>
@@ -759,7 +812,7 @@ const MyRewardFirstScreen = () => {
                         {ExclusiveCardData.map((item, index) => (
                           <div key={index}>
                             <div className="discount-card exclusive-cards w-100 background-text-blue p-3">
-                              <div className='row gx-0 mb-3'>
+                              <div className="row gx-0 mb-3">
                                 <div className="col-8 text-white">
                                   <p className="font-16 mb-0 text-uppercase montserrat-medium lh-sm">
                                     {item.title}
@@ -810,15 +863,14 @@ const MyRewardFirstScreen = () => {
                 </h2>
                 <p className="text-white font-24 space-grotesk-medium">
                   Keep Referring To Earn Even More !!
-
                 </p>
                 <div className="d-flex justify-content-between gap-4 mb-5">
-                  <NavLink to={"/referral"} className={"w-100"}>
+                  <NavLink to={'/referral'} className={'w-100'}>
                     <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border border-0 background-text-blue text-white">
                       See my Referrals
                     </button>
                   </NavLink>
-                  <NavLink className={"w-100"} to={"/invitefriend"}>
+                  <NavLink className={'w-100'} to={'/invitefriend'}>
                     <button className="py-2 w-100 rounded-3 font-16 montserrat-semibold border-blue text-blue">
                       Refer more & Earn
                     </button>
@@ -836,8 +888,10 @@ const MyRewardFirstScreen = () => {
           </div>
         </div>
         {/* PLAY AND EARN CARDS */}
-        <div className="container" id="play-and-earn" >
-          <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-4 pb-4 ">Play & Earn</h2>
+        <div className="container" id="play-and-earn">
+          <h2 className="text-dark-blue space-grotesk-bold mt-120 mb-4 pb-4 ">
+            Play & Earn
+          </h2>
           <PlayAndEarnCard />
         </div>
         {/* REDEEM CLAIM SECTION */}
@@ -862,15 +916,18 @@ const MyRewardFirstScreen = () => {
               Redeem Stars
             </div>
             <div className="pt-3 row justify-content-between justify-content-lg-center align-items-center">
-              <div className='col-6 col-lg-3'>
-                <NavLink to={"/invitefriend"}>
+              <div className="col-6 col-lg-3">
+                <NavLink to={'/invitefriend'}>
                   <button className="py-2 w-100 mb-0 rounded-3 text-white bg-transparent border border-white font-16 montserrat-semibold">
                     Invite a Friend
                   </button>
                 </NavLink>
               </div>
-              <div className='col-6 col-lg-3'>
-                <button onClick={()=>toastInfo("Comming Soon")} className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold">
+              <div className="col-6 col-lg-3">
+                <button
+                  onClick={() => toastInfo('Comming Soon')}
+                  className="py-2 w-100 rounded-3 border-0 bg-white text-blue font-16 montserrat-semibold"
+                >
                   Redeem
                 </button>
               </div>
@@ -880,7 +937,10 @@ const MyRewardFirstScreen = () => {
         {/* FAQ SECTION */}
         <FAQ items={ContextFaqsDataAPI?.rewards_faqs} />
         {/* FOOTER SECTION */}
-        <div ref={footerRef} className="offer-footer position-relative overflow-hidden mt-5">
+        <div
+          ref={footerRef}
+          className="offer-footer position-relative overflow-hidden mt-5"
+        >
           <div className="offer-footer-section position-relative d-flex justify-content-center text-center">
             <p className="width-36 font-32 space-grotesk-medium mb-5 text-white align-self-end">
               The more you refer, the brighter your rewards shine!
