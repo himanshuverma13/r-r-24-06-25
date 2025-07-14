@@ -86,15 +86,18 @@ const AppRoutes = () => {
         {AuthLocal && <Route path="/" element={<Home />} />}
 
         {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+         <Route path="/login" element={AuthLocal ? <Navigate to="/" replace /> : <Login />} />
         <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
         <Route
           path="/confirmforgotPasswordotp"
           element={<ConfirmForgotPasswordOtp />}
         />
         <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/loginOtp" element={<LoginOtp />} />
-        <Route path="/registration" element={<Registration />} />
+             <Route path="/loginOtp" element={AuthLocal ? <Navigate to="/" replace /> : <LoginOtp />} />
+        <Route path="/registration" element={AuthLocal ? <Navigate to="/" replace /> : <Registration />} />
+        {/* <Route path="/loginOtp" element={<LoginOtp />} /> */}
+        {/* <Route path="/registration" element={<Registration />} /> */}
         <Route path="/subscription" element={<Product />} />
 
         {/* Protected Routes */}

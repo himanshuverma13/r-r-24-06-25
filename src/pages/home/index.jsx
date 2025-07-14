@@ -24,6 +24,7 @@ import planetRing from '../../assets/icons/planets/rings.svg';
 import { postData } from '../../services/api';
 import { UserContext } from '../../utils/UseContext/useContext';
 import { DecryptFunction } from '../../utils/decryptFunction';
+import { NavLink } from 'react-router-dom';
 // import { processDynamicSpecificFieldsParallel } from '../../utils/decryptFunction';
 
 const images = [centerPlanet1, centerPlanet2, centerPlanet3, centerPlanet4];
@@ -232,14 +233,12 @@ const Index = ({ isExiting, isActive }) => {
             ) : (
               // second page middle section sidepanel and 4 plnts
               <div
-                className={`row justify-content-between second-screen-xl ${isExiting ? 'hidden-second-sect' : 'visible-second-sect'} ${isActive ? 'default-position' : 'hidden-second-sect'} ${
-                  !SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
-                }`}
+                className={`row justify-content-between second-screen-xl ${isExiting ? 'hidden-second-sect' : 'visible-second-sect'} ${isActive ? 'default-position' : 'hidden-second-sect'} ${!SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
+                  }`}
               >
                 <div
-                  className={`col-lg-2 px-0 d-flex flex-column justify-content-between ${
-                    !SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
-                  }`}
+                  className={`col-lg-2 px-0 d-flex flex-column justify-content-between ${!SecScrAnimt ? 'visible-second-sect' : 'hidden-second-sect'
+                    }`}
                 >
                   <div
                     className={`left-sidebar-main-div ${isExiting ? 'hidden-second-sect' : 'visible-second-sect'} ${isActive ? 'default-position' : 'hidden-second-sect'} `}
@@ -271,7 +270,7 @@ const Index = ({ isExiting, isActive }) => {
                           }
                         </li>
                         <li
-                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock+1 && ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock + 1 && ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
                             {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock ? (
@@ -282,13 +281,13 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock+1 &&
-                            ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
+                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock + 1 &&
+                              ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock+1 &&
-                          ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? (
+                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[0]?.meteors_required_to_unlock + 1 &&
+                            ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
@@ -300,7 +299,7 @@ const Index = ({ isExiting, isActive }) => {
                           </span>
                         </li>
                         <li
-                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock+1 && ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock + 1 && ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
                             {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock ? (
@@ -311,13 +310,13 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock+1 &&
-                            ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
+                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock + 1 &&
+                              ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock+1 &&
-                          ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
+                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[1]?.meteors_required_to_unlock + 1 &&
+                            ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[2]?.meteors_required_to_unlock ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
@@ -329,7 +328,7 @@ const Index = ({ isExiting, isActive }) => {
                           </span>
                         </li>
                         <li
-                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock+1 && ContextHomeDataAPI?.part2 <= 4000 ? 'position-relative' : ''}`}
+                          className={`d-flex ${ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock + 1 && ContextHomeDataAPI?.part2 <= 4000 ? 'position-relative' : ''}`}
                         >
                           <div className="d-grid progress-side-sec">
                             {ContextHomeDataAPI?.part2 <= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock ? (
@@ -340,13 +339,13 @@ const Index = ({ isExiting, isActive }) => {
                               src={prgicon}
                               alt="prgicon"
                             />{' '}
-                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock+1 &&
-                            ContextHomeDataAPI?.part2 <= 6000 ? (
+                            {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock + 1 &&
+                              ContextHomeDataAPI?.part2 <= 6000 ? (
                               <hr className="opacity-100 progress-side-hr " />
                             ) : null}
                           </div>{' '}
-                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock+1 &&
-                          ContextHomeDataAPI?.part2 <= 6000 ? (
+                          {ContextHomeDataAPI?.part2 >= ContextFaqsDataAPI?.galaxy_data?.milestones[3]?.meteors_required_to_unlock + 1 &&
+                            ContextHomeDataAPI?.part2 <= 6000 ? (
                             <span className="position-absolute space-grotesk-medium font-12 tooltiptext p-2 rounded text-light-yellow">
                               {ContextHomeDataAPI?.part2} Meteors
                             </span>
@@ -405,36 +404,40 @@ const Index = ({ isExiting, isActive }) => {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box play-earn-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'}`}
-                    ref={leftBoxRef}
-                    id="leftBox"
-                  >
-                    <img
-                      className="w-25 progress-sect-rocket position-absolute"
-                      src={rocket}
-                      alt="rocket"
-                    />
-                    <span className="text-white font-14 montserrat-semibold offset-2">
-                      Play & Earn
-                    </span>
-                    <img src={longarrow} alt="longarrow" />
-                  </div>
-                  <div
-                    className={`d-flex justify-content-evenly background-dark-pink mt-0 rounded-2 position-relative py-2 left-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'} `}
-                    ref={leftBoxRef}
-                    id="leftBox"
-                  >
-                    <img
-                      className=" progress-sect-astronot position-absolute"
-                      src={astronot}
-                      alt="astronot"
-                    />
-                    <span className="text-white font-14 montserrat-semibold offset-2 ">
-                      Invite & Earn
-                    </span>
-                    <img src={longarrow} alt="longarrow" />
-                  </div>
+                  <NavLink to={"/reward"} className={"text-decoration-none"}>
+                    <div
+                      className={`d-flex justify-content-evenly background-text-blue rounded-2 position-relative py-2 left-box play-earn-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'}`}
+                      ref={leftBoxRef}
+                      id="leftBox"
+                    >
+                      <img
+                        className="w-25 progress-sect-rocket position-absolute"
+                        src={rocket}
+                        alt="rocket"
+                      />
+                      <span className="text-white font-14 montserrat-semibold offset-2">
+                        Play & Earn
+                      </span>
+                      <img src={longarrow} alt="longarrow" />
+                    </div>
+                  </NavLink>
+                  <NavLink to={"/invitefriend"} className={"text-decoration-none"}>
+                    <div
+                      className={`d-flex justify-content-evenly background-dark-pink mt-0 rounded-2 position-relative py-2 left-box ${isExiting ? 'move-left' : ''} ${isActive ? 'default-position' : 'move-left'} `}
+                      ref={leftBoxRef}
+                      id="leftBox"
+                    >
+                      <img
+                        className=" progress-sect-astronot position-absolute"
+                        src={astronot}
+                        alt="astronot"
+                      />
+                      <span className="text-white font-14 montserrat-semibold offset-2 ">
+                        Invite & Earn
+                      </span>
+                      <img src={longarrow} alt="longarrow" />
+                    </div>
+                  </NavLink>
                 </div>
                 <div className="col-lg-9 planet-section">
                   <div className="row ">
@@ -668,9 +671,8 @@ const Index = ({ isExiting, isActive }) => {
                           ? toggleAnimtElements
                           : null
                       }
-                      className={`img-fluid ${currentIndex <= ContextHomeDataAPI?.part4?.length - 1 ? 'cursor-pointer' : ''} rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${
-                        isAnimating ? 'fade-down-shrink' : ''
-                      }`}
+                      className={`img-fluid ${currentIndex <= ContextHomeDataAPI?.part4?.length - 1 ? 'cursor-pointer' : ''} rounded-circle planet-shadow-${currentIndex === 0 ? 'purple' : currentIndex === 1 ? 'yellow' : currentIndex === 2 ? 'green' : 'blue'} ${isAnimating ? 'fade-down-shrink' : ''
+                        }`}
                     />
                   </div>
                 </div>
