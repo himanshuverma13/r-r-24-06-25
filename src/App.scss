@@ -2551,6 +2551,44 @@ body::-webkit-scrollbar {
       #1b4965 100%);
   height: 95px;
   top: 0;
+   animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes slideDownNav {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpNav {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+
+
+.ufo-nav-bg-animation {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.slide-down {
+  animation-name: slideDownNav;
+}
+
+.slide-up {
+  animation-name: slideUpNav;
 }
 
 .ufo-fixed-active {
@@ -4201,7 +4239,7 @@ body::-webkit-scrollbar {
 @media (max-height: 700px) {
   .reward-section {
     &.height-100vh {
-      height: 150vh !important;
+      height: 130vh !important;
     }
   }
 
