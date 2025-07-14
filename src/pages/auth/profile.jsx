@@ -63,7 +63,7 @@ const Profile = () => {
   const [UserDataAPI, setUserDataAPI] = useState();
   
 
-  const { ContextFaqsDataAPI, ContextHomeDataAPI } = useContext(UserContext);
+  const { ContextFaqsDataAPI, ContextHomeDataAPI,setAuthLocal } = useContext(UserContext);
 
   const Auth = JSON?.parse(sessionStorage.getItem('Auth') ?? '{}');
   // Add state to track the calculated value
@@ -216,6 +216,7 @@ const Profile = () => {
         mode: Auth?.mode,
       });
       const Decrpty = await DecryptFunction(enyptData);
+      console.log('Decrpty: ', Decrpty);
       setUserDataAPI(Decrpty);
     } catch (error) {}
   };
@@ -272,7 +273,6 @@ const Profile = () => {
         meteors_to_debit: Number(data?.meteors),
         stars_credited: calculatedStars,
       });
-      console.log('response: ', response);
       toastSuccess(response?.message);
       setIsmeteroModalOpen(false);
       setcontratsModal(true);
@@ -323,7 +323,9 @@ const Profile = () => {
 
   // ------Logout Functionailty
   const HandleLogout = () => {
-    sessionStorage.removeItem('Auth');
+    sessionStorage.removeItem("Auth")
+    setAuthLocal('')
+    console.log('check auth');
     navigate('/login');
   };
 
@@ -406,23 +408,23 @@ const Profile = () => {
             </h3>
             {[
               {
-                value: UserDataAPI?.part4,
-                label: 'Total Rewards',
+                value: UserDataAPI?.part9,
+                label: 'Total Meteors Earned',
                 RewardIcons: Reward,
               },
               {
-                value: 12,
-                label: 'Current Reward Balance',
+                value: UserDataAPI?.part5,
+                label: 'Referral Earnings',
                 RewardIcons: Balance,
               },
               {
-                value: UserDataAPI?.part5,
-                label: 'Total Redeemed',
+                value: UserDataAPI?.part6,
+                label: 'Redeemed Meteors',
                 RewardIcons: Redeemed,
               },
               {
-                value: UserDataAPI?.part6,
-                label: 'Pending Rewards',
+                value: UserDataAPI?.part4,
+                label: 'Available Meteors',
                 RewardIcons: Pending,
               },
             ].map((item, idx) => (

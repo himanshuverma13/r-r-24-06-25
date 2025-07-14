@@ -30,10 +30,13 @@ export const postData = async (endpoint, payload = {}) => {
     const response = await api.post(endpoint, payload);
     return response.data;
   } catch (error) {
-    if (error?.response?.data?.message == 'Access token has expired') {
-      sessionStorage.removeItem("Auth");
-      window.location.href = '/login'; 
-       throw error.response?.data || error.message;
+    if (
+      error?.response?.data?.message == 'Access token has expired' ||
+      error?.response?.data?.message == 'Invalid access token'
+    ) {
+      sessionStorage.removeItem('Auth');
+      window.location.href = '/login';
+      throw error.response?.data || error.message;
     }
     throw error.response?.data || error.message;
   }

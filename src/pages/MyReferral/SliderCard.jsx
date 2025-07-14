@@ -136,7 +136,7 @@ const SliderCard = ({ RefralDataAPI }) => {
                 </div>
             </div>
 
-            {RefralDataAPI?.length > 0 ? (
+            {RefralDataAPI?.part4?.length > 0 ? (
                 <>
                     {!showTable ? (
                         <div className="slider-container">
@@ -217,7 +217,7 @@ const SliderCard = ({ RefralDataAPI }) => {
                 </>
 
             ) : (
-                <div className="text-blue montserrat-semibold font-20 py-5">You have not reffered anyone yet!!</div>
+                <div className="text-blue montserrat-semibold font-20 py-3">You have not reffered anyone yet!!</div>
             )}
         </>
     );

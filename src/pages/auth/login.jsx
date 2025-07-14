@@ -191,7 +191,7 @@ const Login = () => {
                 exciting reward and referral program!
               </p>
             </div>
-            <div className="">
+            <div className="container">
               <div className='login-form-section row d-flex justify-content-center align-items-center py-3 px-3'>
                 <div className="col-lg-6 col-md-12 col-12">
                   <div className="login-img side-login-bg d-flex align-items-center justify-content-center">
@@ -199,15 +199,15 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="col-lg-6 col-md-12 col-12 d-flex align-items-center">
-                  <form onSubmit={handleSubmit(onSubmit)} className='w-100'>
+                  <form onSubmit={handleSubmit(onSubmit)} className='w-100 '>
                     <div class="mb-4">
                       <input
                         type="text"
                         class="form-control login-form py-2"
                         id="exampleFormControlInput1"
-                        placeholder="Your Email"
+                        placeholder="Your Email / Username"
                         {...register('email', {
-                          required: 'Email is required',
+                          required: 'Email / Username is required',
                         })}
                       />
                       {errors.email && (
