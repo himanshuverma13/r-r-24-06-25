@@ -388,11 +388,11 @@ const MyRewardFirstScreen = () => {
             {/* Content inside container */}
             <div className="container-fluid mb-4">
               <div
-                className={`px-0 d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg position-fixed' : 'bg-transparent '}`}
+                className={`px-0 d-flex justify-content-center align-items-center w-100 z-1 left-0 ${UfoBg && RwdAnimate ? 'ufo-nav-bg position-fixed slide-down' : 'slide-up'}`}
 
               >
                 <div
-                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active mt-4' : 'ufo-fixed'} mt-lg-4 mt-5 z-3`}
+                  className={`row container justify-content-between align-items-center ${UfoBg && RwdAnimate ? 'ufo-fixed-active slide-up mt-4' : 'ufo-fixed slide-down'} mt-lg-4 mt-5 z-3`}
                 >
                   <div className="col-lg-5 col-md-8 d-flex justify-content-start align-items-center px-0">
                     <div className="till-ship w-75 position-relative tilte-shadow rounded-3">
@@ -420,10 +420,10 @@ const MyRewardFirstScreen = () => {
                   <div className="col-lg-6 col-md-4 text-end px-0">
                     <button
                       onClick={() => setshowRwrdHstry(true)}
-                      className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg ? 'text-white border-white' : 'text-blue reward-history'}`}
+                      className={`bg-transparent rounded-5 px-3 py-1 font-16 montserrat-semibold ${UfoBg && RwdAnimate ? 'text-white border-white slide-up' : 'text-blue reward-history'}`}
                     >
                       Reward History
-                      <GiBackwardTime className={`ms-2 font-18 montserrat-semibold ${UfoBg ? 'text-white' : 'text-blue'}`} />
+                      <GiBackwardTime className={`ms-2 font-18 montserrat-semibold ${UfoBg && RwdAnimate ? 'text-white' : 'text-blue'}`} />
 
                     </button>
                   </div>

@@ -259,7 +259,7 @@ const ReferralCards = ({ RefralDataAPI }) => {
 
   const Card = ({ card }) => (
     <div
-      className="referral-card p-5 me-3 mb-4 position-relative text-center ufo-light-img"
+      className="referral-card me-3 mb-4 position-relative text-center ufo-light-img"
       onMouseEnter={() => setIsHovered(card.id)}
       onMouseLeave={() => setIsHovered(null)}
     >
