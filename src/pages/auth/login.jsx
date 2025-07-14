@@ -191,82 +191,84 @@ const Login = () => {
                 exciting reward and referral program!
               </p>
             </div>
-            <div className="login-form-section row py-3 px-3 d-flex justify-content-center align-items-center">
-              <div className="col-lg-6 col-md-12 col-12">
-                <div className="login-img login-bg">
-                  {/* <img src={Loginimg} alt="Laoding" className="img-fluid" /> */}
+            <div className="">
+              <div className='login-form-section row d-flex justify-content-center align-items-center py-3 px-3'>
+                <div className="col-lg-6 col-md-12 col-12">
+                  <div className="login-img side-login-bg d-flex align-items-center justify-content-center">
+                    {/* <img src={Loginimg} alt="Laoding" className="img-fluid" /> */}
+                  </div>
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-12 col-12 pt-3">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div class="mb-4">
-                    <input
-                      type="text"
-                      class="form-control login-form py-2"
-                      id="exampleFormControlInput1"
-                      placeholder="Your Email"
-                      {...register('email', {
-                        required: 'Email is required',
-                      })}
-                    />
-                    {errors.email && (
-                      <div className="text-danger font-14">{errors.email.message}</div>
-                    )}
-                  </div>
-                  <div class="mb-1">
-                    <input
-                      type="password"
-                      class="form-control login-form py-2"
-                      id="exampleFormControlInput1"
-                      placeholder="Password"
-                      {...register('password', {
-                        required: 'Password is required',
-                      })}
-                    />
-                    {errors.password && (
-                      <div className="text-danger font-14">
-                        {errors.password.message}
-                      </div>
-                    )}
-                  </div>
-                  <div className="pb-4 text-end">
-                    <button
-                      type="button"
-                      className="text-blue font-12 montserrat-regular border-0 bg-transparent"
-                      onClick={() => navigate('/forgotpassword')}
-                    >
-                      Forgot Password?
-                    </button>
-                  </div>
-                  <div className="d-flex ">
-                    <NavLink
-                      to={'/loginOtp'}
-                      className="montserrat-semibold w-50 text-center mx-1 text-decoration-none font-16 py-2 rounded-3 bg-transparent border-blue  text-blue"
-                    >
-                      Login with OTP
-                    </NavLink>
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="montserrat-semibold w-50 mx-1 font-16 py-2 rounded-3 border-0 background-text-blue text-white"
-                    >
-                      {loading ? 'Loging...' : 'Login'}
-                    </button>
-                  </div>
-                  <p className="font-12 montserrat-regular text-center mt-3 text-light-gray mb-0">
-                    Not an existing user?{' '}
-                    <span>
-                      <NavLink
-                        to={'/registration'}
-                        className={
-                          'text-blue font-14 montserrat-medium text-decoration-none'
-                        }
+                <div className="col-lg-6 col-md-12 col-12 d-flex align-items-center">
+                  <form onSubmit={handleSubmit(onSubmit)} className='w-100'>
+                    <div class="mb-4">
+                      <input
+                        type="text"
+                        class="form-control login-form py-2"
+                        id="exampleFormControlInput1"
+                        placeholder="Your Email"
+                        {...register('email', {
+                          required: 'Email is required',
+                        })}
+                      />
+                      {errors.email && (
+                        <div className="text-danger font-14">{errors.email.message}</div>
+                      )}
+                    </div>
+                    <div class="mb-1">
+                      <input
+                        type="password"
+                        class="form-control login-form py-2"
+                        id="exampleFormControlInput1"
+                        placeholder="Password"
+                        {...register('password', {
+                          required: 'Password is required',
+                        })}
+                      />
+                      {errors.password && (
+                        <div className="text-danger font-14">
+                          {errors.password.message}
+                        </div>
+                      )}
+                    </div>
+                    <div className="pb-4 text-end">
+                      <button
+                        type="button"
+                        className="text-blue font-12 montserrat-regular border-0 bg-transparent"
+                        onClick={() => navigate('/forgotpassword')}
                       >
-                        Register Now
+                        Forgot Password?
+                      </button>
+                    </div>
+                    <div className="d-flex ">
+                      <NavLink
+                        to={'/loginOtp'}
+                        className="montserrat-semibold w-50 text-center mx-1 text-decoration-none font-16 py-2 rounded-3 bg-transparent border-blue  text-blue"
+                      >
+                        Login with OTP
                       </NavLink>
-                    </span>
-                  </p>
-                </form>
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="montserrat-semibold w-50 mx-1 font-16 py-2 rounded-3 border-0 background-text-blue text-white"
+                      >
+                        {loading ? 'Loging...' : 'Login'}
+                      </button>
+                    </div>
+                    <p className="font-12 montserrat-regular text-center mt-3 text-light-gray mb-0">
+                      Not an existing user?{' '}
+                      <span>
+                        <NavLink
+                          to={'/registration'}
+                          className={
+                            'text-blue font-14 montserrat-medium text-decoration-none'
+                          }
+                        >
+                          Register Now
+                        </NavLink>
+                      </span>
+                    </p>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
