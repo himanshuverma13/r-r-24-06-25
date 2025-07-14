@@ -4,6 +4,7 @@ import astro from '../../assets/images/home/playEarn/astronaut.svg';
 import ticTac from '../../assets/images/home/playEarn/tic-tac.svg';
 import SideModal from './sideModal';
 import { toast } from 'react-toastify';
+import { toastInfo } from '../../utils/toster';
 
 const PlayEarn = ({ isActive }) => {
   const [hoveredCard, setHoveredCard] = useState();
@@ -84,7 +85,7 @@ const PlayEarn = ({ isActive }) => {
                   <div className='mt-1'>
                   <button className="btn background-text-blue text-white font-size-16 montserrat-medium rounded-5 mb-4 px-4"
                   //  onClick={() => alert('Coming Soon')}
-                  onClick={() => toast.info('Coming Soon 🚀')}
+                  onClick={()=>toastInfo("Comming Soon")}
                   >
                     {cardId.buttonText}
                   </button>
