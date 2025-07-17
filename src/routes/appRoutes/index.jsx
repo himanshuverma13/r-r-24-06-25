@@ -86,18 +86,6 @@ const AppRoutes = () => {
         {AuthLocal && <Route path="/" element={<Home />} />}
 
         {/* Public Routes */}
-        {/* <Route path="/login" element={<Login />} />
-        <Route path="/forgotpassword" element={<SendOtpForgotPassword />} />
-        <Route
-          path="/confirmforgotPasswordotp"
-          element={<ConfirmForgotPasswordOtp />}
-        />
-        <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/loginOtp" element={<LoginOtp />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/invite-link/:id" element={<Registration />} />
-        <Route path="/subscription" element={<Product />} /> */}
-
         <Route
           path="/login"
           element={AuthLocal ? <Navigate to="/" replace /> : <Login />}
@@ -164,9 +152,11 @@ const AppRoutes = () => {
           path="/profile-faqs"
           element={AuthLocal ? <UserFaqs /> : <Navigate to="/login" replace />}
         />
-          <Route
+        <Route
           path="/invitefriend"
-          element={AuthLocal ? <Invitefriend /> : <Navigate to="/login" replace />}
+          element={
+            AuthLocal ? <Invitefriend /> : <Navigate to="/login" replace />
+          }
         />
 
         {/* Catch-all route */}
